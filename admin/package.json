@@ -1,0 +1,28 @@
+{
+  "name": "vacay-planner",
+  "version": "1.0.0",
+  "description": "Vacation Planner",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mwzcommerce/vacay-planner.git"
+  },
+  "keywords": [
+    "vacation",
+    "planner",
+    "travel"
+  ],
+  "author": "mwzcommerce",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mwzcommerce/vacay-planner/issues"
+  },
+  "homepage": "https://github.com/mwzcommerce/vacay-planner",
+  "dependencies": {
+    "express": "^4.12.3",
+    "express3-handlebars": "^0.5.2"
+  }
+}
