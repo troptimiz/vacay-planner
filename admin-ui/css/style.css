@@ -1,0 +1,278 @@
+body {
+  background-color: #f6f6f6;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.header-admin .navbar-header .navbar-brand {
+  width: 220px;
+  height: 80px;
+  line-height: 80px;
+  background-color: #7992BF;
+  padding: 0;
+  text-align: center;
+  color: #fff;
+}
+.header-admin .navbar > .container .navbar-brand,
+.header-admin .navbar > .container-fluid .navbar-brand {
+  margin-left: 0;
+}
+.header-admin .navbar-default {
+  background-color: #fff;
+  border: 0 none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+.header-admin .navbar-default .navbar-nav > li > a {
+  color: #777;
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 80px;
+  line-height: 80px;
+  background-color: #fff;
+}
+.header-admin .navbar-default .navbar-nav > li > a:hover {
+  color: #ccc;
+  background-color: #fff;
+}
+
+#sidebar {
+  top: 80px;
+  background-color: #1F2837;
+  color: #fff;
+  width: 220px;
+  padding: 0;
+  height: 100%;
+}
+#sidebar li a {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: bold;
+}
+#sidebar li a:hover, #sidebar li a:active, #sidebar li a:focus {
+  background-color: #1F2837;
+  color: #ccc;
+}
+
+/*Result container*/
+* {
+  -webkit-transition: width .5s, padding .5s, margin .5s, right .1s ease-in-out;
+  /* Safari */
+  transition: width .5s, padding 0.5s, margin .5s, right .1s ease-in-out;
+}
+
+.admin-result-container {
+  position: relative;
+  top: 80px;
+  overflow: hidden;
+}
+.admin-result-container .category-list {
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+.admin-result-container .category-list.min-list {
+  width: 40%;
+  margin-top: 0;
+}
+.admin-result-container .category-list.min-list .list-item {
+  margin: 10px 15px;
+}
+.admin-result-container .category-list.min-list .list-item .icon {
+  bottom: 12px;
+  right: 12px;
+}
+.admin-result-container .category-list.min-list .list-item a {
+  padding: 20px;
+}
+.admin-result-container .category-list.min-list .list-item a .icon {
+  font-size: 15px;
+}
+.admin-result-container .category-list.min-list .list-item a .ico-label {
+  display: none;
+}
+.admin-result-container .category-list .list-item {
+  float: left;
+  margin: 10px 20px;
+}
+.admin-result-container .category-list .list-item a {
+  padding: 50px;
+  display: inline-block;
+  color: #fff;
+  position: relative;
+  text-transform: uppercase;
+  font-family: Arial;
+  font-size: 11px;
+  text-decoration: none;
+}
+.admin-result-container .category-list .list-item a.item-resorts {
+  background: #7992BF;
+  border: 1px solid #6884b7;
+}
+.admin-result-container .category-list .list-item a.item-hotels {
+  background: #A9DC8E;
+  border: 1px solid #9ad67b;
+}
+.admin-result-container .category-list .list-item a.item-spa {
+  background: #6BD5C3;
+  border: 1px solid #57cfbb;
+}
+.admin-result-container .category-list .list-item a.item-car {
+  background: #ECD48B;
+  border: 1px solid #e8cc75;
+}
+.admin-result-container .category-list .list-item a.item-flight {
+  background: #5d9efd;
+  border: 1px solid #7d9efd;
+}
+.admin-result-container .category-list .list-item a.item-movies {
+  background: #ED848F;
+  border: 1px solid #ea6e7b;
+}
+.admin-result-container .category-list .list-item .icon {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  font-size: 40px;
+}
+.admin-result-container .category-list .list-item .ico-label {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.item-container {
+  background: #fff;
+  border: 1px solid #eee;
+  margin: 0 40px;
+  padding: 30px;
+}
+
+.search-form {
+  display: none;
+}
+
+.search-result-table {
+  transition: width .5s, padding 0.5s, margin 2s, right 2s;
+  display: none;
+  position: relative;
+  right: 0;
+}
+.search-result-table.hide-table {
+  right: 100%;
+}
+
+.form-item {
+  display: inline;
+  margin: 0 10px;
+}
+.form-item select, .form-item input[type="text"] {
+  padding: 10px;
+  border: 1px solid #eee;
+  color: #a3a3a3;
+}
+.form-item label {
+  color: #918884;
+  font-weight: normal;
+  font-size: 13px;
+  font-family: Arial;
+  padding-right: 10px;
+}
+.form-item input[type="submit"], .form-item input[type="button"] {
+  background-color: #7992BF;
+  border: 1px solid #6884b7;
+  width: 95px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.delete-edit-container {
+  margin: 10px 0;
+}
+.delete-edit-container a {
+  font-family: "icomoon";
+  font-size: 0;
+  color: #333;
+}
+.delete-edit-container a:before {
+  font-size: 15px;
+  padding: 0 10px;
+}
+.delete-edit-container a:hover, .delete-edit-container a:focus, .delete-edit-container a:active {
+  color: #337ab7;
+  text-decoration: none;
+}
+.delete-edit-container .edit:before {
+  content: "\e905";
+  font-size: 15px;
+}
+.delete-edit-container .edit.desabled {
+  cursor: default;
+}
+.delete-edit-container .edit.desabled:before {
+  color: #ccc;
+}
+.delete-edit-container .delete:before {
+  content: "\e9ad";
+  font-size: 15px;
+}
+.delete-edit-container .add-row:before {
+  content: "\ea0a";
+  font-size: 15px;
+}
+.delete-edit-container.disabled .edit, .delete-edit-container.disabled .delete {
+  cursor: default;
+}
+.delete-edit-container.disabled .edit:before, .delete-edit-container.disabled .delete:before {
+  color: #ccc;
+}
+
+.add-form-container {
+  display: none;
+}
+.add-form-container .form-heading {
+  padding-bottom: 15px;
+}
+.add-form-container .form-heading h2 {
+  font-size: 24px;
+  color: #7992bf;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin-top: 0;
+}
+.add-form-container .data-form {
+  width: 70%;
+  margin: 0 auto;
+}
+.add-form-container .data-form .form-group {
+  width: 70%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  clear: both;
+}
+.add-form-container .data-form .form-group label, .add-form-container .data-form .form-group input, .add-form-container .data-form .form-group textarea {
+  float: left;
+  font-size: 13px;
+}
+.add-form-container .data-form .form-group label {
+  width: 150px;
+  font-weight: normal;
+  color: #918882;
+  font-size: 13px;
+}
+.add-form-container .data-form .form-group textarea {
+  width: 312px;
+}
+.add-form-container .data-form .form-group .checkbox {
+  width: 135px;
+  float: left;
+  margin: 0;
+}
+.add-form-container .data-form .form-group .checkbox input[type="radio"] {
+  width: 20px;
+}
+.add-form-container .form-control {
+  width: 65%;
+}
