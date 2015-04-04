@@ -1,0 +1,45 @@
+{
+	categories:[
+		{
+			"name":"Resorts",
+			"id":"cat10001",
+			"description":"Resort Category",
+			"imageUrl":"images/resort.png"
+			},
+		{
+			"name":"Hotels",
+			"id":"cat10002",
+			"description":"Hotels Category",
+			"imageUrl":"images/hotel.png"
+
+		},
+		{
+			"name":"Travel-Flight",
+			"id":"cat10003",
+			"description":"Travel -Flight Category",
+			"imageUrl":"images/travel-flight.png"
+		},
+		{
+			"name":"Spa",
+			"id":"cat10004",
+			"description":"Spa Category",
+			"imageUrl":"images/spa.png"
+		},
+		{
+			"name":"Movies",
+			"id":"cat10005",
+			"description":"Movies Category",
+			"imageUrl":"images/movies.png"
+		},
+		{
+			"name":"Travel-Car",
+			"id":"cat10006",
+			"description":"Travel-Car Category",
+			"imageUrl":"images/travel-car.png"
+
+		}
+
+	]
+
+
+}

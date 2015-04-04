@@ -1,0 +1,14 @@
+{
+	"name":"Taj Resort",
+	"description":"Taj Gateway Resort",
+	"address":{
+		"address1":"New Tippasandra",
+		"address2":"Church Street",
+		"city":"Bangalore",
+		"state":"Karnataka",
+		"country":"INDIA"
+		},
+	"price":"190.00",
+	"currency":"INR",
+	"is_active":"true"
+}

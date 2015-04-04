@@ -1,0 +1,57 @@
+{
+
+	"totalResults":"100",
+	"resultsPerPage":"10",
+	"startRange":"00001",
+	"endRange":"00002"
+	"type":"search",
+
+result:{
+	resorts:[
+		{
+			"name":"Taj Resort",
+			"description":"Taj Gateway Resort",
+			"address":{
+				"address1":"New Tippasandra",
+				"address2":"Church Street",
+				"city":"Bangalore",
+				"state":"Karnataka",
+				"country":"INDIA"
+				},
+			"price":"190.00",
+			"currency":"INR",
+			"is_active":"true"
+		},
+		{
+			"name":"Mahinda Resort",
+			"description":"Mahindra Holiday Resort",
+			"address":{
+				"address1":"New Tippasandra",
+				"address2":"Church Street",
+				"city":"Bangalore",
+				"state":"Karnataka",
+				"country":"INDIA"
+				},
+			"price":"250.00",
+			"currency":"INR",
+			"is_active":"true"
+		},
+		{
+			"name":"Green  Resort",
+			"description":"Green Holiday Resort",
+			"address":{
+				"address1":"New Tippasandra",
+				"address2":"Church Street",
+				"city":"Bangalore",
+				"state":"Karnataka",
+				"country":"INDIA"
+				},
+			"price":"370.00",
+			"currency":"INR",
+			"is_active":"true"
+		}
+
+	]
+
+}
+}

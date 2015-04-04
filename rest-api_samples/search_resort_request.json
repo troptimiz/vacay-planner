@@ -1,0 +1,13 @@
+{
+	"query":{
+		"city":"Bangalore",
+		"fromPrice":"190.00",
+		"toPrice":"270.00",
+		"is_active":"true",
+		"pagination":{
+			"fromIndex":"100001",
+			"rangeIndex":"10"
+		}
+	}
+	
+}
