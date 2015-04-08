@@ -21,9 +21,9 @@ GET - http://vacay-planner.com/categories/
 Category DETAIL
 ===============
 
-GET - http://vacay-planner.com/categories/{categoryId}
+GET - http://vacay-planner.com/categories/category/{categoryId}
 	
-Example -- http://vacay-planner.com/categories/cat10003
+Example -- http://vacay-planner.com/categories/category/cat10003
 
 
 Resorts SEARCH
