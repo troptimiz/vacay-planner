@@ -1,4 +1,7 @@
 var mongoose =require('mongoose');
+
+// TODO : Need to externalize the environment configuration 
+
 mongoose.connect('mongodb://localhost/vacayplanner');
 
 var categorySchema = mongoose.Schema({
