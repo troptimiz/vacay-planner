@@ -22,7 +22,7 @@ app.get("/",function(req,res){
 
 // URL Mappings 
 
-app.use('/cat',CategoryController);
+app.use('/categories',CategoryController);	
 
 
 
