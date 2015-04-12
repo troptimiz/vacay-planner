@@ -1,4 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+    <link href="icomoon/style.css" rel="stylesheet" type="text/css" />
+	<link href="css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>
+
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/sign-in.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <header class="header-admin">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">VACAY-PLANNER</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav  pull-right">                        
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="icon-settings"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Action</a>
+                                </li>
+                                <li><a href="#">Another action</a>
+                                </li>
+                                <li><a href="#">Something else here</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Nav header</li>
+                                <li><a href="#">Separated link</a>
+                                </li>
+                                <li><a href="#">One more separated link</a>
+                                </li>
+                            </ul>
+                        </li>
+						<li>
+							<a>Welcome <span>satish!</span></a>
+						</li>
+						<li><a href="#" title="Sign Out"><i class="icon-switch"></i></a></li>
+                    </ul>
+                    <!--<ul class="nav navbar-nav navbar-right">
+            <li><a href="../navbar/">Default</a></li>
+            <li><a href="../navbar-static-top/">Static top</a></li>
+            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+          </ul>-->
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </nav>
+    </header>
+    <!-- Content -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-2">
@@ -19,15 +83,45 @@
             </div>
             <div class="col-sm-10 admin-result-container">
                 <div class="category-list">
-					{{#each activeCategories}}
-						<div class="list-item">
-							<a class="{{this.cssClass}}" href="#" title="Resorts">
-								<span class="icon"></span>
-								<span class="ico-label">{{this.name}}</span>
-							</a>
-						</div>
-					{{/each}}
-                    
+                    <div class="list-item">
+                        <a class="item-resorts" href="#" title="Resorts">
+                            <span class="icon icon-library"></span>
+                            <span class="ico-label">Resorts</span>
+                        </a>
+
+                    </div>
+                    <div class="list-item">
+                        <a class="item-hotels" href="#" title="Hotels">
+                            <span class="icon icon-office"></span>
+                            <span class="ico-label">Hotels</span>
+                        </a>
+
+                    </div>
+                    <div class="list-item">
+                        <a class="item-spa" href="#" title="Spa">
+                            <span class="icon icon-leaf"></span>
+                            <span class="ico-label">SPA</span>
+                        </a>
+
+                    </div>
+                    <div class="list-item">
+                        <a class="item-car" href="#" title="Travel">
+                            <span class="icon icon-truck"></span>
+                            <span class="ico-label">Travel</span>
+                        </a>
+                    </div>
+					<div class="list-item">
+                        <a class="item-flight" href="#" title="Travel">
+                            <span class="icon icon-airplane"></span>
+                            <span class="ico-label">Travel</span>
+                        </a>
+                    </div>
+                    <div class="list-item">
+                        <a class="item-movies" href="#" title="Movies">
+                            <span class="icon icon-film"></span>
+                            <span class="ico-label">Movies</span>
+                        </a>
+                    </div>
                     <div class="clearfix"></div>
                 </div>
 				<div class="search-form">
@@ -236,3 +330,8 @@
             </div>
         </div>
     </div>
+    <script src="js/vendors/jquery-1.11.2.min.js"></script>
+    <script src="js/vendors/bootstrap.js"></script>
+	<script src="js/vendors/jquery.dataTables.js" type="text/javascript"></script>
+	<script src="js/globals.js" type="text/javascript"></script>
+</body>

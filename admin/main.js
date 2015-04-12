@@ -2,26 +2,28 @@ var express = require('express');
 var app = express();
 var handlebars = require('express3-handlebars').create({defaultLayout:'main'});
 var CategoryController = require('./controllers/CategoryController.js');
+var path = require('path');
 
 
 
 // Application configuration - Should be embody them in configuratio block
 
 app.set('port',process.env.PORT || 3000);
-
+app.use("/public", express.static(path.join(__dirname, 'public')));
 app.engine('handlebars',handlebars.engine);
+//app.engine('handlebars', handlebars({defaultLayout: 'main'}));
 app.set('view engine','handlebars');
 
 <!-- URL Mappings to check any possibility of any externalization -->
 
-
 app.get("/",function(req,res){
 	res.render('home');
 });
-
+app.get("/login",function(req,res){
+	res.render('login');
+});
 
 // URL Mappings 
-
 app.use('/categories',CategoryController);	
 
 

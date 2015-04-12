@@ -8,6 +8,7 @@ var categorySchema = mongoose.Schema({
 	name:String,
 	description:String,
 	imageUrl:String,
+	cssClass:String,
 	is_active:Boolean
 });
 

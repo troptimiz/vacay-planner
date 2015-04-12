@@ -1,0 +1,27 @@
+<div class="cat-list">
+	<div class="item-container">
+		<table>
+			<tr>
+				<th>Category Name</th>
+				<th>Description</th>
+				<th>Action</th>
+			</tr>
+			{{#each activeCategories}}
+			<tr>
+				<td>
+					<span class="icon"></span>{{this.name}}
+				</td>
+				<td>
+					{{this.description}}
+				</td>
+				<td>
+					<div class="delete-edit-container">
+                        <a href="#" class="edit" title="Edit the row">Edit</a> /
+                        <a href="#" class="delete" title="Delete the row">Delete</a>
+                    </div>
+				</td>
+			</tr>
+			{{/each}}
+		</table>
+	</div>
+</div>

@@ -9,7 +9,16 @@ CategoryController.use(bodyParser());
 // All Active Categories
 CategoryController.get('/',function(req,res){
 	Categories.find({'is_active':true},function(err,categories){
-		res.status(200).json({activeCategories:categories});
+		res.render("home",{'activeCategories':categories});
+		//res.status(200).json({activeCategories:categories});
+	});	
+});
+
+
+CategoryController.get('/list',function(req,res){
+	Categories.find({},function(err,categories){
+		res.render("category-list",{'activeCategories':categories,layout:'list'});
+		//res.status(200).json({categories:categories});
 	});	
 });
 
