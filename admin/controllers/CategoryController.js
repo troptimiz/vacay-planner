@@ -31,7 +31,7 @@ CategoryController.get('/category/:id',function(req,res){
 });
 
 // Create new category
-CategoryController.post('/category/',function(req,res){
+CategoryController.put('/category/',function(req,res){
 	var newCategory = new Categories({
 		name:req.body.name,
 		description:req.body.description,
@@ -48,8 +48,7 @@ CategoryController.post('/category/',function(req,res){
 });
 
 //Update the category
-CategoryController.put('/category/:id',function(req,res){
-
+CategoryController.post('/category/:id',function(req,res){
 
 	categoryToBeUpdated = {
 		name:req.body.name,

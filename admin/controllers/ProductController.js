@@ -13,6 +13,124 @@ ProductController.get('/',function(req,res){
 	});
 });
 
+// Create new Product 
+
+ProductController.put('/product/',function(req,res){
+
+	var product = new Product({
+		category:req.body.category,
+		name:req.body.name,
+		type:req.body.type,
+		description:req.body.description,
+		emailAddress:req.body.emailAddress,
+		is_active:req.body.is_active,
+		addresses:[],
+		phoneNumbers:[],
+		tariffs:[],
+		amenities:[],
+		termsAndConditions:[]
+	});
+	product.save(function(err,a){
+		if(err) return res.send(500,'Error Occured: database error');
+		res.json({'status':'Product '+a._id+' Created '});
+	});
+
+});
+
+// List Product Detail
+
+ProductController.get('/product/:id',function(req,res){
+	Product.findById(req.params.id,function(err,product){
+		res.status(200).json({product:product});
+	})
+});
+
+//Update Product Detail
+
+ProductController.post('/product/:id',function(req,res){
+
+	productToBeUpdated = {
+		category:req.body.category,
+		name:req.body.name,
+		type:req.body.type,
+		description:req.body.description,
+		emailAddress:req.body.emailAddress,
+		is_active:req.body.is_active
+	};
+
+	Product.findOneAndUpdate({_id:req.params.id},productToBeUpdated,{upsert:true},function(err,product){
+		if(err) return res.send(500,'Error Occured: database error during Product Updation');
+		res.json({'status':'Product '+product._id+' Updated '});
+
+	});
+});
+
+
+// Delete Product By Id
+
+ProductController.delete('/product/:id',function(req,res){
+	Product.findById(req.params.id,function(err,product){
+		if(err)return res.send(500,'Error Occured:database error'+err);
+		product.remove();
+		res.status(200).json({'status':'Product '+req.params.id +' Deleted'});
+	});
+});
+
+// List All Addresses 
+
+ProductController.get('/:id/addresses',function(req,res){
+	productId = req.params.id;
+	Product.findOne({_id:productId},'addresses',function(err,product){
+		if(err) return res.send(500,'Error Occured During Adddress Retrieval for Product with Id['+productId+']');
+		res.status(200).json({'phoneNumbers':product.addresses});
+
+	});
+});
+
+// List All PhoneNumbers
+
+ProductController.get('/:id/phoneNumbers',function(req,res){
+	productId = req.params.id;
+	Product.findOne({_id:productId},'phoneNumbers',function(err,product){
+		if(err) return res.send(500,'Error Occured During PhoneNumbers Retrieval for Product with Id['+productId+']');
+		res.status(200).json({'phoneNumbers':product.phoneNumbers});
+
+	});
+});
+
+// List All Tariffs
+
+ProductController.get('/:id/tariffs',function(req,res){
+	productId = req.params.id;
+	Product.findOne({_id:productId},'tariffs',function(err,product){
+		if(err) return res.send(500,'Error Occured During Tariffs Retrieval for Product with Id['+productId+']');
+		res.status(200).json({'tariffs':product.tariffs});
+
+	});
+});
+
+// List All Amenities
+
+ProductController.get('/:id/amenities',function(req,res){
+	productId = req.params.id;
+	Product.findOne({_id:productId},'amenities',function(err,product){
+		if(err) return res.send(500,'Error Occured During Amenities Retrieval for Product with Id['+productId+']');
+		res.status(200).json({'amenities':product.amenities});
+
+	});
+});
+
+// List All TermsAndConditions
+
+ProductController.get('/:id/termsAndConditions',function(req,res){
+	productId = req.params.id;
+	Product.findOne({_id:productId},'termsAndConditions',function(err,product){
+		if(err) return res.send(500,'Error Occured During TermsAndConditions Retrieval for Product with Id['+productId+']');
+		res.status(200).json({'termsAndConditions':product.termsAndConditions});
+
+	});
+});
+
 
 // Add TermsAndConditions
 
@@ -124,8 +242,11 @@ ProductController.post('/:id/address',function(req,res){
 		if(err) return res.send(500,'Error Occured During Address Update for Product with Id['+productId+']');
 		res.json({'status':'Address Created for Product ['+productId+']'});
 	});
-
 });
+
+// TODO : Include removal of address/tariff/phoneNumber/amenity/termsCondition
+
+// TODO : Include Update of address/tariff/phoneNumber/amenity/termsCondition
 
 
 module.exports = ProductController;
