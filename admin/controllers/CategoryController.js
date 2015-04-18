@@ -48,14 +48,24 @@ CategoryController.post('/category/',function(req,res){
 });
 
 //Update the category
-CategoryController.put('/category/', function(req, res) {
-    var userToUpdate = req.body.id;
-    console.log(userToUpdate);
-    Categories.update({ _id: userToUpdate}, {name:req.body.name},{description:req.body.description},{imageUrl:req.body.imageUrl},{cssClass:req.body.cssClass},{is_active:req.body.isActive}, function (err, result) {
-        res.send(
-            (err === null) ? {msg: ''} : {msg: err}
-        );
-    });
+CategoryController.put('/category/:id',function(req,res){
+
+
+	categoryToBeUpdated = {
+		name:req.body.name,
+		description:req.body.description,
+		imageUrl:req.body.imageUrl,
+		cssClass:req.body.cssClass,
+		is_active:req.body.isActive
+	};
+
+	console.log('Category Updated for id '+req.params.id);
+
+	Categories.findOneAndUpdate({_id:req.params.id},categoryToBeUpdated,{upsert:true},function(err,category){
+		if(err) return res.send(500,'Error Occured: database error during Category Updation');
+		res.json({'status':'Category '+category._id+' Updated '});
+
+	});
 });
 
 
