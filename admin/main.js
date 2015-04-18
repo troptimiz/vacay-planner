@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var handlebars = require('express3-handlebars').create({defaultLayout:'main'});
 var CategoryController = require('./controllers/CategoryController.js');
+var ProductController = require('./controllers/ProductController.js');
 var path = require('path');
 
 
@@ -25,6 +26,7 @@ app.get("/login",function(req,res){
 
 // URL Mappings 
 app.use('/categories',CategoryController);	
+app.use('/products',ProductController);	
 
 
 
