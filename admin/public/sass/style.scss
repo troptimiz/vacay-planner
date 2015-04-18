@@ -268,50 +268,50 @@ body{
 }
 .add-form-container{
 	display:none;
-	.form-heading{
-		padding-bottom:15px;
-		h2{
-			font-size:24px;
-			color:#7992bf;
-			font-weight:bold;
-			text-transform:capitalize;
-			margin-top:0;
-		}
-	}
-	.data-form{		
-		width:70%;
-		margin:0 auto;
-		.form-group{
-			width:70%;
-			margin-top:5px;
-			margin-bottom:5px;
-			clear:both;
-			label,input,textarea{
-				float:left;
-				font-size:13px;
-			}
-			label{
-				width:150px;
-				font-weight:normal;
-				color:#918882;
-				font-size:13px;
-			}
-			textarea{
-				width:312px;
-			}
-			.checkbox{
-					width:135px;
-					float:left;
-					margin:0;
-				input[type="radio"]{
-					width:20px;
-				}
-			}
-		}
-	}
-	.form-control{
-		width:65%;
-	}
+}
+.form-heading{
+    padding-bottom:15px;
+    h2{
+        font-size:24px;
+        color:#7992bf;
+        font-weight:bold;
+        text-transform:capitalize;
+        margin-top:0;
+    }
+}
+.data-form{		
+    width:70%;
+    margin:0 auto;
+    .form-group{
+        width:70%;
+        margin-top:5px;
+        margin-bottom:5px;
+        clear:both;
+        label,input,textarea{
+            float:left;
+            font-size:13px;
+        }
+        label{
+            width:150px;
+            font-weight:normal;
+            color:#918882;
+            font-size:13px;
+        }
+        textarea{
+            width:312px;
+        }
+        .checkbox{
+                width:135px;
+                float:left;
+                margin:0;
+            input[type="radio"]{
+                width:20px;
+            }
+        }
+    }
+}
+.form-control{
+    width:65%;
 }
 
 .cat-list{
@@ -329,6 +329,9 @@ body{
 					font-family:"icomoon";
 					
 				}
+                .cat-desc{
+                    font-size:12px;   
+                }
 			}
 		}
 	}

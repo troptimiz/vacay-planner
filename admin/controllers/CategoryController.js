@@ -25,7 +25,8 @@ CategoryController.get('/list',function(req,res){
 // Category Detail using ID
 CategoryController.get('/category/:id',function(req,res){
 	Categories.findById(req.params.id,function(err,category){
-		res.status(200).json({category:category});
+		//res.status(200).json({category:category});
+        res.render("add-category-form",{'category':category,layout:'list'});
 	})
 });
 
@@ -44,6 +45,17 @@ CategoryController.post('/category/',function(req,res){
 		res.json({'status':'Category '+a._id+' Created '});
 	});
 
+});
+
+//Update the category
+CategoryController.put('/category/', function(req, res) {
+    var userToUpdate = req.body.id;
+    console.log(userToUpdate);
+    Categories.update({ _id: userToUpdate}, {name:req.body.name},{description:req.body.description},{imageUrl:req.body.imageUrl},{cssClass:req.body.cssClass},{is_active:req.body.isActive}, function (err, result) {
+        res.send(
+            (err === null) ? {msg: ''} : {msg: err}
+        );
+    });
 });
 
 

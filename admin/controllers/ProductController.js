@@ -9,7 +9,7 @@ ProductController.use(bodyParser());
 // All Active Products
 ProductController.get('/',function(req,res){
 	Product.find({"is_active":true},function(err,products){
-		res.status(200).json({'activeProducts':products});
+		res.status(200).json({'data':products});
 	});
 });
 

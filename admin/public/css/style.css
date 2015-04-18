@@ -251,48 +251,51 @@ body {
 .add-form-container {
   display: none;
 }
-.add-form-container .form-heading {
+
+.form-heading {
   padding-bottom: 15px;
 }
-.add-form-container .form-heading h2 {
+.form-heading h2 {
   font-size: 24px;
   color: #7992bf;
   font-weight: bold;
   text-transform: capitalize;
   margin-top: 0;
 }
-.add-form-container .data-form {
+
+.data-form {
   width: 70%;
   margin: 0 auto;
 }
-.add-form-container .data-form .form-group {
+.data-form .form-group {
   width: 70%;
   margin-top: 5px;
   margin-bottom: 5px;
   clear: both;
 }
-.add-form-container .data-form .form-group label, .add-form-container .data-form .form-group input, .add-form-container .data-form .form-group textarea {
+.data-form .form-group label, .data-form .form-group input, .data-form .form-group textarea {
   float: left;
   font-size: 13px;
 }
-.add-form-container .data-form .form-group label {
+.data-form .form-group label {
   width: 150px;
   font-weight: normal;
   color: #918882;
   font-size: 13px;
 }
-.add-form-container .data-form .form-group textarea {
+.data-form .form-group textarea {
   width: 312px;
 }
-.add-form-container .data-form .form-group .checkbox {
+.data-form .form-group .checkbox {
   width: 135px;
   float: left;
   margin: 0;
 }
-.add-form-container .data-form .form-group .checkbox input[type="radio"] {
+.data-form .form-group .checkbox input[type="radio"] {
   width: 20px;
 }
-.add-form-container .form-control {
+
+.form-control {
   width: 65%;
 }
 
@@ -309,6 +312,9 @@ body {
 }
 .cat-list table tr td .icon {
   font-family: "icomoon";
+}
+.cat-list table tr td .cat-desc {
+  font-size: 12px;
 }
 .cat-list .delete-edit-container {
   margin: 0;

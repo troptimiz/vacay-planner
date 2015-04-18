@@ -1,33 +1,4 @@
-<div class="cat-list">
-	<div class="item-container">
-		<table>
-			<tr>
-				<th>Category Name</th>
-				<th>Description</th>
-				<th>Action</th>
-				<th><a href="#" class="add-category"><span class="icon-plus"></span></a></th>
-			</tr>
-			{{#each activeCategories}}
-			<tr>
-				<td>
-					<span class="icon"></span>{{this.name}}
-				</td>
-				<td>
-                    <p class="cat-desc">{{this.description}}</p>
-				</td>
-				<td>
-					<div class="delete-edit-container">
-                        <input type="hidden" value="{{this.id}}" id="category_id"/>
-                        <a href="/categories/category/{{this.id}}" class="edit" title="Edit the row">Edit</a> /
-                        <a href="#" class="delete" title="Delete the row">Delete</a>
-                    </div>
-				</td>
-			</tr>
-			{{/each}}
-		</table>
-	</div>    
-</div>
-<div class="add-form-container">
+<div class="edit-form-container">
     <div class="row">
         <div class="col-md-12">
             <div class="item-container">
@@ -36,25 +7,26 @@
                         <h2>Add Category</h2>
                     </div>									
 
-                    <form role="form" id="add-category-form">
+                    <form role="form" id="edit-category-form">
+                        <input type="hidden" value="{{category.id}}" name="id" />
                         <div class="form-group">
                             <label for="">Name:</label>
-                            <input type="textbox" name="name" class="form-control" placeholder="Name">
+                            <input type="textbox" value="{{category.name}}"name="name" class="form-control" placeholder="Name">
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
                             <label for="">Description:</label>
-                            <input type="textbox" name="description" class="form-control" placeholder="Description">
+                            <input type="textbox" value="{{category.description}}" name="description" class="form-control" placeholder="Description">
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
                             <label for="">Image URL:</label>
-                            <input type="file" name="imageUrl" class="form-control" placeholder="Image URL">
+                            <input type="file" value="{{category.imageUrl}}" name="imageUrl" class="form-control" placeholder="Image URL">
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
                             <label for="">CSS Class:</label>
-                            <input type="textbox" name="cssClass" class="form-control" placeholder="CSS Class">
+                            <input type="textbox" value="{{category.cssClass}}"name="cssClass" class="form-control" placeholder="CSS Class">
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
@@ -65,8 +37,8 @@
                             </select>
                             <div class="clearfix"></div>
                         </div>
-                        <button type="button" class="btn btn-default" id="add-new-category">Submit</button>
-                        <button type="button" class="cancel-category-addition btn btn-default">Cancel</button>
+                        <button type="button" class="btn btn-default" id="edit-category">Submit</button>
+                        <button type="button" class="cancel-edit-category btn btn-default">Cancel</button>
                      </form>									
                 </div>                
             </div>
