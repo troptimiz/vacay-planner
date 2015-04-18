@@ -9,7 +9,17 @@ ProductController.use(bodyParser());
 // All Active Products
 ProductController.get('/',function(req,res){
 	Product.find({"is_active":true},function(err,products){
-		res.status(200).json({'data':products});
+		res.status(200).json({'activeProducts':products});
+	});
+});
+
+// Retrieve Products by category name
+
+ProductController.get('/category/:name',function(req,res){
+	var categoryName = req.params.name;
+
+	Product.find({"category":categoryName,"is_active":true},function(err,products){
+		res.status(200).json({'activeProducts':products});
 	});
 });
 
@@ -19,7 +29,7 @@ ProductController.put('/product/',function(req,res){
 
 	var product = new Product({
 		category:req.body.category,
-		name:req.body.name,
+		name:req.body.name,	
 		type:req.body.type,
 		description:req.body.description,
 		emailAddress:req.body.emailAddress,
@@ -76,13 +86,31 @@ ProductController.delete('/product/:id',function(req,res){
 	});
 });
 
+// Remove Address By ID
+
+ProductController.delete('/:productId/addresses/:addressId',function(req,res){
+	var productId = req.params.productId;
+	var addressId = req.params.addressId;
+	
+	Product.update({_id:productId},
+		{
+			$pull:{'addresses':{'id':addressId}}
+		}
+		,function(err){
+			if(err) return res.send(500,'Error Occured During Address Deletion for Product with Id['+productId+']'+err);
+			res.json({'status':'Address ['+addressId+'] Deleted for Product ['+productId+']'});
+	});	
+
+
+});
+
 // List All Addresses 
 
 ProductController.get('/:id/addresses',function(req,res){
 	productId = req.params.id;
 	Product.findOne({_id:productId},'addresses',function(err,product){
 		if(err) return res.send(500,'Error Occured During Adddress Retrieval for Product with Id['+productId+']');
-		res.status(200).json({'phoneNumbers':product.addresses});
+		res.status(200).json({'addresses':product.addresses});
 
 	});
 });
@@ -247,6 +275,8 @@ ProductController.post('/:id/address',function(req,res){
 // TODO : Include removal of address/tariff/phoneNumber/amenity/termsCondition
 
 // TODO : Include Update of address/tariff/phoneNumber/amenity/termsCondition
+
+//TODO : search specific params ..
 
 
 module.exports = ProductController;
