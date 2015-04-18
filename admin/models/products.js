@@ -11,7 +11,7 @@ var productSchema = mongoose.Schema({
 	emailAddress:String,
 	is_active:Boolean,
 	addresses:[{address1:String,address2:String,city:String,state:String,postalCode:Number}],
-	phoneNumbers:[{type:String,number:Number}],
+	phoneNumbers:[{contactType:String,contactNumber:Number}],
 	tariffs:[{description:String,cost:Number}],
 	amenities:[{description:String}],
 	termsAndConditions:[{description:String}]
