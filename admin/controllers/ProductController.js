@@ -86,23 +86,7 @@ ProductController.delete('/product/:id',function(req,res){
 	});
 });
 
-// Remove Address By ID
 
-ProductController.delete('/:productId/addresses/:addressId',function(req,res){
-	var productId = req.params.productId;
-	var addressId = req.params.addressId;
-	
-	Product.update({_id:productId},
-		{
-			$pull:{'addresses':{'id':addressId}}
-		}
-		,function(err){
-			if(err) return res.send(500,'Error Occured During Address Deletion for Product with Id['+productId+']'+err);
-			res.json({'status':'Address ['+addressId+'] Deleted for Product ['+productId+']'});
-	});	
-
-
-});
 
 // List All Addresses 
 
@@ -272,7 +256,96 @@ ProductController.post('/:id/address',function(req,res){
 	});
 });
 
-// TODO : Include removal of address/tariff/phoneNumber/amenity/termsCondition
+// Delete Address
+
+ProductController.delete('/:productId/address/:addressId',function(req,res){
+	productId = req.params.productId;
+	addressId = req.params.addressId;
+
+	console.log("Address Delete Invoked ...");
+
+	Product.update({_id:productId},
+	{
+		$pull:{addresses:{_id:addressId}}
+	},{multi:true}
+		,function(err){
+				if(err) return res.send(500,'Error Occured During Address Delete for Product with Id['+productId+']');
+				res.json({'status':'Address Deleted for Product ['+productId+']'});
+	});
+});
+
+
+// Delete TermsAndCondition
+
+ProductController.delete('/:productId/termsAndCondition/:termsConditionId',function(req,res){
+	productId = req.params.productId;
+	termsConditionId = req.params.termsConditionId;
+
+	console.log("TermsCondition Delete Invoked ...");
+
+	Product.update({_id:productId},
+	{
+		$pull:{termsAndConditions:{_id:termsConditionId}}
+	},{multi:true}
+		,function(err){
+				if(err) return res.send(500,'Error Occured During TermsCondition Delete for Product with Id['+productId+']');
+				res.json({'status':'TermsCondition Deleted for Product ['+productId+']'});
+	});
+});
+
+//Delete Amenity
+
+ProductController.delete('/:productId/amenity/:amenityId',function(req,res){
+	productId = req.params.productId;
+	amenityId = req.params.amenityId;
+
+	console.log("Amenity Delete Invoked ...");
+
+	Product.update({_id:productId},
+	{
+		$pull:{amenities:{_id:amenityId}}
+	},{multi:true}
+		,function(err){
+				if(err) return res.send(500,'Error Occured During Amenity Delete for Product with Id['+productId+']');
+				res.json({'status':'Amenity Deleted for Product ['+productId+']'});
+	});
+});
+
+//Delete Tariff
+
+ProductController.delete('/:productId/tariff/:tariffId',function(req,res){
+	productId = req.params.productId;
+	tariffId = req.params.tariffId;
+
+	console.log("Tariff Delete Invoked ...");
+
+	Product.update({_id:productId},
+	{
+		$pull:{tariffs:{_id:tariffId}}
+	},{multi:true}
+		,function(err){
+				if(err) return res.send(500,'Error Occured During Tariff Delete for Product with Id['+productId+']');
+				res.json({'status':'Tariff Deleted for Product ['+productId+']'});
+	});
+});
+
+//Delete PhoneNumber
+
+ProductController.delete('/:productId/phoneNumber/:phoneNumberId',function(req,res){
+	productId = req.params.productId;
+	phoneNumberId = req.params.phoneNumberId;
+
+	console.log("PhoneNumber Delete Invoked ...");
+
+	Product.update({_id:productId},
+	{
+		$pull:{phoneNumbers:{_id:phoneNumberId}}
+	},{multi:true}
+		,function(err){
+				if(err) return res.send(500,'Error Occured During PhoneNumber Delete for Product with Id['+productId+']');
+				res.json({'status':'PhoneNumber Deleted for Product ['+productId+']'});
+	});
+});
 
 // TODO : Include Update of address/tariff/phoneNumber/amenity/termsCondition
 
