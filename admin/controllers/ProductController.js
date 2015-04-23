@@ -256,13 +256,39 @@ ProductController.post('/:id/address',function(req,res){
 	});
 });
 
+
+// Update Address
+
+ProductController.post('/:productId/address/:addressId',function(req,res){
+	
+	productId = req.params.productId;
+	addressId = req.params.addressId;
+
+	addressToBeUpdated = {
+		address1 :req.body.address1,
+		address2 : req.body.address2,
+		city : req.body.city,
+		state :req.body.state,
+		postalCode : req.body.postalCode,
+		_id:addressId
+	};
+
+	Product.update({_id:productId,'addresses._id':addressId},
+		{
+			$set:{'addresses.$':addressToBeUpdated}}
+		,function(err){
+		if(err) return res.send(500,'Error Occured During Address Update for Product with Id['+productId+']'+err);
+		res.json({'status':'Address Updated for Product ['+productId+']'});
+	});
+});
+
+
+
 // Delete Address
 
 ProductController.delete('/:productId/address/:addressId',function(req,res){
 	productId = req.params.productId;
 	addressId = req.params.addressId;
-
-	console.log("Address Delete Invoked ...");
 
 	Product.update({_id:productId},
 	{
@@ -275,13 +301,33 @@ ProductController.delete('/:productId/address/:addressId',function(req,res){
 });
 
 
+// Update TermsAndCondition
+
+ProductController.post('/:productId/termsAndCondition/:termsAndConditionId',function(req,res){
+	
+	productId = req.params.productId;
+	termsAndConditionId = req.params.termsAndConditionId;
+
+	termsAndConditionToBeUpdated = {
+		description:req.body.description,
+		_id:termsAndConditionId
+	};
+
+
+	Product.update({_id:productId,'termsAndConditions._id':termsAndConditionId},
+		{
+			$set:{'termsAndConditions.$':termsAndConditionToBeUpdated}}
+		,function(err){
+		if(err) return res.send(500,'Error Occured During TermsAndCondition Update for Product with Id['+productId+']'+err);
+		res.json({'status':'TermsAndCondition Updated for Product ['+productId+']'});
+	});
+});
+
 // Delete TermsAndCondition
 
 ProductController.delete('/:productId/termsAndCondition/:termsConditionId',function(req,res){
 	productId = req.params.productId;
 	termsConditionId = req.params.termsConditionId;
-
-	console.log("TermsCondition Delete Invoked ...");
 
 	Product.update({_id:productId},
 	{
@@ -292,6 +338,28 @@ ProductController.delete('/:productId/termsAndCondition/:termsConditionId',funct
 				res.json({'status':'TermsCondition Deleted for Product ['+productId+']'});
 	});
 });
+
+// Update Amenity
+
+ProductController.post('/:productId/amenity/:amenityId',function(req,res){
+	
+	productId = req.params.productId;
+	amenityId = req.params.amenityId;
+
+	amenityToBeUpdated = {
+		description:req.body.description,
+		_id:amenityId
+	};
+
+	Product.update({_id:productId,'amenities._id':amenityId},
+		{
+			$set:{'amenities.$':amenityToBeUpdated}}
+		,function(err){
+		if(err) return res.send(500,'Error Occured During Amenity Update for Product with Id['+productId+']'+err);
+		res.json({'status':'Amenity Updated for Product ['+productId+']'});
+	});
+});
+
 
 //Delete Amenity
 
@@ -308,6 +376,27 @@ ProductController.delete('/:productId/amenity/:amenityId',function(req,res){
 		,function(err){
 				if(err) return res.send(500,'Error Occured During Amenity Delete for Product with Id['+productId+']');
 				res.json({'status':'Amenity Deleted for Product ['+productId+']'});
+	});
+});
+
+// Update Tariff
+
+ProductController.post('/:productId/tariff/:tariffId',function(req,res){
+	
+	productId = req.params.productId;
+	tariffId = req.params.tariffId;
+
+	tariffToBeUpdated = {
+		description:req.body.description,
+		_id:tariffId
+	};
+
+	Product.update({_id:productId,'tariffs._id':tariffId},
+		{
+			$set:{'tariffs.$':tariffToBeUpdated}}
+		,function(err){
+		if(err) return res.send(500,'Error Occured During Tariff Update for Product with Id['+productId+']'+err);
+		res.json({'status':'Tariff Updated for Product ['+productId+']'});
 	});
 });
 
@@ -329,6 +418,29 @@ ProductController.delete('/:productId/tariff/:tariffId',function(req,res){
 	});
 });
 
+
+// Update PhoneNumber
+
+ProductController.post('/:productId/phoneNumber/:phoneNumberId',function(req,res){
+	
+	productId = req.params.productId;
+	phoneNumberId = req.params.phoneNumberId;
+
+	phoneNumberToBeUpdated = {
+		contactType:req.body.contactType,
+		contactNumber:req.body.contactNumber,
+		_id:phoneNumberId
+	};
+
+	Product.update({_id:productId,'phoneNumbers._id':phoneNumberId},	
+		{
+			$set:{'phoneNumbers.$':phoneNumberToBeUpdated}}
+		,function(err){
+		if(err) return res.send(500,'Error Occured During PhoneNumber Update for Product with Id['+productId+']'+err);
+		res.json({'status':'PhoneNumber Updated for Product ['+productId+']'});
+	});
+});
+
 //Delete PhoneNumber
 
 ProductController.delete('/:productId/phoneNumber/:phoneNumberId',function(req,res){
@@ -346,8 +458,6 @@ ProductController.delete('/:productId/phoneNumber/:phoneNumberId',function(req,r
 				res.json({'status':'PhoneNumber Deleted for Product ['+productId+']'});
 	});
 });
-
-// TODO : Include Update of address/tariff/phoneNumber/amenity/termsCondition
 
 //TODO : search specific params ..
 
