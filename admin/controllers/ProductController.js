@@ -388,6 +388,7 @@ ProductController.post('/:productId/tariff/:tariffId',function(req,res){
 
 	tariffToBeUpdated = {
 		description:req.body.description,
+		cost:req.body.cost,
 		_id:tariffId
 	};
 
