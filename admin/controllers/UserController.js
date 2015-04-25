@@ -24,6 +24,10 @@ Passport.use(new LocalStrategy(
 ));
 
 
+//TODO:
+// need to map url redirection 
+// need to send JSON response 
+
 
 UserController.get('/login',
 	Passport.authenticate('local',{successRedirect:'/',failureRedirect:'/login'}),
