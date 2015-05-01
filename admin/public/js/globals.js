@@ -28,18 +28,12 @@ obj = {
         });
         $('.add-category').on('click',function(){
             $('.cat-list').fadeOut(500,function(){
-                $('.add-form-container').fadeIn(500);
-                Handlebars.registerHelper('ifCond', function(v1, v2, options) {
-                  if(v1 === v2) {
-                    return options.fn(this);
-                  }
-                  return options.inverse(this);
-                });
+                $('.add-form-container').fadeIn(500);                
             });
         });
         $('.cancel-category-addition').on('click',function(){
             $('.add-form-container').fadeOut(500,function(){
-                $('.cat-list').fadeIn(500);  
+                $('.cat-list').fadeIn(500);                
             });
         });
         

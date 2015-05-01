@@ -6,7 +6,6 @@
                     <div class="form-heading">
                         <h2>Update Phone Number</h2>
                     </div>
-                    {{productPhone}}
                     <form role="form" id="update-phone-form">
                         <input type="hidden" name="id" value="{{productId}}"/>
                         <input type="hidden" name="phoneId" value="{{productPhone._id}}"/>
@@ -22,7 +21,7 @@
                         </div>
                         
                         <button type="button" class="btn btn-default" id="update-phone">Submit</button>
-                        <button type="button" class="cancel-edit-category btn btn-default">Cancel</button>
+                        <a href="/products/product/{{productId}}" title="Cancel" class="btn btn-default">Cancel</a>
                      </form>
                 </div>                
             </div>
