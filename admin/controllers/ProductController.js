@@ -101,7 +101,7 @@ ProductController.get('/:productId/addresses/:addressId',function(req,res){
 		}
 		},
 		function(err,product){
-		res.status(200).json({'productAddress':product});
+		res.status(200).json({'productAddress':product[0].addresses[0]});
 	});
 
 });
