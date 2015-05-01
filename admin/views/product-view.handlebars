@@ -1,0 +1,158 @@
+<div class="product-view">
+    <div class="item-container">
+        <div class="product-genaral-details">
+            <input type="hidden" name="id" value="{{product.id}}" id="productId"/>
+            <div class="product-name">
+                <h3 class="heading1">
+                    Product Details 
+                    <a href="../productDetails/{{product.id}}" class="edit-general-details">Edit</a>                    
+                </h3>
+                
+                
+                <div class="clearfix"></div>
+                <ul>
+                    <li>
+                        <label>Name:</label>{{product.name}}
+                    </li>
+                    <li>
+                        <label>Description:</label>{{product.description}}
+                    </li>
+                    <li>
+                        <label>Email Address:</label>{{product.emailAddress}}
+                    </li>
+                    <li>
+                        <label>Type:</label>{{product.type}}
+                    </li>
+                    <li>
+                        <label>Category:</label>{{product.category}}
+                    </li>
+                    <li>
+                        <label>Is Active:</label>{{product.is_active}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="product-address-details">
+            
+            <div class="product-address-details">
+                
+                <h3 class="heading1">
+                    Address Details 
+                    <a href="../{{product.id}}/add-new-address" class="edit-address-details">Add New</a>                    
+                </h3>
+                <div class="clearfix"></div>
+                
+                    {{#each product.addresses}}
+                        <div class="address-container">
+                            <div class="delete-edit-container">                                
+                                <a href="../{{../product.id}}/addresses/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
+                                <a href="/{{../product.id}}/address/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                            </div>
+                        
+                            <p>{{this.address1}},</p>
+                            <p>{{this.address2}},</p>
+                            <p>{{this.city}},</p>
+                            <p>{{this.state}}, {{this.postalCode}}.</p>
+                        </div>
+                    {{/each}}
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        
+        <div class="product-phonenumber-details">
+            <div class="">
+                <h3 class="heading1">
+                    Phone Details 
+                    <a href="../{{product.id}}/add-new-phoneNumber" class="add-phoneNumber-details">Add New</a>                 
+                </h3>
+                <div class="clearfix"></div>
+                    {{#each product.phoneNumbers}}
+                        <div class="phone-container">
+                            <div class="delete-edit-container pull-right">                                
+                                <a href="../{{../product.id}}/phone/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
+                                <a href="/{{../product.id}}/phoneNumber/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                            </div>                            
+                            <p><label>{{this.contactType}}: </label>{{this.contactNumber}}</p>
+                            <div class="clearfix"></div>
+                        </div>
+                    {{/each}}
+                
+            </div>
+        </div>
+        
+        <div class="product-tariffs-details">
+            <div class="">
+                <h3 class="heading1">
+                    Tariffs Details 
+                    <a href="../{{product.id}}/add-new-tariff" class="add-tariff-details">Add New</a>                 
+                </h3>
+                <div class="clearfix"></div>
+                
+                    {{#each product.tariffs}}
+                        <div class="tariffs-container">
+                            <div class="delete-edit-container pull-right">                                
+                                <a href="../{{../product.id}}/tariff/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
+                                <a href="/{{../product.id}}/tariff/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                            </div> 
+                            <p><label>Cost: </label>Rs.{{this.cost}}.00</p>
+                            <p><label>Description: </label>{{this.description}}</p>
+                            <div class="clearfix"></div>
+                        </div>
+                    {{/each}}
+                
+            </div>
+        </div>
+        
+        <div class="product-amenities-details">
+            <div class="">
+                <h3 class="heading1">
+                    Amenities Details 
+                    <a href="../{{product.id}}/add-new-tariff" class="add-amenity-details">Add New</a>                    
+                </h3>
+                <div class="clearfix"></div>
+                
+                    {{#each product.amenities}}
+                        <div class="amenities-container">
+                            <div class="delete-edit-container pull-right">                                
+                                <a href="../{{../product.id}}/amenity/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
+                                <a href="/{{../product.id}}/amenity/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                            </div>
+                            <p><label>Description: </label>{{this.description}}</p>
+                        </div>
+                    {{/each}}
+                
+            </div>
+        </div>
+        
+        <div class="product-tnc-details">
+            <div class="">
+                <h3 class="heading1">
+                    Terms and Conditions Details add-new-termsAndConditions
+                    <a href="../{{product.id}}/add-new-termsAndConditions" class="add-termsAndConditions-details">Add New</a>                   
+                </h3>
+                <div class="clearfix"></div>
+                
+                    {{#each product.termsAndConditions}}
+                        <div class="tnc-container">
+                            <div class="delete-edit-container pull-right">                                
+                                <a href="../{{../product.id}}/termsAndConditions/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
+                                <a href="/{{../product.id}}/termsAndCondition/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                            </div>
+                            <p><label>Description: </label>{{this.description}}</p>
+                        </div>
+                    {{/each}}
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div class="confirm-alert-container">
+    <div class="overlay"></div>
+    <div class="cofirmation-alert">
+        <p class="alertMesg"></p>
+        <p>
+            <input type="button" value="Delete" class="confirm-delete btn btn-success"/>
+            <input type="button" value="Cancel" class="confirm-cancel btn btn-warning"/>
+        </p>
+    </div>
+</div>

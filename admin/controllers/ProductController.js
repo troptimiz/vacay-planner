@@ -9,7 +9,7 @@ ProductController.use(bodyParser());
 // All Active Products
 ProductController.get('/',function(req,res){
 	Product.find({"is_active":true},function(err,products){
-		res.status(200).json({'activeProducts':products});
+		res.status(200).json({'data':products});
 	});
 });
 
@@ -19,7 +19,7 @@ ProductController.get('/category/:name',function(req,res){
 	var categoryName = req.params.name;
 
 	Product.find({"category":categoryName,"is_active":true},function(err,products){
-		res.status(200).json({'activeProducts':products});
+		res.status(200).json({'data':products});
 	});
 });
 
@@ -51,16 +51,80 @@ ProductController.put('/product/',function(req,res){
 
 ProductController.get('/product/:id',function(req,res){
 	Product.findById(req.params.id,function(err,product){
-		res.status(200).json({product:product});
+		//res.status(200).json({product:product});
+        res.render("product-view",{'product':product,layout:'list'});
 	})
+});
+
+//Update product details
+ProductController.get('/productDetails/:id',function(req,res){
+	Product.findById(req.params.id,function(err,product){
+		//res.status(200).json({product:product});
+        res.render("update-product-details",{'product':product,layout:'list'});
+	})
+});
+
+//Create new Address
+ProductController.get('/:productId/add-new-address',function(req,res){
+	Product.findById(req.params.id,function(err,product){
+		//res.status(200).json({product:product});
+        prodId = req.params.productId;
+        res.render("add-new-address",{'productId':prodId,layout:'list'});
+	})
+});
+
+//Create new tariff
+ProductController.get('/:productId/add-new-tariff',function(req,res){
+	Product.findById(req.params.id,function(err,product){
+		//res.status(200).json({product:product});
+        prodId = req.params.productId;
+        res.render("add-new-tariff",{'productId':prodId,layout:'list'});
+	})
+});
+
+//Create new Amenity
+ProductController.get('/:productId/add-new-amenity',function(req,res){
+	Product.findById(req.params.id,function(err,product){
+		//res.status(200).json({product:product});
+        prodId = req.params.productId;
+        res.render("add-new-amenity",{'productId':prodId,layout:'list'});
+	})
+});
+
+//Create new termsAndConditions
+ProductController.get('/:productId/add-new-termsAndConditions',function(req,res){
+	Product.findById(req.params.id,function(err,product){
+		//res.status(200).json({product:product});
+        prodId = req.params.productId;
+        res.render("add-new-termsAndConditions",{'productId':prodId,layout:'list'});
+	})
+});
+
+//Create new phonenumber
+ProductController.get('/:productId/add-new-phoneNumber',function(req,res){
+	Product.findById(req.params.id,function(err,product){
+		//res.status(200).json({product:product});
+        prodId = req.params.productId;
+        res.render("add-new-phoneNumber",{'productId':prodId,layout:'list'});
+	})
+});
+
+//Get the address details
+ProductController.get('/:productId/add-edit-address/:addressId',function(req,res){
+    productId = req.param.productId;
+	Product.findOne({_id:productId},'addresses',function(err,product){
+		if(err) return res.send(500,'Error Occured During Adddress Retrieval for Product with Id['+productId+']');
+		//res.status(200).json({'addresses':product.addresses});
+        res.render("update-addresses",{'addresses':product.addresses,layout:'list'});
+
+	});
 });
 
 //Update Product Detail
 
 ProductController.post('/product/:id',function(req,res){
 
-	productToBeUpdated = {
-		category:req.body.category,
+	productToBeUpdated = {		
 		name:req.body.name,
 		type:req.body.type,
 		description:req.body.description,
@@ -68,7 +132,7 @@ ProductController.post('/product/:id',function(req,res){
 		is_active:req.body.is_active
 	};
 
-	Product.findOneAndUpdate({_id:req.params.id},productToBeUpdated,{upsert:true},function(err,product){
+	Product.findOneAndUpdate({_id:req.params.id},productToBeUpdated,{upsert:false},function(err,product){
 		if(err) return res.send(500,'Error Occured: database error during Product Updation');
 		res.json({'status':'Product '+product._id+' Updated '});
 
@@ -101,7 +165,87 @@ ProductController.get('/:productId/addresses/:addressId',function(req,res){
 		}
 		},
 		function(err,product){
-		res.status(200).json({'productAddress':product[0].addresses[0]});
+		res.render("update-address",{'productAddress':product[0].addresses[0],'productId':productId,layout:'list'});
+	});
+
+});
+
+//Get tariff By Product ID & Tariff ID
+
+ProductController.get('/:productId/tariff/:tariffId',function(req,res){
+	productId = req.params.productId;
+	tariffId = req.params.tariffId;
+
+	Product.find(
+		{_id:productId},
+		{tariffs:{$elemMatch:
+			{
+				_id:tariffId
+			}
+		}
+		},
+		function(err,product){
+		res.render("update-tariff",{'productTariff':product[0].tariffs[0],'productId':productId,layout:'list'});
+	});
+
+});
+
+//Get Amenities By Product ID & Amenities ID
+
+ProductController.get('/:productId/amenity/:amenityId',function(req,res){
+	productId = req.params.productId;
+	amenityId = req.params.amenityId;
+
+	Product.find(
+		{_id:productId},
+		{amenities:{$elemMatch:
+			{
+				_id:amenityId
+			}
+		}
+		},
+		function(err,product){
+		res.render("update-amenity",{'productAmenities':product[0].amenities[0],'productId':productId,layout:'list'});
+	});
+
+});
+
+//Get TermsAndConditions By Product ID & termandcondition ID
+
+ProductController.get('/:productId/termsAndConditions/:amenityId',function(req,res){
+	productId = req.params.productId;
+	termsAndConditionsId = req.params.amenityId;
+
+	Product.find(
+		{_id:productId},
+		{termsAndConditions:{$elemMatch:
+			{
+				_id:termsAndConditionsId
+			}
+		}
+		},
+		function(err,product){
+		res.render("update-termsAndConditions",{'producttermsAndConditions':product[0].termsAndConditions[0],'productId':productId,layout:'list'});
+	});
+
+});
+
+//Get Phone Number By Product ID & Phone ID
+
+ProductController.get('/:productId/phone/:phoneId',function(req,res){
+	productId = req.params.productId;
+	phoneId = req.params.phoneId;
+
+	Product.find(
+		{_id:productId},
+		{phoneNumbers:{$elemMatch:
+			{
+				_id:phoneId
+			}
+		}
+		},
+		function(err,product){
+		res.render("update-phone",{'productPhone':product[0].phoneNumbers[0],'productId':productId,layout:'list'});
 	});
 
 });
@@ -113,6 +257,7 @@ ProductController.get('/:id/addresses',function(req,res){
 	Product.findOne({_id:productId},'addresses',function(err,product){
 		if(err) return res.send(500,'Error Occured During Adddress Retrieval for Product with Id['+productId+']');
 		res.status(200).json({'addresses':product.addresses});
+        //res.render("update-addresses",{'addresses':product.addresses,layout:'list'});
 
 	});
 });
@@ -244,7 +389,7 @@ ProductController.post('/:id/phone',function(req,res){
 					newPhoneNumber
 			}
 		},
-		{upsert:true},function(err){
+		{upsert:false},function(err){
 			if(err) return res.send(500,'Error Occured During Phone Update for Product with Id['+productId+']');
 			res.json({'status':'New Phone Details Created for Product ['+productId+']'});
 		});

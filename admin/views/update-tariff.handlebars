@@ -1,0 +1,32 @@
+<div class="edit-form-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item-container">
+                <div class="data-form">
+                    <div class="form-heading">
+                        <h2>Update tariff</h2>
+                    </div>
+                    
+                    <form role="form" id="update-tariff-form">
+                        <input type="hidden" name="id" value="{{productId}}"/>
+                        <input type="hidden" name="tariffId" value="{{productTariff._id}}"/>
+                        <div class="form-group">
+                            <label for="">Description:</label>
+                            <textarea name="description" class="form-control" placeholder="Description">{{productTariff.description}}</textarea>
+                            <div class="clearfix"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="">Cost:</label>
+                            <input type="textbox" name="cost" value="{{productTariff.cost}}" class="form-control" placeholder="Cost">
+                            <div class="clearfix"></div>
+                        </div>
+                        
+                        <button type="button" class="btn btn-default" id="update-tariff">Submit</button>
+                        <button type="button" class="cancel-edit-category btn btn-default">Cancel</button>
+                     </form>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>

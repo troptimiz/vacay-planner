@@ -1,236 +1,162 @@
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-2">
-                <ul id="sidebar" class="nav nav-stacked affix">
-                    <li><a href="#">menu item label</a>
-                    </li>
-                    <li><a href="#">menu item label</a>
-                    </li>
-                    <li><a href="#">menu item label</a>
-                    </li>
-                    <li><a href="#">menu item label</a>
-                    </li>
-                    <li><a href="#">menu item label</a>
-                    </li>
-                    <li><a href="#">menu item label</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-sm-10 admin-result-container">
-                <div class="category-list">
-					{{#each activeCategories}}
-						<div class="list-item">
-							<a class="{{this.cssClass}}" href="#" title="Resorts">
-								<span class="icon"></span>
-								<span class="ico-label">{{this.name}}</span>
-							</a>
-						</div>
-					{{/each}}
-                    
-                    <div class="clearfix"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+            <ul id="sidebar" class="nav nav-stacked affix">
+                <li><a href="#">menu item label</a>
+                </li>
+                <li><a href="#">menu item label</a>
+                </li>
+                <li><a href="#">menu item label</a>
+                </li>
+                <li><a href="#">menu item label</a>
+                </li>
+                <li><a href="#">menu item label</a>
+                </li>
+                <li><a href="#">menu item label</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-10 admin-result-container">
+            <div class="category-list">
+                {{#each activeCategories}}
+                <div class="list-item">
+                    <a class="{{this.cssClass}}" href="#" title="{{this.name}}">
+                        <span class="icon"></span>
+                        <span class="ico-label">{{this.name}}</span>
+                    </a>
                 </div>
-				<div class="search-form">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="item-container">
-								<div class="item-content">
-									<form action="" method="POST">
-										<div class="form-item location">
-											<label>Resort Name:</label>
-											<input type="text" name="resortName" placeholder="Resort Name"/>
-										</div>
-										<div class="form-item location">
-											<label>Location:</label>
-											<select>
-												<option>--Select Location--</option>
-												<option>Location Name</option>
-												<option>Location Name</option>
-												<option>Location Name</option>
-												<option>Location Name</option>
-											</select>
-										</div>
-										<div class="form-item location">
-											<label>Price Range:</label>
-											<select>
-												<option>--Select Range--</option>
-												<option>1000-5000</option>
-												<option>6000-10000</option>
-												<option>11000-15000</option>
-												<option>15000 Above</option>
-											</select>
-										</div>
-										<div class="form-item location">
-											<input type="submit" value="Search" name="search" id="search-result"/>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="search-result-table">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="item-container">
-								<div class="action-container">
-									<div class="delete-edit-container disabled pull-right">
-										<a href="#" class="edit" title="Edit the row">Edit</a> /
-										<a href="#" class="delete" title="Delete the row">Delete</a> /
-										<a href="#" class="add-row" title="Add Row">Add</a>
-									</div>
-								</div>
-								<table id="result-table" class="display" cellspacing="0" width="100%">
-									<thead>
-										<tr>
-											<th>Name</th>
-											<th>Description</th>
-											<th>type</th>
-											<th>Email</th>
-										</tr>
-									</thead>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="add-form-container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="item-container">
-								<div class="data-form">
-									<div class="form-heading">
-										<h2>Add Resort</h2>
-									</div>
-									<!-- <div class="form-item">
-										<label>Name:</label>
-										<input type="text" placeholder="Name" name=""/>
-									</div>
-									<div class="form-item">
-										<label>Description:</label>
-										<textarea></textarea>
-									</div>
-									<div class="form-item">
-										<label>Short Description:</label>
-										<textarea></textarea>
-									</div>
-									<div class="form-item">
-										<label>Long Description:</label>
-										<textarea></textarea>
-									</div>
-									<div class="form-item">
-										<label>Small Image:</label>
-										<input type="file" name=""/>
-									</div>
-									<div class="form-item">
-										<label>Large Image:</label>
-										<input type="file" name=""/>
-									</div> -->
-									
-									<form role="form">
-										<div class="form-group">
-											<label for="">Name:</label>
-											<input type="textbox" class="form-control" placeholder="Enter Name">
-											<div class="clearfix"></div>
-										</div>
-										<div class="form-group">
-											<label for="">Description:</label>
-											<textarea></textarea>
-											<div class="clearfix"></div>
-										</div>
-										<div class="form-group">
-											<label for="">Short Description:</label>
-											<textarea></textarea>
-											<div class="clearfix"></div>
-										</div>
-										<div class="form-group">
-											<label for="">Long Description:</label>
-											<textarea></textarea>
-											<div class="clearfix"></div>
-										</div>
-										<div class="form-group">
-											<label for="">Small Image:</label>
-											<input type="file" name=""/>
-											<div class="clearfix"></div>
-										</div>
-										<div class="form-group">
-											<label for="">Large Image:</label>
-											<input type="file" name=""/>
-											<div class="clearfix"></div>
-										</div>
-										<div class="form-group">
-											<label for="">Thumbnail Image:</label>
-											<input type="file" name=""/>
-											<div class="clearfix"></div>
-										</div>
-										<div class="form-group">
-											<label for="">Active:</label>
-											<label class="checkbox" for=""><input type="radio" name="active"/> Yes</label>
-											<label class="checkbox" for=""><input type="radio" name="active"/> No</label>
-											<div class="clearfix"></div>
-										</div>
-										<div class="form-group">
-											<label for="">Price:</label>
-											<input type="textbox" class="form-control" placeholder="Enter Price">
-											<div class="clearfix"></div>
-										</div>
-										<div class="form-group">
-											<label for="">Address Line 1:</label>
-											<input type="textbox" class="form-control" placeholder="Enter Address Line 1">
-											<div class="clearfix"></div>
-										</div>
-										<div class="form-group">
-											<label for="">Address Line 2:</label>
-											<input type="textbox" class="form-control" placeholder="Enter Address Line 2">
-											<div class="clearfix"></div>
-										</div>
-										<div class="form-group">
-											<label for="">Location:</label>
-											<input type="textbox" class="form-control" placeholder="Enter Location">
-											<div class="clearfix"></div>
-										</div>
-										<div class="form-group">
-											<label for="">Street:</label>
-											<input type="textbox" class="form-control" placeholder="Enter Street">
-											<div class="clearfix"></div>
-										</div>
-										<div class="form-group">
-											<label for="">City:</label>
-											<input type="textbox" class="form-control" placeholder="Enter City">
-											<div class="clearfix"></div>
-										</div>
-										<div class="form-group">
-											<label for="">State:</label>
-											<input type="textbox" class="form-control" placeholder="Enter State">
-											<div class="clearfix"></div>
-										</div>
-										<div class="form-group">
-											<label for="">Pin:</label>
-											<input type="textbox" class="form-control" placeholder="Enter Pin">
-											<div class="clearfix"></div>
-										</div>
-										<div class="form-group">
-											<label for="">Phone:</label>
-											<input type="textbox" class="form-control" placeholder="Enter Phone">
-											<div class="clearfix"></div>
-										</div>
-										<div class="form-group">
-											<label for="">Primary Number:</label>
-											<input type="textbox" class="form-control" placeholder="Enter Primary Number">
-											<div class="clearfix"></div>
-										</div>
-										<div class="form-group">
-											<label for="">Secondary Number:</label>
-											<input type="textbox" class="form-control" placeholder="Enter Secondary Number">
-											<div class="clearfix"></div>
-										</div>
-										<button type="submit" class="btn btn-default">Submit</button>
-									</form>									
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+                {{/each}}
+                <div class="manage-categories">
+                    <a href="/categories/list" class="btn btn-default" title="Manage Categories"><i class="icon-settings"></i>Manage Categories</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="search-form">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="item-container">
+                            <div class="item-content">
+                                <form action="" method="POST">
+                                    <div class="form-item location">
+                                        <label>Resort Name:</label>
+                                        <input type="text" name="resortName" placeholder="Resort Name" />
+                                    </div>
+                                    <div class="form-item location">
+                                        <label>Location:</label>
+                                        <select>
+                                            <option>--Select Location--</option>
+                                            <option>Location Name</option>
+                                            <option>Location Name</option>
+                                            <option>Location Name</option>
+                                            <option>Location Name</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-item location">
+                                        <label>Price Range:</label>
+                                        <select>
+                                            <option>--Select Range--</option>
+                                            <option>1000-5000</option>
+                                            <option>6000-10000</option>
+                                            <option>11000-15000</option>
+                                            <option>15000 Above</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-item location">
+                                        <input type="submit" value="Search" name="search" id="search-result" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="search-result-table">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="item-container">
+                            <div class="action-container">
+                                <div class="delete-edit-container disabled pull-right">
+                                    <a href="#" class="edit" title="Edit the row">Edit</a> /
+                                    <a href="#" class="delete" title="Delete the row">Delete</a> /
+                                    <a href="#" class="add-row" title="Add Row">Add</a>
+                                </div>
+                            </div>
+                            <table id="result-table" class="display" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>type</th>
+                                        <th>Email</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add-form-container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="item-container">
+                            <div class="data-form">
+                                <div class="form-heading">
+                                    <h2>Add Resort</h2>
+                                </div>
+
+                                <form role="form" id="add-product-form">
+                                    <input type="hidden" value="{{product.id}}" name="id" />
+                                    <div class="form-group">
+                                        <label for="">Name:</label>
+                                        <input type="textbox" name="name" class="form-control" placeholder="Name">
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="">Category:</label>
+                                        
+                                        <select name="category" class="form-control">
+                                            <option>-- Select Category --</option>
+                                            {{#each activeCategories}}
+                                                <option value="{{~this.name}}">{{this.name}}</option>
+                                            {{/each}}
+                                        </select>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="">Type:</label>
+                                        <input type="textbox" name="type" class="form-control" placeholder="Type">
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="">Description:</label>
+                                        <input type="textbox" name="description" class="form-control" placeholder="Description">
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Email:</label>
+                                        <input type="email" name="emailAddress" class="form-control" placeholder="Email">
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Activate:</label>
+                                        <select name="is_active">
+                                            <option selected="selected" value="true">True</option>
+                                            <option value="false">False</option>
+                                        </select>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <button type="button" class="btn btn-default" id="add-product">Submit</button>
+                                    <button type="button" class="cancel-edit-category btn btn-default">Cancel</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>

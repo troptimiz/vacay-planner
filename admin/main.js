@@ -19,7 +19,7 @@ app.set('view engine','handlebars');
 <!-- URL Mappings to check any possibility of any externalization -->
 
 app.get("/",function(req,res){
-	res.render('home');
+	res.redirect('/categories');
 });
 app.get("/login",function(req,res){
 	res.render('login');

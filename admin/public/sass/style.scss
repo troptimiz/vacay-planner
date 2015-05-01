@@ -1,5 +1,3 @@
-
-
 body{
     background-color: #f6f6f6;   
 }
@@ -92,6 +90,20 @@ body{
                     .ico-label{
                         display: none;
                     }
+                }
+            }
+            .manage-categories{
+                display: none;   
+            }
+        }
+        .manage-categories{
+            text-align: center;
+            a{
+                display: inline-block;
+                margin-top:20px;
+                i{
+                    padding-right: 10px;
+                    vertical-align: text-bottom;
                 }
             }
         }
@@ -337,5 +349,101 @@ body{
 	}
     .delete-edit-container{
         margin:0;   
+    }
+}
+/*Products styles Start */
+ul{
+    padding:0;
+    margin:0;
+    li{
+        list-style-type: none;   
+    }
+}
+.heading1{
+    color:#333;
+    font-size:18px;
+    font-family: Arial;
+    border-bottom:2px solid #1F2837;
+    padding-bottom: 10px;
+    a{        
+        font-size:11px;
+        padding-left: 15px;
+    }
+}
+.product-view{
+    ul{
+        li{
+            line-height: 24px;
+            label{
+                padding-right:10px;   
+            }
+        }
+    }
+    label{
+        padding-right:10px;   
+    }
+    .address-container{
+        background: #f0f0f0;
+        padding: 20px 30px;
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        position: relative;
+        p{
+            margin:0;
+            padding:0;
+            line-height:21px;
+            font-size: 12px;
+        }
+    }
+    .tariffs-container,.amenities-container,.tnc-container,.phone-container{
+        background: #f0f0f0;
+        padding: 20px 30px;
+        margin-bottom: 10px;
+        position: relative;
+        p{
+            padding:0;
+            margin:0;
+        }
+    }
+    .close-btn{ 
+        color: #000;
+        font-weight: bold;
+        float: right;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 11px;
+    }
+}
+/*Products styles End */
+
+.confirm-alert-container{
+    display:none;
+    .cofirmation-alert{
+        width: 350px;
+        height:170px;
+        background: #fff;
+        position: fixed;
+        top: 50%;
+        left: 20%;
+        right: 0;
+        bottom:0;
+        margin:0 auto;
+        padding: 50px;
+        border: 1px solid #f0f0f0;
+        text-align: center;
+        .btn{
+            width:100px;
+        }
+    }
+    .overlay{
+        position: fixed;
+        background: #000;
+        min-width: 100%;
+        min-height: 100%;
+        top: 0;
+        opacity: 0.6;
     }
 }
