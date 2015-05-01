@@ -86,7 +86,25 @@ ProductController.delete('/product/:id',function(req,res){
 	});
 });
 
+//Get Address By Product ID & Address ID
 
+ProductController.get('/:productId/addresses/:addressId',function(req,res){
+	productId = req.params.productId;
+	addressId = req.params.addressId;
+
+	Product.find(
+		{_id:productId},
+		{addresses:{$elemMatch:
+			{
+				_id:addressId
+			}
+		}
+		},
+		function(err,product){
+		res.status(200).json({'productAddress':product});
+	});
+
+});
 
 // List All Addresses 
 
