@@ -5,6 +5,9 @@ body {
 .container-fluid {
   padding: 0;
 }
+.container-fluid .row {
+  margin-right: 0;
+}
 
 .header-admin .navbar-header .navbar-brand {
   width: 220px;
@@ -427,4 +430,21 @@ ul li {
   min-height: 100%;
   top: 0;
   opacity: 0.6;
+}
+
+.vacay-table {
+  width: 95%;
+  margin: 20px auto;
+}
+.vacay-table th {
+  border-bottom: 1px solid #333;
+  padding-bottom: 5px;
+}
+.vacay-table td {
+  font-size: 12px;
+}
+
+.vacay-action {
+  width: 100px;
+  padding-left: 12px;
 }
