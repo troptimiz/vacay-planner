@@ -280,6 +280,10 @@ obj = {
 			"ajax": "/products/category/"+categoryName,
 			"columns": listObj,
             "destroy": true,
+            "pageLength": 2,
+            bFilter: false, 
+            bInfo: false,
+            "bLengthChange": false,
             "fnCreatedRow": function( nRow, aData, iDataIndex ) {
                 $(nRow).attr('id', aData['_id']);
                 $(nRow).find('.delete-edit-container a').attr('href','/products/product/'+aData['_id']);
