@@ -4,7 +4,7 @@
 			<tr>
 				<th>Category Name</th>
 				<th>Description</th>
-				<th>Action</th>
+				<th class="list-action">Action</th>
 				<th><a href="#" class="add-category"><span class="icon-plus"></span></a></th>
 			</tr>
 			{{#each activeCategories}}
@@ -16,10 +16,11 @@
                     <p class="cat-desc">{{this.description}}</p>
 				</td>
 				<td>
-					<div class="delete-edit-container">
+					<div class="delete-edit-container">                        
                         <input type="hidden" value="{{this.id}}" id="category_id"/>
-                        <a href="/categories/category/{{this.id}}" class="edit" title="Edit the row">Edit</a> /
-                        <a href="#" class="delete" title="Delete the row">Delete</a>
+                        <a href="/categories/category/{{this.id}}" class="edit" title="Edit Category">Edit</a> /
+                        <a href="#" class="delete" title="Delete Category">Delete</a> / 
+                        <a href="/categories/categoryView/{{this.name}}" class="view" title="View Category">View</a>
                     </div>
 				</td>
 			</tr>

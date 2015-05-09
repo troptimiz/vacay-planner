@@ -53,10 +53,15 @@ body {
 #sidebar li a {
   color: rgba(255, 255, 255, 0.5);
   font-weight: bold;
+  font-size: 12px;
 }
 #sidebar li a:hover, #sidebar li a:active, #sidebar li a:focus {
   background-color: #1F2837;
   color: #ccc;
+}
+#sidebar li a span {
+  margin-right: 10px;
+  font-size: 18px;
 }
 
 /*Result container*/
@@ -71,50 +76,68 @@ body {
   top: 80px;
   overflow: hidden;
 }
-.admin-result-container .category-list {
+.admin-result-container .dashboad-list {
+  width: 40%;
+  padding: 60px 40px;
+  border: 8px solid #fff;
+  margin: 0 auto;
+  margin-top: 100px;
+  border-radius: 10px;
+}
+.admin-result-container .dashboad-list .legend {
+  background: #f6f6f6;
+  padding: 0 10px;
+  position: absolute;
+  top: 95px;
+  font-size: 15px;
+  color: #a0a0a0;
+  font-weight: bold;
+  font-family: Arial;
+}
+.admin-result-container .category-list, .admin-result-container .dashboad-list {
   width: 40%;
   margin: 0 auto;
   margin-top: 100px;
 }
-.admin-result-container .category-list.min-list {
+.admin-result-container .category-list.min-list, .admin-result-container .dashboad-list.min-list {
   width: 40%;
   margin-top: 0;
 }
-.admin-result-container .category-list.min-list .list-item {
+.admin-result-container .category-list.min-list .list-item, .admin-result-container .dashboad-list.min-list .list-item {
   margin: 10px 15px;
 }
-.admin-result-container .category-list.min-list .list-item .icon {
+.admin-result-container .category-list.min-list .list-item .icon, .admin-result-container .dashboad-list.min-list .list-item .icon {
   bottom: 12px;
   right: 12px;
 }
-.admin-result-container .category-list.min-list .list-item a {
+.admin-result-container .category-list.min-list .list-item a, .admin-result-container .dashboad-list.min-list .list-item a {
   padding: 20px;
 }
-.admin-result-container .category-list.min-list .list-item a .icon {
+.admin-result-container .category-list.min-list .list-item a .icon, .admin-result-container .dashboad-list.min-list .list-item a .icon {
   font-size: 15px;
 }
-.admin-result-container .category-list.min-list .list-item a .ico-label {
+.admin-result-container .category-list.min-list .list-item a .ico-label, .admin-result-container .dashboad-list.min-list .list-item a .ico-label {
   display: none;
 }
-.admin-result-container .category-list.min-list .manage-categories {
+.admin-result-container .category-list.min-list .manage-categories, .admin-result-container .dashboad-list.min-list .manage-categories {
   display: none;
 }
-.admin-result-container .category-list .manage-categories {
+.admin-result-container .category-list .manage-categories, .admin-result-container .dashboad-list .manage-categories {
   text-align: center;
 }
-.admin-result-container .category-list .manage-categories a {
+.admin-result-container .category-list .manage-categories a, .admin-result-container .dashboad-list .manage-categories a {
   display: inline-block;
   margin-top: 20px;
 }
-.admin-result-container .category-list .manage-categories a i {
+.admin-result-container .category-list .manage-categories a i, .admin-result-container .dashboad-list .manage-categories a i {
   padding-right: 10px;
   vertical-align: text-bottom;
 }
-.admin-result-container .category-list .list-item {
+.admin-result-container .category-list .list-item, .admin-result-container .dashboad-list .list-item {
   float: left;
   margin: 10px 20px;
 }
-.admin-result-container .category-list .list-item a {
+.admin-result-container .category-list .list-item a, .admin-result-container .dashboad-list .list-item a {
   padding: 50px;
   display: inline-block;
   color: #fff;
@@ -124,56 +147,98 @@ body {
   font-size: 11px;
   text-decoration: none;
 }
-.admin-result-container .category-list .list-item a.item-resorts {
+.admin-result-container .category-list .list-item a.item-stats, .admin-result-container .dashboad-list .list-item a.item-stats {
   background: #7992BF;
   border: 1px solid #6884b7;
 }
-.admin-result-container .category-list .list-item a.item-resorts .icon:before {
-  content: "\e921";
+.admin-result-container .category-list .list-item a.item-stats .icon:before, .admin-result-container .dashboad-list .list-item a.item-stats .icon:before {
+  content: "\e99b";
 }
-.admin-result-container .category-list .list-item a.item-hotels {
-  background: #A9DC8E;
-  border: 1px solid #9ad67b;
-}
-.admin-result-container .category-list .list-item a.item-hotels .icon:before {
-  content: "\e903";
-}
-.admin-result-container .category-list .list-item a.item-spa {
+.admin-result-container .category-list .list-item a.item-users, .admin-result-container .dashboad-list .list-item a.item-users {
   background: #6BD5C3;
   border: 1px solid #57cfbb;
 }
-.admin-result-container .category-list .list-item a.item-spa .icon:before {
-  content: "\e9a4";
+.admin-result-container .category-list .list-item a.item-users .icon:before, .admin-result-container .dashboad-list .list-item a.item-users .icon:before {
+  content: "\e972";
 }
-.admin-result-container .category-list .list-item a.item-car {
-  background: #ECD48B;
-  border: 1px solid #e8cc75;
-}
-.admin-result-container .category-list .list-item a.item-car .icon:before {
-  content: "\e9b0";
-}
-.admin-result-container .category-list .list-item a.item-flight {
-  background: #5d9efd;
-  border: 1px solid #7d9efd;
-}
-.admin-result-container .category-list .list-item a.item-flight .icon:before {
-  content: "\e9af";
-}
-.admin-result-container .category-list .list-item a.item-movies {
+.admin-result-container .category-list .list-item a.item-categories, .admin-result-container .dashboad-list .list-item a.item-categories {
   background: #ED848F;
   border: 1px solid #ea6e7b;
 }
-.admin-result-container .category-list .list-item a.item-movies .icon:before {
+.admin-result-container .category-list .list-item a.item-categories .icon:before, .admin-result-container .dashboad-list .list-item a.item-categories .icon:before {
+  content: "\e621";
+}
+.admin-result-container .category-list .list-item a.item-orders, .admin-result-container .dashboad-list .list-item a.item-orders {
+  background: #ECD48B;
+  border: 1px solid #e8cc75;
+}
+.admin-result-container .category-list .list-item a.item-orders .icon:before, .admin-result-container .dashboad-list .list-item a.item-orders .icon:before {
+  content: "\e61c";
+}
+.admin-result-container .category-list .list-item a.item-customer, .admin-result-container .dashboad-list .list-item a.item-customer {
+  background: #5d9efd;
+  border: 1px solid #7d9efd;
+}
+.admin-result-container .category-list .list-item a.item-customer .icon:before, .admin-result-container .dashboad-list .list-item a.item-customer .icon:before {
+  content: "\e923";
+}
+.admin-result-container .category-list .list-item a.item-image, .admin-result-container .dashboad-list .list-item a.item-image {
+  background: #A9DC8E;
+  border: 1px solid #9ad67b;
+}
+.admin-result-container .category-list .list-item a.item-image .icon:before, .admin-result-container .dashboad-list .list-item a.item-image .icon:before {
+  content: "\e927";
+}
+.admin-result-container .category-list .list-item a.item-resorts, .admin-result-container .dashboad-list .list-item a.item-resorts {
+  background: #7992BF;
+  border: 1px solid #6884b7;
+}
+.admin-result-container .category-list .list-item a.item-resorts .icon:before, .admin-result-container .dashboad-list .list-item a.item-resorts .icon:before {
+  content: "\e921";
+}
+.admin-result-container .category-list .list-item a.item-hotels, .admin-result-container .dashboad-list .list-item a.item-hotels {
+  background: #A9DC8E;
+  border: 1px solid #9ad67b;
+}
+.admin-result-container .category-list .list-item a.item-hotels .icon:before, .admin-result-container .dashboad-list .list-item a.item-hotels .icon:before {
+  content: "\e903";
+}
+.admin-result-container .category-list .list-item a.item-spa, .admin-result-container .dashboad-list .list-item a.item-spa {
+  background: #6BD5C3;
+  border: 1px solid #57cfbb;
+}
+.admin-result-container .category-list .list-item a.item-spa .icon:before, .admin-result-container .dashboad-list .list-item a.item-spa .icon:before {
+  content: "\e9a4";
+}
+.admin-result-container .category-list .list-item a.item-car, .admin-result-container .dashboad-list .list-item a.item-car {
+  background: #ECD48B;
+  border: 1px solid #e8cc75;
+}
+.admin-result-container .category-list .list-item a.item-car .icon:before, .admin-result-container .dashboad-list .list-item a.item-car .icon:before {
+  content: "\e9b0";
+}
+.admin-result-container .category-list .list-item a.item-flight, .admin-result-container .dashboad-list .list-item a.item-flight {
+  background: #5d9efd;
+  border: 1px solid #7d9efd;
+}
+.admin-result-container .category-list .list-item a.item-flight .icon:before, .admin-result-container .dashboad-list .list-item a.item-flight .icon:before {
+  content: "\e9af";
+}
+.admin-result-container .category-list .list-item a.item-movies, .admin-result-container .dashboad-list .list-item a.item-movies {
+  background: #ED848F;
+  border: 1px solid #ea6e7b;
+}
+.admin-result-container .category-list .list-item a.item-movies .icon:before, .admin-result-container .dashboad-list .list-item a.item-movies .icon:before {
   content: "\e913";
 }
-.admin-result-container .category-list .list-item .icon {
+.admin-result-container .category-list .list-item .icon, .admin-result-container .dashboad-list .list-item .icon {
   position: absolute;
   right: 5px;
   bottom: 5px;
   font-size: 40px;
   font-family: "icomoon";
 }
-.admin-result-container .category-list .list-item .ico-label {
+.admin-result-container .category-list .list-item .ico-label, .admin-result-container .dashboad-list .list-item .ico-label {
   position: absolute;
   top: 5px;
   left: 5px;
@@ -252,6 +317,10 @@ body {
 }
 .delete-edit-container .delete:before {
   content: "\e9ad";
+  font-size: 15px;
+}
+.delete-edit-container .view:before {
+  content: "\e9ce";
   font-size: 15px;
 }
 .delete-edit-container .add-row:before {
@@ -335,6 +404,10 @@ body {
 }
 .cat-list .delete-edit-container {
   margin: 0;
+}
+.cat-list .list-action {
+  width: 160px;
+  padding-left: 20px;
 }
 
 /*Products styles Start */
@@ -447,4 +520,14 @@ ul li {
 .vacay-action {
   width: 100px;
   padding-left: 12px;
+}
+
+.data-form .form-group label.error {
+  width: 100%;
+  text-align: right;
+  padding-right: 15px;
+  color: #f00;
+  font-family: arial;
+  font-size: 11px;
+  font-weight: bold;
 }
