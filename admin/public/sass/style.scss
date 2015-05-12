@@ -53,10 +53,15 @@ body{
         a {
             color: rgba(255,255,255,.5);
             font-weight: bold;
+            font-size: 12px;
             &:hover,&:active,&:focus{
                 background-color:#1F2837;
                 color:#ccc;
                 
+            }
+            span{
+                margin-right:10px;    
+                font-size: 18px;
             }
         }
     }
@@ -72,7 +77,25 @@ body{
     position: relative;
     top:80px;
 	overflow:hidden;
-    .category-list{
+    .dashboad-list{
+        width: 40%;
+        padding:60px 40px;
+        border:8px solid #fff;
+        margin:0 auto;
+		margin-top:100px;
+        border-radius: 10px;
+        .legend{
+            background:#f6f6f6;
+            padding:0 10px;
+            position:absolute;
+            top:95px;
+            font-size:15px;
+            color:#a0a0a0;
+            font-weight: bold;
+            font-family:Arial;
+        }   
+    }
+    .category-list,.dashboad-list{
         width: 40%;
         margin:0 auto;
 		margin-top:100px;
@@ -122,6 +145,60 @@ body{
                 font-family: Arial;
                 font-size: 11px;
                 text-decoration: none;
+                &.item-stats{
+                    background: #7992BF;
+                    border: 1px solid #6884b7;
+					.icon{
+						&:before{
+							content:"\e99b";
+						}
+					}
+                }
+                &.item-users{
+                    background:#6BD5C3;
+                    border:1px solid #57cfbb;
+					.icon{
+						&:before{
+							content:"\e972";
+						}
+					}
+                }
+                &.item-categories{
+                    background:#ED848F;
+                    border:1px solid #ea6e7b;
+					.icon{
+						&:before{
+							content:"\e621";
+						}
+					}
+                }
+                &.item-orders{
+                    background:#ECD48B;
+                    border:1px solid #e8cc75;
+					.icon{
+						&:before{
+							content:"\e61c";
+						}
+					}
+                }
+                &.item-customer{
+                    background:#5d9efd;
+                    border:1px solid #7d9efd;
+					.icon{
+						&:before{
+							content:"\e923";
+						}
+					}
+                }
+                &.item-image{
+                    background:#A9DC8E;
+                    border:1px solid #9ad67b;
+					.icon{
+						&:before{
+							content:"\e927";
+						}
+					}
+                }
                 &.item-resorts{
                     background: #7992BF;
                     border: 1px solid #6884b7;
@@ -266,6 +343,12 @@ body{
 			font-size:15px;
 		}
 	}
+    .view{
+		&:before{
+			content:"\e9ce";
+			font-size:15px;
+		}
+	}
 	.add-row{
 		&:before{
 			content:"\ea0a";
@@ -352,6 +435,10 @@ body{
 	}
     .delete-edit-container{
         margin:0;   
+    }
+    .list-action{
+        width:160px;
+        padding-left:20px;
     }
 }
 /*Products styles Start */
@@ -465,4 +552,13 @@ ul{
 .vacay-action{
     width:100px;
     padding-left: 12px;
+}
+.data-form .form-group label.error{
+    width: 100%;
+    text-align: right;
+    padding-right: 15px;
+    color: #f00;
+    font-family: arial;
+    font-size: 11px;
+    font-weight: bold;
 }

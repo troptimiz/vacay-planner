@@ -7,9 +7,9 @@ CategoryController.use(bodyParser());
 
 
 // All Active Categories
-CategoryController.get('/',function(req,res){
+CategoryController.get('/categoryView/:name',function(req,res){
 	Categories.find({'is_active':true},function(err,categories){
-		res.render("home",{'activeCategories':categories});
+		res.render("home",{'activeCategories':categories,'name':req.params.name,layout:'list'});
 		//res.status(200).json({activeCategories:categories});
 	});	
 });
@@ -60,7 +60,7 @@ CategoryController.post('/category/:id',function(req,res){
 
 	console.log('Category Updated for id '+req.params.id);
 
-	Categories.findOneAndUpdate({_id:req.params.id},categoryToBeUpdated,{upsert:true},function(err,category){
+	Categories.findOneAndUpdate({_id:req.params.id},categoryToBeUpdated,{upsert:false},function(err,category){
 		if(err) return res.send(500,'Error Occured: database error during Category Updation');
 		res.json({'status':'Category '+category._id+' Updated '});
 
