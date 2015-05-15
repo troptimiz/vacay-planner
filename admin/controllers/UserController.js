@@ -13,6 +13,7 @@ Passport.use(new LocalStrategy(
        return done(err); 
    	}
       if (!user) {
+          
         return done(null, false, { message: 'Incorrect username.' });
       }
       if (!(typeof user.password == password)) {

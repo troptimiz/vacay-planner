@@ -40,7 +40,7 @@
                     <form role="form" id="add-category-form">
                         <div class="form-group">
                             <label for="">Name:</label>
-                            <input type="textbox" name="name" class="form-control" placeholder="Name">
+                            <input type="textbox" name="name" class="form-control required" placeholder="Name">
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
@@ -55,12 +55,12 @@
                         </div>
                         <div class="form-group">
                             <label for="">CSS Class:</label>
-                            <input type="textbox" name="cssClass" class="form-control" placeholder="CSS Class">
+                            <input type="textbox" name="cssClass" class="form-control required" placeholder="CSS Class">
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
                             <label for="">Activate:</label>
-                            <select name="isActive">
+                            <select name="isActive" class="required">
                                 <option selected="selected" value="true">True</option>
                                 <option value="false">False</option>
                             </select>
