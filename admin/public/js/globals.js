@@ -6,6 +6,19 @@ $(document).ready(function(){
 });
 obj = {
 	init : function(){
+        $('#imageUrl').on('change',function(e){
+            for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+                var file = e.originalEvent.srcElement.files[i];
+
+                var img = document.createElement("img");
+                var reader = new FileReader();
+                reader.onloadend = function() {
+                    img.src = reader.result;
+                }
+                reader.readAsDataURL(file);
+                $(".image-preview").empty().html(img).fadeIn();
+            }
+        });
         $('form').validate({});
         var pageParams = location.href.split("/");
         var pageName = pageParams[pageParams.length-2];
@@ -21,18 +34,22 @@ obj = {
             e.preventDefault();
             var $ths = $(this);
             var del_id = $ths.parents('.delete-edit-container').find('#category_id').val();
-            $.ajax({
-                url:"/categories/category/"+del_id,
-                method:"DELETE",
-                success:function(data){
-                    $ths.parents('tr').fadeOut(500,function(){
-                        $ths.parents('tr').remove();
-                    });
-                }
-            });
+            var imgUrl = $ths.attr('imageUrl');
+            if(confirm("Do you want to delete the record")){
+                $.ajax({
+                    url:"/categories/category/"+del_id+"/"+imgUrl,
+                    method:"DELETE",
+                    success:function(data){
+                        $ths.parents('tr').fadeOut(500,function(){
+                            $ths.parents('tr').remove();
+                        });
+                    }
+                });
+            }
         });
         
-        $('.add-category').on('click',function(){
+        $('.add-category').on('click',function(e){
+            e.preventDefault();
             $('.cat-list').fadeOut(500,function(){
                 $('.add-form-container').fadeIn(500);                
             });
@@ -44,8 +61,13 @@ obj = {
         });
         
         //Add category service request
-        $('#add-new-category').on('click',function(){
-            var formData = $('#add-category-form').serialize();
+        $('#add-new-category').on('click',function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            if($(this).parents('form').valid()){
+                $(this).parents('form').submit();
+            }
+            /*var formData = $('#add-category-form').serialize();
             $.ajax({
                 url:"/categories/category/",
                 data:formData,
@@ -54,7 +76,7 @@ obj = {
                     location.href="/categories/list";
                     console.log("Added");
                 }
-            });
+            });*/
         });
         $('#edit-category').on('click',function(){
             var formData = $('#edit-category-form').serialize();
@@ -100,7 +122,7 @@ obj = {
         $('.search-result-table').on('click','.delete',function(e){
             e.preventDefault();            
             var URL = $(this).attr('href');
-            var $ths = $(this);            
+            var $ths = $(this);      
             if(confirm("Do you want to delete the record")){
                 obj.sendAjax(URL,'DELETE','',obj.deleteSuccess($ths,'tr'));
             }

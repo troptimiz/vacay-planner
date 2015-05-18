@@ -8,6 +8,7 @@ var path = require('path');
 
 
 
+
 // Application configuration - Should be embody them in configuratio block
 
 app.set('port',process.env.PORT || 3000);
