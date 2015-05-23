@@ -1,14 +1,25 @@
  var express = require('express');
  var Passport = require('passport');
+ var flash = require('connect-flash'); 
  var LocalStrategy = require('passport-local').Strategy;
  var UserController = express();
  var User = require('../models/users.js');
-
+ var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser'); 
+var expressSession = require('express-session');
 // passport configuration 
 
 
+
+UserController.use(cookieParser());
+UserController.use(expressSession({ secret: 'keyboard cat', cookie: { secure: true }}));
 UserController.use(Passport.initialize());
 UserController.use(Passport.session());
+UserController.use(flash());
+/*
+UserController.use(express.cookieParser('keyboard cat'));
+UserController.use(express.session({ cookie: { maxAge: 60000 }}));*/
+UserController.use(bodyParser());
 
 var users = [
     { id: 1, username: 'bob', password: 'secret', email: 'bob@example.com' }
@@ -48,7 +59,7 @@ Passport.deserializeUser(function(id, done) {
 
 Passport.use(new LocalStrategy(
   function(username, password, done) {
-    findByUsername(username, function(err, user) {
+    /*findByUsername(username, function(err, user) {
         if (err) { 
           console.log('Error Occured During Authentication!!!');
           return done(err); 
@@ -63,9 +74,25 @@ Passport.use(new LocalStrategy(
         }
         console.log('Authentication Successful ...'+user);
         return done(null, user);
-   });
-  }
-));
+   });*/
+      User.findOne({ username: username }, function (err, user) {
+         if (err) { 
+              console.log('Error Occured During Authentication!!!');
+              return done(err); 
+            }
+            if (!user) { 
+              console.log('Unknown User!!!');
+              return done(null, false, { message: 'Unknown user ' + username }); 
+            }
+            if (user.password != password) { 
+              console.log('Wrong password!!!');
+              return done(null, false, { message: 'Invalid password' }); 
+            }
+            console.log('Authentication Successful ...'+user);
+            return done(null, user);
+        });
+      }
+    ));
  
 
 UserController.get("/login",function(req,res){
@@ -77,11 +104,16 @@ UserController.get("/login",function(req,res){
 //UserController.use(Passport.initialize());
 //UserController.use(Passport.session());
 
-UserController.get('/authenticate',Passport.authenticate('local'),function(req,res){
-  console.log('Passport Authentication Done!!!');
-  res.json({msg:'Authentication Successful'});
-
-});
+UserController.get('/authenticate',
+                    Passport.authenticate('local',{ 
+                        failureRedirect: '/account/login',
+                        successRedirect:'/dashboard',failureFlash:true
+                    }),
+                   function(req,res){
+                        console.log('Passport Authentication Done!!!');
+                        req.session.message="Authentication Successful";
+                        res.redirect('/dashboard');
+                });
 
 /*UserController.get('/authenticate',function(req,res){
    console.log("Inside Authentication!!!!");
