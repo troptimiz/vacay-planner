@@ -1,0 +1,1966 @@
+!SESSION 2015-05-22 19:53:59.826 -----------------------------------------------
+eclipse.buildId=3.6.2.201410091308-RELEASE-e44
+java.version=1.8.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.springsource.ggts.ide -keyring /Users/raghavan/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.springsource.ggts.ide -keyring /Users/raghavan/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2015-05-22 19:54:49.806
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.runtime 2 0 2015-05-22 19:54:56.330
+!MESSAGE Authorization infrastructure (org.eclipse.core.runtime.compatibility.auth) not installed.
+!STACK 0
+java.lang.ClassNotFoundException: org.eclipse.core.internal.runtime.auth.AuthorizationDatabase cannot be found by org.eclipse.core.runtime_3.10.0.v20140318-2214
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:432)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:345)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:337)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:160)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at org.eclipse.core.internal.runtime.AuthorizationHandler.getAuthClass(AuthorizationHandler.java:48)
+	at org.eclipse.core.internal.runtime.AuthorizationHandler.loadKeyring(AuthorizationHandler.java:69)
+	at org.eclipse.core.internal.runtime.AuthorizationHandler.flushAuthorizationInfo(AuthorizationHandler.java:231)
+	at org.eclipse.core.runtime.Platform.flushAuthorizationInfo(Platform.java:590)
+	at com.atlassian.connector.eclipse.internal.commons.ui.MigrateToSecureStorageJob.migrateToSecureStorage(MigrateToSecureStorageJob.java:89)
+	at com.atlassian.connector.eclipse.internal.commons.ui.MigrateToSecureStorageJob.runInUIThread(MigrateToSecureStorageJob.java:60)
+	at org.eclipse.ui.progress.UIJob$1.run(UIJob.java:97)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:136)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3983)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3660)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1032)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:148)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:636)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:579)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:135)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:648)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:603)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2015-05-22 19:54:56.626
+!MESSAGE Connection to http://dist.springsource.com/release/STS/doc/updates.xml failed on dist.springsource.com: unknown error. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: dist.springsource.com: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:907)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1302)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1255)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1171)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1105)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:278)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:151)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:125)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:643)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:479)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2015-05-22 19:54:57.583
+!MESSAGE Connection to http://dist.springsource.com/release/STS/discovery/no_product.properties failed on dist.springsource.com. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: dist.springsource.com
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1259)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1171)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1105)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:278)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:151)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:125)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:643)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:479)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.springsource.ide.eclipse.commons.core 4 0 2015-05-22 19:54:57.790
+!MESSAGE Internal Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Unknown Host: http://dist.springsource.com/release/STS/discovery/no_product.properties
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.stream(RepositoryTransport.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springsource.ide.eclipse.commons.internal.core.net.P2TransportService.stream(P2TransportService.java:139)
+	at org.springsource.ide.eclipse.commons.core.HttpUtil.stream(HttpUtil.java:165)
+	at org.springsource.ide.eclipse.commons.core.preferences.StsProperties.uriStream(StsProperties.java:206)
+	at org.springsource.ide.eclipse.commons.core.preferences.StsProperties.readProperties(StsProperties.java:179)
+	at org.springsource.ide.eclipse.commons.core.preferences.StsProperties.<init>(StsProperties.java:144)
+	at org.springsource.ide.eclipse.commons.core.preferences.StsProperties.getInstance(StsProperties.java:126)
+	at org.springsource.ide.eclipse.commons.gettingstarted.dashboard.DashboardCopier._getCopy(DashboardCopier.java:77)
+	at org.springsource.ide.eclipse.commons.gettingstarted.dashboard.DashboardCopier.getCopy(DashboardCopier.java:62)
+	at org.springsource.ide.eclipse.commons.gettingstarted.dashboard.WelcomeDashboard.<init>(WelcomeDashboard.java:91)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
+	at java.lang.Class.newInstance(Class.java:442)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:184)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:905)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:243)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.WorkbenchPlugin$1.run(WorkbenchPlugin.java:294)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:289)
+	at org.eclipse.ui.internal.registry.EditorDescriptor.createEditor(EditorDescriptor.java:235)
+	at org.eclipse.ui.internal.EditorReference.createPart(EditorReference.java:349)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart.createPart(CompatibilityPart.java:265)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor.createPart(CompatibilityEditor.java:63)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart.create(CompatibilityPart.java:303)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:55)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:888)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:869)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.inject(InjectorImpl.java:120)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.internalMake(InjectorImpl.java:337)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.make(InjectorImpl.java:258)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.make(ContextInjectionFactory.java:162)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.createFromBundle(ReflectionContributionFactory.java:104)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.doCreate(ReflectionContributionFactory.java:73)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.create(ReflectionContributionFactory.java:55)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer.createWidget(ContributedPartRenderer.java:127)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createWidget(PartRenderingEngine.java:983)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:662)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:766)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:737)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:731)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:715)
+	at org.eclipse.e4.ui.workbench.renderers.swt.StackRenderer.showTab(StackRenderer.java:1250)
+	at org.eclipse.e4.ui.workbench.renderers.swt.LazyStackRenderer$1.handleEvent(LazyStackRenderer.java:68)
+	at org.eclipse.e4.ui.services.internal.events.UIEventHandler$1.run(UIEventHandler.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.syncExec(Synchronizer.java:187)
+	at org.eclipse.ui.internal.UISynchronizer.syncExec(UISynchronizer.java:156)
+	at org.eclipse.swt.widgets.Display.syncExec(Display.java:4721)
+	at org.eclipse.e4.ui.internal.workbench.swt.E4Application$1.syncExec(E4Application.java:218)
+	at org.eclipse.e4.ui.services.internal.events.UIEventHandler.handleEvent(UIEventHandler.java:36)
+	at org.eclipse.equinox.internal.event.EventHandlerWrapper.handleEvent(EventHandlerWrapper.java:197)
+	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:197)
+	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.ListenerQueue.dispatchEventSynchronous(ListenerQueue.java:148)
+	at org.eclipse.equinox.internal.event.EventAdminImpl.dispatchEvent(EventAdminImpl.java:135)
+	at org.eclipse.equinox.internal.event.EventAdminImpl.sendEvent(EventAdminImpl.java:78)
+	at org.eclipse.equinox.internal.event.EventComponent.sendEvent(EventComponent.java:39)
+	at org.eclipse.e4.ui.services.internal.events.EventBroker.send(EventBroker.java:81)
+	at org.eclipse.e4.ui.internal.workbench.UIEventPublisher.notifyChanged(UIEventPublisher.java:59)
+	at org.eclipse.emf.common.notify.impl.BasicNotifierImpl.eNotify(BasicNotifierImpl.java:374)
+	at org.eclipse.e4.ui.model.application.ui.impl.ElementContainerImpl.setSelectedElement(ElementContainerImpl.java:171)
+	at org.eclipse.e4.ui.internal.workbench.ModelServiceImpl.showElementInWindow(ModelServiceImpl.java:488)
+	at org.eclipse.e4.ui.internal.workbench.ModelServiceImpl.bringToTop(ModelServiceImpl.java:454)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.delegateBringToTop(PartServiceImpl.java:694)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.bringToTop(PartServiceImpl.java:387)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.showPart(PartServiceImpl.java:1134)
+	at org.eclipse.ui.internal.WorkbenchPage.busyOpenEditor(WorkbenchPage.java:3210)
+	at org.eclipse.ui.internal.WorkbenchPage.access$23(WorkbenchPage.java:3125)
+	at org.eclipse.ui.internal.WorkbenchPage$9.run(WorkbenchPage.java:3107)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPage.openEditor(WorkbenchPage.java:3102)
+	at org.eclipse.ui.internal.WorkbenchPage.openEditor(WorkbenchPage.java:3066)
+	at org.eclipse.ui.internal.WorkbenchPage.openEditor(WorkbenchPage.java:3047)
+	at org.springsource.ide.eclipse.dashboard.ui.actions.ShowDashboardPageAction$1.runInUIThread(ShowDashboardPageAction.java:77)
+	at org.eclipse.ui.progress.UIJob$1.run(UIJob.java:97)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:136)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3983)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3660)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1032)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:148)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:636)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:579)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:135)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:648)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:603)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+Caused by: java.net.UnknownHostException: dist.springsource.com
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1259)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1171)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1105)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:278)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:151)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:125)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:643)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:479)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.equinox.p2.transport.ecf 4 1006 2015-05-22 19:54:57.795
+!MESSAGE Unknown Host: http://dist.springsource.com/release/STS/discovery/no_product.properties
+!STACK 0
+java.net.UnknownHostException: dist.springsource.com
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1259)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1171)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1105)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:278)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:151)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:125)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:643)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:479)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.springsource.ide.eclipse.commons.core 2 0 2015-05-22 19:54:57.796
+!MESSAGE Couldn't read sts properties from 'http://dist.springsource.com/release/STS/discovery/no_product.properties' internal default values will be used
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2015-05-22 19:54:57.800
+!MESSAGE Connection to http://dist.springsource.com/release/STS/discovery/ggts.properties failed on dist.springsource.com. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: dist.springsource.com
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1259)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1171)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1105)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:278)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:151)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:125)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:643)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:479)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.springsource.ide.eclipse.commons.core 4 0 2015-05-22 19:54:58.005
+!MESSAGE Internal Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Unknown Host: http://dist.springsource.com/release/STS/discovery/ggts.properties
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.stream(RepositoryTransport.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springsource.ide.eclipse.commons.internal.core.net.P2TransportService.stream(P2TransportService.java:139)
+	at org.springsource.ide.eclipse.commons.core.HttpUtil.stream(HttpUtil.java:165)
+	at org.springsource.ide.eclipse.commons.core.preferences.StsProperties.uriStream(StsProperties.java:206)
+	at org.springsource.ide.eclipse.commons.core.preferences.StsProperties.readProperties(StsProperties.java:179)
+	at org.springsource.ide.eclipse.commons.core.preferences.StsProperties.<init>(StsProperties.java:144)
+	at org.springsource.ide.eclipse.commons.core.preferences.StsProperties.getInstance(StsProperties.java:126)
+	at org.springsource.ide.eclipse.commons.gettingstarted.dashboard.DashboardCopier._getCopy(DashboardCopier.java:77)
+	at org.springsource.ide.eclipse.commons.gettingstarted.dashboard.DashboardCopier.getCopy(DashboardCopier.java:62)
+	at org.springsource.ide.eclipse.commons.gettingstarted.dashboard.WelcomeDashboard.<init>(WelcomeDashboard.java:91)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
+	at java.lang.Class.newInstance(Class.java:442)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:184)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:905)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:243)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.WorkbenchPlugin$1.run(WorkbenchPlugin.java:294)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:289)
+	at org.eclipse.ui.internal.registry.EditorDescriptor.createEditor(EditorDescriptor.java:235)
+	at org.eclipse.ui.internal.EditorReference.createPart(EditorReference.java:349)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart.createPart(CompatibilityPart.java:265)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor.createPart(CompatibilityEditor.java:63)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart.create(CompatibilityPart.java:303)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:55)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:888)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:869)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.inject(InjectorImpl.java:120)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.internalMake(InjectorImpl.java:337)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.make(InjectorImpl.java:258)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.make(ContextInjectionFactory.java:162)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.createFromBundle(ReflectionContributionFactory.java:104)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.doCreate(ReflectionContributionFactory.java:73)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.create(ReflectionContributionFactory.java:55)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer.createWidget(ContributedPartRenderer.java:127)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createWidget(PartRenderingEngine.java:983)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:662)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:766)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:737)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:731)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:715)
+	at org.eclipse.e4.ui.workbench.renderers.swt.StackRenderer.showTab(StackRenderer.java:1250)
+	at org.eclipse.e4.ui.workbench.renderers.swt.LazyStackRenderer$1.handleEvent(LazyStackRenderer.java:68)
+	at org.eclipse.e4.ui.services.internal.events.UIEventHandler$1.run(UIEventHandler.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.syncExec(Synchronizer.java:187)
+	at org.eclipse.ui.internal.UISynchronizer.syncExec(UISynchronizer.java:156)
+	at org.eclipse.swt.widgets.Display.syncExec(Display.java:4721)
+	at org.eclipse.e4.ui.internal.workbench.swt.E4Application$1.syncExec(E4Application.java:218)
+	at org.eclipse.e4.ui.services.internal.events.UIEventHandler.handleEvent(UIEventHandler.java:36)
+	at org.eclipse.equinox.internal.event.EventHandlerWrapper.handleEvent(EventHandlerWrapper.java:197)
+	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:197)
+	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.ListenerQueue.dispatchEventSynchronous(ListenerQueue.java:148)
+	at org.eclipse.equinox.internal.event.EventAdminImpl.dispatchEvent(EventAdminImpl.java:135)
+	at org.eclipse.equinox.internal.event.EventAdminImpl.sendEvent(EventAdminImpl.java:78)
+	at org.eclipse.equinox.internal.event.EventComponent.sendEvent(EventComponent.java:39)
+	at org.eclipse.e4.ui.services.internal.events.EventBroker.send(EventBroker.java:81)
+	at org.eclipse.e4.ui.internal.workbench.UIEventPublisher.notifyChanged(UIEventPublisher.java:59)
+	at org.eclipse.emf.common.notify.impl.BasicNotifierImpl.eNotify(BasicNotifierImpl.java:374)
+	at org.eclipse.e4.ui.model.application.ui.impl.ElementContainerImpl.setSelectedElement(ElementContainerImpl.java:171)
+	at org.eclipse.e4.ui.internal.workbench.ModelServiceImpl.showElementInWindow(ModelServiceImpl.java:488)
+	at org.eclipse.e4.ui.internal.workbench.ModelServiceImpl.bringToTop(ModelServiceImpl.java:454)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.delegateBringToTop(PartServiceImpl.java:694)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.bringToTop(PartServiceImpl.java:387)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.showPart(PartServiceImpl.java:1134)
+	at org.eclipse.ui.internal.WorkbenchPage.busyOpenEditor(WorkbenchPage.java:3210)
+	at org.eclipse.ui.internal.WorkbenchPage.access$23(WorkbenchPage.java:3125)
+	at org.eclipse.ui.internal.WorkbenchPage$9.run(WorkbenchPage.java:3107)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPage.openEditor(WorkbenchPage.java:3102)
+	at org.eclipse.ui.internal.WorkbenchPage.openEditor(WorkbenchPage.java:3066)
+	at org.eclipse.ui.internal.WorkbenchPage.openEditor(WorkbenchPage.java:3047)
+	at org.springsource.ide.eclipse.dashboard.ui.actions.ShowDashboardPageAction$1.runInUIThread(ShowDashboardPageAction.java:77)
+	at org.eclipse.ui.progress.UIJob$1.run(UIJob.java:97)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:136)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3983)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3660)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1032)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:148)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:636)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:579)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:135)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:648)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:603)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+Caused by: java.net.UnknownHostException: dist.springsource.com
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1259)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1171)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1105)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:278)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:151)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:125)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:643)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:479)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.equinox.p2.transport.ecf 4 1006 2015-05-22 19:54:58.007
+!MESSAGE Unknown Host: http://dist.springsource.com/release/STS/discovery/ggts.properties
+!STACK 0
+java.net.UnknownHostException: dist.springsource.com
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1259)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1171)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1105)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:278)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:151)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:125)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:643)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:479)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.springsource.ide.eclipse.commons.core 2 0 2015-05-22 19:54:58.007
+!MESSAGE Couldn't read sts properties from 'http://dist.springsource.com/release/STS/discovery/ggts.properties' internal default values will be used
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2015-05-22 19:55:12.741
+!MESSAGE Connection to http://dist.springsource.com/release/TOOLS/update/3.6.4.RELEASE/e4.4/p2.index failed on dist.springsource.com: unknown error. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: dist.springsource.com: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:907)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1302)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1255)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1171)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1105)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:278)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:151)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:125)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:643)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:479)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2015-05-22 19:55:12.955
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: Unknown Host: http://dist.springsource.com/release/TOOLS/update/3.6.4.RELEASE/e4.4/content.xml
+	at org.eclipse.equinox.internal.p2.repository.CacheManager.createCache(CacheManager.java:192)
+	at org.eclipse.equinox.internal.p2.metadata.repository.SimpleMetadataRepositoryFactory.getLocalFile(SimpleMetadataRepositoryFactory.java:66)
+	at org.eclipse.equinox.internal.p2.metadata.repository.SimpleMetadataRepositoryFactory.load(SimpleMetadataRepositoryFactory.java:88)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:668)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:668)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:151)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:129)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:73)
+Caused by: java.net.UnknownHostException: dist.springsource.com
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1259)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1171)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1105)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:278)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:294)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:643)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:479)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:259)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.equinox.p2.transport.ecf 4 1006 2015-05-22 19:55:12.955
+!MESSAGE Unknown Host: http://dist.springsource.com/release/TOOLS/update/3.6.4.RELEASE/e4.4/content.xml
+!STACK 0
+java.net.UnknownHostException: dist.springsource.com
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1259)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1171)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1105)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:278)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:294)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:643)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:479)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:259)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.epp.mpc.ui 4 4 2015-05-22 19:58:12.236
+!MESSAGE Failed to download image for entry 'Gradle IDE Pack 3.6.x+0.17' (1640500) from http://marketplace.eclipse.org/sites/default/files/styles/medium/public/JavaClassicWithGradle.PNG?itok=YVpvwEF_
+!STACK 0
+java.io.InterruptedIOException
+	at java.io.PipedInputStream.read(PipedInputStream.java:328)
+	at java.io.PipedInputStream.read(PipedInputStream.java:377)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileReader$1.read(FileReader.java:273)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	at org.eclipse.epp.internal.mpc.ui.catalog.ResourceProvider.putResource(ResourceProvider.java:71)
+	at org.eclipse.epp.internal.mpc.ui.catalog.AbstractResourceRunnable.run(AbstractResourceRunnable.java:72)
+	at org.eclipse.epp.internal.mpc.ui.catalog.AbstractResourceRunnable.call(AbstractResourceRunnable.java:57)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2015-05-22 20:02:18.053
+!MESSAGE Connection to http://www.nodeclipse.org/updates/gradle-ide-pack/p2.index failed on www.nodeclipse.org: unknown error. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: www.nodeclipse.org: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:907)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1302)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1255)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1171)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1105)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:278)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:151)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:125)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:643)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:479)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2015-05-22 20:02:38.833
+!MESSAGE Unknown Host: http://www.nodeclipse.org/updates/gradle-ide-pack/content.xml
+!STACK 0
+java.net.UnknownHostException: www.nodeclipse.org
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1259)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1171)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1105)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:278)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:294)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:643)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:479)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:259)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2015-05-22 20:02:49.649
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://www.nodeclipse.org/updates/gradle-ide-pack/.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:653)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.doLoad(LoadMetadataRepositoryJob.java:117)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.runModal(LoadMetadataRepositoryJob.java:102)
+	at org.eclipse.equinox.internal.p2.ui.sdk.PreloadingRepositoryHandler$2.runModal(PreloadingRepositoryHandler.java:83)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2015-05-22 20:02:49.650
+!MESSAGE No repository found at http://www.nodeclipse.org/updates/gradle-ide-pack/.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2015-05-22 20:04:18.849
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://www.nodeclipse.org/updates/gradle-ide-pack/.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:653)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.doLoad(LoadMetadataRepositoryJob.java:117)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.runModal(LoadMetadataRepositoryJob.java:102)
+	at org.eclipse.equinox.internal.p2.ui.sdk.PreloadingRepositoryHandler$2.runModal(PreloadingRepositoryHandler.java:83)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2015-05-22 20:04:18.849
+!MESSAGE No repository found at http://www.nodeclipse.org/updates/gradle-ide-pack/.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2015-05-22 20:05:05.114
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: Communication with repository at http://dist.springsource.com/release/TOOLS/update/3.6.3.RELEASE/e3.7/ failed.
+	at org.eclipse.equinox.internal.p2.repository.CacheManager.createCache(CacheManager.java:151)
+	at org.eclipse.equinox.internal.p2.metadata.repository.SimpleMetadataRepositoryFactory.getLocalFile(SimpleMetadataRepositoryFactory.java:66)
+	at org.eclipse.equinox.internal.p2.metadata.repository.SimpleMetadataRepositoryFactory.load(SimpleMetadataRepositoryFactory.java:88)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:668)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:668)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.epp.internal.mpc.ui.catalog.MarketplaceCatalog$9.run(MarketplaceCatalog.java:229)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:170)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:166)
+	at org.apache.http.impl.io.SocketInputBuffer.fillBuffer(SocketInputBuffer.java:90)
+	at org.apache.http.impl.io.AbstractSessionInputBuffer.readLine(AbstractSessionInputBuffer.java:281)
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:92)
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:61)
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:254)
+	at org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:289)
+	at org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:252)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.receiveResponseHeader(ManagedClientConnectionImpl.java:191)
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:300)
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:127)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryExecute(DefaultRequestDirector.java:715)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:520)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:259)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.equinox.p2.repository 4 1002 2015-05-22 20:05:05.115
+!MESSAGE Communication with repository at http://dist.springsource.com/release/TOOLS/update/3.6.3.RELEASE/e3.7/ failed.
+!STACK 0
+java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:170)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:166)
+	at org.apache.http.impl.io.SocketInputBuffer.fillBuffer(SocketInputBuffer.java:90)
+	at org.apache.http.impl.io.AbstractSessionInputBuffer.readLine(AbstractSessionInputBuffer.java:281)
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:92)
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:61)
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:254)
+	at org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:289)
+	at org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:252)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.receiveResponseHeader(ManagedClientConnectionImpl.java:191)
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:300)
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:127)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryExecute(DefaultRequestDirector.java:715)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:520)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:259)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-05-22 20:05:26.932
+!MESSAGE No remedy found
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2015-05-22 20:05:27.056
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2015-05-22 20:05:27.056
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:27.056
+!MESSAGE Software being installed: Groovy/Grails Tool Suite 3.6.3.201411281408-RELEASE-e37 (org.springsource.ggts.ide 3.6.3.201411281408-RELEASE-e37)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:27.056
+!MESSAGE Missing requirement: Groovy/Grails Tool Suite Package 3.6.3.201411281408-RELEASE-e37 (org.springsource.ggts.package.feature.group 3.6.3.201411281408-RELEASE-e37) requires 'org.eclipse.platform.feature.group [3.7.0,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-22 20:05:27.056
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:27.056
+!MESSAGE From: Groovy/Grails Tool Suite 3.6.3.201411281408-RELEASE-e37 (org.springsource.ggts.ide 3.6.3.201411281408-RELEASE-e37)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:27.056
+!MESSAGE To: org.springsource.ggts.package.feature.group [3.6.3.201411281408-RELEASE-e37]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2015-05-22 20:05:27.070
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2015-05-22 20:05:27.070
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:27.070
+!MESSAGE Software being installed: Groovy/Grails Tool Suite 3.6.3.201411281408-RELEASE-e37 (org.springsource.ggts.ide 3.6.3.201411281408-RELEASE-e37)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:27.070
+!MESSAGE Missing requirement: Groovy/Grails Tool Suite Package 3.6.3.201411281408-RELEASE-e37 (org.springsource.ggts.package.feature.group 3.6.3.201411281408-RELEASE-e37) requires 'org.eclipse.platform.feature.group [3.7.0,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-22 20:05:27.070
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:27.070
+!MESSAGE From: Groovy/Grails Tool Suite 3.6.3.201411281408-RELEASE-e37 (org.springsource.ggts.ide 3.6.3.201411281408-RELEASE-e37)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:27.070
+!MESSAGE To: org.springsource.ggts.package.feature.group [3.6.3.201411281408-RELEASE-e37]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2015-05-22 20:05:28.015
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2015-05-22 20:05:28.015
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:28.015
+!MESSAGE Software being installed: Groovy/Grails Tool Suite 3.6.3.201411281408-RELEASE-e37 (org.springsource.ggts.ide 3.6.3.201411281408-RELEASE-e37)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:28.015
+!MESSAGE Missing requirement: Groovy/Grails Tool Suite Package 3.6.3.201411281408-RELEASE-e37 (org.springsource.ggts.package.feature.group 3.6.3.201411281408-RELEASE-e37) requires 'org.eclipse.platform.feature.group [3.7.0,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-22 20:05:28.015
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:28.015
+!MESSAGE From: Groovy/Grails Tool Suite 3.6.3.201411281408-RELEASE-e37 (org.springsource.ggts.ide 3.6.3.201411281408-RELEASE-e37)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:28.015
+!MESSAGE To: org.springsource.ggts.package.feature.group [3.6.3.201411281408-RELEASE-e37]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2015-05-22 20:05:28.016
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2015-05-22 20:05:28.016
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:28.016
+!MESSAGE Software being installed: Groovy/Grails Tool Suite 3.6.3.201411281408-RELEASE-e37 (org.springsource.ggts.ide 3.6.3.201411281408-RELEASE-e37)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:28.016
+!MESSAGE Missing requirement: Groovy/Grails Tool Suite Package 3.6.3.201411281408-RELEASE-e37 (org.springsource.ggts.package.feature.group 3.6.3.201411281408-RELEASE-e37) requires 'org.eclipse.platform.feature.group [3.7.0,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-22 20:05:28.016
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:28.016
+!MESSAGE From: Groovy/Grails Tool Suite 3.6.3.201411281408-RELEASE-e37 (org.springsource.ggts.ide 3.6.3.201411281408-RELEASE-e37)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:28.016
+!MESSAGE To: org.springsource.ggts.package.feature.group [3.6.3.201411281408-RELEASE-e37]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2015-05-22 20:05:55.583
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2015-05-22 20:05:55.584
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:55.584
+!MESSAGE Software being installed: Groovy/Grails Tool Suite 3.6.3.201411281408-RELEASE-e37 (org.springsource.ggts.ide 3.6.3.201411281408-RELEASE-e37)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:55.584
+!MESSAGE Missing requirement: Groovy/Grails Tool Suite Package 3.6.3.201411281408-RELEASE-e37 (org.springsource.ggts.package.feature.group 3.6.3.201411281408-RELEASE-e37) requires 'org.eclipse.platform.feature.group [3.7.0,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-22 20:05:55.584
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:55.584
+!MESSAGE From: Groovy/Grails Tool Suite 3.6.3.201411281408-RELEASE-e37 (org.springsource.ggts.ide 3.6.3.201411281408-RELEASE-e37)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:55.584
+!MESSAGE To: org.springsource.ggts.package.feature.group [3.6.3.201411281408-RELEASE-e37]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2015-05-22 20:05:55.593
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2015-05-22 20:05:55.593
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:55.593
+!MESSAGE Software being installed: Groovy/Grails Tool Suite 3.6.3.201411281408-RELEASE-e37 (org.springsource.ggts.ide 3.6.3.201411281408-RELEASE-e37)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:55.593
+!MESSAGE Missing requirement: Groovy/Grails Tool Suite Package 3.6.3.201411281408-RELEASE-e37 (org.springsource.ggts.package.feature.group 3.6.3.201411281408-RELEASE-e37) requires 'org.eclipse.platform.feature.group [3.7.0,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-22 20:05:55.593
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:55.593
+!MESSAGE From: Groovy/Grails Tool Suite 3.6.3.201411281408-RELEASE-e37 (org.springsource.ggts.ide 3.6.3.201411281408-RELEASE-e37)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-22 20:05:55.593
+!MESSAGE To: org.springsource.ggts.package.feature.group [3.6.3.201411281408-RELEASE-e37]
+
+!ENTRY org.eclipse.epp.mpc.ui 4 4 2015-05-22 20:07:19.973
+!MESSAGE Failed to download image for entry 'MDE Utils 1.0.0' (35788) from http://marketplace.eclipse.org/sites/default/files/styles/ds_medium/public/icone_large.jpg?itok=HbIaxTp8
+!STACK 1
+org.eclipse.core.runtime.CoreException: Unable to read repository at http://marketplace.eclipse.org/sites/default/files/styles/ds_medium/public/icone_large.jpg?itok=HbIaxTp8.
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.stream(RepositoryTransport.java:180)
+	at sun.reflect.GeneratedMethodAccessor104.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.eclipse.epp.internal.mpc.core.util.AbstractP2TransportFactory.invokeStream(AbstractP2TransportFactory.java:35)
+	at org.eclipse.epp.internal.mpc.core.util.TransportFactory$1.stream(TransportFactory.java:107)
+	at org.eclipse.epp.internal.mpc.ui.catalog.AbstractResourceRunnable.run(AbstractResourceRunnable.java:70)
+	at org.eclipse.epp.internal.mpc.ui.catalog.AbstractResourceRunnable.call(AbstractResourceRunnable.java:57)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.eclipse.core.runtime.CoreException: 
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryStatusHelper.wrap(RepositoryStatusHelper.java:177)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileReader.checkException(FileReader.java:467)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileReader.sendRetrieveRequest(FileReader.java:398)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileReader.read(FileReader.java:240)
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.stream(RepositoryTransport.java:172)
+	... 11 more
+!SUBENTRY 1 org.eclipse.equinox.p2.transport.ecf 4 1002 2015-05-22 20:07:19.973
+!MESSAGE Unable to read repository at http://marketplace.eclipse.org/sites/default/files/styles/ds_medium/public/icone_large.jpg?itok=HbIaxTp8.
+!STACK 1
+org.eclipse.core.runtime.CoreException: 
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryStatusHelper.wrap(RepositoryStatusHelper.java:177)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileReader.checkException(FileReader.java:467)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileReader.sendRetrieveRequest(FileReader.java:398)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileReader.read(FileReader.java:240)
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.stream(RepositoryTransport.java:172)
+	at sun.reflect.GeneratedMethodAccessor104.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.eclipse.epp.internal.mpc.core.util.AbstractP2TransportFactory.invokeStream(AbstractP2TransportFactory.java:35)
+	at org.eclipse.epp.internal.mpc.core.util.TransportFactory$1.stream(TransportFactory.java:107)
+	at org.eclipse.epp.internal.mpc.ui.catalog.AbstractResourceRunnable.run(AbstractResourceRunnable.java:70)
+	at org.eclipse.epp.internal.mpc.ui.catalog.AbstractResourceRunnable.call(AbstractResourceRunnable.java:57)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+!SUBENTRY 2 unknown 8 1 2015-05-22 20:07:19.973
+!MESSAGE 
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2015-05-22 20:07:42.614
+!MESSAGE No repository found at http://www.nodeclipse.org/updates/gradle-ide-pack/.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2015-05-22 20:07:57.451
+!MESSAGE No repository found at http://www.nodeclipse.org/updates/gradle-ide-pack/.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2015-05-22 20:08:46.085
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://www.nodeclipse.org/updates/gradle-ide-pack/.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:653)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.doLoad(LoadMetadataRepositoryJob.java:117)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.runModal(LoadMetadataRepositoryJob.java:102)
+	at org.eclipse.equinox.internal.p2.ui.sdk.PreloadingRepositoryHandler$2.runModal(PreloadingRepositoryHandler.java:83)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2015-05-22 20:08:46.086
+!MESSAGE No repository found at http://www.nodeclipse.org/updates/gradle-ide-pack/.
+!SESSION 2015-05-22 20:23:58.331 -----------------------------------------------
+eclipse.buildId=3.6.4.201503100339-RELEASE-e44
+java.version=1.8.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.springsource.ggts.ide -keyring /Users/raghavan/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.springsource.ggts.ide -keyring /Users/raghavan/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2015-05-22 20:24:48.161
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2015-05-22 20:28:51.913 -----------------------------------------------
+eclipse.buildId=3.6.4.201503100339-RELEASE-e44
+java.version=1.8.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.springsource.ggts.ide -keyring /Users/raghavan/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.springsource.ggts.ide -keyring /Users/raghavan/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2015-05-22 20:29:09.530
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.springsource.ide.eclipse.gradle.core 4 0 2015-05-22 20:30:51.462
+!MESSAGE Timeout waiting to lock Plugin Resolution Cache (/Users/raghavan/.gradle/caches/2.3/plugin-resolution). It is currently in use by another Gradle instance.
+Owner PID: 68895
+Our PID: 70663
+Owner Operation: queryPluginMetadata - read
+Our operation: queryPluginMetadata - read
+Lock file: /Users/raghavan/.gradle/caches/2.3/plugin-resolution/cache.properties.lock
+!STACK 0
+java.lang.reflect.InvocationTargetException
+	at org.springsource.ide.eclipse.gradle.core.util.GradleRunnable.run(GradleRunnable.java:112)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
+Caused by: org.eclipse.core.runtime.CoreException: Timeout waiting to lock Plugin Resolution Cache (/Users/raghavan/.gradle/caches/2.3/plugin-resolution). It is currently in use by another Gradle instance.
+Owner PID: 68895
+Our PID: 70663
+Owner Operation: queryPluginMetadata - read
+Our operation: queryPluginMetadata - read
+Lock file: /Users/raghavan/.gradle/caches/2.3/plugin-resolution/cache.properties.lock
+	at org.springsource.ide.eclipse.gradle.core.util.ExceptionUtil.coreException(ExceptionUtil.java:40)
+	at org.springsource.ide.eclipse.gradle.core.util.ExceptionUtil.coreException(ExceptionUtil.java:51)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.BuildResult.get(BuildResult.java:85)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.GradleProjectModelManager.getModelInternal(GradleProjectModelManager.java:145)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.GradleProjectModelManager.getModel(GradleProjectModelManager.java:100)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.GradleModelManager.getModel(GradleModelManager.java:77)
+	at org.springsource.ide.eclipse.gradle.core.GradleProject.getSkeletalGradleModel(GradleProject.java:670)
+	at org.springsource.ide.eclipse.gradle.ui.wizards.GradleImportWizardPageOne$11.doit(GradleImportWizardPageOne.java:516)
+	at org.springsource.ide.eclipse.gradle.core.util.GradleRunnable.run(GradleRunnable.java:104)
+	... 1 more
+Caused by: org.gradle.tooling.BuildException: Could not fetch model of type 'HierarchicalEclipseProject' using Gradle distribution 'https://services.gradle.org/distributions/gradle-2.3-bin.zip'.
+	at org.gradle.tooling.internal.consumer.ResultHandlerAdapter.onFailure(ResultHandlerAdapter.java:57)
+	at org.gradle.tooling.internal.consumer.async.DefaultAsyncConsumerActionExecutor$1$1.run(DefaultAsyncConsumerActionExecutor.java:57)
+	at org.gradle.internal.concurrent.DefaultExecutorFactory$StoppableExecutorImpl$1.run(DefaultExecutorFactory.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+	at org.gradle.tooling.internal.consumer.BlockingResultHandler.getResult(BlockingResultHandler.java:46)
+	at org.gradle.tooling.internal.consumer.DefaultModelBuilder.get(DefaultModelBuilder.java:48)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.ToolinApiUtils.buildModel(ToolinApiUtils.java:103)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.DefaultModelBuilder.doBuild(DefaultModelBuilder.java:30)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.AbstractModelBuilder.buildModel(AbstractModelBuilder.java:40)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.HierarchicalProjectBuildStrategy.buildReferenceModel(HierarchicalProjectBuildStrategy.java:179)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.HierarchicalProjectBuildStrategy.buildModels(HierarchicalProjectBuildStrategy.java:65)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.GradleProjectModelManager.getModelInternal(GradleProjectModelManager.java:141)
+	... 6 more
+Caused by: org.gradle.internal.exceptions.LocationAwareException: Build file '/Users/raghavan/Consulting/VacayPlanner/vacay-planner/vacayplanner-app/build.gradle' line: 16
+Error resolving plugin [id: 'io.spring.dependency-management', version: '0.4.0.RELEASE']
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator.resolveToFoundResult(DefaultPluginRequestApplicator.java:184)
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator.access$000(DefaultPluginRequestApplicator.java:46)
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator$1.transform(DefaultPluginRequestApplicator.java:70)
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator$1.transform(DefaultPluginRequestApplicator.java:68)
+	at org.gradle.util.CollectionUtils.collect(CollectionUtils.java:151)
+	at org.gradle.util.CollectionUtils.collect(CollectionUtils.java:146)
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator.applyPlugins(DefaultPluginRequestApplicator.java:68)
+	at org.gradle.configuration.DefaultScriptPluginFactory$ScriptPluginImpl.apply(DefaultScriptPluginFactory.java:137)
+	at org.gradle.configuration.project.BuildScriptProcessor.execute(BuildScriptProcessor.java:39)
+	at org.gradle.configuration.project.BuildScriptProcessor.execute(BuildScriptProcessor.java:26)
+	at org.gradle.configuration.project.ConfigureActionsProjectEvaluator.evaluate(ConfigureActionsProjectEvaluator.java:34)
+	at org.gradle.configuration.project.LifecycleProjectEvaluator.evaluate(LifecycleProjectEvaluator.java:59)
+	at org.gradle.api.internal.project.AbstractProject.evaluate(AbstractProject.java:492)
+	at org.gradle.api.internal.project.AbstractProject.evaluate(AbstractProject.java:86)
+	at org.gradle.execution.TaskPathProjectEvaluator.configureHierarchy(TaskPathProjectEvaluator.java:42)
+	at org.gradle.configuration.DefaultBuildConfigurer.configure(DefaultBuildConfigurer.java:35)
+	at org.gradle.initialization.DefaultGradleLauncher.doBuildStages(DefaultGradleLauncher.java:129)
+	at org.gradle.initialization.DefaultGradleLauncher.doBuild(DefaultGradleLauncher.java:106)
+	at org.gradle.initialization.DefaultGradleLauncher.getBuildAnalysis(DefaultGradleLauncher.java:97)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter$DefaultBuildController.configure(InProcessBuildActionExecuter.java:84)
+	at org.gradle.tooling.internal.provider.BuildModelAction.run(BuildModelAction.java:45)
+	at org.gradle.tooling.internal.provider.BuildModelAction.run(BuildModelAction.java:30)
+	at org.gradle.tooling.internal.provider.ConfiguringBuildAction.run(ConfiguringBuildAction.java:119)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:36)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:26)
+	at org.gradle.launcher.daemon.server.exec.ExecuteBuild.doBuild(ExecuteBuild.java:48)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.WatchForDisconnection.execute(WatchForDisconnection.java:37)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.ResetDeprecationLogger.execute(ResetDeprecationLogger.java:26)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.RequestStopIfSingleUsedDaemon.execute(RequestStopIfSingleUsedDaemon.java:34)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.call(ForwardClientInput.java:74)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.call(ForwardClientInput.java:72)
+	at org.gradle.util.Swapper.swap(Swapper.java:38)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput.execute(ForwardClientInput.java:72)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.health.DaemonHealthTracker.execute(DaemonHealthTracker.java:47)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.LogToClient.doBuild(LogToClient.java:60)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment.doBuild(EstablishBuildEnvironment.java:71)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.health.HintGCAfterBuild.execute(HintGCAfterBuild.java:41)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy$1.run(StartBuildOrRespondWithBusy.java:50)
+	at org.gradle.launcher.daemon.server.DaemonStateCoordinator$1.run(DaemonStateCoordinator.java:246)
+	at org.gradle.internal.concurrent.DefaultExecutorFactory$StoppableExecutorImpl$1.run(DefaultExecutorFactory.java:64)
+Caused by: org.gradle.api.GradleException: Error resolving plugin [id: 'io.spring.dependency-management', version: '0.4.0.RELEASE']
+	... 52 more
+Caused by: org.gradle.cache.internal.LockTimeoutException: Timeout waiting to lock Plugin Resolution Cache (/Users/raghavan/.gradle/caches/2.3/plugin-resolution). It is currently in use by another Gradle instance.
+Owner PID: 68895
+Our PID: 70663
+Owner Operation: queryPluginMetadata - read
+Our operation: queryPluginMetadata - read
+Lock file: /Users/raghavan/.gradle/caches/2.3/plugin-resolution/cache.properties.lock
+	at org.gradle.cache.internal.DefaultFileLockManager$DefaultFileLock.lock(DefaultFileLockManager.java:258)
+	at org.gradle.cache.internal.DefaultFileLockManager$DefaultFileLock.<init>(DefaultFileLockManager.java:127)
+	at org.gradle.cache.internal.DefaultFileLockManager.lock(DefaultFileLockManager.java:80)
+	at org.gradle.cache.internal.DefaultCacheAccess.onStartWork(DefaultCacheAccess.java:349)
+	at org.gradle.cache.internal.DefaultCacheAccess.useCache(DefaultCacheAccess.java:187)
+	at org.gradle.cache.internal.DefaultPersistentDirectoryStore.useCache(DefaultPersistentDirectoryStore.java:102)
+	at org.gradle.cache.internal.DefaultCacheFactory$ReferenceTrackingCache.useCache(DefaultCacheFactory.java:183)
+	at org.gradle.plugin.use.resolve.service.internal.PersistentCachingPluginResolutionServiceClient.maybeFetch(PersistentCachingPluginResolutionServiceClient.java:95)
+	at org.gradle.plugin.use.resolve.service.internal.PersistentCachingPluginResolutionServiceClient.maybeFetch(PersistentCachingPluginResolutionServiceClient.java:91)
+	at org.gradle.plugin.use.resolve.service.internal.PersistentCachingPluginResolutionServiceClient.queryPluginMetadata(PersistentCachingPluginResolutionServiceClient.java:67)
+	at org.gradle.plugin.use.resolve.service.internal.InMemoryCachingPluginResolutionServiceClient$1.create(InMemoryCachingPluginResolutionServiceClient.java:47)
+	at org.gradle.plugin.use.resolve.service.internal.InMemoryCachingPluginResolutionServiceClient$1.create(InMemoryCachingPluginResolutionServiceClient.java:45)
+	at org.gradle.plugin.use.resolve.service.internal.InMemoryCachingPluginResolutionServiceClient.getResponse(InMemoryCachingPluginResolutionServiceClient.java:76)
+	at org.gradle.plugin.use.resolve.service.internal.InMemoryCachingPluginResolutionServiceClient.queryPluginMetadata(InMemoryCachingPluginResolutionServiceClient.java:42)
+	at org.gradle.plugin.use.resolve.service.internal.DeprecationListeningPluginResolutionServiceClient.queryPluginMetadata(DeprecationListeningPluginResolutionServiceClient.java:48)
+	at org.gradle.plugin.use.resolve.service.internal.PluginResolutionServiceResolver.resolve(PluginResolutionServiceResolver.java:84)
+	at org.gradle.plugin.use.resolve.internal.CompositePluginResolver.resolve(CompositePluginResolver.java:33)
+	at org.gradle.plugin.use.resolve.internal.NotNonCorePluginOnClasspathCheckPluginResolver.resolve(NotNonCorePluginOnClasspathCheckPluginResolver.java:42)
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator.resolveToFoundResult(DefaultPluginRequestApplicator.java:182)
+	... 51 more
+Root exception:
+org.eclipse.core.runtime.CoreException: Timeout waiting to lock Plugin Resolution Cache (/Users/raghavan/.gradle/caches/2.3/plugin-resolution). It is currently in use by another Gradle instance.
+Owner PID: 68895
+Our PID: 70663
+Owner Operation: queryPluginMetadata - read
+Our operation: queryPluginMetadata - read
+Lock file: /Users/raghavan/.gradle/caches/2.3/plugin-resolution/cache.properties.lock
+	at org.springsource.ide.eclipse.gradle.core.util.ExceptionUtil.coreException(ExceptionUtil.java:40)
+	at org.springsource.ide.eclipse.gradle.core.util.ExceptionUtil.coreException(ExceptionUtil.java:51)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.BuildResult.get(BuildResult.java:85)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.GradleProjectModelManager.getModelInternal(GradleProjectModelManager.java:145)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.GradleProjectModelManager.getModel(GradleProjectModelManager.java:100)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.GradleModelManager.getModel(GradleModelManager.java:77)
+	at org.springsource.ide.eclipse.gradle.core.GradleProject.getSkeletalGradleModel(GradleProject.java:670)
+	at org.springsource.ide.eclipse.gradle.ui.wizards.GradleImportWizardPageOne$11.doit(GradleImportWizardPageOne.java:516)
+	at org.springsource.ide.eclipse.gradle.core.util.GradleRunnable.run(GradleRunnable.java:104)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
+Caused by: org.gradle.tooling.BuildException: Could not fetch model of type 'HierarchicalEclipseProject' using Gradle distribution 'https://services.gradle.org/distributions/gradle-2.3-bin.zip'.
+	at org.gradle.tooling.internal.consumer.ResultHandlerAdapter.onFailure(ResultHandlerAdapter.java:57)
+	at org.gradle.tooling.internal.consumer.async.DefaultAsyncConsumerActionExecutor$1$1.run(DefaultAsyncConsumerActionExecutor.java:57)
+	at org.gradle.internal.concurrent.DefaultExecutorFactory$StoppableExecutorImpl$1.run(DefaultExecutorFactory.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+	at org.gradle.tooling.internal.consumer.BlockingResultHandler.getResult(BlockingResultHandler.java:46)
+	at org.gradle.tooling.internal.consumer.DefaultModelBuilder.get(DefaultModelBuilder.java:48)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.ToolinApiUtils.buildModel(ToolinApiUtils.java:103)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.DefaultModelBuilder.doBuild(DefaultModelBuilder.java:30)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.AbstractModelBuilder.buildModel(AbstractModelBuilder.java:40)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.HierarchicalProjectBuildStrategy.buildReferenceModel(HierarchicalProjectBuildStrategy.java:179)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.HierarchicalProjectBuildStrategy.buildModels(HierarchicalProjectBuildStrategy.java:65)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.GradleProjectModelManager.getModelInternal(GradleProjectModelManager.java:141)
+	... 6 more
+Caused by: org.gradle.internal.exceptions.LocationAwareException: Build file '/Users/raghavan/Consulting/VacayPlanner/vacay-planner/vacayplanner-app/build.gradle' line: 16
+Error resolving plugin [id: 'io.spring.dependency-management', version: '0.4.0.RELEASE']
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator.resolveToFoundResult(DefaultPluginRequestApplicator.java:184)
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator.access$000(DefaultPluginRequestApplicator.java:46)
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator$1.transform(DefaultPluginRequestApplicator.java:70)
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator$1.transform(DefaultPluginRequestApplicator.java:68)
+	at org.gradle.util.CollectionUtils.collect(CollectionUtils.java:151)
+	at org.gradle.util.CollectionUtils.collect(CollectionUtils.java:146)
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator.applyPlugins(DefaultPluginRequestApplicator.java:68)
+	at org.gradle.configuration.DefaultScriptPluginFactory$ScriptPluginImpl.apply(DefaultScriptPluginFactory.java:137)
+	at org.gradle.configuration.project.BuildScriptProcessor.execute(BuildScriptProcessor.java:39)
+	at org.gradle.configuration.project.BuildScriptProcessor.execute(BuildScriptProcessor.java:26)
+	at org.gradle.configuration.project.ConfigureActionsProjectEvaluator.evaluate(ConfigureActionsProjectEvaluator.java:34)
+	at org.gradle.configuration.project.LifecycleProjectEvaluator.evaluate(LifecycleProjectEvaluator.java:59)
+	at org.gradle.api.internal.project.AbstractProject.evaluate(AbstractProject.java:492)
+	at org.gradle.api.internal.project.AbstractProject.evaluate(AbstractProject.java:86)
+	at org.gradle.execution.TaskPathProjectEvaluator.configureHierarchy(TaskPathProjectEvaluator.java:42)
+	at org.gradle.configuration.DefaultBuildConfigurer.configure(DefaultBuildConfigurer.java:35)
+	at org.gradle.initialization.DefaultGradleLauncher.doBuildStages(DefaultGradleLauncher.java:129)
+	at org.gradle.initialization.DefaultGradleLauncher.doBuild(DefaultGradleLauncher.java:106)
+	at org.gradle.initialization.DefaultGradleLauncher.getBuildAnalysis(DefaultGradleLauncher.java:97)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter$DefaultBuildController.configure(InProcessBuildActionExecuter.java:84)
+	at org.gradle.tooling.internal.provider.BuildModelAction.run(BuildModelAction.java:45)
+	at org.gradle.tooling.internal.provider.BuildModelAction.run(BuildModelAction.java:30)
+	at org.gradle.tooling.internal.provider.ConfiguringBuildAction.run(ConfiguringBuildAction.java:119)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:36)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:26)
+	at org.gradle.launcher.daemon.server.exec.ExecuteBuild.doBuild(ExecuteBuild.java:48)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.WatchForDisconnection.execute(WatchForDisconnection.java:37)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.ResetDeprecationLogger.execute(ResetDeprecationLogger.java:26)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.RequestStopIfSingleUsedDaemon.execute(RequestStopIfSingleUsedDaemon.java:34)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.call(ForwardClientInput.java:74)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.call(ForwardClientInput.java:72)
+	at org.gradle.util.Swapper.swap(Swapper.java:38)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput.execute(ForwardClientInput.java:72)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.health.DaemonHealthTracker.execute(DaemonHealthTracker.java:47)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.LogToClient.doBuild(LogToClient.java:60)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment.doBuild(EstablishBuildEnvironment.java:71)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.health.HintGCAfterBuild.execute(HintGCAfterBuild.java:41)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy$1.run(StartBuildOrRespondWithBusy.java:50)
+	at org.gradle.launcher.daemon.server.DaemonStateCoordinator$1.run(DaemonStateCoordinator.java:246)
+	at org.gradle.internal.concurrent.DefaultExecutorFactory$StoppableExecutorImpl$1.run(DefaultExecutorFactory.java:64)
+Caused by: org.gradle.api.GradleException: Error resolving plugin [id: 'io.spring.dependency-management', version: '0.4.0.RELEASE']
+	... 52 more
+Caused by: org.gradle.cache.internal.LockTimeoutException: Timeout waiting to lock Plugin Resolution Cache (/Users/raghavan/.gradle/caches/2.3/plugin-resolution). It is currently in use by another Gradle instance.
+Owner PID: 68895
+Our PID: 70663
+Owner Operation: queryPluginMetadata - read
+Our operation: queryPluginMetadata - read
+Lock file: /Users/raghavan/.gradle/caches/2.3/plugin-resolution/cache.properties.lock
+	at org.gradle.cache.internal.DefaultFileLockManager$DefaultFileLock.lock(DefaultFileLockManager.java:258)
+	at org.gradle.cache.internal.DefaultFileLockManager$DefaultFileLock.<init>(DefaultFileLockManager.java:127)
+	at org.gradle.cache.internal.DefaultFileLockManager.lock(DefaultFileLockManager.java:80)
+	at org.gradle.cache.internal.DefaultCacheAccess.onStartWork(DefaultCacheAccess.java:349)
+	at org.gradle.cache.internal.DefaultCacheAccess.useCache(DefaultCacheAccess.java:187)
+	at org.gradle.cache.internal.DefaultPersistentDirectoryStore.useCache(DefaultPersistentDirectoryStore.java:102)
+	at org.gradle.cache.internal.DefaultCacheFactory$ReferenceTrackingCache.useCache(DefaultCacheFactory.java:183)
+	at org.gradle.plugin.use.resolve.service.internal.PersistentCachingPluginResolutionServiceClient.maybeFetch(PersistentCachingPluginResolutionServiceClient.java:95)
+	at org.gradle.plugin.use.resolve.service.internal.PersistentCachingPluginResolutionServiceClient.maybeFetch(PersistentCachingPluginResolutionServiceClient.java:91)
+	at org.gradle.plugin.use.resolve.service.internal.PersistentCachingPluginResolutionServiceClient.queryPluginMetadata(PersistentCachingPluginResolutionServiceClient.java:67)
+	at org.gradle.plugin.use.resolve.service.internal.InMemoryCachingPluginResolutionServiceClient$1.create(InMemoryCachingPluginResolutionServiceClient.java:47)
+	at org.gradle.plugin.use.resolve.service.internal.InMemoryCachingPluginResolutionServiceClient$1.create(InMemoryCachingPluginResolutionServiceClient.java:45)
+	at org.gradle.plugin.use.resolve.service.internal.InMemoryCachingPluginResolutionServiceClient.getResponse(InMemoryCachingPluginResolutionServiceClient.java:76)
+	at org.gradle.plugin.use.resolve.service.internal.InMemoryCachingPluginResolutionServiceClient.queryPluginMetadata(InMemoryCachingPluginResolutionServiceClient.java:42)
+	at org.gradle.plugin.use.resolve.service.internal.DeprecationListeningPluginResolutionServiceClient.queryPluginMetadata(DeprecationListeningPluginResolutionServiceClient.java:48)
+	at org.gradle.plugin.use.resolve.service.internal.PluginResolutionServiceResolver.resolve(PluginResolutionServiceResolver.java:84)
+	at org.gradle.plugin.use.resolve.internal.CompositePluginResolver.resolve(CompositePluginResolver.java:33)
+	at org.gradle.plugin.use.resolve.internal.NotNonCorePluginOnClasspathCheckPluginResolver.resolve(NotNonCorePluginOnClasspathCheckPluginResolver.java:42)
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator.resolveToFoundResult(DefaultPluginRequestApplicator.java:182)
+	... 51 more
+
+!ENTRY org.springsource.ide.eclipse.gradle.core 4 0 2015-05-22 20:32:12.767
+!MESSAGE Timeout waiting to lock Plugin Resolution Cache (/Users/raghavan/.gradle/caches/2.3/plugin-resolution). It is currently in use by another Gradle instance.
+Owner PID: 68895
+Our PID: 70663
+Owner Operation: queryPluginMetadata - read
+Our operation: queryPluginMetadata - read
+Lock file: /Users/raghavan/.gradle/caches/2.3/plugin-resolution/cache.properties.lock
+!STACK 0
+java.lang.reflect.InvocationTargetException
+	at org.springsource.ide.eclipse.gradle.core.util.GradleRunnable.run(GradleRunnable.java:112)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
+Caused by: org.eclipse.core.runtime.CoreException: Timeout waiting to lock Plugin Resolution Cache (/Users/raghavan/.gradle/caches/2.3/plugin-resolution). It is currently in use by another Gradle instance.
+Owner PID: 68895
+Our PID: 70663
+Owner Operation: queryPluginMetadata - read
+Our operation: queryPluginMetadata - read
+Lock file: /Users/raghavan/.gradle/caches/2.3/plugin-resolution/cache.properties.lock
+	at org.springsource.ide.eclipse.gradle.core.util.ExceptionUtil.coreException(ExceptionUtil.java:40)
+	at org.springsource.ide.eclipse.gradle.core.util.ExceptionUtil.coreException(ExceptionUtil.java:51)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.BuildResult.get(BuildResult.java:85)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.GradleProjectModelManager.getModelInternal(GradleProjectModelManager.java:145)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.GradleProjectModelManager.getModel(GradleProjectModelManager.java:100)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.GradleModelManager.getModel(GradleModelManager.java:77)
+	at org.springsource.ide.eclipse.gradle.core.GradleProject.getSkeletalGradleModel(GradleProject.java:670)
+	at org.springsource.ide.eclipse.gradle.ui.wizards.GradleImportWizardPageOne$11.doit(GradleImportWizardPageOne.java:516)
+	at org.springsource.ide.eclipse.gradle.core.util.GradleRunnable.run(GradleRunnable.java:104)
+	... 1 more
+Caused by: org.gradle.tooling.BuildException: Could not fetch model of type 'HierarchicalEclipseProject' using Gradle distribution 'https://services.gradle.org/distributions/gradle-2.3-bin.zip'.
+	at org.gradle.tooling.internal.consumer.ResultHandlerAdapter.onFailure(ResultHandlerAdapter.java:57)
+	at org.gradle.tooling.internal.consumer.async.DefaultAsyncConsumerActionExecutor$1$1.run(DefaultAsyncConsumerActionExecutor.java:57)
+	at org.gradle.internal.concurrent.DefaultExecutorFactory$StoppableExecutorImpl$1.run(DefaultExecutorFactory.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+	at org.gradle.tooling.internal.consumer.BlockingResultHandler.getResult(BlockingResultHandler.java:46)
+	at org.gradle.tooling.internal.consumer.DefaultModelBuilder.get(DefaultModelBuilder.java:48)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.ToolinApiUtils.buildModel(ToolinApiUtils.java:103)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.DefaultModelBuilder.doBuild(DefaultModelBuilder.java:30)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.AbstractModelBuilder.buildModel(AbstractModelBuilder.java:40)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.HierarchicalProjectBuildStrategy.buildReferenceModel(HierarchicalProjectBuildStrategy.java:179)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.HierarchicalProjectBuildStrategy.buildModels(HierarchicalProjectBuildStrategy.java:65)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.GradleProjectModelManager.getModelInternal(GradleProjectModelManager.java:141)
+	... 6 more
+Caused by: org.gradle.internal.exceptions.LocationAwareException: Build file '/Users/raghavan/Consulting/VacayPlanner/vacay-planner/vacayplanner-app/build.gradle' line: 16
+Error resolving plugin [id: 'io.spring.dependency-management', version: '0.4.0.RELEASE']
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator.resolveToFoundResult(DefaultPluginRequestApplicator.java:184)
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator.access$000(DefaultPluginRequestApplicator.java:46)
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator$1.transform(DefaultPluginRequestApplicator.java:70)
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator$1.transform(DefaultPluginRequestApplicator.java:68)
+	at org.gradle.util.CollectionUtils.collect(CollectionUtils.java:151)
+	at org.gradle.util.CollectionUtils.collect(CollectionUtils.java:146)
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator.applyPlugins(DefaultPluginRequestApplicator.java:68)
+	at org.gradle.configuration.DefaultScriptPluginFactory$ScriptPluginImpl.apply(DefaultScriptPluginFactory.java:137)
+	at org.gradle.configuration.project.BuildScriptProcessor.execute(BuildScriptProcessor.java:39)
+	at org.gradle.configuration.project.BuildScriptProcessor.execute(BuildScriptProcessor.java:26)
+	at org.gradle.configuration.project.ConfigureActionsProjectEvaluator.evaluate(ConfigureActionsProjectEvaluator.java:34)
+	at org.gradle.configuration.project.LifecycleProjectEvaluator.evaluate(LifecycleProjectEvaluator.java:59)
+	at org.gradle.api.internal.project.AbstractProject.evaluate(AbstractProject.java:492)
+	at org.gradle.api.internal.project.AbstractProject.evaluate(AbstractProject.java:86)
+	at org.gradle.execution.TaskPathProjectEvaluator.configureHierarchy(TaskPathProjectEvaluator.java:42)
+	at org.gradle.configuration.DefaultBuildConfigurer.configure(DefaultBuildConfigurer.java:35)
+	at org.gradle.initialization.DefaultGradleLauncher.doBuildStages(DefaultGradleLauncher.java:129)
+	at org.gradle.initialization.DefaultGradleLauncher.doBuild(DefaultGradleLauncher.java:106)
+	at org.gradle.initialization.DefaultGradleLauncher.getBuildAnalysis(DefaultGradleLauncher.java:97)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter$DefaultBuildController.configure(InProcessBuildActionExecuter.java:84)
+	at org.gradle.tooling.internal.provider.BuildModelAction.run(BuildModelAction.java:45)
+	at org.gradle.tooling.internal.provider.BuildModelAction.run(BuildModelAction.java:30)
+	at org.gradle.tooling.internal.provider.ConfiguringBuildAction.run(ConfiguringBuildAction.java:119)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:36)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:26)
+	at org.gradle.launcher.daemon.server.exec.ExecuteBuild.doBuild(ExecuteBuild.java:48)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.WatchForDisconnection.execute(WatchForDisconnection.java:37)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.ResetDeprecationLogger.execute(ResetDeprecationLogger.java:26)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.RequestStopIfSingleUsedDaemon.execute(RequestStopIfSingleUsedDaemon.java:34)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.call(ForwardClientInput.java:74)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.call(ForwardClientInput.java:72)
+	at org.gradle.util.Swapper.swap(Swapper.java:38)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput.execute(ForwardClientInput.java:72)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.health.DaemonHealthTracker.execute(DaemonHealthTracker.java:47)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.LogToClient.doBuild(LogToClient.java:60)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment.doBuild(EstablishBuildEnvironment.java:71)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.health.HintGCAfterBuild.execute(HintGCAfterBuild.java:41)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy$1.run(StartBuildOrRespondWithBusy.java:50)
+	at org.gradle.launcher.daemon.server.DaemonStateCoordinator$1.run(DaemonStateCoordinator.java:246)
+	at org.gradle.internal.concurrent.DefaultExecutorFactory$StoppableExecutorImpl$1.run(DefaultExecutorFactory.java:64)
+Caused by: org.gradle.api.GradleException: Error resolving plugin [id: 'io.spring.dependency-management', version: '0.4.0.RELEASE']
+	... 52 more
+Caused by: org.gradle.cache.internal.LockTimeoutException: Timeout waiting to lock Plugin Resolution Cache (/Users/raghavan/.gradle/caches/2.3/plugin-resolution). It is currently in use by another Gradle instance.
+Owner PID: 68895
+Our PID: 70663
+Owner Operation: queryPluginMetadata - read
+Our operation: queryPluginMetadata - read
+Lock file: /Users/raghavan/.gradle/caches/2.3/plugin-resolution/cache.properties.lock
+	at org.gradle.cache.internal.DefaultFileLockManager$DefaultFileLock.lock(DefaultFileLockManager.java:258)
+	at org.gradle.cache.internal.DefaultFileLockManager$DefaultFileLock.<init>(DefaultFileLockManager.java:127)
+	at org.gradle.cache.internal.DefaultFileLockManager.lock(DefaultFileLockManager.java:80)
+	at org.gradle.cache.internal.DefaultCacheAccess.onStartWork(DefaultCacheAccess.java:349)
+	at org.gradle.cache.internal.DefaultCacheAccess.useCache(DefaultCacheAccess.java:187)
+	at org.gradle.cache.internal.DefaultPersistentDirectoryStore.useCache(DefaultPersistentDirectoryStore.java:102)
+	at org.gradle.cache.internal.DefaultCacheFactory$ReferenceTrackingCache.useCache(DefaultCacheFactory.java:183)
+	at org.gradle.plugin.use.resolve.service.internal.PersistentCachingPluginResolutionServiceClient.maybeFetch(PersistentCachingPluginResolutionServiceClient.java:95)
+	at org.gradle.plugin.use.resolve.service.internal.PersistentCachingPluginResolutionServiceClient.maybeFetch(PersistentCachingPluginResolutionServiceClient.java:91)
+	at org.gradle.plugin.use.resolve.service.internal.PersistentCachingPluginResolutionServiceClient.queryPluginMetadata(PersistentCachingPluginResolutionServiceClient.java:67)
+	at org.gradle.plugin.use.resolve.service.internal.InMemoryCachingPluginResolutionServiceClient$1.create(InMemoryCachingPluginResolutionServiceClient.java:47)
+	at org.gradle.plugin.use.resolve.service.internal.InMemoryCachingPluginResolutionServiceClient$1.create(InMemoryCachingPluginResolutionServiceClient.java:45)
+	at org.gradle.plugin.use.resolve.service.internal.InMemoryCachingPluginResolutionServiceClient.getResponse(InMemoryCachingPluginResolutionServiceClient.java:76)
+	at org.gradle.plugin.use.resolve.service.internal.InMemoryCachingPluginResolutionServiceClient.queryPluginMetadata(InMemoryCachingPluginResolutionServiceClient.java:42)
+	at org.gradle.plugin.use.resolve.service.internal.DeprecationListeningPluginResolutionServiceClient.queryPluginMetadata(DeprecationListeningPluginResolutionServiceClient.java:48)
+	at org.gradle.plugin.use.resolve.service.internal.PluginResolutionServiceResolver.resolve(PluginResolutionServiceResolver.java:84)
+	at org.gradle.plugin.use.resolve.internal.CompositePluginResolver.resolve(CompositePluginResolver.java:33)
+	at org.gradle.plugin.use.resolve.internal.NotNonCorePluginOnClasspathCheckPluginResolver.resolve(NotNonCorePluginOnClasspathCheckPluginResolver.java:42)
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator.resolveToFoundResult(DefaultPluginRequestApplicator.java:182)
+	... 51 more
+Root exception:
+org.eclipse.core.runtime.CoreException: Timeout waiting to lock Plugin Resolution Cache (/Users/raghavan/.gradle/caches/2.3/plugin-resolution). It is currently in use by another Gradle instance.
+Owner PID: 68895
+Our PID: 70663
+Owner Operation: queryPluginMetadata - read
+Our operation: queryPluginMetadata - read
+Lock file: /Users/raghavan/.gradle/caches/2.3/plugin-resolution/cache.properties.lock
+	at org.springsource.ide.eclipse.gradle.core.util.ExceptionUtil.coreException(ExceptionUtil.java:40)
+	at org.springsource.ide.eclipse.gradle.core.util.ExceptionUtil.coreException(ExceptionUtil.java:51)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.BuildResult.get(BuildResult.java:85)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.GradleProjectModelManager.getModelInternal(GradleProjectModelManager.java:145)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.GradleProjectModelManager.getModel(GradleProjectModelManager.java:100)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.GradleModelManager.getModel(GradleModelManager.java:77)
+	at org.springsource.ide.eclipse.gradle.core.GradleProject.getSkeletalGradleModel(GradleProject.java:670)
+	at org.springsource.ide.eclipse.gradle.ui.wizards.GradleImportWizardPageOne$11.doit(GradleImportWizardPageOne.java:516)
+	at org.springsource.ide.eclipse.gradle.core.util.GradleRunnable.run(GradleRunnable.java:104)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
+Caused by: org.gradle.tooling.BuildException: Could not fetch model of type 'HierarchicalEclipseProject' using Gradle distribution 'https://services.gradle.org/distributions/gradle-2.3-bin.zip'.
+	at org.gradle.tooling.internal.consumer.ResultHandlerAdapter.onFailure(ResultHandlerAdapter.java:57)
+	at org.gradle.tooling.internal.consumer.async.DefaultAsyncConsumerActionExecutor$1$1.run(DefaultAsyncConsumerActionExecutor.java:57)
+	at org.gradle.internal.concurrent.DefaultExecutorFactory$StoppableExecutorImpl$1.run(DefaultExecutorFactory.java:64)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+	at org.gradle.tooling.internal.consumer.BlockingResultHandler.getResult(BlockingResultHandler.java:46)
+	at org.gradle.tooling.internal.consumer.DefaultModelBuilder.get(DefaultModelBuilder.java:48)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.ToolinApiUtils.buildModel(ToolinApiUtils.java:103)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.DefaultModelBuilder.doBuild(DefaultModelBuilder.java:30)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.AbstractModelBuilder.buildModel(AbstractModelBuilder.java:40)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.HierarchicalProjectBuildStrategy.buildReferenceModel(HierarchicalProjectBuildStrategy.java:179)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.HierarchicalProjectBuildStrategy.buildModels(HierarchicalProjectBuildStrategy.java:65)
+	at org.springsource.ide.eclipse.gradle.core.modelmanager.GradleProjectModelManager.getModelInternal(GradleProjectModelManager.java:141)
+	... 6 more
+Caused by: org.gradle.internal.exceptions.LocationAwareException: Build file '/Users/raghavan/Consulting/VacayPlanner/vacay-planner/vacayplanner-app/build.gradle' line: 16
+Error resolving plugin [id: 'io.spring.dependency-management', version: '0.4.0.RELEASE']
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator.resolveToFoundResult(DefaultPluginRequestApplicator.java:184)
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator.access$000(DefaultPluginRequestApplicator.java:46)
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator$1.transform(DefaultPluginRequestApplicator.java:70)
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator$1.transform(DefaultPluginRequestApplicator.java:68)
+	at org.gradle.util.CollectionUtils.collect(CollectionUtils.java:151)
+	at org.gradle.util.CollectionUtils.collect(CollectionUtils.java:146)
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator.applyPlugins(DefaultPluginRequestApplicator.java:68)
+	at org.gradle.configuration.DefaultScriptPluginFactory$ScriptPluginImpl.apply(DefaultScriptPluginFactory.java:137)
+	at org.gradle.configuration.project.BuildScriptProcessor.execute(BuildScriptProcessor.java:39)
+	at org.gradle.configuration.project.BuildScriptProcessor.execute(BuildScriptProcessor.java:26)
+	at org.gradle.configuration.project.ConfigureActionsProjectEvaluator.evaluate(ConfigureActionsProjectEvaluator.java:34)
+	at org.gradle.configuration.project.LifecycleProjectEvaluator.evaluate(LifecycleProjectEvaluator.java:59)
+	at org.gradle.api.internal.project.AbstractProject.evaluate(AbstractProject.java:492)
+	at org.gradle.api.internal.project.AbstractProject.evaluate(AbstractProject.java:86)
+	at org.gradle.execution.TaskPathProjectEvaluator.configureHierarchy(TaskPathProjectEvaluator.java:42)
+	at org.gradle.configuration.DefaultBuildConfigurer.configure(DefaultBuildConfigurer.java:35)
+	at org.gradle.initialization.DefaultGradleLauncher.doBuildStages(DefaultGradleLauncher.java:129)
+	at org.gradle.initialization.DefaultGradleLauncher.doBuild(DefaultGradleLauncher.java:106)
+	at org.gradle.initialization.DefaultGradleLauncher.getBuildAnalysis(DefaultGradleLauncher.java:97)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter$DefaultBuildController.configure(InProcessBuildActionExecuter.java:84)
+	at org.gradle.tooling.internal.provider.BuildModelAction.run(BuildModelAction.java:45)
+	at org.gradle.tooling.internal.provider.BuildModelAction.run(BuildModelAction.java:30)
+	at org.gradle.tooling.internal.provider.ConfiguringBuildAction.run(ConfiguringBuildAction.java:119)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:36)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:26)
+	at org.gradle.launcher.daemon.server.exec.ExecuteBuild.doBuild(ExecuteBuild.java:48)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.WatchForDisconnection.execute(WatchForDisconnection.java:37)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.ResetDeprecationLogger.execute(ResetDeprecationLogger.java:26)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.RequestStopIfSingleUsedDaemon.execute(RequestStopIfSingleUsedDaemon.java:34)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.call(ForwardClientInput.java:74)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.call(ForwardClientInput.java:72)
+	at org.gradle.util.Swapper.swap(Swapper.java:38)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput.execute(ForwardClientInput.java:72)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.health.DaemonHealthTracker.execute(DaemonHealthTracker.java:47)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.LogToClient.doBuild(LogToClient.java:60)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment.doBuild(EstablishBuildEnvironment.java:71)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.health.HintGCAfterBuild.execute(HintGCAfterBuild.java:41)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy$1.run(StartBuildOrRespondWithBusy.java:50)
+	at org.gradle.launcher.daemon.server.DaemonStateCoordinator$1.run(DaemonStateCoordinator.java:246)
+	at org.gradle.internal.concurrent.DefaultExecutorFactory$StoppableExecutorImpl$1.run(DefaultExecutorFactory.java:64)
+Caused by: org.gradle.api.GradleException: Error resolving plugin [id: 'io.spring.dependency-management', version: '0.4.0.RELEASE']
+	... 52 more
+Caused by: org.gradle.cache.internal.LockTimeoutException: Timeout waiting to lock Plugin Resolution Cache (/Users/raghavan/.gradle/caches/2.3/plugin-resolution). It is currently in use by another Gradle instance.
+Owner PID: 68895
+Our PID: 70663
+Owner Operation: queryPluginMetadata - read
+Our operation: queryPluginMetadata - read
+Lock file: /Users/raghavan/.gradle/caches/2.3/plugin-resolution/cache.properties.lock
+	at org.gradle.cache.internal.DefaultFileLockManager$DefaultFileLock.lock(DefaultFileLockManager.java:258)
+	at org.gradle.cache.internal.DefaultFileLockManager$DefaultFileLock.<init>(DefaultFileLockManager.java:127)
+	at org.gradle.cache.internal.DefaultFileLockManager.lock(DefaultFileLockManager.java:80)
+	at org.gradle.cache.internal.DefaultCacheAccess.onStartWork(DefaultCacheAccess.java:349)
+	at org.gradle.cache.internal.DefaultCacheAccess.useCache(DefaultCacheAccess.java:187)
+	at org.gradle.cache.internal.DefaultPersistentDirectoryStore.useCache(DefaultPersistentDirectoryStore.java:102)
+	at org.gradle.cache.internal.DefaultCacheFactory$ReferenceTrackingCache.useCache(DefaultCacheFactory.java:183)
+	at org.gradle.plugin.use.resolve.service.internal.PersistentCachingPluginResolutionServiceClient.maybeFetch(PersistentCachingPluginResolutionServiceClient.java:95)
+	at org.gradle.plugin.use.resolve.service.internal.PersistentCachingPluginResolutionServiceClient.maybeFetch(PersistentCachingPluginResolutionServiceClient.java:91)
+	at org.gradle.plugin.use.resolve.service.internal.PersistentCachingPluginResolutionServiceClient.queryPluginMetadata(PersistentCachingPluginResolutionServiceClient.java:67)
+	at org.gradle.plugin.use.resolve.service.internal.InMemoryCachingPluginResolutionServiceClient$1.create(InMemoryCachingPluginResolutionServiceClient.java:47)
+	at org.gradle.plugin.use.resolve.service.internal.InMemoryCachingPluginResolutionServiceClient$1.create(InMemoryCachingPluginResolutionServiceClient.java:45)
+	at org.gradle.plugin.use.resolve.service.internal.InMemoryCachingPluginResolutionServiceClient.getResponse(InMemoryCachingPluginResolutionServiceClient.java:76)
+	at org.gradle.plugin.use.resolve.service.internal.InMemoryCachingPluginResolutionServiceClient.queryPluginMetadata(InMemoryCachingPluginResolutionServiceClient.java:42)
+	at org.gradle.plugin.use.resolve.service.internal.DeprecationListeningPluginResolutionServiceClient.queryPluginMetadata(DeprecationListeningPluginResolutionServiceClient.java:48)
+	at org.gradle.plugin.use.resolve.service.internal.PluginResolutionServiceResolver.resolve(PluginResolutionServiceResolver.java:84)
+	at org.gradle.plugin.use.resolve.internal.CompositePluginResolver.resolve(CompositePluginResolver.java:33)
+	at org.gradle.plugin.use.resolve.internal.NotNonCorePluginOnClasspathCheckPluginResolver.resolve(NotNonCorePluginOnClasspathCheckPluginResolver.java:42)
+	at org.gradle.plugin.use.internal.DefaultPluginRequestApplicator.resolveToFoundResult(DefaultPluginRequestApplicator.java:182)
+	... 51 more
+
+!ENTRY org.eclipse.ui 4 4 2015-05-22 20:38:44.670
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.backwardHistory: {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$1@276bba19)} vs {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@57f83dc7)}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-22 20:38:44.671
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.backwardHistory: {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$1@276bba19)} vs {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@57f83dc7)}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-22 20:38:44.671
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.forwardHistory: {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$2@4f3b4b9e)} vs {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@696d28ee)}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-22 20:38:44.672
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.forwardHistory: {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$2@4f3b4b9e)} vs {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@696d28ee)}
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2015-05-22 23:40:44.012
+!MESSAGE Connection to https://spring.io/blog.atom failed on spring.io: unknown error. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: spring.io: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:907)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1302)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1255)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1171)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1105)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:44)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:259)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:159)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:131)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2015-05-22 23:40:44.073
+!MESSAGE Connection to http://dist.springsource.com/release/STS/doc/updates.xml failed on dist.springsource.com: unknown error. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: dist.springsource.com: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:907)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1302)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1255)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1171)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1105)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:44)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:259)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:159)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:131)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 11:12:52.184
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.backwardHistory: {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$1@3d4dcb30)} vs {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@57f83dc7)}
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-05-23 11:18:05.129
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10050 2015-05-23 11:18:05.129
+!MESSAGE Cannot complete the request.  See the error log for details.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10004 2015-05-23 11:18:05.129
+!MESSAGE "Groovy-Eclipse Feature" will be ignored because a newer version is already installed. 
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-05-23 11:18:05.131
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10050 2015-05-23 11:18:05.131
+!MESSAGE Cannot complete the request.  See the error log for details.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10004 2015-05-23 11:18:05.131
+!MESSAGE "Groovy-Eclipse Feature" will be ignored because a newer version is already installed. 
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 11:19:22.583
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.backwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@57f83dc7)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$1@592a8804)}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 11:19:22.583
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.backwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@57f83dc7)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$1@592a8804)}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 11:19:22.584
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.forwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@696d28ee)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$2@20a988c3)}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 11:19:22.584
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.forwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@696d28ee)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$2@20a988c3)}
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-05-23 11:20:52.495
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10050 2015-05-23 11:20:52.495
+!MESSAGE Cannot complete the request.  See the error log for details.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10004 2015-05-23 11:20:52.495
+!MESSAGE "Groovy-Eclipse Feature" will be ignored because a newer version is already installed. 
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-05-23 11:20:52.506
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10050 2015-05-23 11:20:52.506
+!MESSAGE Cannot complete the request.  See the error log for details.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10004 2015-05-23 11:20:52.506
+!MESSAGE "Groovy-Eclipse Feature" will be ignored because a newer version is already installed. 
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 11:23:30.548
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.backwardHistory: {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$1@5c12d125)} vs {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@57f83dc7)}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 11:23:30.549
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.backwardHistory: {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$1@5c12d125)} vs {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@57f83dc7)}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 11:23:30.549
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.forwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@696d28ee)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$2@2bfe85b9)}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 11:23:30.549
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.forwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@696d28ee)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$2@2bfe85b9)}
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-05-23 11:24:31.160
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 1 10001 2015-05-23 11:24:31.160
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 1 10003 2015-05-23 11:24:31.160
+!MESSAGE "Groovy-Eclipse Feature" is already installed, so an update will be performed instead.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10054 2015-05-23 11:24:31.160
+!MESSAGE Cannot complete the install because of a conflicting dependency.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.160
+!MESSAGE Software being installed: Groovy-Eclipse Feature 2.9.2.xx-201503272001-e43 (org.codehaus.groovy.eclipse.feature.feature.group 2.9.2.xx-201503272001-e43)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.160
+!MESSAGE Software currently installed: Groovy/Grails Tool Suite 3.6.4.201503100339-RELEASE-e44 (org.springsource.ggts.ide 3.6.4.201503100339-RELEASE-e44)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.160
+!MESSAGE Only one of the following can be installed at once: 
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.160
+!MESSAGE Object Teams Development Tooling Core 3.10.2.v_OTDT_r232_201502101148 (org.eclipse.jdt.core 3.10.2.v_OTDT_r232_201502101148)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.160
+!MESSAGE Java Development Tools Core 3.8.3.xx-201411061336-e42-RELEASE (org.eclipse.jdt.core 3.8.3.xx-201411061336-e42-RELEASE)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.160
+!MESSAGE Object Teams Development Tooling Core 3.10.0.v_OTDT_r230_201406101339 (org.eclipse.jdt.core 3.10.0.v_OTDT_r230_201406101339)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.160
+!MESSAGE Java Development Tools Core 3.8.3.xx-201406301609-e42 (org.eclipse.jdt.core 3.8.3.xx-201406301609-e42)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.160
+!MESSAGE Java Development Tools Core 3.10.0.xx-201502281941-e44 (org.eclipse.jdt.core 3.10.0.xx-201502281941-e44)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.160
+!MESSAGE Java Development Tools Core 3.9.2.xx-201503272001-e43 (org.eclipse.jdt.core 3.9.2.xx-201503272001-e43)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.160
+!MESSAGE Java Development Tools Core 3.10.0.v20140902-0626 (org.eclipse.jdt.core 3.10.0.v20140902-0626)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.160
+!MESSAGE Java Development Tools Core 3.9.50.xx-201502282108-e43j8 (org.eclipse.jdt.core 3.9.50.xx-201502282108-e43j8)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.160
+!MESSAGE Java Development Tools Core 3.9.50.v20140317-1741 (org.eclipse.jdt.core 3.9.50.v20140317-1741)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.160
+!MESSAGE Java Development Tools Core 3.10.2.v20150120-1634 (org.eclipse.jdt.core 3.10.2.v20150120-1634)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.160
+!MESSAGE Java Development Tools Core 3.7.3.xx-201411061404-e37-RELEASE (org.eclipse.jdt.core 3.7.3.xx-201411061404-e37-RELEASE)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.160
+!MESSAGE Java Development Tools Core 3.7.3.xx-201406301607-e37 (org.eclipse.jdt.core 3.7.3.xx-201406301607-e37)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.160
+!MESSAGE Java Development Tools Core 3.10.0.v20140604-1726 (org.eclipse.jdt.core 3.10.0.v20140604-1726)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.160
+!MESSAGE Object Teams Development Tooling Core 3.10.0.v_OTDT_r231_201409160728 (org.eclipse.jdt.core 3.10.0.v_OTDT_r231_201409160728)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.160
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.160
+!MESSAGE From: Groovy-Eclipse Compilerless Feature 2.9.2.xx-201503272001-e43 (org.codehaus.groovy.compilerless.feature.feature.group 2.9.2.xx-201503272001-e43)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.160
+!MESSAGE To: org.codehaus.groovy.headless.feature.feature.group [2.9.2.xx-201503272001-e43]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.160
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.160
+!MESSAGE From: Groovy-Eclipse Compilerless Feature 2.9.2.xx-201503272001-e43 (org.codehaus.groovy.compilerless.feature.feature.group 2.9.2.xx-201503272001-e43)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE To: org.eclipse.jdt.ui 0.0.0
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.161
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE From: Groovy-Eclipse Feature 2.9.2.xx-201503272001-e43 (org.codehaus.groovy.eclipse.feature.feature.group 2.9.2.xx-201503272001-e43)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE To: org.codehaus.groovy.compilerless.feature.feature.group [2.9.2.xx-201503272001-e43]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.161
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE From: Groovy-Eclipse Headless Feature 2.9.2.xx-201503272001-e43 (org.codehaus.groovy.headless.feature.feature.group 2.9.2.xx-201503272001-e43)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE To: org.codehaus.groovy.jdt.patch.feature.group [2.9.2.xx-201503272001-e43]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.161
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE From: Java Development Tools UI 3.10.0.v20140604-1403 (org.eclipse.jdt.ui 3.10.0.v20140604-1403)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE To: bundle org.eclipse.jdt.core [3.10.0,4.0.0)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.161
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE From: Java Development Tools UI 3.10.1.v20140817-1500 (org.eclipse.jdt.ui 3.10.1.v20140817-1500)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE To: bundle org.eclipse.jdt.core [3.10.0,4.0.0)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.161
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE From: Java Development Tools UI 3.10.2.v20141014-1419 (org.eclipse.jdt.ui 3.10.2.v20141014-1419)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE To: bundle org.eclipse.jdt.core [3.10.0,4.0.0)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.161
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE From: Java Development Tools UI 3.9.50.v20140317-1811 (org.eclipse.jdt.ui 3.9.50.v20140317-1811)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE To: bundle org.eclipse.jdt.core [3.9.50,4.0.0)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.161
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE From: Groovy/Grails Tool Suite 3.6.4.201503100339-RELEASE-e44 (org.springsource.ggts.ide 3.6.4.201503100339-RELEASE-e44)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE To: org.springsource.ggts.package.feature.group [3.6.4.201503100339-RELEASE-e44]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.161
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE From: Groovy/Grails Tool Suite Package 3.6.4.201503100339-RELEASE-e44 (org.springsource.ggts.package.feature.group 3.6.4.201503100339-RELEASE-e44)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE To: org.eclipse.jdt.feature.group 0.0.0
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.161
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE From Patch: org.codehaus.groovy.jdt.patch.feature.group 2.9.2.xx-201503272001-e43 Eclipse Java Development Tools 3.10.0.v20140606-1536 (org.eclipse.jdt.feature.group 3.10.0.v20140606-1536)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE To: org.eclipse.jdt.core [3.9.2.xx-201503272001-e43]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.161
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE From Patch: org.codehaus.groovy.jdt.patch.feature.group 2.9.2.xx-201503272001-e43 Eclipse Java Development Tools 3.10.0.v20140925-0400 (org.eclipse.jdt.feature.group 3.10.0.v20140925-0400)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE To: org.eclipse.jdt.core [3.9.2.xx-201503272001-e43]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.161
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE From Patch: org.codehaus.groovy.jdt.patch.feature.group 2.9.2.xx-201503272001-e43 Eclipse Java Development Tools 3.10.1.v20150204-1700 (org.eclipse.jdt.feature.group 3.10.1.v20150204-1700)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.161
+!MESSAGE To: org.eclipse.jdt.core [3.9.2.xx-201503272001-e43]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-05-23 11:24:31.170
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 1 10001 2015-05-23 11:24:31.170
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 1 10003 2015-05-23 11:24:31.170
+!MESSAGE "Groovy-Eclipse Feature" is already installed, so an update will be performed instead.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10054 2015-05-23 11:24:31.170
+!MESSAGE Cannot complete the install because of a conflicting dependency.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.170
+!MESSAGE Software being installed: Groovy-Eclipse Feature 2.9.2.xx-201503272001-e43 (org.codehaus.groovy.eclipse.feature.feature.group 2.9.2.xx-201503272001-e43)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.170
+!MESSAGE Software currently installed: Groovy/Grails Tool Suite 3.6.4.201503100339-RELEASE-e44 (org.springsource.ggts.ide 3.6.4.201503100339-RELEASE-e44)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.170
+!MESSAGE Only one of the following can be installed at once: 
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE Object Teams Development Tooling Core 3.10.2.v_OTDT_r232_201502101148 (org.eclipse.jdt.core 3.10.2.v_OTDT_r232_201502101148)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE Java Development Tools Core 3.8.3.xx-201411061336-e42-RELEASE (org.eclipse.jdt.core 3.8.3.xx-201411061336-e42-RELEASE)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE Object Teams Development Tooling Core 3.10.0.v_OTDT_r230_201406101339 (org.eclipse.jdt.core 3.10.0.v_OTDT_r230_201406101339)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE Java Development Tools Core 3.8.3.xx-201406301609-e42 (org.eclipse.jdt.core 3.8.3.xx-201406301609-e42)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE Java Development Tools Core 3.10.0.xx-201502281941-e44 (org.eclipse.jdt.core 3.10.0.xx-201502281941-e44)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE Java Development Tools Core 3.9.2.xx-201503272001-e43 (org.eclipse.jdt.core 3.9.2.xx-201503272001-e43)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE Java Development Tools Core 3.10.0.v20140902-0626 (org.eclipse.jdt.core 3.10.0.v20140902-0626)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE Java Development Tools Core 3.9.50.xx-201502282108-e43j8 (org.eclipse.jdt.core 3.9.50.xx-201502282108-e43j8)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE Java Development Tools Core 3.9.50.v20140317-1741 (org.eclipse.jdt.core 3.9.50.v20140317-1741)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE Java Development Tools Core 3.10.2.v20150120-1634 (org.eclipse.jdt.core 3.10.2.v20150120-1634)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE Java Development Tools Core 3.7.3.xx-201411061404-e37-RELEASE (org.eclipse.jdt.core 3.7.3.xx-201411061404-e37-RELEASE)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE Java Development Tools Core 3.7.3.xx-201406301607-e37 (org.eclipse.jdt.core 3.7.3.xx-201406301607-e37)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE Java Development Tools Core 3.10.0.v20140604-1726 (org.eclipse.jdt.core 3.10.0.v20140604-1726)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE Object Teams Development Tooling Core 3.10.0.v_OTDT_r231_201409160728 (org.eclipse.jdt.core 3.10.0.v_OTDT_r231_201409160728)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.171
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE From: Groovy-Eclipse Compilerless Feature 2.9.2.xx-201503272001-e43 (org.codehaus.groovy.compilerless.feature.feature.group 2.9.2.xx-201503272001-e43)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE To: org.codehaus.groovy.headless.feature.feature.group [2.9.2.xx-201503272001-e43]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.171
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE From: Groovy-Eclipse Compilerless Feature 2.9.2.xx-201503272001-e43 (org.codehaus.groovy.compilerless.feature.feature.group 2.9.2.xx-201503272001-e43)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE To: org.eclipse.jdt.ui 0.0.0
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.171
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE From: Groovy-Eclipse Feature 2.9.2.xx-201503272001-e43 (org.codehaus.groovy.eclipse.feature.feature.group 2.9.2.xx-201503272001-e43)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE To: org.codehaus.groovy.compilerless.feature.feature.group [2.9.2.xx-201503272001-e43]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.171
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE From: Groovy-Eclipse Headless Feature 2.9.2.xx-201503272001-e43 (org.codehaus.groovy.headless.feature.feature.group 2.9.2.xx-201503272001-e43)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE To: org.codehaus.groovy.jdt.patch.feature.group [2.9.2.xx-201503272001-e43]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.171
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE From: Java Development Tools UI 3.10.0.v20140604-1403 (org.eclipse.jdt.ui 3.10.0.v20140604-1403)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE To: bundle org.eclipse.jdt.core [3.10.0,4.0.0)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.171
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE From: Java Development Tools UI 3.10.1.v20140817-1500 (org.eclipse.jdt.ui 3.10.1.v20140817-1500)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE To: bundle org.eclipse.jdt.core [3.10.0,4.0.0)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.171
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE From: Java Development Tools UI 3.10.2.v20141014-1419 (org.eclipse.jdt.ui 3.10.2.v20141014-1419)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE To: bundle org.eclipse.jdt.core [3.10.0,4.0.0)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.171
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE From: Java Development Tools UI 3.9.50.v20140317-1811 (org.eclipse.jdt.ui 3.9.50.v20140317-1811)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE To: bundle org.eclipse.jdt.core [3.9.50,4.0.0)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.171
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE From: Groovy/Grails Tool Suite 3.6.4.201503100339-RELEASE-e44 (org.springsource.ggts.ide 3.6.4.201503100339-RELEASE-e44)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE To: org.springsource.ggts.package.feature.group [3.6.4.201503100339-RELEASE-e44]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.171
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE From: Groovy/Grails Tool Suite Package 3.6.4.201503100339-RELEASE-e44 (org.springsource.ggts.package.feature.group 3.6.4.201503100339-RELEASE-e44)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE To: org.eclipse.jdt.feature.group 0.0.0
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.171
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE From Patch: org.codehaus.groovy.jdt.patch.feature.group 2.9.2.xx-201503272001-e43 Eclipse Java Development Tools 3.10.0.v20140606-1536 (org.eclipse.jdt.feature.group 3.10.0.v20140606-1536)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE To: org.eclipse.jdt.core [3.9.2.xx-201503272001-e43]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.171
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE From Patch: org.codehaus.groovy.jdt.patch.feature.group 2.9.2.xx-201503272001-e43 Eclipse Java Development Tools 3.10.0.v20140925-0400 (org.eclipse.jdt.feature.group 3.10.0.v20140925-0400)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE To: org.eclipse.jdt.core [3.9.2.xx-201503272001-e43]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-05-23 11:24:31.171
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE From Patch: org.codehaus.groovy.jdt.patch.feature.group 2.9.2.xx-201503272001-e43 Eclipse Java Development Tools 3.10.1.v20150204-1700 (org.eclipse.jdt.feature.group 3.10.1.v20150204-1700)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-05-23 11:24:31.171
+!MESSAGE To: org.eclipse.jdt.core [3.9.2.xx-201503272001-e43]
+!SESSION 2015-05-23 11:28:17.120 -----------------------------------------------
+eclipse.buildId=3.6.4.201503100339-RELEASE-e44
+java.version=1.8.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.springsource.ggts.ide -keyring /Users/raghavan/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.springsource.ggts.ide -keyring /Users/raghavan/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2015-05-23 11:29:29.764
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 11:30:12.324
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.backwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@1e4baa3f)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$1@4e80f1c8)}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 11:30:12.324
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.backwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@1e4baa3f)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$1@4e80f1c8)}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 11:30:12.324
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.forwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@5d04004)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$2@4d23e688)}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 11:30:12.325
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.forwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@5d04004)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$2@4d23e688)}
+!SESSION 2015-05-23 11:32:32.737 -----------------------------------------------
+eclipse.buildId=3.6.4.201503100339-RELEASE-e44
+java.version=1.8.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.springsource.ggts.ide -keyring /Users/raghavan/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.springsource.ggts.ide -keyring /Users/raghavan/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2015-05-23 11:32:41.832
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 11:33:21.578
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.backwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@75c45c4b)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$1@7668b4ff)}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 11:33:21.578
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.backwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@75c45c4b)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$1@7668b4ff)}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 11:33:21.579
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.forwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@133d0471)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$2@3b89bccf)}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 11:33:21.579
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.forwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@133d0471)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$2@3b89bccf)}
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2015-05-23 11:34:09.490
+!MESSAGE Connection to http://download.springsource.com/release/TOOLS/update/e4.4/p2.index failed on Operation timed out. Retry attempt 0 started
+!STACK 0
+java.net.ConnectException: Operation timed out
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient4.ECFHttpClientProtocolSocketFactory.connectSocket(ECFHttpClientProtocolSocketFactory.java:84)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:177)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:131)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SESSION 2015-05-23 11:37:35.916 -----------------------------------------------
+eclipse.buildId=3.6.4.201503100339-RELEASE-e44
+java.version=1.8.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.springsource.ggts.ide -keyring /Users/raghavan/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.springsource.ggts.ide -keyring /Users/raghavan/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2015-05-23 11:39:30.637
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.jobs 4 2 2015-05-23 11:39:55.050
+!MESSAGE An internal error occurred during: "LabelEventJob".
+!STACK 0
+org.eclipse.swt.SWTException: Device is disposed
+	at org.eclipse.swt.SWT.error(SWT.java:4441)
+	at org.eclipse.swt.SWT.error(SWT.java:4356)
+	at org.eclipse.swt.SWT.error(SWT.java:4327)
+	at org.eclipse.swt.widgets.Display.error(Display.java:1094)
+	at org.eclipse.swt.widgets.Display.asyncExec(Display.java:593)
+	at org.eclipse.egit.ui.internal.decorators.GitLightweightDecorator.fireLabelEvent(GitLightweightDecorator.java:699)
+	at org.eclipse.egit.ui.internal.decorators.LabelEventJob.run(GitLightweightDecorator.java:768)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.updatechecker 4 0 2015-05-23 11:39:55.801
+!MESSAGE Exception in update check thread
+!STACK 0
+org.eclipse.core.runtime.OperationCanceledException
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.download(RepositoryTransport.java:125)
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.download(RepositoryTransport.java:156)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadIndexFile(AbstractRepositoryManager.java:735)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:657)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:668)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:151)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:129)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:73)
+!SESSION 2015-05-23 11:39:56.118 -----------------------------------------------
+eclipse.buildId=3.6.4.201503100339-RELEASE-e44
+java.version=1.8.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.springsource.ggts.ide  -Declipse.refreshBundles=true -Dosgi.clean=true -product org.springsource.ggts.ide -keyring /Users/raghavan/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.springsource.ggts.ide  -Declipse.refreshBundles=true -Dosgi.clean=true -product org.springsource.ggts.ide -keyring /Users/raghavan/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Warnings while parsing the key bindings from the 'org.eclipse.ui.commands' extension point
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.codehaus.groovy.eclipse.ui', id='org.codehaus.groovy.eclipse.groovyScriptLaunchShortcut.run'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.codehaus.groovy.eclipse.ui', id='org.codehaus.groovy.eclipse.groovyScriptLaunchShortcut.debug'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.codehaus.groovy.eclipse.ui', id='org.codehaus.groovy.eclipse.ui.convertToJava'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.codehaus.groovy.eclipse.ui', id='org.codehaus.groovy.eclipse.ui.convertToGroovy'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.codehaus.groovy.eclipse.ui', id='org.codehaus.groovy.eclipse.ui.convertToMethod'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.codehaus.groovy.eclipse.ui', id='org.codehaus.groovy.eclipse.ui.convertToClosure'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.codehaus.groovy.eclipse.ui', id='org.codehaus.groovy.eclipse.ui.findOccurrences'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.ui', id='org.grails.ide.eclipse.ui.command.openGrailsCommandPrompt'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.ui', id='org.grails.ide.eclipse.ui.command.openGrailsCommandPrompt'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.ui', id='org.grails.ide.eclipse.ui.command.openPluginManager'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.ui', id='org.grails.ide.eclipse.ui.command.openPluginManager'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.ui', id='org.grails.ide.eclipse.ui.command.grailsCommandWizard'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.ui', id='org.grails.ide.eclipse.ui.command.grailsCommandWizard'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.ui', id='org.grails.ide.eclipse.ui.command.createDomainClass'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.ui', id='org.grails.ide.eclipse.ui.command.createDomainClass'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.ui', id='org.grails.ide.eclipse.ui.command.createController'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.ui', id='org.grails.ide.eclipse.ui.command.createController'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.ui', id='org.grails.ide.eclipse.ui.command.createTaglib'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.ui', id='org.grails.ide.eclipse.ui.command.createTaglib'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.ui', id='org.grails.ide.eclipse.ui.command.createService'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.332
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.ui', id='org.grails.ide.eclipse.ui.command.createService'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.333
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.ui', id='org.grails.ide.eclipse.ui.command.createFilters'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.333
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.ui', id='org.grails.ide.eclipse.ui.command.createFilters'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.333
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.ui', id='org.grails.ide.eclipse.ui.command.refreshClasspath'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.333
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.ui', id='org.grails.ide.eclipse.ui.command.refreshClasspath'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.333
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.editor.groovy', id='org.grails.ide.eclipse.editor.groovy.controllerCommand'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.333
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.editor.groovy', id='org.grails.ide.eclipse.editor.groovy.domainCommand'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.333
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.editor.groovy', id='org.grails.ide.eclipse.editor.groovy.serviceCommand'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.333
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.editor.groovy', id='org.grails.ide.eclipse.editor.groovy.tagLibCommand'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.333
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.editor.groovy', id='org.grails.ide.eclipse.editor.groovy.controllerCommand'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.333
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.editor.groovy', id='org.grails.ide.eclipse.editor.groovy.domainCommand'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.333
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.editor.groovy', id='org.grails.ide.eclipse.editor.groovy.serviceCommand'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.333
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.editor.groovy', id='org.grails.ide.eclipse.editor.groovy.tagLibCommand'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.333
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.editor.gsp', id='org.grails.ide.eclipse.editor.gsp.gspCommand'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.333
+!MESSAGE Cannot bind to an undefined command: plug-in='org.grails.ide.eclipse.editor.gsp', id='org.grails.ide.eclipse.editor.gsp.gspCommand'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.333
+!MESSAGE Cannot bind to an undefined command: plug-in='org.codehaus.groovy.eclipse.quickfix', id='org.codehaus.groovy.quickfix.surround.with.quickMenu'
+!SUBENTRY 1 org.eclipse.ui 2 0 2015-05-23 11:40:09.333
+!MESSAGE Cannot bind to an undefined command: plug-in='org.codehaus.groovy.eclipse.quickfix', id='org.codehaus.groovy.quickfix.surround.with.quickMenu'
+
+!ENTRY org.eclipse.core.net 1 0 2015-05-23 11:40:12.081
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2015-05-23 11:40:21.851
+!MESSAGE No repository found at file:/Users/raghavan/ggts-bundle/ggts-3.6.4.RELEASE/configuration/org.eclipse.osgi/365/data/listener_1925729951/.
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 13:15:22.379
+!MESSAGE Conflicting handlers for org.eclipse.jdt.ui.edit.text.java.refactor.quickMenu: {org.eclipse.jdt.internal.ui.actions.JDTQuickMenuCreator$1@15cc77eb} vs {org.eclipse.jdt.internal.ui.actions.JDTQuickMenuCreator$1@364d0f7e}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 13:15:58.056
+!MESSAGE Conflicting handlers for org.eclipse.jdt.ui.edit.text.java.refactor.quickMenu: {org.eclipse.jdt.internal.ui.actions.JDTQuickMenuCreator$1@15cc77eb} vs {org.eclipse.jdt.internal.ui.actions.JDTQuickMenuCreator$1@364d0f7e}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 13:16:41.032
+!MESSAGE Conflicting handlers for org.eclipse.jdt.ui.edit.text.java.refactor.quickMenu: {org.eclipse.jdt.internal.ui.actions.JDTQuickMenuCreator$1@15cc77eb} vs {org.eclipse.jdt.internal.ui.actions.JDTQuickMenuCreator$1@364d0f7e}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 13:18:39.424
+!MESSAGE Conflicting handlers for org.eclipse.jdt.ui.edit.text.java.refactor.quickMenu: {org.eclipse.jdt.internal.ui.actions.JDTQuickMenuCreator$1@15cc77eb} vs {org.eclipse.jdt.internal.ui.actions.JDTQuickMenuCreator$1@364d0f7e}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 13:19:12.629
+!MESSAGE Conflicting handlers for org.eclipse.jdt.ui.edit.text.java.refactor.quickMenu: {org.eclipse.jdt.internal.ui.actions.JDTQuickMenuCreator$1@15cc77eb} vs {org.eclipse.jdt.internal.ui.actions.JDTQuickMenuCreator$1@364d0f7e}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 13:20:09.400
+!MESSAGE Conflicting handlers for org.eclipse.jdt.ui.edit.text.java.refactor.quickMenu: {org.eclipse.jdt.internal.ui.actions.JDTQuickMenuCreator$1@15cc77eb} vs {org.eclipse.jdt.internal.ui.actions.JDTQuickMenuCreator$1@364d0f7e}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 13:20:18.397
+!MESSAGE Conflicting handlers for org.eclipse.jdt.ui.edit.text.java.refactor.quickMenu: {org.eclipse.jdt.internal.ui.actions.JDTQuickMenuCreator$1@15cc77eb} vs {org.eclipse.jdt.internal.ui.actions.JDTQuickMenuCreator$1@364d0f7e}
+
+!ENTRY org.eclipse.ui 4 4 2015-05-23 13:21:32.517
+!MESSAGE Conflicting handlers for org.eclipse.jdt.ui.edit.text.java.refactor.quickMenu: {org.eclipse.jdt.internal.ui.actions.JDTQuickMenuCreator$1@15cc77eb} vs {org.eclipse.jdt.internal.ui.actions.JDTQuickMenuCreator$1@364d0f7e}
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2015-05-23 16:07:27.406
+!MESSAGE Connection to http://dist.springsource.com/release/STS/doc/updates.xml failed on dist.springsource.com: unknown error. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: dist.springsource.com: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:907)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1302)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1255)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1171)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1105)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:44)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:259)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:159)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:131)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)

@@ -1,0 +1,8 @@
+package com.vacayplanner.model
+
+class Amenities {
+	
+	String description
+	double cost
+
+}

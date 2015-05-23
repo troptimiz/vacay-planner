@@ -1,0 +1,10 @@
+package com.vacayplanner.model
+
+class Category {
+	
+	String name
+	String description
+	boolean isActive
+	String imageUrl
+
+}

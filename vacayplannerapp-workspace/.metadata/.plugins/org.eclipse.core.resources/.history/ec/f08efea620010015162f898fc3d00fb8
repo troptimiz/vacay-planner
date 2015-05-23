@@ -1,0 +1,7 @@
+package com.vacayplanner.model;
+
+public enum ContactType {
+	
+	
+
+}

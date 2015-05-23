@@ -1,0 +1,11 @@
+package com.vacayplanner.model
+
+class Address {
+	
+	String address1
+	String address2
+	String city
+	String state
+	String postalCode
+
+}

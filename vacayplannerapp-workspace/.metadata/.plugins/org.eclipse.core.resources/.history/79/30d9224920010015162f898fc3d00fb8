@@ -1,0 +1,13 @@
+package com.vacayplanner.model
+
+class Product {
+	
+	String name
+	String description
+	String emailAddress
+	boolean isActive
+	
+	String[] termsAndConditions
+	
+
+}
