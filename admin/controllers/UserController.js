@@ -10,30 +10,41 @@ var expressSession = require('express-session');
 // passport configuration 
 
 
-
 UserController.use(cookieParser());
-UserController.use(expressSession({ secret: 'keyboard cat', cookie: { secure: true }}));
+UserController.use(expressSession({ secret: '1234QWERTY'}));
 UserController.use(Passport.initialize());
 UserController.use(Passport.session());
 UserController.use(flash());
-/*
-UserController.use(express.cookieParser('keyboard cat'));
-UserController.use(express.session({ cookie: { maxAge: 60000 }}));*/
 UserController.use(bodyParser());
 
+
+/*
 var users = [
     { id: 1, username: 'bob', password: 'secret', email: 'bob@example.com' }
   , { id: 2, username: 'joe', password: 'birthday', email: 'joe@example.com' }
 ];
+*/
 
 function findById(id, fn) {
+  console.log('Find By ID Invoked '+id);
+  User.findById(id,function(err,user){
+    if(err){
+       fn(new Error('User ' + id + ' does not exist'));
+    }else{
+         fn(null,user);
+    }
+  });
+}
+/*
   var idx = id - 1;
   if (users[idx]) {
     fn(null, users[idx]);
   } else {
     fn(new Error('User ' + id + ' does not exist'));
   }
-}
+
+}*/
+
 
 function findByUsername(username, fn) {
   for (var i = 0, len = users.length; i < len; i++) {
@@ -50,6 +61,7 @@ Passport.serializeUser(function(user, done) {
 });
 
 Passport.deserializeUser(function(id, done) {
+  console.log('Deserialize User Invoked ...');
   findById(id, function (err, user) {
     done(err, user);
   });
@@ -122,6 +134,12 @@ UserController.get('/authenticate',
     });
 });
 */
+
+UserController.get('/session',function(req,res){
+  res.json({'UserID':req.session.passport.user});
+
+});
+
 
  module.exports = UserController;
 

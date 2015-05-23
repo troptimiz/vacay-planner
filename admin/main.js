@@ -20,7 +20,14 @@ app.set('view engine','handlebars');
 <!-- URL Mappings to check any possibility of any externalization -->
 
 app.get("/",function(req,res){
-	res.redirect('/account/login');
+
+	if(req.session){
+		console.log('Session Found!!!');
+	}else{
+		console.log('Redirecting to Login ...');
+		res.redirect('/account/login');
+	}
+	
 });
 app.get("/login",function(req,res){
 	res.render('login');
