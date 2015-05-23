@@ -1,10 +1,40 @@
 var express = require('express');
+var app = express();
+var multer = require('multer');
+var done = false;
 var CategoryController = express();
 var Categories = require('../models/categories.js');
 var bodyParser = require('body-parser');
-
+var fs = require('fs');
+var imageName ="";
 CategoryController.use(bodyParser());
-
+var mongoose = require('mongoose');
+var Grid = require('gridfs-stream');
+var gfs = Grid(mongoose.connection.db, mongoose.mongo);
+/*File uplaod*/
+CategoryController.use(multer({ dest: './uploads/',
+ rename: function (fieldname, filename) {
+    return filename+Date.now();
+  },
+onFileUploadStart: function (file) {
+  console.log(file.originalname + ' is starting ...')
+},
+onFileUploadComplete: function (file) {
+  console.log(file.fieldname + ' uploaded to  ' + file.name);
+    imageName = file.name;
+  done=true;
+},
+onError: function (error, next) {
+  console.log(error)
+  next(error)
+}
+}));
+app.post('/api/photo',function(req,res){
+  /*if(done==true){
+    console.log(req.files);
+    res.end("File uploaded.");
+  }*/
+});
 
 // All Active Categories
 CategoryController.get('/categoryView/:name',function(req,res){
@@ -31,20 +61,43 @@ CategoryController.get('/category/:id',function(req,res){
 });
 
 // Create new category
-CategoryController.put('/category/',function(req,res){
-	var newCategory = new Categories({
-		name:req.body.name,
-		description:req.body.description,
-		// need to see how actual image content can be uploaded ??
-		imageUrl:req.body.imageUrl,
-		is_active:req.body.isActive
+CategoryController.post('/category/',function(req,res){
+	if(done==true){
+        var newCategory = new Categories({
+            name:req.body.name,
+            description:req.body.description,
+            // need to see how actual image content can be uploaded ??
+            imageUrl:imageName,
+            is_active:req.body.isActive
 
-	});
-	newCategory.save(function(err,a){
-		if(err) return res.send(500,'Error Occured: database error');
-		res.json({'status':'Category '+a._id+' Created '});
-	});
+        });
+        newCategory.save(function(err,a){
+            if(err) return res.send(500,'Error Occured: database error');
+            //res.json({'status':'Category '+a._id+' Created '});
 
+                console.log(req.files);
+                    
+                    var dirname = require('path').dirname(__dirname);
+                    var filename = req.files.imageUrl.name;
+                    var path = req.files.imageUrl.path;
+                    var type = req.files.imageUrl.mimetype;
+                    var read_stream =  fs.createReadStream(dirname + '/' + path);                    
+                    var writestream = gfs.createWriteStream({
+                        filename: req.files.imageUrl.name
+                    });
+                    read_stream.pipe(writestream);
+                    console.log('gridfs uploaded'+req.files.imageUrl.name);
+                
+
+            
+                
+            
+                res.redirect('/categories/list');
+            
+
+        });
+    }
+    
 });
 
 //Update the category
@@ -69,12 +122,25 @@ CategoryController.post('/category/:id',function(req,res){
 
 
 // Delete Category By Id
-CategoryController.delete('/category/:id',function(req,res){
+CategoryController.delete('/category/:id/:imgUrl',function(req,res){
 	Categories.findById(req.params.id,function(err,category){
 		if(err)return res.send(500,'Error Occured:database error'+err);
-		category.remove();
-		res.status(200).json({'status':'Category '+req.params.id +' Deleted'});
-	});
+		console.log("Image URl ********************"+req.params.imgUrl);
+        category.remove();
+        
+        if(req.params.imgUrl != "undefined" || req.params.imgUrl != ""){
+            fs.unlink('uploads/'+req.params.imgUrl, function (err) {
+              if (err) throw err;
+              console.log('successfully deleted '+req.params.imgUrl);
+            });
+            gfs.remove(req.params.imgUrl, function (err) {
+              if (err) return handleError(err);
+              console.log('success');
+            });
+        }
+        res.status(200).json({'status':'Category '+req.params.id +' Deleted'});
+        
+        });
 });
 
 

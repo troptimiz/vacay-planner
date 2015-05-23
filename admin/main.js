@@ -8,6 +8,7 @@ var path = require('path');
 
 
 
+
 // Application configuration - Should be embody them in configuratio block
 
 app.set('port',process.env.PORT || 3000);
@@ -19,7 +20,7 @@ app.set('view engine','handlebars');
 <!-- URL Mappings to check any possibility of any externalization -->
 
 app.get("/",function(req,res){
-	res.redirect('/login');
+	res.redirect('/account/login');
 });
 app.get("/login",function(req,res){
 	res.render('login');

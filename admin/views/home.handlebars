@@ -3,7 +3,7 @@
 
     {{#each activeCategories}}
     <div class="list-item">
-        <a class="{{this.cssClass}}" href="#" title="{{this.name}}">
+        <a class="{{this.cssClass}}" href="/categories/categoryView/{{this.name}}" title="{{this.name}}">
             <span class="icon"></span>
             <span class="ico-label">{{this.name}}</span>
         </a>
@@ -64,7 +64,6 @@
                         <tr>
                             <th>Name</th>
                             <th>Description</th>
-                            <th>type</th>
                             <th>Email</th>
                             <th>Action</th>
                         </tr>
@@ -95,7 +94,7 @@
                             <label for="">Category:</label>
 
                             <select name="category" class="form-control required">
-                                <option>-- Select Category --</option>
+                                <option value="">-- Select Category --</option>
                                 {{#each activeCategories}}
                                 <option value="{{~this.name}}">{{this.name}}</option>
                                 {{/each}}
@@ -104,12 +103,12 @@
                         </div>
                         <div class="form-group">
                             <label for="">Description:</label>
-                            <input type="textbox" name="description" class="form-control" placeholder="Description">
+                            <input type="textbox" name="description" class="form-control required" placeholder="Description">
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
                             <label for="">Email:</label>
-                            <input type="email" name="emailAddress" class="form-control" placeholder="Email">
+                            <input type="email" name="emailAddress" class="form-control required email" placeholder="Email">
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
@@ -121,7 +120,7 @@
                             <div class="clearfix"></div>
                         </div>
                         <button type="button" class="btn btn-default" id="add-product">Submit</button>
-                        <button type="button" class="cancel-edit-category btn btn-default">Cancel</button>
+                        <button type="button" class="cancel-add-category btn btn-default">Cancel</button>
                     </form>
                 </div>
             </div>

@@ -6,9 +6,26 @@ $(document).ready(function(){
 });
 obj = {
 	init : function(){
+        $('#imageUrl').on('change',function(e){
+            for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+                var file = e.originalEvent.srcElement.files[i];
+
+                var img = document.createElement("img");
+                var reader = new FileReader();
+                reader.onloadend = function() {
+                    img.src = reader.result;
+                }
+                reader.readAsDataURL(file);
+                $(".image-preview").empty().html(img).fadeIn();
+            }
+        });
         $('form').validate({});
         var pageParams = location.href.split("/");
         var pageName = pageParams[pageParams.length-2];
+        var tLength = $('.vacay-table').length;
+        for(i=0;i<tLength;i++){
+            $('.vacay-table').eq(i).find('td').length > 0 ?  $('.vacay-table').eq(i).show() : $('.vacay-table').eq(i).hide();
+        }
         if(pageName == "categoryView"){
             var categoryName = $("#categoryName").val();
             obj.showResults(categoryName);   
@@ -17,18 +34,22 @@ obj = {
             e.preventDefault();
             var $ths = $(this);
             var del_id = $ths.parents('.delete-edit-container').find('#category_id').val();
-            $.ajax({
-                url:"/categories/category/"+del_id,
-                method:"DELETE",
-                success:function(data){
-                    $ths.parents('tr').fadeOut(500,function(){
-                        $ths.parents('tr').remove();
-                    });
-                }
-            });
+            var imgUrl = $ths.attr('imageUrl');
+            if(confirm("Do you want to delete the record")){
+                $.ajax({
+                    url:"/categories/category/"+del_id+"/"+imgUrl,
+                    method:"DELETE",
+                    success:function(data){
+                        $ths.parents('tr').fadeOut(500,function(){
+                            $ths.parents('tr').remove();
+                        });
+                    }
+                });
+            }
         });
         
-        $('.add-category').on('click',function(){
+        $('.add-category').on('click',function(e){
+            e.preventDefault();
             $('.cat-list').fadeOut(500,function(){
                 $('.add-form-container').fadeIn(500);                
             });
@@ -40,8 +61,13 @@ obj = {
         });
         
         //Add category service request
-        $('#add-new-category').on('click',function(){
-            var formData = $('#add-category-form').serialize();
+        $('#add-new-category').on('click',function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            if($(this).parents('form').valid()){
+                $(this).parents('form').submit();
+            }
+            /*var formData = $('#add-category-form').serialize();
             $.ajax({
                 url:"/categories/category/",
                 data:formData,
@@ -50,7 +76,7 @@ obj = {
                     location.href="/categories/list";
                     console.log("Added");
                 }
-            });
+            });*/
         });
         $('#edit-category').on('click',function(){
             var formData = $('#edit-category-form').serialize();
@@ -74,8 +100,9 @@ obj = {
             e.preventDefault();
             if($(this).parents('form').valid()){
                 var URL = "/products/product/";
+                var category = $('select[name="category"').val();
                 var formData = $('#add-product-form').serialize();
-                obj.sendAjax(URL,"PUT",formData,obj.redtSuccess('/categories'));
+                obj.sendAjax(URL,"PUT",formData,obj.redtSuccess('/categories/categoryView/'+category));
             }
         
         });
@@ -83,18 +110,22 @@ obj = {
         /*Edit Product*/
         $('#edit-product').on('click',function(e){
             e.preventDefault();
-            var productId = $('#edit-product-form').find('input[name="id"]').val();
-            var URL = "/products/product/"+productId;
-            var formData = $('#edit-product-form').serialize();
-            obj.sendAjax(URL,"POST",formData,obj.redtSuccess('/categories'));
+            if($(this).parents('form').valid()){
+                var productId = $('#edit-product-form').find('input[name="id"]').val();
+                var URL = "/products/product/"+productId;
+                var formData = $('#edit-product-form').serialize();
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+            }
         
         });
         /*Delete Product*/
         $('.search-result-table').on('click','.delete',function(e){
             e.preventDefault();            
             var URL = $(this).attr('href');
-            var $ths = $(this);
-            obj.sendAjax(URL,'DELETE','',obj.deleteSuccess($ths,'tr'));
+            var $ths = $(this);      
+            if(confirm("Do you want to delete the record")){
+                obj.sendAjax(URL,'DELETE','',obj.deleteSuccess($ths,'tr'));
+            }
         });
         
         /* Create New address */
@@ -112,11 +143,13 @@ obj = {
         /*Update Address /:productId/address/:addressId*/
         $('#update-address').on('click',function(e){
             e.preventDefault();
-            var formData = $('#update-address-form').serialize();
-            var productId = $('#update-address-form').find('input[name="id"]').val(); 
-            var addressId = $('#update-address-form').find('input[name="addressId"]').val();
-            var URL = "/products/"+productId+"/address/"+addressId;
-            obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+            if($(this).parents('form').valid()){
+                var formData = $('#update-address-form').serialize();
+                var productId = $('#update-address-form').find('input[name="id"]').val(); 
+                var addressId = $('#update-address-form').find('input[name="addressId"]').val();
+                var URL = "/products/"+productId+"/address/"+addressId;
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+            }
         });
         
         /*Delete address*/
@@ -124,129 +157,114 @@ obj = {
             e.preventDefault();
             var URL = "/products"+$(this).attr('href');
             var $ths = $(this);
-            if(confirm("Do you want to delete the record")){
-                obj.sendAjax(URL,'DELETE','',obj.deleteSuccess($ths,'tr'));
+            if(confirm("Do you want to delete the record")){                
+                obj.sendAjax(URL,'DELETE','',obj.deleteSuccess($ths,'tr'));                
             }
         });
         /*Add tariff*/
         $('#add-tariff').on('click',function(){
-            var formData = $('#add-tariff-form').serialize();
-            var productId = $('#add-tariff-form').find('input[name="id"]').val();
-            var URL = "/products/"+productId+"/tariff";
-            obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+            if($(this).parents('form').valid()){
+                var formData = $('#add-tariff-form').serialize();
+                var productId = $('#add-tariff-form').find('input[name="id"]').val();
+                var URL = "/products/"+productId+"/tariff";
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+            }
         });
         
         /*Update tariff /:productId/address/:addressId*/
         $('#update-tariff').on('click',function(e){
             e.preventDefault();
-            var formData = $('#update-tariff-form').serialize();
-            var productId = $('#update-tariff-form').find('input[name="id"]').val();
-            var tariffId = $('#update-tariff-form').find('input[name="tariffId"]').val();
-            var URL = "/products/"+productId+"/tariff/"+tariffId;
-            obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
-        });
-        
-        /*Delete tariff
-        $('.tariffs-container .delete-edit-container').on('click','.delete',function(e){
-            e.preventDefault();
-            var URL = "/products"+$(this).attr('href');
-            var $ths = $(this);
-            if(confirm("Do you want to delete the record")){
-                obj.sendAjax(URL,'DELETE','',obj.deleteSuccess($ths,'.tariffs-container'));
+            if($(this).parents('form').valid()){
+                var formData = $('#update-tariff-form').serialize();
+                var productId = $('#update-tariff-form').find('input[name="id"]').val();
+                var tariffId = $('#update-tariff-form').find('input[name="tariffId"]').val();
+                var URL = "/products/"+productId+"/tariff/"+tariffId;
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
             }
-        });*/
+        });
         
         /*Add amenity*/
         $('#add-amenity').on('click',function(){
-            var formData = $('#add-amenity-form').serialize();
-            var productId = $('#add-amenity-form').find('input[name="id"]').val();
-            var URL = "/products/"+productId+"/amenity";
-            obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+            if($(this).parents('form').valid()){
+                var formData = $('#add-amenity-form').serialize();
+                var productId = $('#add-amenity-form').find('input[name="id"]').val();
+                var URL = "/products/"+productId+"/amenity";
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+            }
         });
         
         /*Update amenity /:productId/address/:addressId*/
         $('#update-amenity').on('click',function(e){
             e.preventDefault();
-            var formData = $('#update-amenity-form').serialize();
-            var productId = $('#update-amenity-form').find('input[name="id"]').val();
-            var amenityId = $('#update-amenity-form').find('input[name="amenityId"]').val();
-            var URL = "/products/"+productId+"/amenity/"+amenityId;
-            obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
-        });
-        /*Delete amenity
-        $('.amenities-container .delete-edit-container').on('click','.delete',function(e){
-            e.preventDefault();
-            var URL = "/products"+$(this).attr('href');
-            var $ths = $(this);
-            if(confirm("Do you want to delete the record")){
-                obj.sendAjax(URL,'DELETE','',obj.deleteSuccess($ths,'.amenities-container'));
+            if($(this).parents('form').valid()){
+                var formData = $('#update-amenity-form').serialize();
+                var productId = $('#update-amenity-form').find('input[name="id"]').val();
+                var amenityId = $('#update-amenity-form').find('input[name="amenityId"]').val();
+                var URL = "/products/"+productId+"/amenity/"+amenityId;
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
             }
-        });*/
+        });
         
         
         /*Add termsAndConditions*/
         $('#add-termsAndConditions').on('click',function(){
-            var formData = $('#add-termsAndConditions-form').serialize();
-            var productId = $('#add-termsAndConditions-form').find('input[name="id"]').val();
-            var URL = "/products/"+productId+"/termsconditions";
-            obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+            if($(this).parents('form').valid()){
+                var formData = $('#add-termsAndConditions-form').serialize();
+                var productId = $('#add-termsAndConditions-form').find('input[name="id"]').val();
+                var URL = "/products/"+productId+"/termsconditions";
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+            }
         });
         
         /*Update termsAndConditions /:productId/address/:addressId*/
         $('#update-termsAndConditions').on('click',function(e){
             e.preventDefault();
-            var formData = $('#update-termsAndConditions-form').serialize();
-            var productId = $('#update-termsAndConditions-form').find('input[name="id"]').val();
-            var amenityId = $('#update-termsAndConditions-form').find('input[name="termsAndConditionsId"]').val();
-            var URL = "/products/"+productId+"/termsAndCondition/"+amenityId;
-            obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
-        });
-        /*Delete termsAndConditions
-        $('.tnc-container .delete-edit-container').on('click','.delete',function(e){
-            e.preventDefault();
-            var URL = "/products"+$(this).attr('href');
-            var $ths = $(this);
-            if(confirm("Do you want to delete the record")){
-                obj.sendAjax(URL,'DELETE','',obj.deleteSuccess($ths,'.tnc-container'));
+            if($(this).parents('form').valid()){
+                var formData = $('#update-termsAndConditions-form').serialize();
+                var productId = $('#update-termsAndConditions-form').find('input[name="id"]').val();
+                var amenityId = $('#update-termsAndConditions-form').find('input[name="termsAndConditionsId"]').val();
+                var URL = "/products/"+productId+"/termsAndCondition/"+amenityId;
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
             }
-        });*/
+        });
         
         /*Add Phone Number*/
         $('#add-phoneNumber').on('click',function(){
-            var formData = $('#add-phoneNumber-form').serialize();
-            var productId = $('#add-phoneNumber-form').find('input[name="id"]').val();
-            var URL = "/products/"+productId+"/phone";
-            obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+            if($(this).parents('form').valid()){
+                var formData = $('#add-phoneNumber-form').serialize();
+                var productId = $('#add-phoneNumber-form').find('input[name="id"]').val();
+                var URL = "/products/"+productId+"/phone";
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+            }
         });
         
         /*Update phone /:productId/address/:addressId*/
         $('#update-phone').on('click',function(e){
             e.preventDefault();
-            var formData = $('#update-phone-form').serialize();
-            var productId = $('#update-phone-form').find('input[name="id"]').val();
-            var phoneId = $('#update-phone-form').find('input[name="phoneId"]').val();
-            var URL = "/products/"+productId+"/phoneNumber/"+phoneId;
-            obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
-        });
-        /*Delete amenity
-        $('.phone-container .delete-edit-container').on('click','.delete',function(e){
-            e.preventDefault();
-            var URL = "/products"+$(this).attr('href');
-            var $ths = $(this);
-            if(confirm("Do you want to delete the record")){
-                obj.sendAjax(URL,'DELETE','',obj.deleteSuccess($ths,'.phone-container'));
+            if($(this).parents('form').valid()){
+                var formData = $('#update-phone-form').serialize();
+                var productId = $('#update-phone-form').find('input[name="id"]').val();
+                var phoneId = $('#update-phone-form').find('input[name="phoneId"]').val();
+                var URL = "/products/"+productId+"/phoneNumber/"+phoneId;
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
             }
-        });*/
-        /* End */
+        });
         
-		$('.category-list .list-item a').unbind('click',obj.showResultsOnClick).bind('click',obj.showResultsOnClick);
+		//$('.category-list .list-item a').unbind('click',obj.showResultsOnClick).bind('click',obj.showResultsOnClick);
 		$('#search-result').unbind('click',obj.showResults).bind('click',obj.showResults);
-		$('.action-container').on('click','.add-row',function(){
+		$('.action-container').on('click','.add-row',function(e){
+            e.preventDefault();
 			$('.search-result-table,.search-form').fadeOut(500,function(){
 				$('.add-form-container').show();
 			});
 			
 		});
+        $('.cancel-add-category').on('click',function(e){
+            e.preventDefault();
+            $('.add-form-container').fadeOut(500,function(){
+				$('.search-result-table').show();
+			});
+        });
         
 	},
     confirm:function(msg){
@@ -266,7 +284,10 @@ obj = {
         location.href=page;
     },
     deleteSuccess:function($ths,container){
-        $ths.parents(container).fadeOut(500,function(){});
+        $ths.parents(container).fadeOut(500,function(){
+            var categoryName =$('#categoryName').val();
+            obj.buildDataTable(categoryName);
+        });
     },
     newaddressSuccess:function(id){
         location.href="/products/product/"+id;
@@ -299,46 +320,27 @@ obj = {
 		});
         $('.search-result-table').fadeIn(1000,function(){
             $('.category-list').addClass('min-list');            
-        });
+        });		
 		
-		/*tableObject.find('tbody').on( 'click', 'tr', function () {
-			if ( $(this).hasClass('selected') ) {
-				$(this).removeClass('selected');
-				$('.delete-edit-container').addClass('disabled');
-			}
-			else {
-				table.$('tr.selected').removeClass('selected');
-				$(this).addClass('selected');
-				$('.delete-edit-container').removeClass('disabled');
-			}
-		} );
-	 
-		$('#button').click( function () {
-			table.row('.selected').remove().draw( false );
-		});*/
 	},
 	switchCategory:function(e){	
 		e.preventDefault();
 		$('.category-list').addClass('min-list');		
         //$('.search-form').fadeIn();
 	},
-	showResults:function(categoryName){
-		//e.preventDefault();
-        //var categoryName = $(this).attr('title');
-        //alert(categoryName);
+	showResults:function(categoryName){		
 		obj.buildDataTable(categoryName);        
 	},
     showResultsOnClick:function(e){
 		e.preventDefault();
         var categoryName = $(this).attr('title');
-        //alert(categoryName);
+        $('#categoryName').val(categoryName);
 		obj.buildDataTable(categoryName);        
 	},
     buildDataTable:function(categoryName){
         var tObj = $('#result-table');
 		var arr = [{ "data": "name" },
                    {"data":"description"},
-                   {"data":"type"},
                    {"data":"emailAddress"},
                     {
                         data: null,

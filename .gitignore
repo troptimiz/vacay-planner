@@ -2,6 +2,7 @@
 admin/node_modules
 vacayplanner-app/build
 
+
 #put any other files/folders that don't want to be check in here
 *.sass
 *.bat
