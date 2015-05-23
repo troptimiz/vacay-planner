@@ -8,7 +8,9 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 var imageName ="";
 CategoryController.use(bodyParser());
-
+var mongoose = require('mongoose');
+var Grid = require('gridfs-stream');
+var gfs = Grid(mongoose.connection.db, mongoose.mongo);
 /*File uplaod*/
 CategoryController.use(multer({ dest: './uploads/',
  rename: function (fieldname, filename) {
@@ -28,10 +30,10 @@ onError: function (error, next) {
 }
 }));
 app.post('/api/photo',function(req,res){
-  if(done==true){
+  /*if(done==true){
     console.log(req.files);
     res.end("File uploaded.");
-  }
+  }*/
 });
 
 // All Active Categories
@@ -74,7 +76,24 @@ CategoryController.post('/category/',function(req,res){
             //res.json({'status':'Category '+a._id+' Created '});
 
                 console.log(req.files);
+                    
+                    var dirname = require('path').dirname(__dirname);
+                    var filename = req.files.imageUrl.name;
+                    var path = req.files.imageUrl.path;
+                    var type = req.files.imageUrl.mimetype;
+                    var read_stream =  fs.createReadStream(dirname + '/' + path);                    
+                    var writestream = gfs.createWriteStream({
+                        filename: req.files.imageUrl.name
+                    });
+                    read_stream.pipe(writestream);
+                    console.log('gridfs uploaded'+req.files.imageUrl.name);
+                
+
+            
+                
+            
                 res.redirect('/categories/list');
+            
 
         });
     }
@@ -113,6 +132,10 @@ CategoryController.delete('/category/:id/:imgUrl',function(req,res){
             fs.unlink('uploads/'+req.params.imgUrl, function (err) {
               if (err) throw err;
               console.log('successfully deleted '+req.params.imgUrl);
+            });
+            gfs.remove(req.params.imgUrl, function (err) {
+              if (err) return handleError(err);
+              console.log('success');
             });
         }
         res.status(200).json({'status':'Category '+req.params.id +' Deleted'});

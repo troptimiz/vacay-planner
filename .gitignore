@@ -1,6 +1,7 @@
 #ignore packages installed by npm
 admin/node_modules
 
+
 #put any other files/folders that don't want to be check in here
 *.sass
 *.bat
