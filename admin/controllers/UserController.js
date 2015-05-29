@@ -136,8 +136,18 @@ UserController.get('/authenticate',
 */
 
 UserController.get('/session',function(req,res){
-  res.json({'UserID':req.session.passport.user});
+  //res.json({'UserID':req.session.passport.user});
+    if(req.session.passport.user){
+        res.redirect("/dashboard");
+    }
+    else{
+        res.redirect("/account/login");   
+    }
 
+});
+UserController.get('/logout',function(req,res){
+    req.session.destroy();
+    res.redirect("/account/session");
 });
 
 

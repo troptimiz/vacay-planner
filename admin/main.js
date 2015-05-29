@@ -20,12 +20,7 @@ app.set('view engine','handlebars');
 
 app.get("/",function(req,res){
 
-	if(req.session){
-		console.log('Session Found!!!');
-	}else{
-		console.log('Redirecting to Login ...');
-		res.redirect('/account/login');
-	}
+	res.redirect('/account/session');
 	
 });
 app.get("/login",function(req,res){
