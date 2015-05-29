@@ -4,9 +4,8 @@ var handlebars = require('express3-handlebars').create({defaultLayout:'main'});
 var CategoryController = require('./controllers/CategoryController.js');
 var ProductController = require('./controllers/ProductController.js');
 var UserController = require('./controllers/UserController.js');
+var ClassificationController = require('./controllers/ClassificationController.js');
 var path = require('path');
-
-
 
 
 // Application configuration - Should be embody them in configuratio block
@@ -40,6 +39,7 @@ app.get("/dashboard",function(req,res){
 app.use('/categories',CategoryController);	
 app.use('/products',ProductController);	
 app.use('/account',UserController);	
+app.use('/classifications',ClassificationController);	
 
 
 
