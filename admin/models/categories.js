@@ -1,8 +1,14 @@
 var mongoose =require('mongoose');
 
-// TODO : Need to externalize the environment configuration 
+// TODO : Need to externalize the environment configuration
 
-mongoose.connect('mongodb://localhost/vacayplanner');
+var options = {
+  db: { native_parser: true },
+  server: { poolSize: 2 }
+}
+
+
+mongoose.connect('mongodb://localhost/vacayplanner',options);
 
 var categorySchema = mongoose.Schema({
 	name:String,

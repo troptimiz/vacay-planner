@@ -1,7 +1,17 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/vacayplanner',function(err){
-	console.log('Connection occured while connecting to Mongo'+err);
-});
+
+//mongoose.connect('mongodb://localhost/vacayplanner');	
+
+// Just Creating new connections
+var options = {
+  db: { native_parser: true },
+  server: { poolSize: 2 }
+}
+
+
+mongoose.createConnection('mongodb://localhost/vacayplanner',options);	
+
+
 
 var userSchema = mongoose.Schema({
 	username:String,
