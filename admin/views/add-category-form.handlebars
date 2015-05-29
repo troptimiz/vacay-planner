@@ -7,8 +7,9 @@
                         <h2>Update Category</h2>
                     </div>									
 
-                    <form role="form" id="edit-category-form">
+                    <form role="form" method="post" enctype="multipart/form-data" action="/categories/category/{{category.id}}" id="edit-category-form">
                         <input type="hidden" value="{{category.id}}" name="id" />
+                        <input type="hidden" value="{{category.imageUrl}}" name="prevImgUrl"/>
                         <div class="form-group">
                             <label for="">Name:</label>
                             <input type="textbox" value="{{category.name}}"name="name" class="form-control required" placeholder="Name">
@@ -21,7 +22,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Image URL:</label>
-                            <input type="file" value="{{category.imageUrl}}" name="imageUrl" class="form-control required url" placeholder="Image URL">
+                            <input type="file" accept="image/*" value="{{category.imageUrl}}" name="imageUrl" class="form-control required" placeholder="Image URL">
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
@@ -39,7 +40,12 @@
                         </div>
                         <button type="button" class="btn btn-default" id="edit-category">Submit</button>
                         <a href="/categories/list" title="Cancel" class="btn btn-default">Cancel</a>
-                     </form>									
+                        <div class="image-preview" style="display:block">                            
+                            <img src="/uploads/{{category.imageUrl}}"/>
+                        </div> 
+                    </form>
+                    
+                    
                 </div>                
             </div>
         </div>

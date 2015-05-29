@@ -11,6 +11,7 @@ CategoryController.use(bodyParser());
 var mongoose = require('mongoose');
 var Grid = require('gridfs-stream');
 var gfs = Grid(mongoose.connection.db, mongoose.mongo);
+var dirname = require('path').dirname(__dirname);
 /*File uplaod*/
 CategoryController.use(multer({ dest: './uploads/',
  rename: function (fieldname, filename) {
@@ -44,7 +45,6 @@ CategoryController.get('/categoryView/:name',function(req,res){
 	});	
 });
 
-
 CategoryController.get('/list',function(req,res){
 	Categories.find({},function(err,categories){
 		res.render("category-list",{'activeCategories':categories,layout:'list'});
@@ -77,7 +77,7 @@ CategoryController.post('/category/',function(req,res){
 
                 console.log(req.files);
                     
-                    var dirname = require('path').dirname(__dirname);
+                    
                     var filename = req.files.imageUrl.name;
                     var path = req.files.imageUrl.path;
                     var type = req.files.imageUrl.mimetype;
@@ -102,21 +102,48 @@ CategoryController.post('/category/',function(req,res){
 
 //Update the category
 CategoryController.post('/category/:id',function(req,res){
-
+    
 	categoryToBeUpdated = {
 		name:req.body.name,
 		description:req.body.description,
-		imageUrl:req.body.imageUrl,
+		imageUrl:imageName,
 		cssClass:req.body.cssClass,
 		is_active:req.body.isActive
 	};
 
-	console.log('Category Updated for id '+req.params.id);
+	console.log('Category Updated for id '+req.body.name);
+    
+    if(req.body.prevImgUrl != "undefined" || req.body.prevImgUrl != ""){
+        try{
+        fs.unlink('uploads/'+req.body.prevImgUrl, function (err) {
+          if (err) throw err;
+          console.log('successfully deleted '+req.body.prevImgUrl);
+        });
+        
+        gfs.remove({filename:req.body.prevImgUrl}, function (err) {
+          if (err) return handleError(err);
+          console.log('success');
+        });
+        }
+        catch(e){
+            console.log("something went wrong");   
+        }
+    }
 
 	Categories.findOneAndUpdate({_id:req.params.id},categoryToBeUpdated,{upsert:false},function(err,category){
 		if(err) return res.send(500,'Error Occured: database error during Category Updation');
-		res.json({'status':'Category '+category._id+' Updated '});
-
+		//res.json({'status':'Category '+category._id+' Updated '});
+        backUrl = '/categories/category/'+req.params.id;
+        var filename = req.files.imageUrl.name;
+        var path = req.files.imageUrl.path;
+        var type = req.files.imageUrl.mimetype;
+        var read_stream =  fs.createReadStream(dirname + '/' + path);                    
+        var writestream = gfs.createWriteStream({
+            filename: req.files.imageUrl.name
+        });
+        read_stream.pipe(writestream);
+        console.log('gridfs uploaded'+req.files.imageUrl.name);
+        res.redirect(backUrl); 
 	});
 });
 
@@ -133,7 +160,7 @@ CategoryController.delete('/category/:id/:imgUrl',function(req,res){
               if (err) throw err;
               console.log('successfully deleted '+req.params.imgUrl);
             });
-            gfs.remove(req.params.imgUrl, function (err) {
+            gfs.remove({filename:req.params.imgUrl}, function (err) {
               if (err) return handleError(err);
               console.log('success');
             });
