@@ -1,0 +1,85 @@
+<div class="class-list">
+	<div class="item-container">
+		<table>
+			<tr>
+				<th>Category Name</th>
+				<th>Description</th>
+                <th>Active</th>
+				<th class="list-action">Action</th>
+				<th><a href="#" class="add-calssification"><span class="icon-plus"></span></a></th>
+			</tr>
+			{{#each activeClassifications}}
+			<tr>
+				<td>
+					<span class="icon"></span>{{this.name}}
+				</td>
+				<td>
+                    <p class="cat-desc">{{this.description}}</p>
+				</td>
+                <td>
+                    <p class="active-type">
+                        {{#if this.is_active}}
+                          true
+                        {{else}}
+                          false
+                        {{/if}}
+                    </p>
+                </td>
+				<td>
+					<div class="delete-edit-container">                        
+                        <input type="hidden" value="{{this.id}}" id="classification_id"/>
+                        <a href="/classifications/classification/{{this.id}}" class="edit" title="Edit Category">Edit</a> /
+                        <a href="#" class="delete" title="Delete Category" imageUrl = "{{this.imageUrl}}">Delete</a>
+                        
+                    </div>
+				</td>
+			</tr>
+			{{/each}}
+		</table>
+	</div>    
+</div>
+<div class="add-form-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item-container">
+                <div class="data-form">
+                    <div class="form-heading">
+                        <h2>Add Classification</h2>
+                    </div>									
+
+                    <form role="form" method="post" id="add-classification-form" action="/classifications/classification/" >
+                        <div class="form-group hidden">
+                            <label for="">&nbsp;</label>
+                            <p class="form-controll msg error"></p>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Name:</label>
+                            <input type="textbox" name="groupName" class="form-control required" placeholder="Name">
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Description:</label>
+                            <textarea value="{{classification.description}}" name="groupDescription" class="form-control required" placeholder="Description">{{classification.description}}</textarea>
+                            <div class="clearfix"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="">Activate:</label>
+                            <select name="isActive" class="required">
+                                <option selected="selected" value="true">True</option>
+                                <option value="false">False</option>
+                            </select>
+                            <div class="clearfix"></div>
+                        </div>
+                        <button type="submit" class="btn btn-default" id="add-new-classification">Submit</button>
+                        <button type="button" class="cancel-classification-addition btn btn-default">Cancel</button>
+                     </form>
+                    <div class="image-preview">
+                        Priview
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>

@@ -182,12 +182,12 @@ body {
 .admin-result-container .category-list .list-item a.item-customer .icon:before, .admin-result-container .dashboad-list .list-item a.item-customer .icon:before {
   content: "\e923";
 }
-.admin-result-container .category-list .list-item a.item-image, .admin-result-container .dashboad-list .list-item a.item-image {
+.admin-result-container .category-list .list-item a.item-classification, .admin-result-container .dashboad-list .list-item a.item-classification {
   background: #A9DC8E;
   border: 1px solid #9ad67b;
 }
-.admin-result-container .category-list .list-item a.item-image .icon:before, .admin-result-container .dashboad-list .list-item a.item-image .icon:before {
-  content: "\e927";
+.admin-result-container .category-list .list-item a.item-classification .icon:before, .admin-result-container .dashboad-list .list-item a.item-classification .icon:before {
+  content: "\e936";
 }
 .admin-result-container .category-list .list-item a.item-resorts, .admin-result-container .dashboad-list .list-item a.item-resorts {
   background: #7992BF;
@@ -386,27 +386,27 @@ body {
   width: 65%;
 }
 
-.cat-list table {
+.cat-list table, .class-list table {
   width: 100%;
 }
-.cat-list table tr th {
+.cat-list table tr th, .class-list table tr th {
   padding: 10px;
   background: #fff;
   border-bottom: 1px solid #ccc;
 }
-.cat-list table tr td {
+.cat-list table tr td, .class-list table tr td {
   padding: 10px;
 }
-.cat-list table tr td .icon {
+.cat-list table tr td .icon, .class-list table tr td .icon {
   font-family: "icomoon";
 }
-.cat-list table tr td .cat-desc {
+.cat-list table tr td .cat-desc, .class-list table tr td .cat-desc {
   font-size: 12px;
 }
-.cat-list .delete-edit-container {
+.cat-list .delete-edit-container, .class-list .delete-edit-container {
   margin: 0;
 }
-.cat-list .list-action {
+.cat-list .list-action, .class-list .list-action {
   width: 160px;
   padding-left: 20px;
 }
@@ -506,15 +506,15 @@ ul li {
   opacity: 0.6;
 }
 
-.vacay-table {
+.vacay-table, .vacaytable {
   width: 95%;
   margin: 20px auto;
 }
-.vacay-table th {
+.vacay-table th, .vacaytable th {
   border-bottom: 1px solid #333;
   padding-bottom: 5px;
 }
-.vacay-table td {
+.vacay-table td, .vacaytable td {
   font-size: 12px;
 }
 
@@ -563,4 +563,9 @@ ul li {
   text-align: center;
   background: #ccc;
   padding: 2px;
+}
+
+.error.msg {
+  color: #f00;
+  font-size: 11px;
 }

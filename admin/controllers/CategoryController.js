@@ -4,14 +4,29 @@ var multer = require('multer');
 var done = false;
 var CategoryController = express();
 var Categories = require('../models/categories.js');
+var ClassificationGroup = require('../models/classification.js');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var imageName ="";
-CategoryController.use(bodyParser());
+
 var mongoose = require('mongoose');
 var Grid = require('gridfs-stream');
 var gfs = Grid(mongoose.connection.db, mongoose.mongo);
 var dirname = require('path').dirname(__dirname);
+
+var Passport = require('passport');
+ var flash = require('connect-flash'); 
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser'); 
+var expressSession = require('express-session');
+CategoryController.use(bodyParser());
+CategoryController.use(cookieParser());
+CategoryController.use(expressSession({ secret: '1234QWERTY'}));
+CategoryController.use(Passport.initialize());
+CategoryController.use(Passport.session());
+CategoryController.use(flash());
+
+
 /*File uplaod*/
 CategoryController.use(multer({ dest: './uploads/',
  rename: function (fieldname, filename) {
@@ -39,38 +54,73 @@ app.post('/api/photo',function(req,res){
 
 // All Active Categories
 CategoryController.get('/categoryView/:name',function(req,res){
-	Categories.find({'is_active':true},function(err,categories){
-		res.render("home",{'activeCategories':categories,'name':req.params.name,layout:'list'});
+	Categories.find({'is_active':true},function(err,categories){        
+		if(req.session.passport.user)
+            res.render("home",{'activeCategories':categories,'name':req.params.name,layout:'list'});
+        else
+            res.redirect('/account/session');
+        
 		//res.status(200).json({activeCategories:categories});
 	});	
 });
 
 CategoryController.get('/list',function(req,res){
 	Categories.find({},function(err,categories){
-		res.render("category-list",{'activeCategories':categories,layout:'list'});
+        ClassificationGroup.find({'is_active':true},function(err,classifications){
+            if(req.session.passport.user)
+                res.render("category-list",{'activeCategories':categories,'activeClassifications':classifications,layout:'list'});
+            else
+                res.redirect('/account/session');
+            
 		//res.status(200).json({categories:categories});
+        });
 	});	
 });
 
 // Category Detail using ID
 CategoryController.get('/category/:id',function(req,res){
 	Categories.findById(req.params.id,function(err,category){
+        ClassificationGroup.find({'is_active':true},function(err,classifications){
+            //res.status(200).json({category:category});
+            if(req.session.passport.user)
+                res.render("add-category-form",{'category':category,'activeClassifications':classifications,layout:'list'});
+            else
+                res.redirect('/account/session');
+            
+        });
+	})
+});
+CategoryController.get('/categoryDetails/:id',function(req,res){
+	Categories.findById(req.params.id,function(err,category){        
 		//res.status(200).json({category:category});
-        res.render("add-category-form",{'category':category,layout:'list'});
+        
+        if(req.session.passport.user)
+            res.render("category-view",{'activeCategories':category,layout:'list'});
+        else
+            res.redirect('/account/session');
 	})
 });
 
 // Create new category
 CategoryController.post('/category/',function(req,res){
 	if(done==true){
+        var classification = req.body.classification;
+        var classificationArray = [];
+        //var classificationArray = classification.split(",");
+        classification.forEach(function(item){
+            classificationArray.push({"name":item});
+        });
+        
         var newCategory = new Categories({
             name:req.body.name,
             description:req.body.description,
             // need to see how actual image content can be uploaded ??
             imageUrl:imageName,
+            classification:classificationArray,
             is_active:req.body.isActive
-
         });
+        
+        //console.log("classigication"+req.body.classification);
         newCategory.save(function(err,a){
             if(err) return res.send(500,'Error Occured: database error');
             //res.json({'status':'Category '+a._id+' Created '});
@@ -87,14 +137,7 @@ CategoryController.post('/category/',function(req,res){
                     });
                     read_stream.pipe(writestream);
                     console.log('gridfs uploaded'+req.files.imageUrl.name);
-                
-
-            
-                
-            
                 res.redirect('/categories/list');
-            
-
         });
     }
     
@@ -170,5 +213,64 @@ CategoryController.delete('/category/:id/:imgUrl',function(req,res){
         });
 });
 
+//Add new classification for category
+CategoryController.get('/:categoryId/classification',function(req,res){
+    var categoryId = req.params.categoryId;
+	ClassificationGroup.find({'is_active':true},function(err,classifications){
+		res.render("add-category-classification",{'classifications':classifications,'categoryId':categoryId,layout:'list'});
+    }); 
+});
 
+//add new classification
+CategoryController.post('/:id/classification',function(req,res){
+    var categoryId = req.params.id;
+    var classificationName = req.body.classification;
+	
+    newClassification={
+		name:req.body.classification
+	};
+    Categories.findOne({_id:categoryId},{classification:{$elemMatch:{name:classificationName}}},function(err,catClass){
+        if(err) {
+            return res.send(500,'Error Occured During Phone Update for Product with Id['+categoryId+']');
+        }
+        else{
+            if(catClass.classification != ""){
+                //res.json({"msg":catClass.classification});
+                ClassificationGroup.find({'is_active':true},function(err,classifications){
+                    res.render("add-category-classification",{msg:"Aleready classification added for this category",'classifications':classifications,'categoryId':categoryId,layout:'list'});
+                }); 
+                
+            }
+            else{
+            Categories.update({_id:categoryId},{
+            $push:
+                {'classification':
+                        newClassification
+                }
+            },
+            {upsert:false},function(err){
+                if(err) return res.send(500,'Error Occured During Phone Update for Product with Id['+categoryId+']');
+                //res.json({'status':'New Phone Details Created for Product ['+categoryId+']'});
+                res.redirect("/categories/categoryDetails/"+categoryId);
+            });
+            }
+        }
+    });
+	
+});
+// Delete TermsAndCondition
+
+CategoryController.delete('/:categoryId/classification/:classId',function(req,res){
+	categoryId = req.params.categoryId;
+	classId = req.params.classId;
+
+	Categories.update({_id:categoryId},
+	{
+		$pull:{classification:{_id:classId}}
+	},{multi:true}
+		,function(err){
+				if(err) return res.send(500,'Error Occured During TermsCondition Delete for Product with Id['+productId+']');
+				res.json({'status':'TermsCondition Deleted for Product ['+categoryId+']'});
+	});
+});
 module.exports = CategoryController;

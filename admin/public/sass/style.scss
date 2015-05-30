@@ -190,12 +190,12 @@ body{
 						}
 					}
                 }
-                &.item-image{
+                &.item-classification{
                     background:#A9DC8E;
                     border:1px solid #9ad67b;
 					.icon{
 						&:before{
-							content:"\e927";
+							content:"\e936";
 						}
 					}
                 }
@@ -413,7 +413,7 @@ body{
     width:65%;
 }
 
-.cat-list{
+.cat-list,.class-list{
 	table{
 		width:100%;
 		tr{
@@ -539,7 +539,7 @@ ul{
     }
 }
 
-.vacay-table{
+.vacay-table,.vacaytable{
     width:95%;
     margin:20px auto;
     th{
@@ -596,5 +596,11 @@ ul{
                 padding:2px;
             }
         }
+    }
+}
+.error{
+    &.msg{
+        color:#f00;
+        font-size: 11px;
     }
 }

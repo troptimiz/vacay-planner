@@ -47,16 +47,32 @@ obj = {
                 });
             }
         });
-        
-        $('.add-category').on('click',function(e){
+        $('.class-list .delete').on('click',function(e){
             e.preventDefault();
-            $('.cat-list').fadeOut(500,function(){
-                $('.add-form-container').fadeIn(500);                
+            var $ths = $(this);
+            var del_id = $ths.parents('.delete-edit-container').find('#classification_id').val();
+            
+            if(confirm("Do you want to delete the record")){
+                $.ajax({
+                    url:"/classifications/classification/"+del_id,
+                    method:"DELETE",
+                    success:function(data){
+                        $ths.parents('tr').fadeOut(500,function(){
+                            $ths.parents('tr').remove();
+                        });
+                    }
+                });
+            }
+        });
+        $('.add-category,.add-calssification').on('click',function(e){
+            e.preventDefault();
+            $('.cat-list,.class-list').fadeOut(500,function(){
+                $('.add-form-container').fadeIn(500);               
             });
         });
-        $('.cancel-category-addition').on('click',function(){
+        $('.cancel-category-addition,.cancel-classification-addition').on('click',function(){
             $('.add-form-container').fadeOut(500,function(){
-                $('.cat-list').fadeIn(500);                
+                $('.cat-list,.class-list').fadeIn(500);                
             });
         });
         
@@ -78,6 +94,30 @@ obj = {
                 }
             });*/
         });
+        $('#add-new-classification').on('click',function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            if($(this).parents('form').valid()){
+                var formData = $('#add-classification-form').serialize();
+                $.ajax({
+                    url:"/classifications/classification/",
+                    data:formData,
+                    method:"PUT",
+                    success:function(data){
+                        if(data.msg == "success"){
+                            console.log(data.msg);
+                            location.href="/classifications/all";   
+                        }
+                        else{
+                            $('.msg').text(data.msg);
+                            $('.msg').parents('.form-group').removeClass('hidden');
+                            setTimeout(function(){$('.msg').parents('.form-group').addClass('hidden');},5000);
+                        }
+                    }
+                });
+            }
+            
+        });
         $('#edit-category').on('click',function(e){
             var formData = $('#edit-category-form').serialize();
             var recordId = $('#edit-category-form').find('input[name="id"]').val();
@@ -96,6 +136,41 @@ obj = {
                     console.log("Updated");
                 }
             });*/
+        });
+        $('#add-category-classification').on('click',function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            if($(this).parents('form').valid()){
+                $(this).parents('form').submit();
+            }
+            /*$.ajax({
+                url:"/categories/category/"+recordId,
+                data:formData,
+                method:"POST",
+                success:function(){
+                    location.href="/categories/list";
+                    console.log("Updated");
+                }
+            });*/
+        });
+        $('#edit-classification').on('click',function(e){
+            var formData = $('#edit-classification-form').serialize();
+            var recordId = $('#edit-classification-form').find('input[name="id"]').val();
+            console.log(recordId);
+            e.preventDefault();
+            e.stopPropagation();
+            /*if($(this).parents('form').valid()){
+                $(this).parents('form').submit();
+            }*/
+            $.ajax({
+                url:"/classifications/classification/"+recordId,
+                data:formData,
+                method:"POST",
+                success:function(){
+                    location.href="/classifications/all";
+                    console.log("Updated");
+                }
+            });
         });
 		
         /* Product related actions */
@@ -188,6 +263,14 @@ obj = {
         $('.vacay-table .delete-edit-container').on('click','.delete',function(e){
             e.preventDefault();
             var URL = "/products"+$(this).attr('href');
+            var $ths = $(this);
+            if(confirm("Do you want to delete the record")){                
+                obj.sendAjax(URL,'DELETE','',obj.deleteSuccess($ths,'tr'));                
+            }
+        });
+        $('.vacaytable .delete-edit-container').on('click','.delete',function(e){
+            e.preventDefault();
+            var URL = $(this).attr('href');
             var $ths = $(this);
             if(confirm("Do you want to delete the record")){                
                 obj.sendAjax(URL,'DELETE','',obj.deleteSuccess($ths,'tr'));                
