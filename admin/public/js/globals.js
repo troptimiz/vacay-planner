@@ -78,11 +78,16 @@ obj = {
                 }
             });*/
         });
-        $('#edit-category').on('click',function(){
+        $('#edit-category').on('click',function(e){
             var formData = $('#edit-category-form').serialize();
             var recordId = $('#edit-category-form').find('input[name="id"]').val();
             console.log(recordId);
-            $.ajax({
+            e.preventDefault();
+            e.stopPropagation();
+            if($(this).parents('form').valid()){
+                $(this).parents('form').submit();
+            }
+            /*$.ajax({
                 url:"/categories/category/"+recordId,
                 data:formData,
                 method:"POST",
@@ -90,7 +95,7 @@ obj = {
                     location.href="/categories/list";
                     console.log("Updated");
                 }
-            });
+            });*/
         });
 		
         /* Product related actions */

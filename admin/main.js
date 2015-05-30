@@ -12,6 +12,7 @@ var path = require('path');
 
 app.set('port',process.env.PORT || 3000);
 app.use("/public", express.static(path.join(__dirname, 'public')));
+app.use("/uploads", express.static(path.join(__dirname, 'uploads')));
 app.engine('handlebars',handlebars.engine);
 //app.engine('handlebars', handlebars({defaultLayout: 'main'}));
 app.set('view engine','handlebars');
@@ -20,12 +21,7 @@ app.set('view engine','handlebars');
 
 app.get("/",function(req,res){
 
-	if(req.session){
-		console.log('Session Found!!!');
-	}else{
-		console.log('Redirecting to Login ...');
-		res.redirect('/account/login');
-	}
+	res.redirect('/account/session');
 	
 });
 app.get("/login",function(req,res){
