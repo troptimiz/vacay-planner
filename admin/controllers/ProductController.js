@@ -4,7 +4,31 @@ var Product = require('../models/products.js');
 var bodyParser = require('body-parser');
 
 ProductController.use(bodyParser());
-
+var multer = require('multer');
+var fs = require('fs');
+var imageName ="";
+var mongoose = require('mongoose');
+var Grid = require('gridfs-stream');
+var gfs = Grid(mongoose.connection.db, mongoose.mongo);
+var dirname = require('path').dirname(__dirname);
+/*File uplaod*/
+/*CategoryController.use(multer({ dest: './uploads/',
+    rename: function (fieldname, filename) {
+        return filename+Date.now();
+    },
+    onFileUploadStart: function (file) {
+      console.log(file.originalname + ' is starting ...')
+    },
+    onFileUploadComplete: function (file) {
+      console.log(file.fieldname + ' uploaded to  ' + file.name);
+        imageName = file.name;
+      done=true;
+    },
+    onError: function (error, next) {
+      console.log(error)
+      next(error)
+    }
+}));*/
 
 // All Active Products
 ProductController.get('/',function(req,res){
@@ -34,6 +58,7 @@ ProductController.put('/product/',function(req,res){
 		description:req.body.description,
 		emailAddress:req.body.emailAddress,
 		is_active:req.body.is_active,
+        images:[],
 		addresses:[],
 		phoneNumbers:[],
 		tariffs:[],
@@ -61,6 +86,16 @@ ProductController.get('/productDetails/:id',function(req,res){
 	Product.findById(req.params.id,function(err,product){
 		//res.status(200).json({product:product});
         res.render("update-product-details",{'product':product,layout:'list'});
+	})
+});
+
+//Create new Image
+ProductController.get('/:productId/:source/add-new-image',function(req,res){
+	Product.findById(req.params.id,function(err,product){
+		//res.status(200).json({product:product});
+        prodId = req.params.productId;
+        destName = req.params.source;
+        res.render("add-new-image",{'productId':prodId,'dest':destName,layout:'list'});
 	})
 });
 
@@ -166,6 +201,27 @@ ProductController.get('/:productId/addresses/:addressId',function(req,res){
 		},
 		function(err,product){
 		res.render("update-address",{'productAddress':product[0].addresses[0],'productId':productId,layout:'list'});
+	});
+
+});
+//Get image By Product ID & Address ID
+
+ProductController.get('/:productId/image/:imageId/:source',function(req,res){
+	productId = req.params.productId;
+	imageId = req.params.imageId;
+    dest = req.params.source;
+    console.log(productId);
+	Product.find(
+		{_id:productId},
+		{images:{$elemMatch:
+			{
+				_id:imageId
+			}
+		  }
+		},
+		function(err,product){
+        //res.status(200).json({product:product});
+		res.render("update-image",{'productImage':product[0].images[0],'productId':productId,'dest':dest,layout:'list'});
 	});
 
 });
@@ -419,7 +475,59 @@ ProductController.post('/:id/address',function(req,res){
 	});
 });
 
+// Add Image
 
+ProductController.post('/:id/:source/image',multer({
+    dest:"./uploads/",
+    rename: function (fieldname, filename) {
+        return filename+Date.now();
+    },
+    changeDest:function(dest,req,res){
+        var newDestination = dest + req.params.source;
+        var stat = null;
+        try {
+            stat = fs.statSync(newDestination);
+        } catch (err) {
+            fs.mkdirSync(newDestination);
+        }
+        if (stat && !stat.isDirectory()) {
+            throw new Error('Directory cannot be created because an inode of a different type exists at "' + dest + '"');
+        }
+        return newDestination   
+    },
+    onFileUploadComplete: function (file) {
+      console.log(file.fieldname + ' uploaded to  ' + file.name);
+        imageName = file.name;
+      done=true;
+    }
+}),function(req,res){
+	productId = req.params.id;
+    captionText = req.body.caption;
+    console.log(imageName);
+	newImage = {
+		imageUrl :imageName,
+		captionText:captionText
+	};
+	Product.update({_id:productId},
+		{
+			$push:{'images':
+					newImage
+				}}
+				,{upsert:true}
+		,function(err){
+		if(err) return res.send(500,'Error Occured During Address Update for Product with Id['+productId+']');
+		//res.json({'status':'Address Created for Product ['+productId+']'});
+        var filename = req.files.imageUrl.name;
+        var path = req.files.imageUrl.path;
+        var type = req.files.imageUrl.mimetype;
+        var read_stream =  fs.createReadStream(dirname + '/' + path);                    
+        var writestream = gfs.createWriteStream({
+            filename: req.files.imageUrl.name
+        });
+        read_stream.pipe(writestream);
+        res.redirect("/products/product/"+productId);
+	});
+});
 // Update Address
 
 ProductController.post('/:productId/address/:addressId',function(req,res){
@@ -445,7 +553,111 @@ ProductController.post('/:productId/address/:addressId',function(req,res){
 	});
 });
 
+// Update images
 
+ProductController.post('/:productId/image/:imageId/:source',multer({
+   dest:"./uploads/",
+    rename: function (fieldname, filename) {
+        return filename+Date.now();
+    },
+    changeDest:function(dest,req,res){
+        var newDestination = dest + req.params.source;
+        var stat = null;
+        try {
+            stat = fs.statSync(newDestination);
+        } catch (err) {
+            fs.mkdirSync(newDestination);
+        }
+        if (stat && !stat.isDirectory()) {
+            throw new Error('Directory cannot be created because an inode of a different type exists at "' + dest + '"');
+        }
+        return newDestination   
+    },
+    onFileUploadComplete: function (file) {
+      console.log(file.fieldname + ' uploaded to  ' + file.name);
+        imageName = file.name;
+      done=true;
+    } 
+}),function(req,res){
+	
+	productId = req.params.productId;
+	imageId = req.params.imageId;
+    dest = req.params.source;
+    prevUrl = req.body.prevUrl;
+    
+    bUrl = "/products/product/"+productId;
+
+	imageToBeUpdated = {
+		imageUrl:imageName,
+        captionText:req.body.caption,
+		_id:imageId
+	};
+    if(req.body.prevImgUrl != "undefined" || req.body.prevImgUrl != ""){
+        try{
+        fs.unlink('uploads/'+dest+"/"+prevUrl, function (err) {
+          if (err) throw err;
+          console.log('successfully deleted '+prevUrl);
+        });
+        
+        gfs.remove({filename:prevUrl}, function (err) {
+          if (err) return handleError(err);
+          console.log('success');
+        });
+        }
+        catch(e){
+            console.log("something went wrong");   
+        }
+    }
+
+	Product.update({_id:productId,'images._id':imageId},
+		{
+			$set:{'images.$':imageToBeUpdated}}
+		,function(err){
+		if(err) return res.send(500,'Error Occured During Address Update for Product with Id['+productId+']'+err);
+		
+        
+        backUrl = '/categories/category/'+req.params.id;
+        var filename = req.files.imageUrl.name;
+        var path = req.files.imageUrl.path;
+        var type = req.files.imageUrl.mimetype;
+        var read_stream =  fs.createReadStream(dirname + '/' + path);                    
+        var writestream = gfs.createWriteStream({
+            filename: req.files.imageUrl.name
+        });
+        read_stream.pipe(writestream);
+        console.log('gridfs uploaded'+req.files.imageUrl.name);
+        //res.json({'status':'Address Updated for Product ['+productId+']'});
+        res.redirect(bUrl);
+	});
+});
+
+
+// Delete image
+
+ProductController.delete('/:productId/:dest/image/:imageId/:imageName',function(req,res){
+	productId = req.params.productId;
+	imageId = req.params.imageId;
+    dest = req.params.dest;
+    imgaeName = req.params.imageName;
+
+	Product.update({_id:productId},
+	{
+		$pull:{images:{_id:imageId}}
+	},{multi:true}
+		,function(err){
+				if(err) return res.send(500,'Error Occured During Address Delete for Product with Id['+productId+']');
+				res.json({'status':'Address Deleted for Product ['+productId+']'});
+                fs.unlink('uploads/'+dest+"/"+imgaeName, function (err) {
+                  if (err) throw err;
+                  console.log('successfully deleted '+req.body.prevImgUrl);
+                });
+                gfs.remove({filename:imgaeName}, function (err) {
+                  if (err) return handleError(err);
+                  console.log('success');
+                });
+                
+	});
+});
 
 // Delete Address
 

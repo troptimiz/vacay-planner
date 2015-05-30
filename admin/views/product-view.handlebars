@@ -29,6 +29,44 @@
                 </ul>
             </div>
         </div>
+        
+        <div class="product-image-details">
+            <div class="product-name">
+                <h3 class="heading1">
+                    Product Images
+                    <a href="../{{product.id}}/{{product.category}}/add-new-image" class="edit-address-details"><span class="icon-plus"></span></a>
+                </h3>
+                <table class="vacay-table">
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Caption</th>
+                        <th>Category</th>
+                        <th class="vacay-action">Action</th>
+                    </tr>
+                    {{#each product.images}}
+                    <tr>
+                        <td><img src="/uploads/{{../product.category}}/{{this.imageUrl}}" height=50/></td>
+                        <td>{{this.imageUrl}}</td>
+                        <td>{{this.captionText}}</td>
+                        <td>{{../product.category}}</td>
+                        <td>
+                            <div class="delete-edit-container">                                
+                                <a href="../{{../product.id}}/image/{{this._id}}/{{../product.category}}" class="edit" title="Edit the row">Edit</a> /
+                                <a href="/{{../product.id}}/{{../product.category}}/image/{{this._id}}/{{this.imageUrl}}" class="delete" title="Delete the row">Delete</a>
+                            </div>
+                        </td>
+                    </tr>    
+                    
+                    {{/each}}
+                </table>
+                
+                
+                <div class="clearfix"></div>
+                
+            </div>
+        </div>
+        
         <div class="product-address-details">
             
             <div class="product-address-details">

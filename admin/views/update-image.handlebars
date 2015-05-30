@@ -1,0 +1,35 @@
+<div class="edit-form-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item-container">
+                <div class="data-form">
+                    <div class="form-heading">
+                        <h2>Update Image</h2>
+                    </div>
+                    <form role="form" method="post" enctype="multipart/form-data" action="/products/{{productId}}/image/{{productImage._id}}/{{dest}}" id="add-image-form">
+                        <input type="hidden" name="id" value="{{productId}}"/>
+                        <input type="hidden" value="{{productImage.imageUrl}}" name="prevUrl"/>
+                        <div class="form-group">
+                            <label for="">Select Image:</label>
+                            <input id="imageUrl" type="file" name="imageUrl" class="form-control required" placeholder="Select Image">
+                            <div class="clearfix"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="">Caption Text:</label>
+                            <input type="textbox" value="{{productImage.captionText}}" name="caption" class="form-control required" placeholder="Caption">
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="image-preview product" style="display:block">                            
+                            <img src="/uploads/{{dest}}/{{productImage.imageUrl}}"/>
+                        </div> 
+                        
+                        
+                        <button type="button" class="btn btn-default" id="update-image">Submit</button>
+                        <a href="/products/product/{{productId}}" title="Cancel" class="btn btn-default">Cancel</a>
+                     </form>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>

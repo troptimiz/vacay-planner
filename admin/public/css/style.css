@@ -552,3 +552,15 @@ ul li {
   display: inline-block;
   vertical-align: middle;
 }
+.image-preview.product {
+  top: 65px;
+}
+
+.product-image-details .vacay-table td {
+  height: 75px;
+}
+.product-image-details .vacay-table td img {
+  text-align: center;
+  background: #ccc;
+  padding: 2px;
+}

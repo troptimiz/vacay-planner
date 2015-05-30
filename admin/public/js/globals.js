@@ -133,6 +133,32 @@ obj = {
             }
         });
         
+        /* Create New image */
+        $('#add-image').on('click',function(){
+            if ($('#add-image-form').valid()) {
+                $(this).parents('form').submit();
+                /*var formData = $('#add-address-form').serialize();
+                var productId = $('#add-address-form').find('input[name="id"]').val();
+                var URL = "/products/"+productId+"/address";
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));*/
+            } else {
+            }
+            
+        });
+        
+        /*Update Address /:productId/address/:addressId*/
+        $('#update-image').on('click',function(e){
+            e.preventDefault();
+            if($(this).parents('form').valid()){
+                $(this).parents('form').submit();
+                /*var formData = $('#update-address-form').serialize();
+                var productId = $('#update-address-form').find('input[name="id"]').val(); 
+                var addressId = $('#update-address-form').find('input[name="addressId"]').val();
+                var URL = "/products/"+productId+"/address/"+addressId;
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));*/
+            }
+        });
+        
         /* Create New address */
         $('#add-address').on('click',function(){
             if ($('#add-address-form').valid()) {
@@ -144,6 +170,7 @@ obj = {
             }
             
         });
+        
         
         /*Update Address /:productId/address/:addressId*/
         $('#update-address').on('click',function(e){

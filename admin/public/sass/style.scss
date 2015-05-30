@@ -581,4 +581,20 @@ ul{
         display: inline-block;
         vertical-align: middle;
     }
+    &.product{
+        top:65px;   
+    }
+}
+
+.product-image-details{
+    .vacay-table{
+        td{
+            height:75px;
+            img{
+                text-align: center;
+                background: #ccc;
+                padding:2px;
+            }
+        }
+    }
 }
