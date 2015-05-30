@@ -1,0 +1,5 @@
+#Tomcat publish data
+#Fri May 29 19:15:43 IST 2015
+org.eclipse.jst.jee.server\:/binary\:/Users/raghavan/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-websocket/8.0.20/b4914491d1baa90958e5c951bec7140e65874f3/tomcat-embed-websocket-8.0.20.jar=/Users/raghavan/sts-bundle/pivotal-tc-server-developer-3.0.2.SR2/base-instance/wtpwebapps/vacayplanner/WEB-INF/lib/tomcat-embed-websocket-8.0.20.jar
+org.eclipse.jst.jee.server\:/binary\:/Users/raghavan/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.1.6.RELEASE/960101b25d0ec6f45d550bf92c00de8c6a584e6a/spring-web-4.1.6.RELEASE.jar=/Users/raghavan/sts-bundle/pivotal-tc-server-developer-3.0.2.SR2/base-instance/wtpwebapps/vacayplanner/WEB-INF/lib/spring-web-4.1.6.RELEASE.jar
+org.eclipse.jst.jee.server\:vacayplanner=/Users/raghavan/sts-bundle/pivotal-tc-server-developer-3.0.2.SR2/base-instance/wtpwebapps/vacayplanner

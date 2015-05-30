@@ -1,7 +1,8 @@
 #ignore packages installed by npm
 admin/node_modules
-vacayplanner-app/build
-
+vacayplanner-web/build
+vacayplanner-web/bin
+vacayplanner-workspace/
 
 #put any other files/folders that don't want to be check in here
 *.sass
