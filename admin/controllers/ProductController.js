@@ -11,6 +11,19 @@ var mongoose = require('mongoose');
 var Grid = require('gridfs-stream');
 var gfs = Grid(mongoose.connection.db, mongoose.mongo);
 var dirname = require('path').dirname(__dirname);
+
+var Passport = require('passport');
+var flash = require('connect-flash'); 
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser'); 
+var expressSession = require('express-session');
+ProductController.use(bodyParser());
+ProductController.use(cookieParser());
+ProductController.use(expressSession({ secret: '1234QWERTY'}));
+ProductController.use(Passport.initialize());
+ProductController.use(Passport.session());
+ProductController.use(flash());
+
 /*File uplaod*/
 /*CategoryController.use(multer({ dest: './uploads/',
     rename: function (fieldname, filename) {
@@ -76,16 +89,24 @@ ProductController.put('/product/',function(req,res){
 
 ProductController.get('/product/:id',function(req,res){
 	Product.findById(req.params.id,function(err,product){
-		//res.status(200).json({product:product});
-        res.render("product-view",{'product':product,layout:'list'});
+		if(req.session.passport.user)
+            res.render("product-view",{'product':product,layout:'list'});
+        else
+            res.redirect('/account/session');
+        //res.status(200).json({product:product});
+        
 	})
 });
 
 //Update product details
 ProductController.get('/productDetails/:id',function(req,res){
 	Product.findById(req.params.id,function(err,product){
-		//res.status(200).json({product:product});
-        res.render("update-product-details",{'product':product,layout:'list'});
+		if(req.session.passport.user)
+            res.render("update-product-details",{'product':product,layout:'list'});
+        else
+            res.redirect('/account/session');
+        //res.status(200).json({product:product});
+        
 	})
 });
 

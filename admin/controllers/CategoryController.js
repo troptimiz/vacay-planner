@@ -15,7 +15,7 @@ var gfs = Grid(mongoose.connection.db, mongoose.mongo);
 var dirname = require('path').dirname(__dirname);
 
 var Passport = require('passport');
- var flash = require('connect-flash'); 
+var flash = require('connect-flash'); 
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser'); 
 var expressSession = require('express-session');
