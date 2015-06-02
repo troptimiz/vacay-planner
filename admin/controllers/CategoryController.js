@@ -107,9 +107,14 @@ CategoryController.post('/category/',function(req,res){
         var classification = req.body.classification;
         var classificationArray = [];
         //var classificationArray = classification.split(",");
-        classification.forEach(function(item){
-            classificationArray.push({"name":item});
-        });
+        if(typeof(classification) == 'string'){
+            classificationArray.push({"name":classification});   
+        }
+        else{
+            classification.forEach(function(item){
+                classificationArray.push({"name":item});
+            });
+        }
         
         var newCategory = new Categories({
             name:req.body.name,
