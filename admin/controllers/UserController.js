@@ -26,7 +26,7 @@ var users = [
 */
 
 function findById(id, fn) {
-  console.log('Find By ID Invoked '+id);
+  //console.log('Find By ID Invoked '+id);
   User.findById(id,function(err,user){
     if(err){
        fn(new Error('User ' + id + ' does not exist'));
@@ -61,7 +61,7 @@ Passport.serializeUser(function(user, done) {
 });
 
 Passport.deserializeUser(function(id, done) {
-  console.log('Deserialize User Invoked ...');
+  //console.log('Deserialize User Invoked ...');
   findById(id, function (err, user) {
     done(err, user);
   });
@@ -89,18 +89,18 @@ Passport.use(new LocalStrategy(
    });*/
       User.findOne({ username: username }, function (err, user) {
          if (err) { 
-              console.log('Error Occured During Authentication!!!');
+              //console.log('Error Occured During Authentication!!!');
               return done(err); 
             }
             if (!user) { 
-              console.log('Unknown User!!!');
+              //console.log('Unknown User!!!');
               return done(null, false, { message: 'Unknown user ' + username }); 
             }
             if (user.password != password) { 
-              console.log('Wrong password!!!');
+              //console.log('Wrong password!!!');
               return done(null, false, { message: 'Invalid password' }); 
             }
-            console.log('Authentication Successful ...'+user);
+            //console.log('Authentication Successful ...'+user);
             return done(null, user);
         });
       }
@@ -122,7 +122,7 @@ UserController.get('/authenticate',
                         successRedirect:'/dashboard',failureFlash:true
                     }),
                    function(req,res){
-                        console.log('Passport Authentication Done!!!');
+                        //console.log('Passport Authentication Done!!!');
                         req.session.message="Authentication Successful";
                         res.redirect('/dashboard');
                 });

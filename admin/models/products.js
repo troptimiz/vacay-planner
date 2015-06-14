@@ -22,6 +22,7 @@ var productSchema = mongoose.Schema({
     images:[{imageUrl:String,captionText:String}],
 	addresses:[{address1:String,address2:String,city:String,state:String,postalCode:Number}],
 	phoneNumbers:[{contactType:String,contactNumber:Number}],
+    classifications:[{name:String}],
 	tariffs:[{description:String,cost:Number}],
 	amenities:[{description:String}],
 	termsAndConditions:[{description:String}]

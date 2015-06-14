@@ -82,10 +82,18 @@ CategoryController.get('/category/:id',function(req,res){
 	Categories.findById(req.params.id,function(err,category){
         ClassificationGroup.find({'is_active':true},function(err,classifications){
             //res.status(200).json({category:category});
-            if(req.session.passport.user)
-                res.render("add-category-form",{'category':category,'activeClassifications':classifications,layout:'list'});
-            else
+            if(req.session.passport.user){
+                console.log(req.query.type);
+                if(req.query.type !== "" && req.query.type=="json"){
+                    res.status(200).json({category:category}); 
+                }
+                else{
+                    res.render("add-category-form",{'category':category,'activeClassifications':classifications,layout:'list'});
+                }
+            }
+            else{
                 res.redirect('/account/session');
+            }
             
         });
 	})
@@ -263,7 +271,7 @@ CategoryController.post('/:id/classification',function(req,res){
     });
 	
 });
-// Delete TermsAndCondition
+// Delete classification
 
 CategoryController.delete('/:categoryId/classification/:classId',function(req,res){
 	categoryId = req.params.categoryId;

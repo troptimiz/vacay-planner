@@ -1,6 +1,7 @@
 var express = require('express');
 var ProductController = express();
 var Product = require('../models/products.js');
+var ClassificationGroup = require('../models/classification.js');
 var bodyParser = require('body-parser');
 
 ProductController.use(bodyParser());
@@ -63,7 +64,18 @@ ProductController.get('/category/:name',function(req,res){
 // Create new Product 
 
 ProductController.put('/product/',function(req,res){
-
+    var classification = req.body.classification;
+    var classificationArray = [];
+    //var classificationArray = classification.split(",");
+    if(typeof(classification) == 'string'){
+        classificationArray.push({"name":classification});   
+    }
+    else{
+        classification.forEach(function(item){
+            classificationArray.push({"name":item});
+        });
+    }
+    console.log(classificationArray);
 	var product = new Product({
 		category:req.body.category,
 		name:req.body.name,	
@@ -74,6 +86,7 @@ ProductController.put('/product/',function(req,res){
         images:[],
 		addresses:[],
 		phoneNumbers:[],
+        classifications:classificationArray,
 		tariffs:[],
 		amenities:[],
 		termsAndConditions:[]
@@ -91,6 +104,7 @@ ProductController.get('/product/:id',function(req,res){
 	Product.findById(req.params.id,function(err,product){
 		if(req.session.passport.user)
             res.render("product-view",{'product':product,layout:'list'});
+            //res.status(200).json({product:product});
         else
             res.redirect('/account/session');
         //res.status(200).json({product:product});
@@ -855,7 +869,67 @@ ProductController.delete('/:productId/phoneNumber/:phoneNumberId',function(req,r
 				res.json({'status':'PhoneNumber Deleted for Product ['+productId+']'});
 	});
 });
+//Add new classification for product
+ProductController.get('/:productId/classification',function(req,res){
+    var productId = req.params.productId;
+	ClassificationGroup.find({'is_active':true},function(err,classifications){
+		res.render("add-product-classification",{'classifications':classifications,'productId':productId,layout:'list'});
+    }); 
+});
 
+//add new classification
+ProductController.post('/:id/classification',function(req,res){
+    var productId = req.params.id;
+    var classificationName = req.body.classification;
+    newClassification={
+		name:classificationName
+	};
+    Product.findOne({_id:productId},{classifications:{$elemMatch:{name:classificationName}}},function(err,prodClass){
+        if(err) {
+            return res.send(500,'Error Occured During Phone Update for Product with Id['+productId+']');
+        }
+        else{
+            if(prodClass.classifications != ""){
+                //res.json({"msg":prodClass.classification});
+                ClassificationGroup.find({'is_active':true},function(err,classifications){
+                    res.json({"msg":"Already classification added for this product"});
+                    //res.render("add-category-classification",{msg:"Aleready classification added for this category",'classifications':classifications,'productId':productId,layout:'list'});
+                }); 
+                
+            }
+            else{
+            Product.update({_id:productId},{
+            $push:
+                {'classifications':
+                        newClassification
+                }
+            },
+            {upsert:false},function(err){
+                if(err) return res.send(500,'Error Occured During Phone Update for Product with Id['+productId+']');
+                //res.json({'status':'New Phone Details Created for Product ['+categoryId+']'});
+                res.redirect("/products/product/"+productId);
+            });
+            }
+        }
+    });
+	
+});
+
+// Delete classification
+
+ProductController.delete('/:productId/productclassification/:classId',function(req,res){
+	productId = req.params.productId;
+	classId = req.params.classId;
+
+	Product.update({_id:productId},
+	{
+		$pull:{classifications:{_id:classId}}
+	},{multi:true}
+		,function(err){
+				if(err) return res.send(500,'Error Occured During TermsCondition Delete for Product with Id['+productId+']');
+				res.json({'status':'TermsCondition Deleted for Product ['+productId+']'});
+	});
+});
 //TODO : search specific params ..
 
 

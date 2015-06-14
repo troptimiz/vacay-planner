@@ -103,7 +103,36 @@
                 <div class="clearfix"></div>
             </div>
         </div>
-        
+        <div class="product-address-details">
+            
+            <div class="product-address-details">
+                
+                <h3 class="heading1">
+                    Classifications Details 
+                    <a href="../{{product.id}}/classification" class="edit-address-details"><span class="icon-plus"></span></a>                    
+                </h3>
+                <div class="clearfix"></div>
+                    
+                    <table class="vacaytable">
+                        <tr>
+                            <th>Name</th>
+                            <th class="vacay-action">Action</th>
+                        </tr>
+                        {{#each product.classifications}}
+                        <tr>
+                            
+                            <td>{{this.name}}</td>
+                            <td>
+                                <div class="delete-edit-container"> 
+                                    <a href="../{{../product.id}}/productclassification/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </table>                    
+                <div class="clearfix"></div>
+            </div>
+        </div>
         <div class="product-phonenumber-details">
             <div class="">
                 <h3 class="heading1">

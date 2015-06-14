@@ -19,6 +19,24 @@ obj = {
                 $(".image-preview").empty().html(img).fadeIn();
             }
         });
+        $("#categories").change(function(){
+            var element = $("option:selected", this);
+            var myTag = element.attr("cat-id");
+            var options = "";
+            $.ajax({
+                url:"/categories/category/"+myTag+"?type=json",
+                method:"GET",
+                success:function(data){
+                    data.category.classification.forEach(function(item){
+                        options = options+"<option value='"+item.name+"'>"+item.name+"</option>";
+                    });
+                    if(options != ""){
+                        $('.classifications').html(options);
+                    }                    
+                }
+                
+            });
+        });
         $('form').validate({});
         var pageParams = location.href.split("/");
         var pageName = pageParams[pageParams.length-2];
@@ -142,16 +160,7 @@ obj = {
             e.stopPropagation();
             if($(this).parents('form').valid()){
                 $(this).parents('form').submit();
-            }
-            /*$.ajax({
-                url:"/categories/category/"+recordId,
-                data:formData,
-                method:"POST",
-                success:function(){
-                    location.href="/categories/list";
-                    console.log("Updated");
-                }
-            });*/
+            }            
         });
         $('#edit-classification').on('click',function(e){
             var formData = $('#edit-classification-form').serialize();
@@ -182,10 +191,12 @@ obj = {
                 var URL = "/products/product/";
                 var category = $('select[name="category"').val();
                 var formData = $('#add-product-form').serialize();
+                console.log(formData);
                 obj.sendAjax(URL,"PUT",formData,obj.redtSuccess('/categories/categoryView/'+category));
             }
         
         });
+        
         
         /*Edit Product*/
         $('#edit-product').on('click',function(e){
@@ -241,6 +252,28 @@ obj = {
                 var productId = $('#add-address-form').find('input[name="id"]').val();
                 var URL = "/products/"+productId+"/address";
                 obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+            } else {
+            }
+            
+        });
+        $('select[name="classification"]').on('change',function(){
+            $(this).parents('form').find('.error.msg').parent('.form-group').addClass('hide');
+        });
+        $('#add-product-classification').on('click',function(){
+            if ($('#add-product-classification-form').valid()) {
+                var formData = $('#add-product-classification-form').serialize();
+                var productId = $('#add-product-classification-form').find('input[name="id"]').val();
+                var URL = "/products/"+productId+"/classification";
+                obj.sendAjax(URL,"POST",formData,
+                    function(data){
+                        if(data.msg !== undefined){
+                            $(".error.msg").text(data.msg).parents(".form-group").removeClass("hide").show();   
+                        } else{
+                            obj.newaddressSuccess(productId);   
+                        }
+                        
+                    }
+                );
             } else {
             }
             
