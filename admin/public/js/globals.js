@@ -11,9 +11,11 @@ obj = {
                 var file = e.originalEvent.srcElement.files[i];
 
                 var img = document.createElement("img");
+                var filename = $(this).val().split('\\').pop();
                 var reader = new FileReader();
                 reader.onloadend = function() {
                     img.src = reader.result;
+                    
                 }
                 reader.readAsDataURL(file);
                 $(".image-preview").empty().html(img).fadeIn();

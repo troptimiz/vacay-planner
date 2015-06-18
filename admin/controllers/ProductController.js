@@ -621,13 +621,17 @@ ProductController.post('/:productId/image/:imageId/:source',multer({
     prevUrl = req.body.prevUrl;
     
     bUrl = "/products/product/"+productId;
-
+    var fileImage = imageName;
+    
+    if(imageName =="" || imageName === undefined){
+        imageName = req.body.imgUrl;   
+    }
 	imageToBeUpdated = {
 		imageUrl:imageName,
         captionText:req.body.caption,
 		_id:imageId
 	};
-    if(req.body.prevImgUrl != "undefined" || req.body.prevImgUrl != ""){
+    if(fileImage.trim() != "" && req.body.prevUrl != "" && fileImage.trim() != req.body.prevUrl ){
         try{
         fs.unlink('uploads/'+dest+"/"+prevUrl, function (err) {
           if (err) throw err;
@@ -652,15 +656,17 @@ ProductController.post('/:productId/image/:imageId/:source',multer({
 		
         
         backUrl = '/categories/category/'+req.params.id;
-        var filename = req.files.imageUrl.name;
-        var path = req.files.imageUrl.path;
-        var type = req.files.imageUrl.mimetype;
-        var read_stream =  fs.createReadStream(dirname + '/' + path);                    
-        var writestream = gfs.createWriteStream({
-            filename: req.files.imageUrl.name
-        });
-        read_stream.pipe(writestream);
-        console.log('gridfs uploaded'+req.files.imageUrl.name);
+        if(req.files.imageUrl !== undefined){
+            var filename = req.files.imageUrl.name;
+            var path = req.files.imageUrl.path;
+            var type = req.files.imageUrl.mimetype;
+            var read_stream =  fs.createReadStream(dirname + '/' + path);                    
+            var writestream = gfs.createWriteStream({
+                filename: req.files.imageUrl.name
+            });
+            read_stream.pipe(writestream);
+            console.log('gridfs uploaded'+req.files.imageUrl.name);
+        }
         //res.json({'status':'Address Updated for Product ['+productId+']'});
         res.redirect(bUrl);
 	});

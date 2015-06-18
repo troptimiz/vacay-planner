@@ -158,7 +158,13 @@ CategoryController.post('/category/',function(req,res){
 
 //Update the category
 CategoryController.post('/category/:id',function(req,res){
+    //console.log("imageName from file sys:"+req.body.imgUrl);
+    console.log("imageName from file sys:"+imageName  + "Typeof Image:>>>"+typeof imageName);
+    var fileImage = imageName;
     
+    if(imageName =="" || imageName === undefined){
+        imageName = req.body.imgUrl;   
+    }
 	categoryToBeUpdated = {
 		name:req.body.name,
 		description:req.body.description,
@@ -167,9 +173,9 @@ CategoryController.post('/category/:id',function(req,res){
 		is_active:req.body.isActive
 	};
 
-	console.log('Category Updated for id '+req.body.name);
-    
-    if(req.body.prevImgUrl != "undefined" || req.body.prevImgUrl != ""){
+	//console.log('Category Updated for id '+req.body.name);
+    //console.log('fileImage>>>>>>>>>>>>>:'+ fileImage + "PreveImage url:>>>>"+req.body.prevImgUrl); 
+    if(fileImage.trim() != "" && req.body.prevImgUrl != "" && fileImage.trim() != req.body.prevImgUrl ){
         try{
         fs.unlink('uploads/'+req.body.prevImgUrl, function (err) {
           if (err) throw err;
@@ -182,27 +188,32 @@ CategoryController.post('/category/:id',function(req,res){
         });
         }
         catch(e){
-            console.log("something went wrong");   
+            console.log("something went wrong");
         }
     }
 
 	Categories.findOneAndUpdate({_id:req.params.id},categoryToBeUpdated,{upsert:false},function(err,category){
 		if(err) return res.send(500,'Error Occured: database error during Category Updation');
 		//res.json({'status':'Category '+category._id+' Updated '});
-        backUrl = '/categories/category/'+req.params.id;
-        var filename = req.files.imageUrl.name;
-        var path = req.files.imageUrl.path;
-        var type = req.files.imageUrl.mimetype;
-        var read_stream =  fs.createReadStream(dirname + '/' + path);                    
-        var writestream = gfs.createWriteStream({
-            filename: req.files.imageUrl.name
-        });
-        read_stream.pipe(writestream);
-        console.log('gridfs uploaded'+req.files.imageUrl.name);
+        backUrl = '/categories/categoryDetails/'+req.params.id;
+        //backUrl = '/categories/list';
+        //console.log("imageUrl File type:"+req.files.imageUrl);
+        if(req.files.imageUrl !== undefined){
+            var filename = req.files.imageUrl.name;
+
+            var path = req.files.imageUrl.path;
+            var type = req.files.imageUrl.mimetype;
+            var read_stream =  fs.createReadStream(dirname + '/' + path);                    
+            var writestream = gfs.createWriteStream({
+                filename: req.files.imageUrl.name
+            });
+            read_stream.pipe(writestream);
+            console.log('gridfs uploaded'+req.files.imageUrl.name);
+        }
         res.redirect(backUrl); 
 	});
 });
-
+ 
 
 // Delete Category By Id
 CategoryController.delete('/category/:id/:imgUrl',function(req,res){

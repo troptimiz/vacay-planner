@@ -21,7 +21,8 @@
                         </div>
                         <div class="form-group">
                             <label for="">Image URL:</label>
-                            <input type="file" accept="image/*" value="{{category.imageUrl}}" name="imageUrl" class="form-control required" placeholder="Image URL">
+                            <input type="file" accept="image/*"  name="imageUrl" id="imageUrl" class="form-control" placeholder="Image URL">
+                            <input type="hidden" value="{{category.imageUrl}}" name="imgUrl" id="imgUrl"/>
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
