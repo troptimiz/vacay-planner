@@ -58,7 +58,7 @@ ProductController.get('/category/:name',function(req,res){
 
 	Product.find({"category":categoryName,"is_active":true},function(err,products){
 		res.status(200).json({'data':products});
-	});
+	}).sort( { name: -1 } );
 });
 
 // Create new Product 

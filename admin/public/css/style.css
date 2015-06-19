@@ -355,7 +355,7 @@ body {
   margin: 0 auto;
 }
 .data-form .form-group {
-  width: 70%;
+  width: 78%;
   margin-top: 5px;
   margin-bottom: 5px;
   clear: both;
@@ -364,6 +364,13 @@ body {
   float: left;
   font-size: 13px;
 }
+.data-form .form-group span {
+  font-weight: bold;
+  margin-top: 10px;
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 12px;
+}
 .data-form .form-group label {
   width: 150px;
   font-weight: normal;
@@ -371,7 +378,7 @@ body {
   font-size: 13px;
 }
 .data-form .form-group textarea {
-  width: 312px;
+  width: 340px;
 }
 .data-form .form-group .checkbox {
   width: 135px;

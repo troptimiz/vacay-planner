@@ -23,7 +23,7 @@ var productSchema = mongoose.Schema({
 	addresses:[{address1:String,address2:String,city:String,state:String,postalCode:Number}],
 	phoneNumbers:[{contactType:String,contactNumber:Number}],
     classifications:[{name:String}],
-	tariffs:[{description:String,cost:Number}],
+	tariffs:[{description:String,cost:Number,currency:{ type: String, default: 'INR' }}],
 	amenities:[{description:String}],
 	termsAndConditions:[{description:String}]
 });

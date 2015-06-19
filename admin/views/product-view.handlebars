@@ -142,7 +142,7 @@
                 <div class="clearfix"></div>
                         <table class="vacay-table">
                             <tr>
-                                <th>Contact Type</th>
+                                <th>Contact Name</th>
                                 <th>Contact Number</th>
                                 <th class="vacay-action">Action</th>
                             </tr>
@@ -190,7 +190,7 @@
                             </tr>
                             {{#each product.tariffs}}
                             <tr>
-                                <td>Rs.{{this.cost}}.00</td>
+                                <td>{{this.currency}} {{this.cost}}.00</td>
                                 <td>{{this.description}}</td>
                                 <td>
                                     <div class="delete-edit-container">                                

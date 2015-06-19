@@ -459,9 +459,10 @@ obj = {
 			"ajax": "/products/category/"+categoryName,
 			"columns": listObj,
             "destroy": true,
-            "pageLength": 2,
+            "pageLength": 10,
             bFilter: false, 
             bInfo: false,
+            "ordering":false,
             "bLengthChange": false,
             "fnCreatedRow": function( nRow, aData, iDataIndex ) {
                 $(nRow).attr('id', aData['_id']);
