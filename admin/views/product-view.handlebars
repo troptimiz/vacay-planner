@@ -185,12 +185,14 @@
                         <table class="vacay-table">
                             <tr>
                                 <th>Cost</th>
+                                <th>Tax</th>
                                 <th>Description</th>
                                 <th class="vacay-action">Action</th>
                             </tr>
                             {{#each product.tariffs}}
                             <tr>
                                 <td>{{this.currency}} {{this.cost}}.00</td>
+                                <td>{{this.currency}} {{this.tax}}.00</td>
                                 <td>{{this.description}}</td>
                                 <td>
                                     <div class="delete-edit-container">                                

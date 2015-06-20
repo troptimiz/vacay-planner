@@ -58,7 +58,7 @@ ProductController.get('/category/:name',function(req,res){
 
 	Product.find({"category":categoryName,"is_active":true},function(err,products){
 		res.status(200).json({'data':products});
-	}).sort( { name: -1 } );
+	}).sort( { _id: -1 } );
 });
 
 // Create new Product 
@@ -448,7 +448,8 @@ ProductController.post('/:id/tariff',function(req,res){
 	productId = req.params.id;
 	newTariff={
 		description:req.body.description,
-		cost:req.body.cost
+		cost:req.body.cost,
+        tax:req.body.tax
 	};
 
 	Product.update({_id:productId},{
@@ -805,6 +806,7 @@ ProductController.post('/:productId/tariff/:tariffId',function(req,res){
 	tariffToBeUpdated = {
 		description:req.body.description,
 		cost:req.body.cost,
+        tax:req.body.tax,
 		_id:tariffId
 	};
 

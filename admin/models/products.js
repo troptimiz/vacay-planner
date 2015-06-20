@@ -21,9 +21,9 @@ var productSchema = mongoose.Schema({
 	is_active:Boolean,
     images:[{imageUrl:String,captionText:String}],
 	addresses:[{address1:String,address2:String,city:String,state:String,postalCode:Number}],
-	phoneNumbers:[{contactType:String,contactNumber:Number}],
+	phoneNumbers:[{contactType:String,contactNumber:String}],
     classifications:[{name:String}],
-	tariffs:[{description:String,cost:Number,currency:{ type: String, default: 'INR' }}],
+	tariffs:[{description:String,cost:Number,tax:Number,currency:{ type: String, default: 'INR' }}],
 	amenities:[{description:String}],
 	termsAndConditions:[{description:String}]
 });

@@ -94,30 +94,37 @@ body {
   font-weight: bold;
   font-family: Arial;
 }
-.admin-result-container .category-list, .admin-result-container .dashboad-list {
+.admin-result-container .dashboad-list {
   width: 40%;
+}
+.admin-result-container .category-list, .admin-result-container .dashboad-list {
   margin: 0 auto;
   margin-top: 100px;
 }
 .admin-result-container .category-list.min-list, .admin-result-container .dashboad-list.min-list {
-  width: 40%;
   margin-top: 0;
+  display: none;
 }
 .admin-result-container .category-list.min-list .list-item, .admin-result-container .dashboad-list.min-list .list-item {
   margin: 10px 15px;
+  opacity: 0.4;
+}
+.admin-result-container .category-list.min-list .list-item.active, .admin-result-container .category-list.min-list .list-item:hover, .admin-result-container .dashboad-list.min-list .list-item.active, .admin-result-container .dashboad-list.min-list .list-item:hover {
+  opacity: 1;
+  background: #f00;
 }
 .admin-result-container .category-list.min-list .list-item .icon, .admin-result-container .dashboad-list.min-list .list-item .icon {
   bottom: 12px;
   right: 12px;
 }
 .admin-result-container .category-list.min-list .list-item a, .admin-result-container .dashboad-list.min-list .list-item a {
-  padding: 20px;
+  padding: 35px;
 }
 .admin-result-container .category-list.min-list .list-item a .icon, .admin-result-container .dashboad-list.min-list .list-item a .icon {
   font-size: 15px;
 }
 .admin-result-container .category-list.min-list .list-item a .ico-label, .admin-result-container .dashboad-list.min-list .list-item a .ico-label {
-  display: none;
+  font-size: 10px;
 }
 .admin-result-container .category-list.min-list .manage-categories, .admin-result-container .dashboad-list.min-list .manage-categories {
   display: none;
@@ -146,6 +153,13 @@ body {
   font-family: Arial;
   font-size: 11px;
   text-decoration: none;
+}
+.admin-result-container .category-list .list-item a.item-default, .admin-result-container .dashboad-list .list-item a.item-default {
+  background: #7992BF;
+  border: 1px solid #6884b7;
+}
+.admin-result-container .category-list .list-item a.item-default .icon:before, .admin-result-container .dashboad-list .list-item a.item-default .icon:before {
+  content: "";
 }
 .admin-result-container .category-list .list-item a.item-stats, .admin-result-container .dashboad-list .list-item a.item-stats {
   background: #7992BF;
