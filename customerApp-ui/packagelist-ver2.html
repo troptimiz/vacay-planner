@@ -30,9 +30,6 @@
     <!-- Margo CSS Styles  -->
     <link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
 
-    <!-- Margo Version0.1 CSS Styles  --> 
-     <link rel="stylesheet" type="text/css" href="css/version0.1.css" media="screen">
-    
     <!-- Responsive CSS Styles  -->
     <link rel="stylesheet" type="text/css" href="css/responsive.css" media="screen">
 
@@ -53,7 +50,7 @@
     <link rel="stylesheet" type="text/css" href="css/colors/sky-blue.css" title="sky-blue" media="screen" />
     <link rel="stylesheet" type="text/css" href="css/colors/yellow.css" title="yellow" media="screen" />
 
-
+    <link rel="stylesheet" type="text/css" href="css/global.css" />
 
     <!-- Margo JS  -->
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
@@ -228,11 +225,17 @@
         </header>
         <!-- End Header -->
         <!-- Start Content -->
-
+        <div class="content">
+            <div class="container">
+                <div class="page-content">
+                    
+                </div>
+            </div>
+        </div>
         <div id="content">
             <div class="container">
                 <div class="page-content">
-                    <div class="row search-fields">
+                    <div class="row">
                         <form id="search-form">
                             <div class="col-sm-2 text-center">
                                 <div class="form-group">
@@ -286,6 +289,7 @@
                             </div>
                         </form>
                     </div>
+                    <div class="clearfix"></div>
                     <!-- Accordion -->
                     <h4 class="classic-title"><span>LIST OF RESORTS</span></h4>
                     <!-- Toggle -->
@@ -297,13 +301,13 @@
                                 <div class="panel-body">
                                     <h4>ADVENTURE</h4>
 
-                                    <div class="row">
+                                    <div class="row img-slots">
                                         <!-- Start Image Service Box 1 -->
-                                        <div class="col-md-6">
-                                            <div class="img-slot pull-left"><img alt="" class="img-thumbnail" src="images/Eagleton/eagleton2.png" width="340" />
+                                        <div class="col-md-12">
+                                            <div class="img-slot pull-left"><img alt="" class="img-thumbnail" src="images/Eagleton/ramganga-resort.jpg"  />
                                             </div>
-                                            <div class="img-slot"><img alt="" class="img-thumbnail" src="images/Eagleton/eagleton1.png" width="170" /> </div>
-                                            <div class="img-slot"><img alt="" class="img-thumbnail" src="images/Eagleton/eagleton3.png" width="170" />
+                                            <div class="img-slot"><img alt="" class="img-thumbnail" src="images/Eagleton/eagleton1.png"/> </div>
+                                            <div class="img-slot"><img alt="" class="img-thumbnail" src="images/Eagleton/eagleton3.png">
                                             </div>
 
 
@@ -311,7 +315,7 @@
                                         <!-- End Image Service Box 1 -->
                                         <!-- Start Image Service Box 2 -->
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-3 mtop-10">
                                             <h4>WHAT YOU GET</h4>
 
                                             <ul class="icons-list">
@@ -325,7 +329,7 @@
                                         <!-- End Image Service Box 2 -->
                                         <!-- Start Image Service Box 3 -->
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-3 mtop-10">
                                             <h4>PRICING OPTIONS</h4>
 
                                             <ul class="icons-list">
@@ -336,34 +340,36 @@
                                                 <li>
                                                     <input type="checkbox" /> Lunch,Dinner - Rs.1,450.00</li>
                                             </ul>
-                                            
-                                            <div align="left" class="btn-container"><a align="center" class="btn btn-success" href="package-book.html">Book Resort</a>
-                                            </div>                          
-                                            <div align="right" class="read-container"><a class="read-more" href="#">More Resorts</a></div>
-                                            
                                         </div>
                                         <!-- End Image Service Box 3 -->
                                         <p>&nbsp;</p>
-                                        
-                                    </div>
+                                        <div class="col-md-3">
+                                            <div align="left" class="btn-container">
+                                                <a align="center" class="btn btn-success" href="package-book.html">Book Resort</a>
+                                            </div>
+                                           <div align="right" class="read-container"> 
+                                               <a class="read-more" href="#">More Resorts</a>
+                                           </div>
+                                        </div>
+                                        </div>
                                     <!-- End Accordion 3 -->
                                     <!-- Start Accordion 2 -->
-
+                                     <div class="clear"></div>
                                     <hr />
                                     <!-- divider between categories -->
                                     <h4>AMUSEMENT</h4>
 
-                                    <div class="row">
+                                    <div class="row img-slots">
                                         <!-- Start Image Service Box 1 -->
-                                        <div class="col-md-6">
-                                            <div class="img-slot pull-left"><img alt="" class="img-thumbnail" src="images/Eagleton/eagleton2.png" width="340" /> </div>
-                                            <div class="img-slot"><img alt="" class="img-thumbnail" src="images/Eagleton/eagleton1.png" width="170" /> </div>
-                                            <div class="img-slot"><img alt="" class="img-thumbnail" src="images/Eagleton/eagleton3.png" width="170" /> </div>
+                                        <div class="col-md-12">
+                                            <div class="img-slot pull-left"><img alt="" class="img-thumbnail" src="images/Eagleton/ramganga-resort.jpg"  /> </div>
+                                            <div class="img-slot"><img alt="" class="img-thumbnail" src="images/Eagleton/eagleton1.png"  /> </div>
+                                            <div class="img-slot"><img alt="" class="img-thumbnail" src="images/Eagleton/eagleton3.png"  /> </div>
                                         </div>
                                         <!-- End Image Service Box 1 -->
                                         <!-- Start Image Service Box 2 -->
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-3 mtop-10">
                                             <h4>WHAT YOU GET</h4>
 
                                             <ul class="icons-list">
@@ -377,7 +383,7 @@
                                         <!-- End Image Service Box 2 -->
                                         <!-- Start Image Service Box 3 -->
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-3 mtop-10">
                                             <h4>PRICING OPTIONS</h4>
 
                                             <ul class="icons-list">
@@ -388,34 +394,39 @@
                                                 <li>
                                                     <input type="checkbox" /> Lunch,Dinner - Rs.1,450.00</li>
                                             </ul>
-                                            
-                                            
-                                            <div align="left" class="btn-container"><a align="center" class="btn btn-success" href="package-book.html">Book Resort</a>
-                                            </div>
-                                            <div align="right" class="read-container"><a class="read-more" href="#">More Resorts</a></div>
-                                            
                                         </div>
                                         <!-- End Image Service Box 3 -->
                                         <p>&nbsp;</p>
-                                    </div>
+                                        <div class="col-md-3">
+                                            <div align="left" class="btn-container">
+                                                <a align="center" class="btn btn-success" href="package-book.html">Book Resort</a>
+                                            </div>
+                                           <div align="right" class="read-container"> 
+                                               <a class="read-more" href="#">More Resorts</a>
+                                           </div>
+                                        </div>
+                                        </div>
                                     <!-- End Accordion 3 -->
                                     <!-- Start Accordion 2 -->
-
+                                        <div class="clear"></div>
                                     <hr />
                                     <!-- divider between categories -->
                                     <h4>LOW COST</h4>
 
-                                    <div class="row">
+                                    <div class="row img-slots">
                                         <!-- Start Image Service Box 1 -->
-                                        <div class="col-md-6">
-                                            <div class="img-slot pull-left"><img alt="" class="img-thumbnail" src="images/Eagleton/eagleton2.png" width="340" /> </div>
-                                            <div class="img-slot pull-left"><img alt="" class="img-thumbnail" src="images/Eagleton/eagleton1.png" width="170" /> </div>
-                                            <div class="img-slot pull-left"><img alt="" class="img-thumbnail" src="images/Eagleton/eagleton3.png" width="170" /> </div>
+                                        <div class="col-md-12">
+                                            <div class="img-slot pull-left">
+                                                <img alt="" class="img-thumbnail" src="images/Eagleton/resorts page.jpg"/> </div>
+                                            <div class="img-slot pull-left">
+                                                <img alt="" class="img-thumbnail" src="images/Eagleton/eagleton1.png"/> </div>
+                                            <div class="img-slot pull-left">
+                                                <img alt="" class="img-thumbnail" src="images/Eagleton/eagleton3.png"/> </div>
                                         </div>
                                         <!-- End Image Service Box 1 -->
                                         <!-- Start Image Service Box 2 -->
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-3 mtop-10">
                                             <h4>WHAT YOU GET</h4>
 
                                             <ul class="icons-list">
@@ -429,7 +440,7 @@
                                         <!-- End Image Service Box 2 -->
                                         <!-- Start Image Service Box 3 -->
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-3 mtop-10">
                                             <h4>PRICING OPTIONS</h4>
 
                                             <ul class="icons-list">
@@ -440,14 +451,23 @@
                                                 <li>
                                                     <input type="checkbox" /> Lunch,Dinner - Rs.1,450.00</li>
                                             </ul>
-                                            <div align="left" class="btn-container"><a align="center" class="btn btn-success" href="package-book.html">Book Resort</a>
-                                            </div>
-                                            <div align="right" class="read-container"><a class="read-more" href="#">More Resorts</a></div>
                                         </div>
                                         <!-- End Image Service Box 3 -->
                                         <p>&nbsp;</p>
+                                       
+                                         <div class="col-md-3">
+                                            <div align="left" class="btn-container">
+                                                <a align="center" class="btn btn-success" href="package-book.html">Book Resort</a>
+                                            </div>
+                                           <div align="right" class="read-container"> 
+                                               <a class="read-more" href="#">More Resorts</a>
+                                           </div>
+                                        </div>
                                         
                                     </div>
+
+
+                                    
                                     <!-- End Accordion 3 -->
                                     <!-- Start Accordion 2 -->
 
