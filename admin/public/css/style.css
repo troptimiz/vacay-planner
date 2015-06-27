@@ -590,3 +590,34 @@ ul li {
   color: #f00;
   font-size: 11px;
 }
+
+.vacay-section .form-cont {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: #f0f0f0;
+  position: relative;
+  display: none;
+}
+.vacay-section .form-cont span {
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 11px;
+}
+.vacay-section .form-cont input[type="text"] {
+  width: 100px;
+}
+.vacay-section .form-cont input[type="submit"], .vacay-section .form-cont input[type="button"] {
+  width: auto;
+  margin-left: 10px;
+}
+.vacay-section .form-cont .close-btn {
+  position: absolute;
+  right: 0px;
+  top: 5px;
+  font-size: 8px;
+  color: #fff;
+  background: #000;
+  padding: 2px 5px;
+  border-radius: 15px;
+  cursor: pointer;
+}

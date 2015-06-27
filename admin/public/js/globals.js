@@ -2,7 +2,7 @@
 var obj = {};
 var editor;
 $(document).ready(function(){
-	obj.init();	
+	obj.init();
 });
 obj = {
 	init : function(){
@@ -15,11 +15,24 @@ obj = {
                 var reader = new FileReader();
                 reader.onloadend = function() {
                     img.src = reader.result;
-                    
+
                 }
                 reader.readAsDataURL(file);
                 $(".image-preview").empty().html(img).fadeIn();
             }
+        });
+        $('input[name="displayedCost"]').on('keyup',function(){
+            var percentageVal = $('.percentageVal').val().split(",");
+            var totalVal = 0;
+            var $this = $(this);
+            console.log("keyVal:"+$this.val());
+            percentageVal.forEach(function(key){
+                console.log("keyVal:"+$this.val());
+                totalVal = totalVal+((parseInt($this.val())*parseInt(key))/100);
+            });
+
+            $('.totalCost').text(parseInt($this.val())+totalVal);
+            if($(this).val() == "") $('.totalCost').text("00");
         });
         $("#categories").change(function(){
             var element = $("option:selected", this);
@@ -34,9 +47,9 @@ obj = {
                     });
                     if(options != ""){
                         $('.classifications').html(options);
-                    }                    
+                    }
                 }
-                
+
             });
         });
         $('form').validate({});
@@ -51,8 +64,8 @@ obj = {
             $('.category-list .list-item').find('a.item-default[title="'+categoryName+'"]').parent('.list-item').addClass('active');
             var wtCount = $('.category-list .list-item').length * 102;
             $('.category-list').css('width',wtCount).fadeIn();
-            
-            obj.showResults(categoryName);   
+
+            obj.showResults(categoryName);
         }
         $('.cat-list .delete').on('click',function(e){
             e.preventDefault();
@@ -75,7 +88,7 @@ obj = {
             e.preventDefault();
             var $ths = $(this);
             var del_id = $ths.parents('.delete-edit-container').find('#classification_id').val();
-            
+
             if(confirm("Do you want to delete the record")){
                 $.ajax({
                     url:"/classifications/classification/"+del_id,
@@ -91,15 +104,16 @@ obj = {
         $('.add-category,.add-calssification').on('click',function(e){
             e.preventDefault();
             $('.cat-list,.class-list').fadeOut(500,function(){
-                $('.add-form-container').fadeIn(500);               
+                obj.resetFields();
+                $('.add-form-container').fadeIn(500);
             });
         });
         $('.cancel-category-addition,.cancel-classification-addition').on('click',function(){
             $('.add-form-container').fadeOut(500,function(){
-                $('.cat-list,.class-list').fadeIn(500);                
+                $('.cat-list,.class-list').fadeIn(500);
             });
         });
-        
+
         //Add category service request
         $('#add-new-category').on('click',function(e){
             e.preventDefault();
@@ -118,6 +132,77 @@ obj = {
                 }
             });*/
         });
+				$('.add-tax-details').on('click',function(e){
+					e.preventDefault();
+					$(this).parents('.vacay-section').find('.form-cont').slideDown();
+				})
+				$('.close-btn').on('click',function(e){
+					e.preventDefault();
+					$(this).parent('.form-cont').slideUp();
+				})
+				$('#add-tariff-tax').on('click',function(e){
+					e.preventDefault();
+					e.stopPropagation();
+					if($(this).parents('form').valid()){
+						var formData = $('#tax-form').serialize();
+						var formDataArray = JSON.parse(JSON.stringify($('#tax-form').serializeArray()));
+						var productId = $("#productID").val();
+						var tariff_id = $("#tariff-id").val();
+						var URL = '/products/'+productId+'/'+tariff_id+'/taxdetails';
+						console.log(formData);
+						obj.sendAjax(URL,"POST",formData,function(){
+							window.location.href = "/products/"+productId+"/tariff/"+tariff_id+"/tariff-view";
+						});
+						// obj.sendAjax(URL,"POST",formData,function(){
+						// 	var trData = "";
+						// 	formDataArray.forEach(function(key){
+						// 		if(key.name = "percentage"){
+						// 			trData = trData+"<td>INR. "+key.value+"</td>";
+						// 		}
+						// 		else if(key.name == "amount"){
+						// 			trData = trData+"<td>INR. "+key.value+"</td>";
+						// 		}
+						// 		else{
+						// 			trData = trData+"<td>"+key.value+"</td>";
+						// 		}
+						// 	});
+						// 	$('.vacay-table.tariff-tax-details tr').eq(0).after("<tr>"+trData+"<td><div class='delete-edit-container'><a href='#' class='edit' title='Edit the row'>Edit</a> /<a href='' class='delete' title='Delete the row'>Delete</a><div><td></tr>");
+						// });
+					}
+				})
+
+				$('#add-gender-rules').on('click',function(e){
+					e.preventDefault();
+					e.stopPropagation();
+					if($(this).parents('form').valid()){
+						var formData = $('#gender-form').serialize();
+						var formDataArray = JSON.parse(JSON.stringify($('#gender-form').serializeArray()));
+						var productId = $("#productID").val();
+						var tariff_id = $("#tariff-id").val();
+						var URL = '/products/'+productId+'/'+tariff_id+'/genderPriceRules';
+						console.log(formData);
+						obj.sendAjax(URL,"POST",formData,function(){
+							window.location.href = "/products/"+productId+"/tariff/"+tariff_id+"/tariff-view";
+						});
+					}
+				});
+
+				$('#add-priceOverride-rules').on('click',function(e){
+					e.preventDefault();
+					e.stopPropagation();
+					if($(this).parents('form').valid()){
+						var formData = $('#priceOverride-form').serialize();
+						var formDataArray = JSON.parse(JSON.stringify($('#priceOverride-form').serializeArray()));
+						var productId = $("#productID").val();
+						var tariff_id = $("#tariff-id").val();
+						var URL = '/products/'+productId+'/'+tariff_id+'/priceRules';
+						console.log(formData);
+						obj.sendAjax(URL,"POST",formData,function(){
+							window.location.href = "/products/"+productId+"/tariff/"+tariff_id+"/tariff-view";
+						});
+					}
+				})
+
         $('#add-new-classification').on('click',function(e){
             e.preventDefault();
             e.stopPropagation();
@@ -130,7 +215,7 @@ obj = {
                     success:function(data){
                         if(data.msg == "success"){
                             console.log(data.msg);
-                            location.href="/classifications/all";   
+                            location.href="/classifications/all";
                         }
                         else{
                             $('.msg').text(data.msg);
@@ -140,7 +225,7 @@ obj = {
                     }
                 });
             }
-            
+
         });
         $('#edit-category').on('click',function(e){
             var formData = $('#edit-category-form').serialize();
@@ -166,7 +251,7 @@ obj = {
             e.stopPropagation();
             if($(this).parents('form').valid()){
                 $(this).parents('form').submit();
-            }            
+            }
         });
         $('#edit-classification').on('click',function(e){
             var formData = $('#edit-classification-form').serialize();
@@ -187,9 +272,9 @@ obj = {
                 }
             });
         });
-		
+
         /* Product related actions */
-        
+
         /*Add Product*/
         $('#add-product').on('click',function(e){
             e.preventDefault();
@@ -200,10 +285,10 @@ obj = {
                 console.log(formData);
                 obj.sendAjax(URL,"PUT",formData,obj.redtSuccess('/categories/categoryView/'+category));
             }
-        
+
         });
-        
-        
+
+
         /*Edit Product*/
         $('#edit-product').on('click',function(e){
             e.preventDefault();
@@ -213,18 +298,18 @@ obj = {
                 var formData = $('#edit-product-form').serialize();
                 obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
             }
-        
+
         });
         /*Delete Product*/
         $('.search-result-table').on('click','.delete',function(e){
-            e.preventDefault();            
+            e.preventDefault();
             var URL = $(this).attr('href');
-            var $ths = $(this);      
+            var $ths = $(this);
             if(confirm("Do you want to delete the record")){
                 obj.sendAjax(URL,'DELETE','',obj.deleteSuccess($ths,'tr'));
             }
         });
-        
+
         /* Create New image */
         $('#add-image').on('click',function(){
             if ($('#add-image-form').valid()) {
@@ -235,22 +320,22 @@ obj = {
                 obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));*/
             } else {
             }
-            
+
         });
-        
+
         /*Update Address /:productId/address/:addressId*/
         $('#update-image').on('click',function(e){
             e.preventDefault();
             if($(this).parents('form').valid()){
                 $(this).parents('form').submit();
                 /*var formData = $('#update-address-form').serialize();
-                var productId = $('#update-address-form').find('input[name="id"]').val(); 
+                var productId = $('#update-address-form').find('input[name="id"]').val();
                 var addressId = $('#update-address-form').find('input[name="addressId"]').val();
                 var URL = "/products/"+productId+"/address/"+addressId;
                 obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));*/
             }
         });
-        
+
         /* Create New address */
         $('#add-address').on('click',function(){
             if ($('#add-address-form').valid()) {
@@ -260,7 +345,7 @@ obj = {
                 obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
             } else {
             }
-            
+
         });
         $('select[name="classification"]').on('change',function(){
             $(this).parents('form').find('.error.msg').parent('.form-group').addClass('hide');
@@ -273,46 +358,46 @@ obj = {
                 obj.sendAjax(URL,"POST",formData,
                     function(data){
                         if(data.msg !== undefined){
-                            $(".error.msg").text(data.msg).parents(".form-group").removeClass("hide").show();   
+                            $(".error.msg").text(data.msg).parents(".form-group").removeClass("hide").show();
                         } else{
-                            obj.newaddressSuccess(productId);   
+                            obj.newaddressSuccess(productId);
                         }
-                        
+
                     }
                 );
             } else {
             }
-            
+
         });
-        
-        
+
+
         /*Update Address /:productId/address/:addressId*/
         $('#update-address').on('click',function(e){
             e.preventDefault();
             if($(this).parents('form').valid()){
                 var formData = $('#update-address-form').serialize();
-                var productId = $('#update-address-form').find('input[name="id"]').val(); 
+                var productId = $('#update-address-form').find('input[name="id"]').val();
                 var addressId = $('#update-address-form').find('input[name="addressId"]').val();
                 var URL = "/products/"+productId+"/address/"+addressId;
                 obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
             }
         });
-        
+
         /*Delete address*/
         $('.vacay-table .delete-edit-container').on('click','.delete',function(e){
             e.preventDefault();
             var URL = "/products"+$(this).attr('href');
             var $ths = $(this);
-            if(confirm("Do you want to delete the record")){                
-                obj.sendAjax(URL,'DELETE','',obj.deleteSuccess($ths,'tr'));                
+            if(confirm("Do you want to delete the record")){
+                obj.sendAjax(URL,'DELETE','',obj.deleteSuccess($ths,'tr'));
             }
         });
         $('.vacaytable .delete-edit-container').on('click','.delete',function(e){
             e.preventDefault();
             var URL = $(this).attr('href');
             var $ths = $(this);
-            if(confirm("Do you want to delete the record")){                
-                obj.sendAjax(URL,'DELETE','',obj.deleteSuccess($ths,'tr'));                
+            if(confirm("Do you want to delete the record")){
+                obj.sendAjax(URL,'DELETE','',obj.deleteSuccess($ths,'tr'));
             }
         });
         /*Add tariff*/
@@ -324,7 +409,7 @@ obj = {
                 obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
             }
         });
-        
+
         /*Update tariff /:productId/address/:addressId*/
         $('#update-tariff').on('click',function(e){
             e.preventDefault();
@@ -336,7 +421,7 @@ obj = {
                 obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
             }
         });
-        
+
         /*Add amenity*/
         $('#add-amenity').on('click',function(){
             if($(this).parents('form').valid()){
@@ -346,7 +431,7 @@ obj = {
                 obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
             }
         });
-        
+
         /*Update amenity /:productId/address/:addressId*/
         $('#update-amenity').on('click',function(e){
             e.preventDefault();
@@ -358,8 +443,8 @@ obj = {
                 obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
             }
         });
-        
-        
+
+
         /*Add termsAndConditions*/
         $('#add-termsAndConditions').on('click',function(){
             if($(this).parents('form').valid()){
@@ -369,7 +454,7 @@ obj = {
                 obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
             }
         });
-        
+
         /*Update termsAndConditions /:productId/address/:addressId*/
         $('#update-termsAndConditions').on('click',function(e){
             e.preventDefault();
@@ -381,7 +466,7 @@ obj = {
                 obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
             }
         });
-        
+
         /*Add Phone Number*/
         $('#add-phoneNumber').on('click',function(){
             if($(this).parents('form').valid()){
@@ -391,7 +476,18 @@ obj = {
                 obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
             }
         });
-        
+
+				/*Add Facility*/
+        $('#add-facility').on('click',function(){
+            if($(this).parents('form').valid()){
+                var formData = $('#add-facility-form').serialize();
+								console.log(formData);
+                var productId = $('#add-facility-form').find('input[name="id"]').val();
+                var URL = "/products/"+productId+"/facility";
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+            }
+        });
+
         /*Update phone /:productId/address/:addressId*/
         $('#update-phone').on('click',function(e){
             e.preventDefault();
@@ -403,16 +499,30 @@ obj = {
                 obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
             }
         });
-        
+
+				/*Update facility */
+        $('#update-facility').on('click',function(e){
+            e.preventDefault();
+            if($(this).parents('form').valid()){
+                var formData = $('#update-facility-form').serialize();
+                var productId = $('#update-facility-form').find('input[name="id"]').val();
+                var facilityId = $('#update-facility-form').find('input[name="facilityId"]').val();
+                var URL = "/products/"+productId+"/facility/"+facilityId;
+								console.log("serealizeData"+formData+",URL:"+URL)
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+            }
+        });
+
 		//$('.category-list .list-item a').unbind('click',obj.showResultsOnClick).bind('click',obj.showResultsOnClick);
 		$('#search-result').unbind('click',obj.showResults).bind('click',obj.showResults);
 		$('.action-container').on('click','.add-row',function(e){
             e.preventDefault();
 			$('.search-result-table,.search-form').fadeOut(500,function(){
+                obj.resetFields();
 				$('.add-form-container').show();
                 $('.category-list.min-list').fadeOut();
 			});
-			
+
 		});
         $('.cancel-add-category').on('click',function(e){
             e.preventDefault();
@@ -421,7 +531,7 @@ obj = {
                 $('.category-list.min-list').fadeIn();
 			});
         });
-        
+
 	},
     confirm:function(msg){
         var result="false";
@@ -435,6 +545,11 @@ obj = {
             result = "false";
         });
         return result;
+    },
+    resetFields:function(){
+        $('input[type="textbox"],input[type="file"],input[type="email"]').val('');
+        $('select option:selected').removeAttr("selected");
+        $('.image-preview').hide().html("");
     },
     redtSuccess:function(page){
         location.href=page;
@@ -461,12 +576,12 @@ obj = {
 	},
 	initDataTable : function(tableObject,listObj,categoryName){
 		var table=tableObject.dataTable( {
-             "processing": true,    
+             "processing": true,
 			"ajax": "/products/category/"+categoryName,
 			"columns": listObj,
             "destroy": true,
             "pageLength": 10,
-            bFilter: false, 
+            bFilter: false,
             bInfo: false,
             "ordering":false,
             "bLengthChange": false,
@@ -476,23 +591,23 @@ obj = {
             }
 		});
         $('.search-result-table').fadeIn(1000,function(){
-            $('.category-list').addClass('min-list');            
-        });		
-		
+            $('.category-list').addClass('min-list');
+        });
+
 	},
-	switchCategory:function(e){	
+	switchCategory:function(e){
 		e.preventDefault();
-		$('.category-list').addClass('min-list');		
+		$('.category-list').addClass('min-list');
         //$('.search-form').fadeIn();
 	},
-	showResults:function(categoryName){		
-		obj.buildDataTable(categoryName);        
+	showResults:function(categoryName){
+		obj.buildDataTable(categoryName);
 	},
     showResultsOnClick:function(e){
 		e.preventDefault();
         var categoryName = $(this).attr('title');
         $('#categoryName').val(categoryName);
-		obj.buildDataTable(categoryName);        
+		obj.buildDataTable(categoryName);
 	},
     buildDataTable:function(categoryName){
         var tObj = $('#result-table');
@@ -505,7 +620,7 @@ obj = {
                         defaultContent: '<div class="delete-edit-container"><a href="#" class="edit" title="Edit the row">Edit</a> / <a href="#" class="delete" title="Delete the row">Delete</a></div>'
                     }
                   ];
-		
+
 		$('.add-form-container').hide();
         obj.initDataTable(tObj,arr,categoryName);
     }

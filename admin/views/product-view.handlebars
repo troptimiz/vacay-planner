@@ -4,11 +4,11 @@
             <input type="hidden" name="id" value="{{product.id}}" id="productId"/>
             <div class="product-name">
                 <h3 class="heading1">
-                    Product Details 
-                    <a href="../productDetails/{{product.id}}" class="edit-general-details"><span class="icon-pencil"></span></a>                    
+                    Product Details
+                    <a href="../productDetails/{{product.id}}" class="edit-general-details"><span class="icon-pencil"></span></a>
                 </h3>
-                
-                
+
+
                 <div class="clearfix"></div>
                 <ul>
                     <li>
@@ -29,7 +29,7 @@
                 </ul>
             </div>
         </div>
-        
+
         <div class="product-image-details">
             <div class="product-name">
                 <h3 class="heading1">
@@ -51,32 +51,32 @@
                         <td>{{this.captionText}}</td>
                         <td>{{../product.category}}</td>
                         <td>
-                            <div class="delete-edit-container">                                
+                            <div class="delete-edit-container">
                                 <a href="../{{../product.id}}/image/{{this._id}}/{{../product.category}}" class="edit" title="Edit the row">Edit</a> /
                                 <a href="/{{../product.id}}/{{../product.category}}/image/{{this._id}}/{{this.imageUrl}}" class="delete" title="Delete the row">Delete</a>
                             </div>
                         </td>
-                    </tr>    
-                    
+                    </tr>
+
                     {{/each}}
                 </table>
-                
-                
+
+
                 <div class="clearfix"></div>
-                
+
             </div>
         </div>
-        
+
         <div class="product-address-details">
-            
+
             <div class="product-address-details">
-                
+
                 <h3 class="heading1">
-                    Address Details 
-                    <a href="../{{product.id}}/add-new-address" class="edit-address-details"><span class="icon-plus"></span></a>                    
+                    Address Details
+                    <a href="../{{product.id}}/add-new-address" class="edit-address-details"><span class="icon-plus"></span></a>
                 </h3>
                 <div class="clearfix"></div>
-                    
+
                     <table class="vacay-table">
                         <tr>
                             <th>Address</th>
@@ -92,27 +92,27 @@
                             <td>{{this.state}}</td>
                             <td>{{this.postalCode}}</td>
                             <td>
-                                <div class="delete-edit-container">                                
+                                <div class="delete-edit-container">
                                     <a href="../{{../product.id}}/addresses/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
                                     <a href="/{{../product.id}}/address/{{this._id}}" class="delete" title="Delete the row">Delete</a>
                                 </div>
                             </td>
                         </tr>
                         {{/each}}
-                    </table>                    
+                    </table>
                 <div class="clearfix"></div>
             </div>
         </div>
         <div class="product-address-details">
-            
+
             <div class="product-address-details">
-                
+
                 <h3 class="heading1">
-                    Classifications Details 
-                    <a href="../{{product.id}}/classification" class="edit-address-details"><span class="icon-plus"></span></a>                    
+                    Classifications Details
+                    <a href="../{{product.id}}/classification" class="edit-address-details"><span class="icon-plus"></span></a>
                 </h3>
                 <div class="clearfix"></div>
-                    
+
                     <table class="vacaytable">
                         <tr>
                             <th>Name</th>
@@ -120,24 +120,24 @@
                         </tr>
                         {{#each product.classifications}}
                         <tr>
-                            
+
                             <td>{{this.name}}</td>
                             <td>
-                                <div class="delete-edit-container"> 
+                                <div class="delete-edit-container">
                                     <a href="../{{../product.id}}/productclassification/{{this._id}}" class="delete" title="Delete the row">Delete</a>
                                 </div>
                             </td>
                         </tr>
                         {{/each}}
-                    </table>                    
+                    </table>
                 <div class="clearfix"></div>
             </div>
         </div>
         <div class="product-phonenumber-details">
             <div class="">
                 <h3 class="heading1">
-                    Phone Details 
-                    <a href="../{{product.id}}/add-new-phoneNumber" class="add-phoneNumber-details"><span class="icon-plus"></span></a>                 
+                    Phone Details
+                    <a href="../{{product.id}}/add-new-phoneNumber" class="add-phoneNumber-details"><span class="icon-plus"></span></a>
                 </h3>
                 <div class="clearfix"></div>
                         <table class="vacay-table">
@@ -151,74 +151,105 @@
                                 <td>{{this.contactType}}</td>
                                 <td>{{this.contactNumber}}</td>
                                 <td>
-                                    <div class="delete-edit-container">                                
+                                    <div class="delete-edit-container">
                                         <a href="../{{../product.id}}/phone/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
                                         <a href="/{{../product.id}}/phoneNumber/{{this._id}}" class="delete" title="Delete the row">Delete</a>
-                                    </div> 
+                                    </div>
                                 </td>
                             </tr>
                             {{/each}}
                         </table>
-                    
-                
+
+
             </div>
         </div>
-        
+
+        <div class="product-facility-details">
+            <div class="">
+                <h3 class="heading1">
+                    Facilities Details
+                    <a href="../{{product.id}}/add-new-facility" class="add-facility-details"><span class="icon-plus"></span></a>
+                </h3>
+                <div class="clearfix"></div>
+                        <table class="vacay-table">
+                            <tr>
+                                <th>Facility Type</th>
+                                <th>Facility Description</th>
+                                <th class="vacay-action">Action</th>
+                            </tr>
+                            {{#each product.facilities}}
+                            <tr>
+                                <td>{{this.facilityType}}</td>
+                                <td>{{this.facilityDescription}}</td>
+                                <td>
+                                    <div class="delete-edit-container">
+                                        <a href="../{{../product.id}}/facility/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
+                                        <a href="/{{../product.id}}/facilities/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </table>
+
+
+            </div>
+        </div>
+
         <div class="product-tariffs-details">
             <div class="">
                 <h3 class="heading1">
-                    Tariffs Details 
-                    <a href="../{{product.id}}/add-new-tariff" class="add-tariff-details"><span class="icon-plus"></span></a>                 
+                    Tariffs Details
+                    <a href="../{{product.id}}/add-new-tariff" class="add-tariff-details"><span class="icon-plus"></span></a>
                 </h3>
                 <div class="clearfix"></div>
-                
-                    
+
+
                         <!--<div class="tariffs-container">
-                            <div class="delete-edit-container pull-right">                                
+                            <div class="delete-edit-container pull-right">
                                 <a href="../{{../product.id}}/tariff/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
                                 <a href="/{{../product.id}}/tariff/{{this._id}}" class="delete" title="Delete the row">Delete</a>
-                            </div> 
+                            </div>
                             <p><label>Cost: </label>Rs.{{this.cost}}.00</p>
                             <p><label>Description: </label>{{this.description}}</p>
                             <div class="clearfix"></div>
                         </div>-->
                         <table class="vacay-table">
                             <tr>
-                                <th>Cost</th>
-                                <th>Tax</th>
+                                <th>Displayed Cost</th>
+                                <th>Net Cost</th>
                                 <th>Description</th>
                                 <th class="vacay-action">Action</th>
                             </tr>
                             {{#each product.tariffs}}
                             <tr>
-                                <td>{{this.currency}} {{this.cost}}.00</td>
-                                <td>{{this.currency}} {{this.tax}}.00</td>
+                                <td>{{this.currency}} {{this.displayedCost}}.00</td>
+                                <td>{{this.currency}} {{this.netCost}}.00</td>
                                 <td>{{this.description}}</td>
                                 <td>
-                                    <div class="delete-edit-container">                                
-                                        <a href="../{{../product.id}}/tariff/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
+                                    <div class="delete-edit-container">
+                                        <a href="../{{../product.id}}/tariff/{{this._id}}/tariff-view" class="edit" title="Edit the row">Edit</a> /
                                         <a href="/{{../product.id}}/tariff/{{this._id}}" class="delete" title="Delete the row">Delete</a>
-                                    </div>  
+                                    </div>
                                 </td>
                             </tr>
                             {{/each}}
                         </table>
-                    
-                
+
+
             </div>
         </div>
-        
+
         <div class="product-amenities-details">
             <div class="">
                 <h3 class="heading1">
-                    Amenities Details 
-                    <a href="../{{product.id}}/add-new-amenity" class="add-amenity-details"><span class="icon-plus"></span></a>                    
+                    Amenities Details
+                    <a href="../{{product.id}}/add-new-amenity" class="add-amenity-details"><span class="icon-plus"></span></a>
                 </h3>
                 <div class="clearfix"></div>
-                
-                    
+
+
                         <!--<div class="amenities-container">
-                            <div class="delete-edit-container pull-right">                                
+                            <div class="delete-edit-container pull-right">
                                 <a href="../{{../product.id}}/amenity/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
                                 <a href="/{{../product.id}}/amenity/{{this._id}}" class="delete" title="Delete the row">Delete</a>
                             </div>
@@ -233,7 +264,7 @@
                             <tr>
                                 <td>{{this.description}}</td>
                                 <td>
-                                    <div class="delete-edit-container">                                
+                                    <div class="delete-edit-container">
                                         <a href="../{{../product.id}}/amenity/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
                                         <a href="/{{../product.id}}/amenity/{{this._id}}" class="delete" title="Delete the row">Delete</a>
                                     </div>
@@ -241,22 +272,22 @@
                             </tr>
                             {{/each}}
                         </table>
-                    
-                
+
+
             </div>
         </div>
-        
+
         <div class="product-tnc-details">
             <div class="">
                 <h3 class="heading1">
                     Terms and Conditions Details
-                    <a href="../{{product.id}}/add-new-termsAndConditions" class="add-termsAndConditions-details"><span class="icon-plus"></span></a>                   
+                    <a href="../{{product.id}}/add-new-termsAndConditions" class="add-termsAndConditions-details"><span class="icon-plus"></span></a>
                 </h3>
                 <div class="clearfix"></div>
-                
-                    
+
+
                         <!--<div class="tnc-container">
-                            <div class="delete-edit-container pull-right">                                
+                            <div class="delete-edit-container pull-right">
                                 <a href="../{{../product.id}}/termsAndConditions/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
                                 <a href="/{{../product.id}}/termsAndCondition/{{this._id}}" class="delete" title="Delete the row">Delete</a>
                             </div>
@@ -271,7 +302,7 @@
                             <tr>
                                 <td>{{this.description}}</td>
                                 <td>
-                                    <div class="delete-edit-container">                                
+                                    <div class="delete-edit-container">
                                         <a href="../{{../product.id}}/termsAndConditions/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
                                         <a href="/{{../product.id}}/termsAndCondition/{{this._id}}" class="delete" title="Delete the row">Delete</a>
                                     </div>
@@ -279,8 +310,8 @@
                             </tr>
                             {{/each}}
                         </table>
-                    
-                
+
+
             </div>
         </div>
     </div>

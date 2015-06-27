@@ -14,9 +14,9 @@ var gfs = Grid(mongoose.connection.db, mongoose.mongo);
 var dirname = require('path').dirname(__dirname);
 
 var Passport = require('passport');
-var flash = require('connect-flash'); 
+var flash = require('connect-flash');
 var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser'); 
+var cookieParser = require('cookie-parser');
 var expressSession = require('express-session');
 ProductController.use(bodyParser());
 ProductController.use(cookieParser());
@@ -61,14 +61,14 @@ ProductController.get('/category/:name',function(req,res){
 	}).sort( { _id: -1 } );
 });
 
-// Create new Product 
+// Create new Product
 
 ProductController.put('/product/',function(req,res){
     var classification = req.body.classification;
     var classificationArray = [];
     //var classificationArray = classification.split(",");
     if(typeof(classification) == 'string'){
-        classificationArray.push({"name":classification});   
+        classificationArray.push({"name":classification});
     }
     else{
         classification.forEach(function(item){
@@ -78,15 +78,16 @@ ProductController.put('/product/',function(req,res){
     console.log(classificationArray);
 	var product = new Product({
 		category:req.body.category,
-		name:req.body.name,	
+		name:req.body.name,
 		type:req.body.type,
 		description:req.body.description,
 		emailAddress:req.body.emailAddress,
 		is_active:req.body.is_active,
-        images:[],
+    images:[],
 		addresses:[],
 		phoneNumbers:[],
-        classifications:classificationArray,
+		facilities:[],
+    classifications:classificationArray,
 		tariffs:[],
 		amenities:[],
 		termsAndConditions:[]
@@ -108,7 +109,7 @@ ProductController.get('/product/:id',function(req,res){
         else
             res.redirect('/account/session');
         //res.status(200).json({product:product});
-        
+
 	})
 });
 
@@ -120,7 +121,7 @@ ProductController.get('/productDetails/:id',function(req,res){
         else
             res.redirect('/account/session');
         //res.status(200).json({product:product});
-        
+
 	})
 });
 
@@ -169,7 +170,14 @@ ProductController.get('/:productId/add-new-termsAndConditions',function(req,res)
         res.render("add-new-termsAndConditions",{'productId':prodId,layout:'list'});
 	})
 });
-
+//Create new facility
+ProductController.get('/:productId/add-new-facility',function(req,res){
+	Product.findById(req.params.id,function(err,product){
+		//res.status(200).json({product:product});
+        prodId = req.params.productId;
+        res.render("add-new-facility",{'productId':prodId,layout:'list'});
+	})
+});
 //Create new phonenumber
 ProductController.get('/:productId/add-new-phoneNumber',function(req,res){
 	Product.findById(req.params.id,function(err,product){
@@ -194,7 +202,7 @@ ProductController.get('/:productId/add-edit-address/:addressId',function(req,res
 
 ProductController.post('/product/:id',function(req,res){
 
-	productToBeUpdated = {		
+	productToBeUpdated = {
 		name:req.body.name,
 		type:req.body.type,
 		description:req.body.description,
@@ -262,8 +270,7 @@ ProductController.get('/:productId/image/:imageId/:source',function(req,res){
 });
 
 //Get tariff By Product ID & Tariff ID
-
-ProductController.get('/:productId/tariff/:tariffId',function(req,res){
+ProductController.get('/:productId/tariff/:tariffId/:page',function(req,res){
 	productId = req.params.productId;
 	tariffId = req.params.tariffId;
 
@@ -274,12 +281,19 @@ ProductController.get('/:productId/tariff/:tariffId',function(req,res){
 				_id:tariffId
 			}
 		}
-		},
+	},{
+		sort:{"tariffs._id" : -1}
+	},
 		function(err,product){
-		res.render("update-tariff",{'productTariff':product[0].tariffs[0],'productId':productId,layout:'list'});
+			if(req.params.page == "tariff-view"){
+				res.render("tariff-view",{'productTariff':product[0].tariffs[0],'productId':productId,layout:'list'});
+			}	else if(req.params.page == "tariff-update"){
+				res.render("update-tariff",{'productTariff':product[0].tariffs[0],'productId':productId,layout:'list'});
+			}
 	});
-
 });
+
+
 
 //Get Amenities By Product ID & Amenities ID
 
@@ -341,7 +355,27 @@ ProductController.get('/:productId/phone/:phoneId',function(req,res){
 
 });
 
-// List All Addresses 
+
+//Get facilities By Product ID & facility ID
+
+ProductController.get('/:productId/facility/:facilityId',function(req,res){
+	productId = req.params.productId;
+	facilityId = req.params.facilityId;
+
+	Product.find(
+		{_id:productId},
+		{facilities:{$elemMatch:
+			{
+				_id:facilityId
+			}
+		}
+		},
+		function(err,product){
+		res.render("update-facility",{'productFacility':product[0].facilities[0],'productId':productId,layout:'list'});
+	});
+
+});
+// List All Addresses
 
 ProductController.get('/:id/addresses',function(req,res){
 	productId = req.params.id;
@@ -448,8 +482,10 @@ ProductController.post('/:id/tariff',function(req,res){
 	productId = req.params.id;
 	newTariff={
 		description:req.body.description,
-		cost:req.body.cost,
-        tax:req.body.tax
+		displayedCost:req.body.displayedCost,
+        netCost:req.body.netCost,
+        tax:[]
+
 	};
 
 	Product.update({_id:productId},{
@@ -458,7 +494,7 @@ ProductController.post('/:id/tariff',function(req,res){
 					newTariff
 			}
 		},
-		{upsert:true},function(err){
+		{upsert:true},function(err,tariff){
 			if(err) return res.send(500,'Error Occured During Tariff Update for Product with Id['+productId+']');
 			res.json({'status':'New Tariff Details Created for Product ['+productId+']'});
 		});
@@ -486,6 +522,29 @@ ProductController.post('/:id/phone',function(req,res){
 			res.json({'status':'New Phone Details Created for Product ['+productId+']'});
 		});
 });
+
+
+// Add facilities
+
+ProductController.post('/:id/facility',function(req,res){
+	productId = req.params.id;
+	newFacility={
+		facilityType:req.body.facilityType,
+		facilityDescription:req.body.facilityDescription
+	};
+	console.log("newFacilities: "+req.body.facilityType);
+	Product.update({_id:productId},{
+		$push:
+			{'facilities':
+					newFacility
+			}
+		},
+		{upsert:false},function(err){
+			if(err) return res.send(500,'Error Occured During Phone Update for Product with Id['+productId+']');
+			res.json({'status':'New Phone Details Created for Product ['+productId+']'});
+		});
+});
+
 
 // Add Address
 
@@ -529,7 +588,7 @@ ProductController.post('/:id/:source/image',multer({
         if (stat && !stat.isDirectory()) {
             throw new Error('Directory cannot be created because an inode of a different type exists at "' + dest + '"');
         }
-        return newDestination   
+        return newDestination
     },
     onFileUploadComplete: function (file) {
       console.log(file.fieldname + ' uploaded to  ' + file.name);
@@ -556,7 +615,7 @@ ProductController.post('/:id/:source/image',multer({
         var filename = req.files.imageUrl.name;
         var path = req.files.imageUrl.path;
         var type = req.files.imageUrl.mimetype;
-        var read_stream =  fs.createReadStream(dirname + '/' + path);                    
+        var read_stream =  fs.createReadStream(dirname + '/' + path);
         var writestream = gfs.createWriteStream({
             filename: req.files.imageUrl.name
         });
@@ -567,7 +626,7 @@ ProductController.post('/:id/:source/image',multer({
 // Update Address
 
 ProductController.post('/:productId/address/:addressId',function(req,res){
-	
+
 	productId = req.params.productId;
 	addressId = req.params.addressId;
 
@@ -607,25 +666,25 @@ ProductController.post('/:productId/image/:imageId/:source',multer({
         if (stat && !stat.isDirectory()) {
             throw new Error('Directory cannot be created because an inode of a different type exists at "' + dest + '"');
         }
-        return newDestination   
+        return newDestination
     },
     onFileUploadComplete: function (file) {
       console.log(file.fieldname + ' uploaded to  ' + file.name);
         imageName = file.name;
       done=true;
-    } 
+    }
 }),function(req,res){
-	
+
 	productId = req.params.productId;
 	imageId = req.params.imageId;
     dest = req.params.source;
     prevUrl = req.body.prevUrl;
-    
+
     bUrl = "/products/product/"+productId;
     var fileImage = imageName;
-    
+
     if(imageName =="" || imageName === undefined){
-        imageName = req.body.imgUrl;   
+        imageName = req.body.imgUrl;
     }
 	imageToBeUpdated = {
 		imageUrl:imageName,
@@ -638,14 +697,14 @@ ProductController.post('/:productId/image/:imageId/:source',multer({
           if (err) throw err;
           console.log('successfully deleted '+prevUrl);
         });
-        
+
         gfs.remove({filename:prevUrl}, function (err) {
           if (err) return handleError(err);
           console.log('success');
         });
         }
         catch(e){
-            console.log("something went wrong");   
+            console.log("something went wrong");
         }
     }
 
@@ -654,14 +713,14 @@ ProductController.post('/:productId/image/:imageId/:source',multer({
 			$set:{'images.$':imageToBeUpdated}}
 		,function(err){
 		if(err) return res.send(500,'Error Occured During Address Update for Product with Id['+productId+']'+err);
-		
-        
+
+
         backUrl = '/categories/category/'+req.params.id;
         if(req.files.imageUrl !== undefined){
             var filename = req.files.imageUrl.name;
             var path = req.files.imageUrl.path;
             var type = req.files.imageUrl.mimetype;
-            var read_stream =  fs.createReadStream(dirname + '/' + path);                    
+            var read_stream =  fs.createReadStream(dirname + '/' + path);
             var writestream = gfs.createWriteStream({
                 filename: req.files.imageUrl.name
             });
@@ -697,7 +756,7 @@ ProductController.delete('/:productId/:dest/image/:imageId/:imageName',function(
                   if (err) return handleError(err);
                   console.log('success');
                 });
-                
+
 	});
 });
 
@@ -721,7 +780,7 @@ ProductController.delete('/:productId/address/:addressId',function(req,res){
 // Update TermsAndCondition
 
 ProductController.post('/:productId/termsAndCondition/:termsAndConditionId',function(req,res){
-	
+
 	productId = req.params.productId;
 	termsAndConditionId = req.params.termsAndConditionId;
 
@@ -759,7 +818,7 @@ ProductController.delete('/:productId/termsAndCondition/:termsConditionId',funct
 // Update Amenity
 
 ProductController.post('/:productId/amenity/:amenityId',function(req,res){
-	
+
 	productId = req.params.productId;
 	amenityId = req.params.amenityId;
 
@@ -799,7 +858,7 @@ ProductController.delete('/:productId/amenity/:amenityId',function(req,res){
 // Update Tariff
 
 ProductController.post('/:productId/tariff/:tariffId',function(req,res){
-	
+
 	productId = req.params.productId;
 	tariffId = req.params.tariffId;
 
@@ -841,7 +900,7 @@ ProductController.delete('/:productId/tariff/:tariffId',function(req,res){
 // Update PhoneNumber
 
 ProductController.post('/:productId/phoneNumber/:phoneNumberId',function(req,res){
-	
+
 	productId = req.params.productId;
 	phoneNumberId = req.params.phoneNumberId;
 
@@ -851,12 +910,53 @@ ProductController.post('/:productId/phoneNumber/:phoneNumberId',function(req,res
 		_id:phoneNumberId
 	};
 
-	Product.update({_id:productId,'phoneNumbers._id':phoneNumberId},	
+	Product.update({_id:productId,'phoneNumbers._id':phoneNumberId},
 		{
 			$set:{'phoneNumbers.$':phoneNumberToBeUpdated}}
 		,function(err){
 		if(err) return res.send(500,'Error Occured During PhoneNumber Update for Product with Id['+productId+']'+err);
 		res.json({'status':'PhoneNumber Updated for Product ['+productId+']'});
+	});
+});
+
+// Update facilities
+
+ProductController.post('/:productId/facility/:facilityId',function(req,res){
+
+	productId = req.params.productId;
+	facilityId = req.params.facilityId;
+
+	facilityToBeUpdated = {
+		facilityType:req.body.facilityType,
+		facilityDescription:req.body.facilityDescription,
+		_id:facilityId
+	};
+
+	Product.update({_id:productId,'facilities._id':facilityId},
+		{
+			$set:{'facilities.$':facilityToBeUpdated}}
+		,function(err){
+		if(err) return res.send(500,'Error Occured During PhoneNumber Update for Product with Id['+productId+']'+err);
+		console.log("facilityDesc:"+req.body.facilityDescription);
+		res.json({'status':'PhoneNumber Updated for Product ['+productId+']'});
+	});
+});
+
+//Delete Facilities
+
+ProductController.delete('/:productId/facilities/:facilityId',function(req,res){
+	productId = req.params.productId;
+	facilityId = req.params.facilityId;
+
+	console.log("PhoneNumber Delete Invoked ...");
+
+	Product.update({_id:productId},
+	{
+		$pull:{facilities:{_id:facilityId}}
+	},{multi:true}
+		,function(err){
+				if(err) return res.send(500,'Error Occured During PhoneNumber Delete for Product with Id['+productId+']');
+				res.json({'status':'PhoneNumber Deleted for Product ['+productId+']'});
 	});
 });
 
@@ -882,7 +982,7 @@ ProductController.get('/:productId/classification',function(req,res){
     var productId = req.params.productId;
 	ClassificationGroup.find({'is_active':true},function(err,classifications){
 		res.render("add-product-classification",{'classifications':classifications,'productId':productId,layout:'list'});
-    }); 
+    });
 });
 
 //add new classification
@@ -902,8 +1002,8 @@ ProductController.post('/:id/classification',function(req,res){
                 ClassificationGroup.find({'is_active':true},function(err,classifications){
                     res.json({"msg":"Already classification added for this product"});
                     //res.render("add-category-classification",{msg:"Aleready classification added for this category",'classifications':classifications,'productId':productId,layout:'list'});
-                }); 
-                
+                });
+
             }
             else{
             Product.update({_id:productId},{
@@ -920,7 +1020,7 @@ ProductController.post('/:id/classification',function(req,res){
             }
         }
     });
-	
+
 });
 
 // Delete classification
@@ -937,6 +1037,95 @@ ProductController.delete('/:productId/productclassification/:classId',function(r
 				if(err) return res.send(500,'Error Occured During TermsCondition Delete for Product with Id['+productId+']');
 				res.json({'status':'TermsCondition Deleted for Product ['+productId+']'});
 	});
+});
+
+// Add tax details
+ProductController.post('/:id/:tariffId/taxdetails',function(req,res){
+	productId = req.params.id;
+	tariffId = req.params.tariffId;
+	newTaxDetails={
+		taxType:req.body.taxType,
+		percentage:req.body.percentage,
+		amount:req.body.amount
+	};
+	//console.log("taxType"+req.body.taxType+"percentage:"+req.body.percentage+"Amount:"+req.body.amount);
+	Product.update({_id:productId,'tariffs._id':tariffId},{
+		$push:
+			{'tariffs.$.tax':
+            newTaxDetails
+			}
+		},
+		{upsert:false},function(err){
+			if(err) return res.send(500,'Error Occured During tariff tax Update for Product with Id['+productId+']'+err);
+			console.log('Tax added');
+			res.json({'status':'New Phone Details Created for Product ['+productId+']'});
+		});
+});
+
+//Delete tariff tax
+ProductController.delete('/:productId/tariff/:tariffId/:tariffTaxId',function(req,res){
+	productId = req.params.productId;
+	tariffId = req.params.tariffTaxId;
+	tariffTaxId = req.params.tariffTaxId;
+
+
+
+	Product.update({_id:productId,"tariffs._id":tariffId},
+	{
+		$pull:{"tariffs.$.tax":{_id:tariffTaxId}}
+	},{multi:true}
+		,function(err){
+				if(err) return res.send(500,'Error Occured During PhoneNumber Delete for Product with Id['+productId+']');
+				res.json({'status':'tax Deleted for Product ['+productId+']'});
+	});
+	console.log("tax Delete Invoked ...");
+});
+
+// Add tax details
+ProductController.post('/:id/:tariffId/genderPriceRules',function(req,res){
+	productId = req.params.id;
+	tariffId = req.params.tariffId;
+	newGenderRules={
+		gender:req.body.gender,
+		amount:req.body.amount,
+		applicableAmount:req.body.applicableAmount,
+		remarks:req.body.remarksText
+	};
+	//console.log("taxType"+req.body.taxType+"percentage:"+req.body.percentage+"Amount:"+req.body.amount);
+	Product.update({_id:productId,'tariffs._id':tariffId},{
+		$push:
+			{'tariffs.$.genderPriceRules':
+            newGenderRules
+			}
+		},
+		{upsert:false},function(err){
+			if(err) return res.send(500,'Error Occured During tariff tax Update for Product with Id['+productId+']'+err);
+			console.log('gender rules added');
+			res.json({'status':'New Phone Details Created for Product ['+productId+']'});
+		});
+});
+
+// Add priceRules details
+ProductController.post('/:id/:tariffId/priceRules',function(req,res){
+	productId = req.params.id;
+	tariffId = req.params.tariffId;
+	newPriceRules={
+		displayedCostOverride:req.body.displayedCostOverride,
+		startDate:req.body.startDate,
+		endDate:req.body.endDate
+	};
+	//console.log("taxType"+req.body.taxType+"percentage:"+req.body.percentage+"Amount:"+req.body.amount);
+	Product.update({_id:productId,'tariffs._id':tariffId},{
+		$push:
+			{'tariffs.$.priceOverrides':
+            newPriceRules
+			}
+		},
+		{upsert:false},function(err){
+			if(err) return res.send(500,'Error Occured During tariff tax Update for Product with Id['+productId+']'+err);
+			console.log('Tax added');
+			res.json({'status':'New price rules Created for Product ['+productId+']'});
+		});
 });
 //TODO : search specific params ..
 

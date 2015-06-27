@@ -178,7 +178,7 @@ CategoryController.post('/category/:id',function(req,res){
     if(fileImage.trim() != "" && req.body.prevImgUrl != "" && fileImage.trim() != req.body.prevImgUrl ){
         try{
         fs.unlink('uploads/'+req.body.prevImgUrl, function (err) {
-          if (err) throw err;
+          //if (err) throw err;
           console.log('successfully deleted '+req.body.prevImgUrl);
         });
         
@@ -224,11 +224,11 @@ CategoryController.delete('/category/:id/:imgUrl',function(req,res){
         
         if(req.params.imgUrl != "undefined" || req.params.imgUrl != ""){
             fs.unlink('uploads/'+req.params.imgUrl, function (err) {
-              if (err) throw err;
+              if (err) console.log("File Not found");
               console.log('successfully deleted '+req.params.imgUrl);
             });
             gfs.remove({filename:req.params.imgUrl}, function (err) {
-              if (err) return handleError(err);
+              if (err) console.log("File not found");
               console.log('success');
             });
         }

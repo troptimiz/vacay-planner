@@ -6,31 +6,38 @@
                     <div class="form-heading">
                         <h2>Update tariff</h2>
                     </div>
-                    
+
                     <form role="form" id="update-tariff-form">
                         <input type="hidden" name="id" value="{{productId}}"/>
                         <input type="hidden" name="tariffId" value="{{productTariff._id}}"/>
+                        <input type="hidden" class="percentageVal" name="percentageVal" value="12"/>
                         <div class="form-group">
                             <label for="">Description:</label>
                             <textarea name="description" class="form-control required" placeholder="Description">{{productTariff.description}}</textarea>
                             <div class="clearfix"></div>
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="">Cost:</label>
-                            <input type="textbox" name="cost" value="{{productTariff.cost}}" class="form-control number required" placeholder="Cost"> <span>INR</span>                         
+                            <label for="">Displayed Cost:</label>
+                            <input type="textbox" name="displayedCost" value="{{productTariff.displayedCost}}" class="form-control number required" placeholder="Cost"> <span>INR</span>
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
-                            <label for="">Tax:</label>
-                            <input type="textbox" name="tax" value="{{productTariff.tax}}" class="form-control number required" placeholder="Tax"> <span>INR</span>                         
+                            <label for="">Net Cost:</label>
+                            <input type="textbox" name="netCost" value="{{productTariff.netCost}}" class="form-control number required" placeholder="Tax"> <span>INR</span>
                             <div class="clearfix"></div>
                         </div>
-                        
+                        <div class="form-group">
+                            <label for="">Total:</label>
+                            <b>INR.</b><span class="totalCost"></span>
+                            <div class="clearfix"></div>
+                        </div>
                         <button type="button" class="btn btn-default" id="update-tariff">Submit</button>
-                        <a href="/products/product/{{productId}}" title="Cancel" class="btn btn-default">Cancel</a>
-                     </form>
-                </div>                
+                        <a href="/../products/{{productId}}/tariff/{{productTariff.id}}/tariff-view" title="Cancel" class="btn btn-default">Cancel</a>
+                        <div class="clearfix"></div>
+
+                    </form>
+                </div>
             </div>
         </div>
     </div>

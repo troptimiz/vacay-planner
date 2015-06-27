@@ -6,29 +6,53 @@
                     <div class="form-heading">
                         <h2>Add New tariff</h2>
                     </div>
-                    
+
                     <form role="form" id="add-tariff-form">
-                        <input type="hidden" name="id" value="{{productId}}"/>
+                        <input type="hidden" name="id" value="{{productId}}" />
+                        <input type="hidden" class="percentageVal" name="percentageVal" value="12"/>
                         <div class="form-group">
                             <label for="">Description:</label>
                             <textarea name="description" class="form-control required" placeholder="Description"></textarea>
                             <div class="clearfix"></div>
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="">Cost:</label>
-                            <input type="textbox" name="cost" class="form-control required number" placeholder="Cost"> <span>INR</span>
+                            <label for="">Displayed Cost:</label>
+                            <input type="textbox" name="displayedCost" class="form-control required number" placeholder="Displyed Cost"> <span>INR</span>
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
-                            <label for="">Tax:</label>
-                            <input type="textbox" name="tax" class="form-control required number" placeholder="Tax"> <span>INR</span>
+                            <label for="">Net Cost:</label>
+                            <input type="textbox" name="netCost" class="form-control required number" placeholder="Net Cost"> <span>INR</span>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Total:</label>
+                            <b>INR.</b><span class="totalCost"></span>
                             <div class="clearfix"></div>
                         </div>
                         <button type="button" class="btn btn-default" id="add-tariff">Submit</button>
                         <a href="/products/product/{{productId}}" title="Cancel" class="btn btn-default">Cancel</a>
-                     </form>
-                </div>                
+                        
+                    </form>
+                    <div class="vacay-section">
+                        <h3 class="heading1">
+                            Tax
+                            <a href="#" class="add-tax-details"><span class="icon-plus"></span></a>                 
+                        </h3>
+                        <div class="inline-form">
+                            <form method="post" action="" id="tax-form">
+                                <div class="form-cont">
+                                    <span class="close-btn">X</span>
+                                    <span>Tax Type:</span><input type="text" name="taxType"/>
+                                    <span>Percentage:</span><input type="text" name="percentage"/><b>%</b>
+                                    <span>Amount:</span><input type="text" name="amount"/> <b>INR</b>
+                                    <input type="submit" class="btn btn-success" value="Submit" id="add-tax"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
