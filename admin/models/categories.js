@@ -15,7 +15,6 @@ var categorySchema = mongoose.Schema({
 	description:String,
     short_desc:String,
 	imageUrl:String,
-	cssClass:String,
     classification:[{name:String}],
 	is_active:Boolean
 });
