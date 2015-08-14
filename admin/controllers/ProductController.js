@@ -80,6 +80,8 @@ ProductController.put('/product/',function(req,res){
 		category:req.body.category,
 		name:req.body.name,
 		type:req.body.type,
+        city:req.body.city,
+        state:req.body.state,
 		description:req.body.description,
 		emailAddress:req.body.emailAddress,
 		is_active:req.body.is_active,
@@ -206,6 +208,8 @@ ProductController.post('/product/:id',function(req,res){
 		name:req.body.name,
 		type:req.body.type,
 		description:req.body.description,
+        city:req.body.city,
+        state:req.body.state,
 		emailAddress:req.body.emailAddress,
 		is_active:req.body.is_active
 	};
@@ -601,7 +605,9 @@ ProductController.post('/:id/:source/image',multer({
     console.log(imageName);
 	newImage = {
 		imageUrl :imageName,
-		captionText:captionText
+		captionText:captionText,
+        title:req.body.title,
+        sortOrder:req.body.sort_order
 	};
 	Product.update({_id:productId},
 		{
@@ -689,6 +695,8 @@ ProductController.post('/:productId/image/:imageId/:source',multer({
 	imageToBeUpdated = {
 		imageUrl:imageName,
         captionText:req.body.caption,
+        title:req.body.title,
+        sortOrder:req.body.sort_order,
 		_id:imageId
 	};
     if(fileImage.trim() != "" && req.body.prevUrl != "" && fileImage.trim() != req.body.prevUrl ){
@@ -1061,6 +1069,29 @@ ProductController.post('/:id/:tariffId/taxdetails',function(req,res){
 			res.json({'status':'New Phone Details Created for Product ['+productId+']'});
 		});
 });
+//update tarrif tax
+ProductController.post('/:productId/updateTaxTariff/:tariffId/:taxId',function(req,res){
+
+	productId = req.params.productId;
+	tariffId = req.params.tariffId;
+    taxId = req.params.taxId;
+
+	taxToBeUpdated = {
+		taxType:req.body.taxType,
+		percentage:req.body.percentage,
+        amount:req.body.amount,
+		_id:taxId
+	};
+
+	Product.update({_id:productId,'tariffs._id':tariffId},
+		{
+			$set:{'tariffs.$.tax.$':taxToBeUpdated}}
+		,function(err){
+		if(err) return res.send(500,'Error Occured During PhoneNumber Update for Product with Id['+productId+']'+err);
+		
+		res.json({'status':'tax Updated for Product ['+productId+']'});
+	});
+});
 
 //Delete tariff tax
 ProductController.delete('/:productId/tariff/:tariffId/:tariffTaxId',function(req,res){
@@ -1069,19 +1100,18 @@ ProductController.delete('/:productId/tariff/:tariffId/:tariffTaxId',function(re
 	tariffTaxId = req.params.tariffTaxId;
 
 
-
+	//console.log("productId:"+productId+"tariffId:"+tariffId+"tariffTaxId:"+tariffTaxId);
 	Product.update({_id:productId,"tariffs._id":tariffId},
 	{
 		$pull:{"tariffs.$.tax":{_id:tariffTaxId}}
-	},{multi:true}
-		,function(err){
+	},{multi:true},function(err){
 				if(err) return res.send(500,'Error Occured During PhoneNumber Delete for Product with Id['+productId+']');
 				res.json({'status':'tax Deleted for Product ['+productId+']'});
 	});
 	console.log("tax Delete Invoked ...");
 });
 
-// Add tax details
+// Add gender price rule details
 ProductController.post('/:id/:tariffId/genderPriceRules',function(req,res){
 	productId = req.params.id;
 	tariffId = req.params.tariffId;

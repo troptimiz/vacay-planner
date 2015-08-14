@@ -21,6 +21,11 @@ obj = {
                 $(".image-preview").empty().html(img).fadeIn();
             }
         });
+        $('.tariff-tax-details .delete-edit-container').on('click','.edit',function(e){
+            e.preventDefault();
+            var formId = '#'+$(this).attr('href');
+            $(formId).find('.form-cont').slideToggle(500);
+        });
         $('input[name="displayedCost"]').on('keyup',function(){
             var percentageVal = $('.percentageVal').val().split(",");
             var totalVal = 0;
@@ -139,7 +144,7 @@ obj = {
 				$('.close-btn').on('click',function(e){
 					e.preventDefault();
 					$(this).parent('.form-cont').slideUp();
-				})
+				});
 				$('#add-tariff-tax').on('click',function(e){
 					e.preventDefault();
 					e.stopPropagation();
@@ -170,7 +175,21 @@ obj = {
 						// });
 					}
 				})
-
+                $('#update-tariff-tax').on('click',function(e){
+                    e.preventDefault();
+					e.stopPropagation();
+                    if($(this).parents('form').valid()){
+                        var formData = $(this).parents('form').serialize();
+                        var productId = $(this).parents('form').find('#productID').val();
+                        var tariffId = $(this).parents('form').find('#tariff-id').val();
+                        var taxId = $(this).parents('form').find('#tax-id').val();
+                        var URL = "/products/"+productId+"/updateTaxTariff/"+tariffId+"/"+taxId;
+                        obj.sendAjax(URL,"POST",formData,function(data){
+                            console.log(data);
+                            location.href = location.href;
+                        });
+                    }
+                });
 				$('#add-gender-rules').on('click',function(e){
 					e.preventDefault();
 					e.stopPropagation();

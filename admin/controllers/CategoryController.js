@@ -127,8 +127,10 @@ CategoryController.post('/category/',function(req,res){
         var newCategory = new Categories({
             name:req.body.name,
             description:req.body.description,
+            short_desc:req.body.short_desc,
             // need to see how actual image content can be uploaded ??
-            imageUrl:imageName,
+            imageUrl:imageName,            
+		    cssClass:req.body.cssClass,
             classification:classificationArray,
             is_active:req.body.isActive
         });
@@ -168,6 +170,7 @@ CategoryController.post('/category/:id',function(req,res){
 	categoryToBeUpdated = {
 		name:req.body.name,
 		description:req.body.description,
+		short_desc:req.body.short_desc,
 		imageUrl:imageName,
 		cssClass:req.body.cssClass,
 		is_active:req.body.isActive

@@ -59,8 +59,29 @@
                                 <td>{{../productTariff.currency}}. {{this.amount}}</td>
                                 <td>
                                     <div class="delete-edit-container">
-                                        <a href="/products/{{../productId}}/tariff/{{../productTariff.id}}/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
+                                        <a href="{{this._id}}" class="edit" title="Edit the row">Edit</a> /
                                         <a href="/{{../productId}}/tariff/{{../productTariff.id}}/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="update-form" id="{{this._id}}">
+                                <td colspan="4">
+                                    <div class="inline-form">
+                                        <form method="post" action="">
+                                            <input type="hidden" value="{{../productId}}" id="productID"/>
+                                            <input type="hidden" value="{{../productTariff.id}}" id="tariff-id">
+                                            <input type="hidden" value="{{this._id}}" id="tax-id"/>
+                                            <div class="form-cont">
+                                                <span class="close-btn">X</span>
+                                                <span>Tax Type:</span>
+                                                <span class="input-field"><input type="text" name="taxType" class="required" value="{{this.taxType}}"/></span>
+                                                <span>Percentage:</span>
+                                                <span class="input-field"><input type="text" name="percentage" class="required number" value="{{this.percentage}}"/><b>%</b></span>
+                                                <span>Amount:</span>
+                                                <span class="input-field"><input type="text" name="amount" class="required number" value="{{this.amount}}"/> <b>INR</b></span>
+                                                <input type="submit" class="btn btn-success" id="update-tariff-tax" value="Submit" id="add-tax" />
+                                            </div>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>
@@ -109,7 +130,7 @@
                                 <td>{{../productTariff.currency}}. {{this.remarks}}</td>
                                 <td>
                                     <div class="delete-edit-container">
-                                        <a href="/products/{{../productId}}/tariff/{{../productTariff.id}}/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
+                                        <a href="/products/{{../productId}}/tariffTax/{{../productTariff.id}}/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
                                         <a href="/{{../productId}}/tariff/{{../productTariff.id}}/{{this._id}}" class="delete" title="Delete the row">Delete</a>
                                     </div>
                                 </td>

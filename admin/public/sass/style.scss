@@ -7,6 +7,9 @@ body{
         margin-right: 0;
     }
 }
+.header{
+    display: block;
+}
 .header-admin {
     .navbar-header .navbar-brand {
         width: 220px;
@@ -639,8 +642,8 @@ ul{
         position: relative;
         display: none;
         span{
-            margin-right: 10px;
-            margin-left:10px;
+            margin-right: 5px;
+            margin-left:5px;
             font-size:11px;
         }
         input[type="text"]{
@@ -660,6 +663,26 @@ ul{
             padding:2px 5px;
             border-radius: 15px;
             cursor: pointer;
+        }
+    }
+    .vacay-table.tariff-tax-details{ 
+        .update-form{
+            .form-cont{
+                input[type="text"]{
+                    width: 90px;   
+                }
+                span.input-field{
+                    position:relative;
+                }
+                label.error{
+                    position: absolute;
+                    white-space: nowrap;
+                    left: 0;
+                    top: 20px;
+                    font-size: 10px;
+                    color: #f00;   
+                }
+            }
         }
     }
 }

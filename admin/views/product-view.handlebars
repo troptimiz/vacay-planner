@@ -7,15 +7,21 @@
                     Product Details
                     <a href="../productDetails/{{product.id}}" class="edit-general-details"><span class="icon-pencil"></span></a>
                 </h3>
-
+                {{product}}
 
                 <div class="clearfix"></div>
                 <ul>
                     <li>
-                        <label>Name:</label>{{product.name}}
+                        <label>Name:</label>{{product.city}}
                     </li>
                     <li>
                         <label>Description:</label>{{product.description}}
+                    </li>
+                    <li>
+                        <label>City:</label>{{product.city}}
+                    </li>
+                    <li>
+                        <label>State:</label>{{product.state}}
                     </li>
                     <li>
                         <label>Email Address:</label>{{product.emailAddress}}
@@ -41,6 +47,8 @@
                         <th>Image</th>
                         <th>Name</th>
                         <th>Caption</th>
+                        <th>Title</th>
+                        <th>Sort Order</th>
                         <th>Category</th>
                         <th class="vacay-action">Action</th>
                     </tr>
@@ -49,7 +57,9 @@
                         <td><img src="/uploads/{{../product.category}}/{{this.imageUrl}}" height=50/></td>
                         <td>{{this.imageUrl}}</td>
                         <td>{{this.captionText}}</td>
-                        <td>{{../product.category}}</td>
+                        <td>{{this.title}}</td>
+                        <td>{{../product.category}}</td>                        
+                        <td>{{this.sortOrder}}</td>
                         <td>
                             <div class="delete-edit-container">
                                 <a href="../{{../product.id}}/image/{{this._id}}/{{../product.category}}" class="edit" title="Edit the row">Edit</a> /

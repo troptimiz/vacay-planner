@@ -1,3 +1,4 @@
+/* line 1, ../sass/sign-in.scss */
 input {
   display: inline-block;
   width: 210px;
@@ -12,6 +13,7 @@ input {
   border-radius: 3px;
 }
 
+/* line 15, ../sass/sign-in.scss */
 .login-form {
   top: 80px;
   margin: 50px auto;
@@ -21,6 +23,7 @@ input {
   background: #f6f6f6;
   border-radius: 5px;
 }
+/* line 23, ../sass/sign-in.scss */
 .login-form h1 {
   padding-top: 0;
   margin-top: 0;
@@ -29,10 +32,12 @@ input {
   font-weight: bold;
   margin-bottom: 15px;
 }
+/* line 32, ../sass/sign-in.scss */
 .login-form .login-fields .field {
   margin-bottom: 15px;
   position: relative;
 }
+/* line 35, ../sass/sign-in.scss */
 .login-form .login-fields .field:before {
   font-family: "FontAwesome";
   position: absolute;
@@ -43,20 +48,25 @@ input {
   left: 2px;
   border-right: 1px solid #ccc;
 }
+/* line 45, ../sass/sign-in.scss */
 .login-form .login-fields .field.password-field:before {
   content: "\f084";
 }
+/* line 48, ../sass/sign-in.scss */
 .login-form .login-fields .field.username-field:before {
   content: "\f007";
 }
+/* line 52, ../sass/sign-in.scss */
 .login-form .login-fields p {
   font-size: 13px;
   font-family: 'Open Sans';
   /*"\f007"*/
 }
+/* line 56, ../sass/sign-in.scss */
 .login-form .login-fields label {
   display: none;
 }
+/* line 59, ../sass/sign-in.scss */
 .login-form .login-fields input {
   font-family: 'Open Sans';
   font-size: 13px;

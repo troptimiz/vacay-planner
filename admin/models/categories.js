@@ -13,6 +13,7 @@ mongoose.connect('mongodb://localhost/vacayplanner',options);
 var categorySchema = mongoose.Schema({
 	name:String,
 	description:String,
+    short_desc:String,
 	imageUrl:String,
 	cssClass:String,
     classification:[{name:String}],
