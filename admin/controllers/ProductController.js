@@ -82,6 +82,9 @@ ProductController.put('/product/',function(req,res){
 		type:req.body.type,
         city:req.body.city,
         state:req.body.state,
+        country:req.body.country,
+        rootTips:req.body.rootTips,
+        starRating:req.body.starRating,
 		description:req.body.description,
 		emailAddress:req.body.emailAddress,
 		is_active:req.body.is_active,
@@ -210,6 +213,9 @@ ProductController.post('/product/:id',function(req,res){
 		description:req.body.description,
         city:req.body.city,
         state:req.body.state,
+        country:req.body.country,
+        rootTips:req.body.rootTips,
+        starRating:req.body.starRating,
 		emailAddress:req.body.emailAddress,
 		is_active:req.body.is_active
 	};
