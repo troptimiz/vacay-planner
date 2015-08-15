@@ -19,7 +19,7 @@ var productSchema = mongoose.Schema({
     city:String,
     state:String,
     country:String,
-    rootTips:String,
+    routeTips:String,
     starRating:Number,
 	description:String,
 	emailAddress:String,

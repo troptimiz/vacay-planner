@@ -83,7 +83,7 @@ ProductController.put('/product/',function(req,res){
         city:req.body.city,
         state:req.body.state,
         country:req.body.country,
-        rootTips:req.body.rootTips,
+        routeTips:req.body.routeTips,
         starRating:req.body.starRating,
 		description:req.body.description,
 		emailAddress:req.body.emailAddress,
@@ -214,7 +214,7 @@ ProductController.post('/product/:id',function(req,res){
         city:req.body.city,
         state:req.body.state,
         country:req.body.country,
-        rootTips:req.body.rootTips,
+        routeTips:req.body.routeTips,
         starRating:req.body.starRating,
 		emailAddress:req.body.emailAddress,
 		is_active:req.body.is_active
