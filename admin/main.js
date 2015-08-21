@@ -5,6 +5,7 @@ var CategoryController = require('./controllers/CategoryController.js');
 var ProductController = require('./controllers/ProductController.js');
 var UserController = require('./controllers/UserController.js');
 var ClassificationController = require('./controllers/ClassificationController.js');
+var FacilitiesGroupsController = require('./controllers/facilitiesGroupController.js');
 var path = require('path');
 var Passport = require('passport');
  var flash = require('connect-flash'); 
@@ -49,6 +50,7 @@ app.use('/categories',CategoryController);
 app.use('/products',ProductController);	
 app.use('/account',UserController);	
 app.use('/classifications',ClassificationController);
+app.use('/facilities',FacilitiesGroupsController);
 app.get("/multiple",function(req,res){
     res.render('multiple-select',{layout:'dashboard'});
 });

@@ -506,7 +506,17 @@ obj = {
                 obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
             }
         });
-
+        /*Add Facility group*/
+        $('#add-facility-group').on('click',function(){            
+            if($(this).parents('form').valid()){
+                var formData = $('#add-facility-group-form').serialize();
+								console.log(formData);
+                var productId = $('#add-facility-group-form').find('input[name="id"]').val();
+                var URL = "/products/"+productId+"/facility";
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+            }
+        });
+        
         /*Update phone /:productId/address/:addressId*/
         $('#update-phone').on('click',function(e){
             e.preventDefault();
