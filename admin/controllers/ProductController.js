@@ -111,7 +111,10 @@ ProductController.put('/product/',function(req,res){
 ProductController.get('/product/:id',function(req,res){
 	Product.findById(req.params.id,function(err,product){
 		if(req.session.passport.user)
-            res.render("product-view",{'product':product,layout:'list'});
+            facilities.find({},function(err,facilitiesByGroup){
+                res.render("product-view",{'product':product,'facilities':facilitiesByGroup,layout:'list'});
+            });
+            
             //res.status(200).json({product:product});
         else
             res.redirect('/account/session');

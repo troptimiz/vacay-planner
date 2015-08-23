@@ -186,10 +186,20 @@
             <div class="">
                 <h3 class="heading1">
                     Facilities Details
-                    <a href="../{{product.id}}/add-new-facility" class="add-facility-detail"><span class="icon-plus"></span></a>
+                    
+                    <input type="button" value="Save" class="btn btn-default col-sm-1 pull-right"/>
+                    <!--<a href="../{{product.id}}/add-new-facility" class="add-facility-detail"><span class="icon-plus"></span></a>-->
                 </h3>
                 <div class="clearfix"></div>
-                        <table class="vacay-table">
+                <div class="facilities-list">
+                    
+                    <ul>
+                        {{#each facilities}}
+                            <li><input type="checkbox" name="facilities[]" id="{{this._id}}" value="{{this._id}}"/> {{this.name}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+                        <!--<table class="vacay-table">
                             <tr>
                                 <th>Facility Type</th>
                                 <th>Facility Description</th>
@@ -207,7 +217,7 @@
                                 </td>
                             </tr>
                             {{/each}}
-                        </table>
+                        </table>-->
 
 
             </div>
