@@ -1,0 +1,85 @@
+<div class="class-list">
+	<div class="item-container">
+		<table>
+			<tr>
+				<th>Category Name</th>
+				<th>Description</th>
+                <th>Active</th>
+				<th class="list-action">Action</th>
+				<th><a href="#" class="add-facilitygroup"><span class="icon-plus"></span></a></th>
+			</tr>
+			{{#each activeFacilityGroups}}
+			<tr>
+				<td>
+					<span class="icon"></span>{{this.title}}
+				</td>
+				<td>
+                    <p class="cat-desc">{{this.description}}</p>
+				</td>
+                <td>
+                    <p class="active-type">
+                        {{#if this.is_active}}
+                          true
+                        {{else}}
+                          false
+                        {{/if}}
+                    </p>
+                </td>
+				<td>
+					<div class="delete-edit-container">                        
+                        <input type="hidden" value="{{this.id}}" id="classification_id"/>
+                        <a href="/facilities/facilityView/{{this.id}}" class="edit" title="Edit facility">Edit</a> /
+                        <a href="#" class="delete" title="Delete Category">Delete</a>
+                        
+                    </div>
+				</td>
+			</tr>
+			{{/each}}
+		</table>
+	</div>    
+</div>
+<div class="add-form-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item-container">
+                <div class="data-form">
+                    <div class="form-heading">
+                        <h2>Add Facility Group</h2>
+                    </div>									
+
+                    <form role="form" method="post" id="add-facility-group-form" action="/facilites/facilitygroup/" >
+                        <div class="form-group hidden">
+                            <label for="">&nbsp;</label>
+                            <p class="form-controll msg error"></p>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Facility Group Title:</label>
+                            <input type="textbox" name="facilityGroupTitle" class="form-control required" placeholder="Facility Type"/>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Facility Group Description:</label>
+                            <input type="textbox" name="facilityGroupDescription" class="form-control required" placeholder="Facility Description"/>
+                            <div class="clearfix"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="">Activate:</label>
+                            <select name="isActive" class="required form-control">
+                                <option selected="selected" value="true">True</option>
+                                <option value="false">False</option>
+                            </select>
+                            <div class="clearfix"></div>
+                        </div>
+                        <button type="button" class="btn btn-default" id="add-facility-group">Submit</button>
+                        <button type="button" class="cancel-classification-addition btn btn-default">Cancel</button>
+                     </form>
+                    <div class="image-preview">
+                        Priview
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>

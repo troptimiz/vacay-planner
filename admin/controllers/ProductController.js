@@ -2,6 +2,8 @@ var express = require('express');
 var ProductController = express();
 var Product = require('../models/products.js');
 var ClassificationGroup = require('../models/classification.js');
+var facilitiesGroup = require('../models/facilitiesGroup.js');
+var facilities = require('../models/facilities.js');
 var bodyParser = require('body-parser');
 
 ProductController.use(bodyParser());

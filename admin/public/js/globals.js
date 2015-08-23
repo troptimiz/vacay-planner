@@ -21,7 +21,7 @@ obj = {
                 $(".image-preview").empty().html(img).fadeIn();
             }
         });
-        $('.tariff-tax-details .delete-edit-container').on('click','.edit',function(e){
+        $('.tariff-tax-details .delete-edit-container,.facilities-list .delete-edit-container').on('click','.edit',function(e){
             e.preventDefault();
             var formId = '#'+$(this).attr('href');
             $(formId).find('.form-cont').slideToggle(500);
@@ -106,7 +106,7 @@ obj = {
                 });
             }
         });
-        $('.add-category,.add-calssification').on('click',function(e){
+        $('.add-category,.add-calssification,.add-facilitygroup').on('click',function(e){
             e.preventDefault();
             $('.cat-list,.class-list').fadeOut(500,function(){
                 obj.resetFields();
@@ -137,9 +137,9 @@ obj = {
                 }
             });*/
         });
-				$('.add-tax-details').on('click',function(e){
+				$('.add-tax-details,.add-facility-details').on('click',function(e){
 					e.preventDefault();
-					$(this).parents('.vacay-section').find('.form-cont').slideDown();
+					$(this).parents('.vacay-section').find('.add-form-inline .form-cont').slideDown();
 				})
 				$('.close-btn').on('click',function(e){
 					e.preventDefault();
@@ -506,16 +506,7 @@ obj = {
                 obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
             }
         });
-        /*Add Facility group*/
-        $('#add-facility-group').on('click',function(){            
-            if($(this).parents('form').valid()){
-                var formData = $('#add-facility-group-form').serialize();
-								console.log(formData);
-                var productId = $('#add-facility-group-form').find('input[name="id"]').val();
-                var URL = "/products/"+productId+"/facility";
-                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
-            }
-        });
+        
         
         /*Update phone /:productId/address/:addressId*/
         $('#update-phone').on('click',function(e){
@@ -560,6 +551,83 @@ obj = {
                 $('.category-list.min-list').fadeIn();
 			});
         });
+        $('#add-facility-group').on('click',function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            if($(this).parents('form').valid()){
+                var formData = $('#add-facility-group-form').serialize();
+                $.ajax({
+                    url:"/facilities/facilitygroup/",
+                    data:formData,
+                    method:"PUT",
+                    success:function(data){
+                        console.log(data);
+                        if(data.msg == "success"){
+                            console.log(data.msg);
+                            location.href="/facilities/all";
+                        }
+                        else{
+                            $('.msg').text(data.msg);
+                            $('.msg').parents('.form-group').removeClass('hidden');
+                            setTimeout(function(){$('.msg').parents('.form-group').addClass('hidden');},5000);
+                        }
+                    }
+                });
+            }
+
+        });
+        
+        $('#edit-facility').on('click',function(e){
+            var formData = $('#edit-facility-group-form').serialize();
+            var recordId = $('#edit-facility-group-form').find('input[name="id"]').val();
+            console.log(recordId);
+            e.preventDefault();
+            e.stopPropagation();
+            $.ajax({
+                url:"/facilities/facility/"+recordId,
+                data:formData,
+                method:"POST",
+                success:function(){
+                    location.href="/facilities/all";
+                    console.log("Updated");
+                }
+            });
+        });
+        
+        $('#addFacility').on('click',function(e){
+            var formData = $('#facility-form').serialize();
+            var facilityGroupId = $('#facility-form').find('input[name="id"]').val();
+            e.preventDefault();
+            $.ajax({
+                url:"/facilities/addFacility/"+facilityGroupId,
+                data:formData,
+                method:"PUT",
+                success:function(data){
+                    location.href = "/facilities/facilityView/"+facilityGroupId;
+                }
+            
+            });
+        });
+        
+        $('.editFacility').on('click',function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            var formData = $(this).parents('form').serialize();
+            var facilityId = $(this).parents('form').find('input[name="id"]').val();
+            var facilityGroupId = $(this).parents('form').find(".facilityId").val();
+            console.log("facilityGroupId"+facilityGroupId);
+            console.log("facilityId"+facilityId);
+            
+            $.ajax({
+                url:"/facilities/editFacility/"+facilityId,
+                data:formData,
+                method:"POST",
+                success : function(data){
+                    window.location.href = "/facilities/facilityView/"+facilityGroupId;   
+                }
+            });
+        });
+
 
 	},
     confirm:function(msg){
