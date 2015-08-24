@@ -541,19 +541,10 @@ ProductController.post('/:id/phone',function(req,res){
 
 // Add facilities
 
-ProductController.post('/:id/facility',function(req,res){
+ProductController.post('/:id/facility/:facilityId',function(req,res){
 	productId = req.params.id;
-    var facilityArray = req.body.facilities.split(",");
-    var facilityObject = [];
-    facilityArray.forEach(function(id){
-        facilityObject.push({'facilityId':id});
-    });
-    //res.json({'status':facilityObject});
-	/*newFacility={
-		facilityType:req.body.facilityType,
-		facilityDescription:req.body.facilityDescription
-	};*/
-	
+    var facilityObject = {'facilityId':req.params.facilityId};
+    console.log("Adding facility invoked for "+req.params.facilityId);	
 	Product.update({_id:productId},{
 		$push:
 			{'facilities':
@@ -973,11 +964,11 @@ ProductController.delete('/:productId/facilities/:facilityId',function(req,res){
 	productId = req.params.productId;
 	facilityId = req.params.facilityId;
 
-	console.log("PhoneNumber Delete Invoked ...");
+	console.log("facility Delete Invoked for..."+facilityId);
 
-	Product.update({_id:productId},
+	Product.update({_id : productId},
 	{
-		$pull:{facilities:{_id:facilityId}}
+		$pull:{facilities:{facilityId : facilityId}}
 	},{multi:true}
 		,function(err){
 				if(err) return res.send(500,'Error Occured During PhoneNumber Delete for Product with Id['+productId+']');
@@ -1175,16 +1166,7 @@ ProductController.post('/:id/:tariffId/priceRules',function(req,res){
 		});
 });
 
-//Associate facility details
 
-ProductController.put('/associateFacilities/:id',function(req, res){
-    var facilityArray = req.body.facilities.split(",");
-    var facilityObject = [];
-    facilityArray.forEach(function(id){
-        facilityObject.push({'facilityId':id});
-    });
-    res.json({'status':facilityObject});
-});
 //TODO : search specific params ..
 
 

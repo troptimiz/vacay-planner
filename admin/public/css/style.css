@@ -773,3 +773,29 @@ ul li {
   font-size: 10px;
   color: #f00;
 }
+
+/* line 690, ../sass/style.scss */
+.product-facility-details .facilityMsg {
+  font-size: 16px;
+  display: none;
+}
+/* line 693, ../sass/style.scss */
+.product-facility-details .facilityMsg span {
+  color: #7992BF;
+  font-weight: bold;
+}
+/* line 698, ../sass/style.scss */
+.product-facility-details .facilities-list {
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+/* line 702, ../sass/style.scss */
+.product-facility-details .facilities-list ul li {
+  float: left;
+  width: 150px;
+  margin: 10px 0;
+}
+/* line 706, ../sass/style.scss */
+.product-facility-details .facilities-list ul li input[type="checkbox"] {
+  width: auto;
+}

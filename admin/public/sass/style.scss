@@ -686,3 +686,28 @@ ul{
         }
     }
 }
+.product-facility-details{
+    .facilityMsg{        
+        font-size:16px;
+        display: none;
+        span{
+            color:#7992BF;
+            font-weight: bold;
+        }
+    }
+    .facilities-list{
+        padding: 20px;
+        background-color: #f0f0f0;
+        ul{
+            li{
+                float:left;
+                width:150px;
+                margin:10px 0;
+                input[type="checkbox"]{
+                    width:auto;   
+                }   
+            }
+        }
+        
+    }
+}

@@ -5,6 +5,13 @@ $(document).ready(function(){
 	obj.init();
 });
 obj = {
+    checkFacilities :function(){
+        var facilityList = $('.facilities-list').attr('data-selected-list').split(',');
+        for(i=0;i<facilityList.length-1;i++){
+            var id = facilityList[i];
+            $('#'+id).attr('checked','checked');
+        }  
+    },
 	init : function(){
         $('#imageUrl').on('change',function(e){
             for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
@@ -21,6 +28,49 @@ obj = {
                 $(".image-preview").empty().html(img).fadeIn();
             }
         });
+        
+        $('.facilities-list').find('ul li').find(':checkbox').on('click',function(){
+            var checkedVal = $(this).val();
+            var productId = $("#productId").val();
+            var $this = $(this);
+            if($(this).is(':checked')){
+                $('.facilityMsg').html("Adding....").show();
+                $.ajax({
+                    url : '/products/'+productId+'/facility/'+checkedVal,
+                    method:'POST',
+                    success: function(data){
+                        $('.facilityMsg').html('<span>"'+$this.parent("li").text()+'"</span> Added Successfully').hide().fadeIn(1000,function(){
+                            setTimeout(function(){
+                                $('.facilityMsg').fadeOut(1000,function(){
+                                    $('.facilityMsg').html("")
+                                })
+                            },2000);
+                        });
+                    },
+                    error : function(e,er,err){
+
+                    }
+                });
+            } else{    
+                $('.facilityMsg').html("Deleting....").show();
+                $.ajax({
+                    url:'/products/'+productId+'/facilities/'+checkedVal,
+                    method:'DELETE',
+                    success:function(){
+                        $('.facilityMsg').html('<span>"'+$this.parent("li").text()+'"</span> Deleted Successfully').hide().fadeIn(1000,function(){
+                            setTimeout(function(){
+                                $('.facilityMsg').fadeOut(1000,function(){
+                                    $('.facilityMsg').html("")
+                                })
+                            },2000);
+                        });
+                    }
+                });
+            }
+            
+            
+        });
+        
         
         $('.save-facilities').on('click',function(){
             var checkedValues = [];
@@ -83,6 +133,9 @@ obj = {
         var tLength = $('.vacay-table').length;
         for(i=0;i<tLength;i++){
             $('.vacay-table').eq(i).find('td').length > 0 ?  $('.vacay-table').eq(i).show() : $('.vacay-table').eq(i).hide();
+        }
+        if(pageName == "product"){
+            obj.checkFacilities();
         }
         if(pageName == "categoryView"){
             var categoryName = $("#categoryName").val();
