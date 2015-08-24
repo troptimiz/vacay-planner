@@ -543,15 +543,21 @@ ProductController.post('/:id/phone',function(req,res){
 
 ProductController.post('/:id/facility',function(req,res){
 	productId = req.params.id;
-	newFacility={
+    var facilityArray = req.body.facilities.split(",");
+    var facilityObject = [];
+    facilityArray.forEach(function(id){
+        facilityObject.push({'facilityId':id});
+    });
+    //res.json({'status':facilityObject});
+	/*newFacility={
 		facilityType:req.body.facilityType,
 		facilityDescription:req.body.facilityDescription
-	};
-	console.log("newFacilities: "+req.body.facilityType);
+	};*/
+	
 	Product.update({_id:productId},{
 		$push:
 			{'facilities':
-					newFacility
+					facilityObject
 			}
 		},
 		{upsert:false},function(err){
@@ -1167,6 +1173,17 @@ ProductController.post('/:id/:tariffId/priceRules',function(req,res){
 			console.log('Tax added');
 			res.json({'status':'New price rules Created for Product ['+productId+']'});
 		});
+});
+
+//Associate facility details
+
+ProductController.put('/associateFacilities/:id',function(req, res){
+    var facilityArray = req.body.facilities.split(",");
+    var facilityObject = [];
+    facilityArray.forEach(function(id){
+        facilityObject.push({'facilityId':id});
+    });
+    res.json({'status':facilityObject});
 });
 //TODO : search specific params ..
 

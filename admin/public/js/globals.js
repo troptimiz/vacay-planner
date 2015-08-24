@@ -21,6 +21,26 @@ obj = {
                 $(".image-preview").empty().html(img).fadeIn();
             }
         });
+        
+        $('.save-facilities').on('click',function(){
+            var checkedValues = [];
+            var productId = $("#productId").val();
+            alert(productId);
+            $('.facilities-list').find('ul li').find(':checkbox:checked').each(function(i){
+                checkedValues[i] = $(this).val();
+            });
+            $.ajax({
+                url : '/products/'+productId+'/facility',
+                method:'POST',
+                data : 'facilities='+checkedValues,
+                success: function(data){
+                    console.log(data);
+                },
+                error : function(e,er,err){
+                    
+                }
+            });
+        });
         $('.tariff-tax-details .delete-edit-container,.facilities-list .delete-edit-container').on('click','.edit',function(e){
             e.preventDefault();
             var formId = '#'+$(this).attr('href');

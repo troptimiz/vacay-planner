@@ -187,12 +187,11 @@
                 <h3 class="heading1">
                     Facilities Details
                     
-                    <input type="button" value="Save" class="btn btn-default col-sm-1 pull-right"/>
+                    <input type="button" value="Save" class="btn btn-default save-facilities"/>
                     <!--<a href="../{{product.id}}/add-new-facility" class="add-facility-detail"><span class="icon-plus"></span></a>-->
                 </h3>
                 <div class="clearfix"></div>
-                <div class="facilities-list">
-                    
+                <div class="facilities-list">                    
                     <ul>
                         {{#each facilities}}
                             <li><input type="checkbox" name="facilities[]" id="{{this._id}}" value="{{this._id}}"/> {{this.name}}</li>
@@ -201,20 +200,16 @@
                 </div>
                         <!--<table class="vacay-table">
                             <tr>
-                                <th>Facility Type</th>
+                                <th>Facility Name</th>
                                 <th>Facility Description</th>
-                                <th class="vacay-action">Action</th>
+                                <th>&nbsp;</th>
+                                <th class="col-sm-2"><input type="button" value="Save" class="btn btn-default"/></th>
                             </tr>
-                            {{#each product.facilities}}
-                            <tr>
-                                <td>{{this.facilityType}}</td>
-                                <td>{{this.facilityDescription}}</td>
-                                <td>
-                                    <div class="delete-edit-container">
-                                        <a href="../{{../product.id}}/facility/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
-                                        <a href="/{{../product.id}}/facilities/{{this._id}}" class="delete" title="Delete the row">Delete</a>
-                                    </div>
-                                </td>
+                            {{#each facilities}}
+                            <tr>                                
+                                <td>{{this.name}}</td>
+                                <td>{{this.description}}</td>
+                                <td><input type="checkbox" value="{{this._id}}" name="facilities[]"/></td>
                             </tr>
                             {{/each}}
                         </table>-->
