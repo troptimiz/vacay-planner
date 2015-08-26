@@ -67,7 +67,7 @@ facilitiesGroupsController.get('/facility/:id',function(req,res){
 	})
 });
 
-//Update the classification
+//Update the Facility Group
 facilitiesGroupsController.post('/facility/:id',function(req,res){
     
     var facilityGroupToBeUpdated = {
@@ -84,10 +84,10 @@ facilitiesGroupsController.post('/facility/:id',function(req,res){
 	});
 });
 /*
-// Delete Classification By Id
+// Delete facility group By Id
 
-ClassificationController.delete('/classification/:id',function(req,res){
-	ClassificationGroup.findById(req.params.id,function(err,classification){
+facilitiesGroupsController.delete('/classification/:id',function(req,res){
+	facilitiesGroup.findById(req.params.id,function(err,classification){
 		if(err)return res.send(500,'Error Occured:database error'+err);
 		classification.remove();
 		res.status(200).json({'status':'ClassificationGroup '+req.params.id +' Deleted'});

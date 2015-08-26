@@ -95,7 +95,7 @@ ProductController.put('/product/',function(req,res){
 		phoneNumbers:[],
 		facilities:[],
     classifications:classificationArray,
-		tariffs:[],
+		tariffs:{},
 		amenities:[],
 		termsAndConditions:[]
 	});
@@ -1055,6 +1055,29 @@ ProductController.delete('/:productId/productclassification/:classId',function(r
 	});
 });
 
+
+/*// Add tariff package details
+ProductController.post('/:id/:tariffId/taxdetails',function(req,res){
+	productId = req.params.id;
+	tariffId = req.params.tariffId;
+	newTaxDetails={
+		taxType:req.body.taxType,
+		percentage:req.body.percentage,
+		amount:req.body.amount
+	};
+	//console.log("taxType"+req.body.taxType+"percentage:"+req.body.percentage+"Amount:"+req.body.amount);
+	Product.update({_id:productId,'tariffs._id':tariffId},{
+		$push:
+			{'tariffs.$.tax':
+            newTaxDetails
+			}
+		},
+		{upsert:false},function(err){
+			if(err) return res.send(500,'Error Occured During tariff tax Update for Product with Id['+productId+']'+err);
+			console.log('Tax added');
+			res.json({'status':'New Phone Details Created for Product ['+productId+']'});
+		});
+});*/
 // Add tax details
 ProductController.post('/:id/:tariffId/taxdetails',function(req,res){
 	productId = req.params.id;
@@ -1166,7 +1189,41 @@ ProductController.post('/:id/:tariffId/priceRules',function(req,res){
 		});
 });
 
-
+// Add tariff package details
+ProductController.post('/tariff/addPackage/:id',function(req,res){
+	productId = req.params.id;
+    var pricerules = req.body.pricerules;
+    var pricerulesArray = [];
+    //var classificationArray = classification.split(",");
+    if(typeof(pricerules) == 'string'){
+        pricerulesArray.push({"priceRuleId":pricerules});
+    }
+    else{
+        pricerules.forEach(function(item){
+            pricerulesArray.push({"priceRuleId":item});
+        });
+    }
+    console.log("Price rules +========="+pricerules);
+    console.log("price rules array"+pricerulesArray);
+	var newPackageDetails={
+		title:req.body.title,
+		description:req.body.description,
+		cost:req.body.cost,
+        pricerules:pricerulesArray
+	};
+	//console.log("taxType"+req.body.taxType+"percentage:"+req.body.percentage+"Amount:"+req.body.amount);
+	Product.update({_id:productId},{
+		$push:
+			{'tariffs.packages':
+                newPackageDetails
+			}
+		},
+		{upsert:false},function(err){
+			if(err) return res.send(500,'Error Occured During tariff tax Update for Product with Id['+productId+']'+err);
+			console.log('Tax added');
+			res.json({'status':'New Phone Details Created for Product ['+productId+']'});
+		});
+});
 //TODO : search specific params ..
 
 

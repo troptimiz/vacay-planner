@@ -1,0 +1,87 @@
+<div class="class-list">
+	<div class="item-container">
+		<table>
+			<tr>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Cost</th>
+                <th>Cost Type</th>
+				<th class="list-action">Action</th>
+				<th><a href="#" class="add-facilitygroup"><span class="icon-plus"></span></a></th>
+			</tr>
+			{{#each activePriceRules}}
+			<tr>
+				<td>
+					<span class="icon"></span>{{this.title}}
+				</td>
+				<td>
+                    <p class="cat-desc">{{this.description}}</p>
+				</td>
+                <td>
+                    {{this.cost}}
+                </td>
+                <td>
+                    {{this.costType}}
+                </td>
+				<td>
+					<div class="delete-edit-container">                        
+                        <input type="hidden" value="{{this.id}}" id="priceRule_id"/>
+                        <a href="/pricerules/priceruleEdit/{{this.id}}" class="edit" title="Edit price rule">Edit</a> /
+                        <a href="#" class="delete" title="Delete price rule">Delete</a>
+                        
+                    </div>
+				</td>
+			</tr>
+			{{/each}}
+		</table>
+	</div>    
+</div>
+<div class="add-form-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item-container">
+                <div class="data-form">
+                    <div class="form-heading">
+                        <h2>Add Price Rule</h2>
+                    </div>									
+
+                    <form role="form" method="post" id="add-price-rules-form" action="/pricerules/addrules/" >
+                        <div class="form-group hidden">
+                            <label for="">&nbsp;</label>
+                            <p class="form-controll msg error"></p>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Title:</label>
+                            <input type="textbox" name="title" class="form-control required" placeholder="Price Rule Type"/>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Description:</label>
+                            <input type="textbox" name="description" class="form-control required" placeholder="Price Rule Description"/>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Cost:</label>
+                            <input type="textbox" name="cost" class="form-control required" placeholder="Price Rule Cost"/>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Cost Type:</label>
+                            <select name="costType" class="required form-control">
+                                <option selected="selected" value="percentage">Percentage</option>
+                                <option value="INR">INR</option>
+                            </select>
+                            <div class="clearfix"></div>
+                        </div>
+                        <button type="button" class="btn btn-default" id="add-price-rule">Submit</button>
+                        <button type="button" class="cancel-classification-addition btn btn-default">Cancel</button>
+                     </form>
+                    <div class="image-preview">
+                        Priview
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>

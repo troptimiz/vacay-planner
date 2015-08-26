@@ -650,6 +650,32 @@ obj = {
 
         });
         
+        $('#add-price-rule').on('click',function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            if($(this).parents('form').valid()){
+                var formData = $('#add-price-rules-form').serialize();
+                $.ajax({
+                    url:"/pricerules/addrules/",
+                    data:formData,
+                    method:"PUT",
+                    success:function(data){
+                        console.log(data);
+                        if(data.msg == "success"){
+                            console.log(data.msg);
+                            location.href="/pricerules/all";
+                        }
+                        else{
+                            $('.msg').text(data.msg);
+                            $('.msg').parents('.form-group').removeClass('hidden');
+                            setTimeout(function(){$('.msg').parents('.form-group').addClass('hidden');},5000);
+                        }
+                    }
+                });
+            }
+
+        });
+        
         $('#edit-facility').on('click',function(e){
             var formData = $('#edit-facility-group-form').serialize();
             var recordId = $('#edit-facility-group-form').find('input[name="id"]').val();
@@ -662,6 +688,23 @@ obj = {
                 method:"POST",
                 success:function(){
                     location.href="/facilities/all";
+                    console.log("Updated");
+                }
+            });
+        });
+        
+        $('#edit-price-rule').on('click',function(e){
+            var formData = $('#edit-price-rules-form').serialize();
+            var recordId = $('#edit-price-rules-form').find('input[name="id"]').val();
+            console.log(recordId);
+            e.preventDefault();
+            e.stopPropagation();
+            $.ajax({
+                url:"/pricerules/editrule/"+recordId,
+                data:formData,
+                method:"POST",
+                success:function(){
+                    location.href="/pricerules/all";
                     console.log("Updated");
                 }
             });
@@ -699,6 +742,17 @@ obj = {
                     window.location.href = "/facilities/facilityView/"+facilityGroupId;   
                 }
             });
+        });
+        
+        //add package
+        $('#add-packages').on('click',function(e){
+            e.preventDefault();
+            var formData = $(this).parents('form').serialize();
+            var productId = $("#productId").val();
+            var URL = "/products/tariff/addPackage/"+productId;
+            obj.sendAjax(URL,"POST",formData,function(data){
+                window.location.href = "/products/product/"+productId;
+            });        
         });
 
 

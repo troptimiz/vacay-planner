@@ -226,40 +226,57 @@
                     <a href="../{{product.id}}/add-new-tariff" class="add-tariff-details"><span class="icon-plus"></span></a>
                 </h3>
                 <div class="clearfix"></div>
-
-
-                        <!--<div class="tariffs-container">
-                            <div class="delete-edit-container pull-right">
-                                <a href="../{{../product.id}}/tariff/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
-                                <a href="/{{../product.id}}/tariff/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                
+                <div class="vacay-section product-view-sub-section">
+                    <h3 class="heading1">
+                        Packages
+                        <a href="#" class="add-tax-details"><span class="icon-plus"></span></a>
+                    </h3>
+                    <div class="inline-form add-form-inline">
+                        <form method="post" action="" id="package-form">
+                            <div class="form-cont">
+                                <span class="close-btn">X</span>
+                                <span>Title:</span>
+                                <input type="text" name="title" class="required" />
+                                <span>Description:</span>
+                                <input type="text" name="description" class="required"/>
+                                <span>Cost:</span>
+                                <input type="text" name="cost" class="required"/> <b>INR</b>
+                                <span>Price Rules</span>
+                                <select name="pricerules[]" multiple="true" size=2>                                    
+                                    <option value="child">child</option>                                    
+                                    <option value="senior citizen">senior citizen</option>                                    
+                                </select>
+                                <input type="submit" class="btn btn-success" id="add-packages" value="Submit" />
                             </div>
-                            <p><label>Cost: </label>Rs.{{this.cost}}.00</p>
-                            <p><label>Description: </label>{{this.description}}</p>
-                            <div class="clearfix"></div>
-                        </div>-->
-                        <table class="vacay-table">
-                            <tr>
-                                <th>Displayed Cost</th>
-                                <th>Net Cost</th>
-                                <th>Description</th>
-                                <th class="vacay-action">Action</th>
-                            </tr>
-                            {{#each product.tariffs}}
-                            <tr>
-                                <td>{{this.currency}} {{this.displayedCost}}.00</td>
-                                <td>{{this.currency}} {{this.netCost}}.00</td>
-                                <td>{{this.description}}</td>
-                                <td>
-                                    <div class="delete-edit-container">
-                                        <a href="../{{../product.id}}/tariff/{{this._id}}/tariff-view" class="edit" title="Edit the row">Edit</a> /
-                                        <a href="/{{../product.id}}/tariff/{{this._id}}" class="delete" title="Delete the row">Delete</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            {{/each}}
-                        </table>
+                        </form>
+                    </div>
+                    
+                    <table class="vacay-table tariff-tax-details">
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Cost</th>                            
+                            <th class="vacay-action">Action</th>
+                        </tr>
+                        
+                        {{#each product.tariffs.packages}}
+                        <tr>
+                            <td>{{this.title}}</td>
+                            <td>{{this.description}}</td>
+                            <td>{{this.cost}}</td>
+                            <td>
+                                <div class="delete-edit-container">
+                                    <a href="/products/{{../productId}}/tariffTax/{{../productTariff.id}}/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
+                                    <a href="/{{../productId}}/tariff/{{../productTariff.id}}/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
 
-
+                        {{/each}}
+                    </table>
+                </div>
+                
             </div>
         </div>
 

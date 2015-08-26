@@ -1,0 +1,48 @@
+<div class="edit-form-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item-container">
+                <div class="data-form">
+                    <div class="form-heading">
+                        <h2>Update Price Rule</h2>
+                    </div>
+                    
+                    <form role="form" method="post" id="edit-price-rules-form" action="/pricerules/addrules/" >
+                        <input type="hidden" value="{{priceRuleById._id}}" name="id"/>
+                        <div class="form-group hidden">
+                            <label for="">&nbsp;</label>
+                            <p class="form-controll msg error"></p>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Title:</label>
+                            <input type="textbox" name="title" value="{{priceRuleById.title}}" class="form-control required" placeholder="Price Rule Type"/>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Description:</label>
+                            <input type="textbox" name="description" value="{{priceRuleById.description}}" class="form-control required" placeholder="Price Rule Description"/>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Cost:</label>
+                            <input type="textbox" name="cost" value="{{priceRuleById.cost}}" class="form-control required" placeholder="Price Rule Cost"/>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Cost Type:</label>
+                            <select name="costType" class="required form-control">
+                                <option selected="selected" value="percentage">Percentage</option>
+                                <option value="INR">INR</option>
+                            </select>
+                            <div class="clearfix"></div>
+                        </div>
+                        <button type="button" class="btn btn-default" id="edit-price-rule">Submit</button>
+                        <button type="button" class="cancel-classification-addition btn btn-default" onClick="javascript:history.go(-1)">Cancel</button>
+                     </form>                   
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

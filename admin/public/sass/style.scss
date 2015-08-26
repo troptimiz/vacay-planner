@@ -685,6 +685,14 @@ ul{
             }
         }
     }
+    &.product-view-sub-section{
+        padding:0 20px;
+        .heading1{
+            font-size:14px;
+            font-weight:bold;
+            border-bottom:1px dashed #333;
+        }
+    }
 }
 .product-facility-details{
     .facilityMsg{        

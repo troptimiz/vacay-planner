@@ -29,7 +29,8 @@ var productSchema = mongoose.Schema({
 	phoneNumbers:[{contactType:String,contactNumber:String}],
   facilities:[{facilityId:String}],
   classifications:[{name:String}],
-	tariffs:[{description:String,displayedCost:Number,netCost:Number,tax:[{taxType:String,percentage:Number,amount:Number}],genderPriceRules:[{gender:String,amount:Number,applicableAmount:Number,remarks:String}],priceOverrides:[{displayedCostOverride:Number,startDate:String,endDate:String}],currency:{ type: String, default: 'INR' }}],
+	//tariffs:[{description:String,displayedCost:Number,netCost:Number,tax:[{taxType:String,percentage:Number,amount:Number}],genderPriceRules:[{gender:String,amount:Number,applicableAmount:Number,remarks:String}],priceOverrides:[{displayedCostOverride:Number,startDate:String,endDate:String}],currency:{ type: String, default: 'INR' }}],
+	tariffs:{packages:[{title:String,description:String,cost:Number,pricerules:[{priceRuleId:String}]}]},
 	amenities:[{description:String}],
 	termsAndConditions:[{description:String}]
 });
