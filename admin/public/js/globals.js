@@ -91,7 +91,7 @@ obj = {
                 }
             });
         });
-        $('.tariff-tax-details .delete-edit-container,.facilities-list .delete-edit-container').on('click','.edit',function(e){
+        $('.tariff-tax-details .delete-edit-container,.facilities-list .delete-edit-container,.tariff-package-details .delete-edit-container').on('click','.edit',function(e){
             e.preventDefault();
             var formId = '#'+$(this).attr('href');
             $(formId).find('.form-cont').slideToggle(500);

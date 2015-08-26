@@ -1,0 +1,190 @@
+productPackage={{productPackage}}
+<div class="edit-form-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item-container">
+                <div class="data-form">
+                    <div class="product-tariffs-details">
+                        <div class="">
+                            <h3 class="heading1">
+                                Tariffs Details
+                                <a href="/../products/{{productId}}/tariff/{{productTariff.id}}/tariff-update" class="add-tariff-details"><span class="icon-pencil"></span></a>
+                            </h3>
+                            <div class="clearfix"></div>
+                            <ul>
+                                <li>
+                                    <label>Displayed Cost:</label> {{productTariff.currency}}.{{productTariff.displayedCost}}
+                                </li>
+                                <li>
+                                    <label>Net Cost:</label> {{productTariff.currency}}.{{productTariff.netCost}}
+                                </li>
+                                <li>
+                                    <label>Description:</label>{{productTariff.description}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="vacay-section">
+                        <h3 class="heading1">
+                            Tax
+                            <a href="#" class="add-tax-details"><span class="icon-plus"></span></a>
+                        </h3>
+
+                        <div class="inline-form add-form-inline">
+                            <form method="post" action="" id="tax-form">
+                                <input type="hidden" value="{{productId}}" id="productID"/>
+                                <input type="hidden" value="{{productTariff.id}}" id="tariff-id">
+                                <div class="form-cont">
+                                    <span class="close-btn">X</span>
+                                    <span>Tax Type:</span>
+                                    <input type="text" name="taxType" />
+                                    <span>Percentage:</span>
+                                    <input type="text" name="percentage" /><b>%</b>
+                                    <span>Amount:</span>
+                                    <input type="text" name="amount" /> <b>INR</b>
+                                    <input type="submit" class="btn btn-success" id="add-tariff-tax" value="Submit" id="add-tax" />
+                                </div>
+                            </form>
+                        </div>
+                        <table class="vacay-table tariff-tax-details">
+                            <tr>
+                                <th>Tax Type</th>
+                                <th>Percentage</th>
+                                <th>Tax Amount</th>
+                                <th class="vacay-action">Action</th>
+                            </tr>
+                            {{#each productTariff.tax}}
+                            <tr>
+                                <td>{{this.taxType}}</td>
+                                <td>{{../productTariff.currency}}. {{this.percentage}}</td>
+                                <td>{{../productTariff.currency}}. {{this.amount}}</td>
+                                <td>
+                                    <div class="delete-edit-container">
+                                        <a href="{{this._id}}" class="edit" title="Edit the row">Edit</a> /
+                                        <a href="/{{../productId}}/tariff/{{../productTariff.id}}/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="update-form" id="{{this._id}}">
+                                <td colspan="4">
+                                    <div class="inline-form">
+                                        <form method="post" action="">
+                                            <input type="hidden" value="{{../productId}}" id="productID"/>
+                                            <input type="hidden" value="{{../productTariff.id}}" id="tariff-id">
+                                            <input type="hidden" value="{{this._id}}" id="tax-id"/>
+                                            <div class="form-cont">
+                                                <span class="close-btn">X</span>
+                                                <span>Tax Type:</span>
+                                                <span class="input-field"><input type="text" name="taxType" class="required" value="{{this.taxType}}"/></span>
+                                                <span>Percentage:</span>
+                                                <span class="input-field"><input type="text" name="percentage" class="required number" value="{{this.percentage}}"/><b>%</b></span>
+                                                <span>Amount:</span>
+                                                <span class="input-field"><input type="text" name="amount" class="required number" value="{{this.amount}}"/> <b>INR</b></span>
+                                                <input type="submit" class="btn btn-success" id="update-tariff-tax" value="Submit" id="add-tax" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            {{/each}}
+                        </table>
+
+                    </div>
+                    <div class="vacay-section">
+                        <h3 class="heading1">
+                            Gender Price Rules
+                            <a href="#" class="add-tax-details"><span class="icon-plus"></span></a>
+                        </h3>
+                        <div class="inline-form">
+                            <form method="post" action="" id="gender-form">
+                                <div class="form-cont">
+                                    <span class="close-btn">X</span>
+                                    <span>Adult/Child:</span>
+                                    <select name="gender">
+                                        <option>Adult</option>
+                                        <option>Child</option>
+                                    </select>
+                                    <span>Amount:</span>
+                                    <input type="text" name="amount" /> <b>INR</b>
+                                    <span>Tax Applicable Amount:</span>
+                                    <input type="text" name="applicableAmount" /> <b>INR</b>
+                                    <span>Remarks Text</span>
+                                    <textarea name="remarksText"></textarea>
+                                    <input type="submit" class="btn btn-success" id="add-gender-rules" value="Submit" id="add-tax" />
+                                </div>
+                            </form>
+                        </div>
+                        <table class="vacay-table tariff-tax-details">
+                            <tr>
+                                <th>Gender</th>
+                                <th>Amount</th>
+                                <th>Applicable Amount</th>
+                                <th>Remarks</th>
+                                <th class="vacay-action">Action</th>
+                            </tr>
+                            {{#each productTariff.genderPriceRules}}
+                            <tr>
+                                <td>{{this.gender}}</td>
+                                <td>{{../productTariff.currency}}. {{this.amount}}</td>
+                                <td>{{../productTariff.currency}}. {{this.applicableAmount}}</td>
+                                <td>{{../productTariff.currency}}. {{this.remarks}}</td>
+                                <td>
+                                    <div class="delete-edit-container">
+                                        <a href="/products/{{../productId}}/tariffTax/{{../productTariff.id}}/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
+                                        <a href="/{{../productId}}/tariff/{{../productTariff.id}}/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            {{/each}}
+                        </table>
+                    </div>
+
+                    <div class="vacay-section">
+                        <h3 class="heading1">
+                            Price Override Rules
+                            <a href="#" class="add-tax-details"><span class="icon-plus"></span></a>
+                        </h3>
+                        <div class="inline-form">
+                            <form method="post" action="" id="priceOverride-form">
+                                <div class="form-cont">
+                                    <span class="close-btn">X</span>
+                                    <span>Displayed Cost Override:</span>
+                                    <input type="text" name="displayedCostOverride" placeholder="price"/> <b>INR</b>
+                                    <span>Start Date:</span>
+                                    <input type="text" name="startDate" placeholder="dd/mm/yyyy"/>
+                                    <span>End Date:</span>
+                                    <input type="text" name="endDate"  placeholder="dd/mm/yyyy"/>
+                                    <input type="submit" class="btn btn-success" id="add-priceOverride-rules" value="Submit" id="add-tax" />
+                                </div>
+                            </form>
+                        </div>
+                        <table class="vacay-table tariff-price-rules-details">
+                            <tr>
+                                <th>Displyed Cost Override</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th class="vacay-action">Action</th>
+                            </tr>
+                            {{#each productTariff.priceOverrides}}
+                            <tr>
+                                <td>{{../productTariff.currency}}. {{this.displayedCostOverride}}</td>
+                                <td>{{this.startDate}}</td>
+                                <td>{{this.endDate}}</td>
+                                <td>
+                                    <div class="delete-edit-container">
+                                        <a href="/products/{{../productId}}/tariff/{{../productTariff.id}}/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
+                                        <a href="/{{../productId}}/tariff/{{../productTariff.id}}/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            {{/each}}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

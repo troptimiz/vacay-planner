@@ -223,7 +223,7 @@
             <div class="">
                 <h3 class="heading1">
                     Tariffs Details
-                    <a href="../{{product.id}}/add-new-tariff" class="add-tariff-details"><span class="icon-plus"></span></a>
+                    <!--<a href="../{{product.id}}/add-new-tariff" class="add-tariff-details"><span class="icon-plus"></span></a>-->
                 </h3>
                 <div class="clearfix"></div>
                 
@@ -244,15 +244,16 @@
                                 <input type="text" name="cost" class="required"/> <b>INR</b>
                                 <span>Price Rules</span>
                                 <select name="pricerules[]" multiple="true" size=2>                                    
-                                    <option value="child">child</option>                                    
-                                    <option value="senior citizen">senior citizen</option>                                    
+                                    {{#each pricerules}}
+                                        <option value="{{this._id}}">{{this.title}}</option>
+                                    {{/each}}
                                 </select>
                                 <input type="submit" class="btn btn-success" id="add-packages" value="Submit" />
                             </div>
                         </form>
                     </div>
                     
-                    <table class="vacay-table tariff-tax-details">
+                    <table class="vacay-table tariff-package-details">
                         <tr>
                             <th>Title</th>
                             <th>Description</th>
@@ -267,12 +268,36 @@
                             <td>{{this.cost}}</td>
                             <td>
                                 <div class="delete-edit-container">
-                                    <a href="/products/{{../productId}}/tariffTax/{{../productTariff.id}}/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
+                                    <a href="{{this._id}}" class="edit" title="Edit the row">Edit</a> /
                                     <a href="/{{../productId}}/tariff/{{../productTariff.id}}/{{this._id}}" class="delete" title="Delete the row">Delete</a>
                                 </div>
                             </td>
                         </tr>
-
+                        <!--<tr class="update-form" id="{{this._id}}">
+                                <td colspan="4">
+                                    <div class="inline-form">
+                                        <form method="post" >                                            
+                                            <input type="hidden" value="{{this._id}}" name="id"/>
+                                            <div class="form-cont">
+                                                <span class="close-btn">X</span>
+                                                <span>Title:</span>
+                                                <input type="text" name="title" value="{{this.title}}" class="required" />
+                                                <span>Description:</span>
+                                                <input type="text" name="description" value="{{this.description}}"class="required"/>
+                                                <span>Cost:</span>
+                                                <input type="text" name="cost" value="{{this.cost}}" class="required"/> <b>INR</b>
+                                                <span>Price Rules</span>
+                                                <select name="pricerules[]" multiple="true" size=2>                                    
+                                                    {{#each ../pricerules}}
+                                                        <option value="{{this._id}}">{{this.title}}</option>
+                                                    {{/each}}
+                                                </select>
+                                                <input type="submit" class="btn btn-success" id="add-packages" value="Submit" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>-->
                         {{/each}}
                     </table>
                 </div>

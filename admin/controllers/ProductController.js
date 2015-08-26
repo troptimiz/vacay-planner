@@ -4,6 +4,7 @@ var Product = require('../models/products.js');
 var ClassificationGroup = require('../models/classification.js');
 var facilitiesGroup = require('../models/facilitiesGroup.js');
 var facilities = require('../models/facilities.js');
+var priceRules = require('../models/pricerules.js');
 var bodyParser = require('body-parser');
 
 ProductController.use(bodyParser());
@@ -111,8 +112,10 @@ ProductController.put('/product/',function(req,res){
 ProductController.get('/product/:id',function(req,res){
 	Product.findById(req.params.id,function(err,product){
 		if(req.session.passport.user)
-            facilities.find({},function(err,facilitiesByGroup){
-                res.render("product-view",{'product':product,'facilities':facilitiesByGroup,layout:'list'});
+            facilities.find({},function(err,facilitiesByGroup){                
+                priceRules.find({},function(err,priceRule){                        
+                    res.render("product-view",{'product':product,'pricerules':priceRule,'facilities':facilitiesByGroup,layout:'list'});
+                });                
             });
             
             //res.status(200).json({product:product});
@@ -1220,9 +1223,49 @@ ProductController.post('/tariff/addPackage/:id',function(req,res){
 		},
 		{upsert:false},function(err){
 			if(err) return res.send(500,'Error Occured During tariff tax Update for Product with Id['+productId+']'+err);
-			console.log('Tax added');
+			console.log('price rule added');
 			res.json({'status':'New Phone Details Created for Product ['+productId+']'});
 		});
+});
+//Get tariff package By Product ID & package ID
+ProductController.get('/tariff/package-view/:productId/:packageId',function(req,res){
+	var productId = req.params.productId;
+	var packageId = req.params.packageId;
+    console.log("productId:"+productId +"packageId:"+packageId);
+	Product.find(
+		{_id:productId},
+		{"packages":{$elemMatch:
+			{
+				"_id":packageId
+			}
+		}
+	},
+		function(err,product){
+			res.render("package-view",{'productPackage':product,'productId':productId,layout:'list'});
+	});
+});
+//update tarrif packages
+ProductController.post('/tariff/updatePackage/:id/:packageId',function(req,res){
+
+	productId = req.params.id;
+    packageId = req.params.packageId;
+    var pricerules = req.body.pricerules;
+    
+	var PackageToBeUpdated={
+		title:req.body.title,
+		description:req.body.description,
+		cost:req.body.cost,
+        _id:packageId
+	};
+
+	Product.update({_id:productId},
+		{
+			$set:{'tariffs.packages.$':PackageToBeUpdated}}
+		,function(err){
+		if(err) return res.send(500,'Error Occured During Package Update for Product with Id['+productId+']'+err);
+		
+		res.json({'status':'Package Updated for Product ['+productId+']'});
+	});
 });
 //TODO : search specific params ..
 
