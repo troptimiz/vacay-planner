@@ -846,3 +846,19 @@ ul li {
 .cancel-details, .pricerule-list-table {
   display: none;
 }
+
+/* line 750, ../sass/style.scss */
+.packageUpdateForm {
+  display: none;
+  background: #f9f9f9;
+  padding: 20px;
+  margin-top: 30px;
+}
+/* line 755, ../sass/style.scss */
+.packageUpdateForm .data-form .form-group {
+  width: 85%;
+}
+/* line 758, ../sass/style.scss */
+.packageUpdateForm input[type="button"] {
+  margin-right: 5px;
+}

@@ -747,3 +747,15 @@ ul{
 .cancel-details,.pricerule-list-table{
     display: none;
 }
+.packageUpdateForm{
+    display: none;
+    background:#f9f9f9;
+    padding:20px;
+    margin-top:30px;
+    .data-form .form-group{
+        width:85%;   
+    }
+    input[type="button"]{
+        margin-right: 5px;   
+    }
+}

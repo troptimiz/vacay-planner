@@ -11,7 +11,7 @@
                         <div class="">
                             <h3 class="heading1">
                                 Package Details
-                                <a href="/../products/{{productId}}/tariff/{{productTariff.id}}/tariff-update" class="add-tariff-details"><span class="icon-pencil"></span></a>
+                                <a href="#" class="update-package-details"><span class="icon-pencil"></span></a>
                             </h3>
                             <div class="clearfix"></div>
                             <ul>
@@ -27,6 +27,28 @@
                             </ul>
                         </div>
                     </div>
+                    <div class="packageUpdateForm">
+                        <form method="post" >                                            
+                            <input type="hidden" value="{{productPackage._id}}" name="id"/>
+                            <div class="form-group">
+                                <label>Title:</label>
+                                <input type="text" name="title" value="{{productPackage.title}}" class="required form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Description:</label>
+                                <input type="text" name="description" value="{{productPackage.description}}"class="required form-control"/>
+                            </div> 
+                            <div class="form-group">
+                                <label>Cost:</label>
+                                <input type="text" name="cost" value="{{productPackage.cost}}" class="required form-control"/><b> &nbsp;&nbsp;INR</b>
+                            </div> 
+                            <div class="form-group">
+                                <input type="button" class="btn btn-success col-md-2 edit-packages" value="Submit" />
+                                <input type="button" class="btn btn-default col-md-2 canel-package-update" value="Cancel"/>
+                            </div>                            
+                        </form>
+                    </div>
+                    <div class="clearfix"></div>
                     <div class="vacay-section">
                         <h3 class="heading1">
                             Associated Price Rules

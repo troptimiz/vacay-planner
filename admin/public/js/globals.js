@@ -841,7 +841,14 @@ obj = {
             });        
         });
         //Update packages /tariff/updatePackage/:id/:packageId
-        
+        $('.update-package-details').on('click',function(e){
+            e.preventDefault();
+            $('.packageUpdateForm').fadeIn();
+        });
+        $('.canel-package-update').on('click',function(e){
+            e.preventDefault();
+            $('.packageUpdateForm').fadeOut();
+        });
         $('.edit-packages').on('click',function(e){
             e.preventDefault();
             var formData = $(this).parents('form').serialize();
@@ -849,7 +856,7 @@ obj = {
             var packageId = $(this).parents('form').find('input[name="id"]').val();
             var URL = "/products/tariff/updatePackage/"+productId+"/"+packageId;
             obj.sendAjax(URL,"POST",formData,function(data){
-                window.location.href = "/products/product/"+productId;
+                window.location.href = "/products/package-view/"+productId+"/"+packageId;
             });        
         });
         $('#price-rule-type').on('change',function(){
