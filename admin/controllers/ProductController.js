@@ -5,6 +5,7 @@ var ClassificationGroup = require('../models/classification.js');
 var facilitiesGroup = require('../models/facilitiesGroup.js');
 var facilities = require('../models/facilities.js');
 var priceRules = require('../models/pricerules.js');
+var priceRules = require('../models/pricerules.js');
 var bodyParser = require('body-parser');
 
 ProductController.use(bodyParser());
@@ -96,7 +97,7 @@ ProductController.put('/product/',function(req,res){
 		phoneNumbers:[],
 		facilities:[],
     classifications:classificationArray,
-		tariffs:{},
+		packages:[],
 		amenities:[],
 		termsAndConditions:[]
 	});
@@ -1196,28 +1197,16 @@ ProductController.post('/:id/:tariffId/priceRules',function(req,res){
 ProductController.post('/tariff/addPackage/:id',function(req,res){
 	productId = req.params.id;
     var pricerules = req.body.pricerules;
-    var pricerulesArray = [];
-    //var classificationArray = classification.split(",");
-    if(typeof(pricerules) == 'string'){
-        pricerulesArray.push({"priceRuleId":pricerules});
-    }
-    else{
-        pricerules.forEach(function(item){
-            pricerulesArray.push({"priceRuleId":item});
-        });
-    }
-    console.log("Price rules +========="+pricerules);
-    console.log("price rules array"+pricerulesArray);
+    
 	var newPackageDetails={
 		title:req.body.title,
 		description:req.body.description,
-		cost:req.body.cost,
-        pricerules:pricerulesArray
+		cost:req.body.cost
 	};
 	//console.log("taxType"+req.body.taxType+"percentage:"+req.body.percentage+"Amount:"+req.body.amount);
 	Product.update({_id:productId},{
 		$push:
-			{'tariffs.packages':
+			{'packages':
                 newPackageDetails
 			}
 		},
@@ -1228,11 +1217,11 @@ ProductController.post('/tariff/addPackage/:id',function(req,res){
 		});
 });
 //Get tariff package By Product ID & package ID
-ProductController.get('/tariff/package-view/:productId/:packageId',function(req,res){
+ProductController.get('/package-view/:productId/:packageId',function(req,res){
 	var productId = req.params.productId;
 	var packageId = req.params.packageId;
     console.log("productId:"+productId +"packageId:"+packageId);
-	Product.find(
+	Product.findById(
 		{_id:productId},
 		{"packages":{$elemMatch:
 			{
@@ -1241,15 +1230,17 @@ ProductController.get('/tariff/package-view/:productId/:packageId',function(req,
 		}
 	},
 		function(err,product){
-			res.render("package-view",{'productPackage':product,'productId':productId,layout:'list'});
+            priceRules.find({},function(err,priceRule){		
+                res.render("package-view",{'priceRuleList':priceRule,'productPackage':product.packages[0],'productId':productId,layout:'list'});
+            });
+			
 	});
 });
 //update tarrif packages
 ProductController.post('/tariff/updatePackage/:id/:packageId',function(req,res){
 
-	productId = req.params.id;
-    packageId = req.params.packageId;
-    var pricerules = req.body.pricerules;
+	var productId = req.params.id;
+    var packageId = req.params.packageId;
     
 	var PackageToBeUpdated={
 		title:req.body.title,
@@ -1257,15 +1248,54 @@ ProductController.post('/tariff/updatePackage/:id/:packageId',function(req,res){
 		cost:req.body.cost,
         _id:packageId
 	};
-
-	Product.update({_id:productId},
+	Product.update({_id:productId,"packages._id":packageId},
 		{
-			$set:{'tariffs.packages.$':PackageToBeUpdated}}
-		,function(err){
-		if(err) return res.send(500,'Error Occured During Package Update for Product with Id['+productId+']'+err);
+			$set:{'packages.$':PackageToBeUpdated}},function(err){
+                console.log("error"+err);
+		      if(err) return res.status(500).send('Error Occured During Package Update for Product with Id['+productId+']'+err);
 		
-		res.json({'status':'Package Updated for Product ['+productId+']'});
+		      res.json({'status':'Package Updated for Product ['+productId+']'});
 	});
+});
+
+// Associate package price rules details
+ProductController.post('/packages/addpricerule/:id/:packageId/:priceRuleId',function(req,res){
+	var productId = req.params.id;
+	var packageId = req.params.packageId;
+	var priceRuleId = req.params.priceRuleId;
+	var newPriceRule={
+		priceRuleId:priceRuleId
+	};
+	//console.log("taxType"+req.body.taxType+"percentage:"+req.body.percentage+"Amount:"+req.body.amount);
+	Product.update({_id:productId,'packages._id':packageId},{
+		$push:
+			{'packages.$.pricerules':
+            newPriceRule
+			}
+		},
+		{upsert:false},function(err){
+			if(err) return res.send(500,'Error Occured During tariff tax Update for Product with Id['+productId+']'+err);
+			console.log('Tax added');
+			res.json({'status':'New Phone Details Created for Product ['+productId+']'});
+		});
+});
+
+//update package price rule
+ProductController.delete('/packages/updatepricerule/:id/:packageId/:priceRuleId',function(req,res){
+	var productId = req.params.id;
+	var packageId = req.params.packageId;
+	var priceRuleId = req.params.priceRuleId;
+
+
+	//console.log("productId:"+productId+"tariffId:"+tariffId+"tariffTaxId:"+tariffTaxId);
+	Product.update({_id:productId,'packages._id':packageId},
+	{
+		$pull:{"packages.$.pricerules":{priceRuleId:priceRuleId}}
+	},function(err){
+				if(err) return res.send(500,'Error Occured During PhoneNumber Delete for Product with Id['+productId+']');
+				res.json({'status':'tax Deleted for Product ['+productId+']'});
+	});
+	console.log("tax Delete Invoked ...packageId:"+packageId + "priceRuleId:"+priceRuleId);
 });
 //TODO : search specific params ..
 

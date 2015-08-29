@@ -809,3 +809,40 @@ ul li {
 .product-facility-details .facilities-list ul li input[type="checkbox"] {
   width: auto;
 }
+
+/* line 722, ../sass/style.scss */
+.pricerule-list {
+  padding: 20px;
+}
+/* line 725, ../sass/style.scss */
+.pricerule-list ul li {
+  margin: 10px 0;
+}
+/* line 727, ../sass/style.scss */
+.pricerule-list ul li input[type="checkbox"] {
+  width: auto;
+  margin: 0 10px;
+  position: relative;
+  top: 2px;
+}
+
+/* line 736, ../sass/style.scss */
+.packageMsg {
+  font-size: 16px;
+  display: none;
+}
+/* line 739, ../sass/style.scss */
+.packageMsg span {
+  color: #7992BF;
+  font-weight: bold;
+}
+
+/* line 744, ../sass/style.scss */
+.form-section {
+  display: none;
+}
+
+/* line 747, ../sass/style.scss */
+.cancel-details, .pricerule-list-table {
+  display: none;
+}

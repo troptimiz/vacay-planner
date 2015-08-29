@@ -719,3 +719,31 @@ ul{
         
     }
 }
+.pricerule-list{
+    padding: 20px;
+        ul{
+            li{
+                margin:10px 0;
+                input[type="checkbox"]{
+                    width:auto;
+                    margin:0 10px;
+                    position:relative;
+                    top:2px;
+                }   
+            }
+        }
+}
+.packageMsg{        
+        font-size:16px;
+        display: none;
+        span{
+            color:#7992BF;
+            font-weight: bold;
+        }
+    }
+.form-section{
+    display: none;   
+}
+.cancel-details,.pricerule-list-table{
+    display: none;
+}

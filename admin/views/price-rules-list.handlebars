@@ -1,39 +1,92 @@
 <div class="class-list">
 	<div class="item-container">
-		<table>
-			<tr>
-				<th>Title</th>
-				<th>Description</th>
-				<th>Cost</th>
-                <th>Cost Type</th>
-				<th class="list-action">Action</th>
-				<th><a href="#" class="add-facilitygroup"><span class="icon-plus"></span></a></th>
-			</tr>
-			{{#each activePriceRules}}
-			<tr>
-				<td>
-					<span class="icon"></span>{{this.title}}
-				</td>
-				<td>
-                    <p class="cat-desc">{{this.description}}</p>
-				</td>
-                <td>
-                    {{this.cost}}
-                </td>
-                <td>
-                    {{this.costType}}
-                </td>
-				<td>
-					<div class="delete-edit-container">                        
-                        <input type="hidden" value="{{this.id}}" id="priceRule_id"/>
-                        <a href="/pricerules/priceruleEdit/{{this.id}}" class="edit" title="Edit price rule">Edit</a> /
-                        <a href="#" class="delete" title="Delete price rule">Delete</a>
-                        
-                    </div>
-				</td>
-			</tr>
-			{{/each}}
-		</table>
+        <div class="form-group">
+            <label>Price Rule type:</label>
+            <select class="form-control" id="price-rule-type">
+                <option value="">Select Price Rule Type</option>
+                <option value="group">Group</option>
+                <option value="gender">Gender</option>
+                <option value="discount">Discount</option>
+                <option value="cancellation">Cancelation</option>
+                <option value="event">Event</option>
+            </select>
+            <a href="#" class="add-facilitygroup pull-right"><span class="icon-plus"></span></a>
+        </div>
+        
+        <div class="pricerule-list-table">
+            <table class="" id="pricerule-table-group">
+                <thead>
+                    <tr>
+                        <th>Price Rule Type</th>
+                        <th>Price</th>
+                        <th>Price Type</th>
+                        <th>Group Limit</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Action</th>
+                    </tr>    
+                </thead>
+            </table>
+        </div>
+        <div class="pricerule-list-table">
+            <table id="pricerule-table-gender">
+                <thead>
+                    <tr>
+                        <th>Price Rule Type</th>
+                        <th>Price</th>
+                        <th>Price Type</th>
+                        <th>Gender type</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="pricerule-list-table">
+            <table id="pricerule-table-discount">
+                <thead>
+                    <tr>
+                        <th>Price Rule Type</th>
+                        <th>Price</th>
+                        <th>Price Type</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="pricerule-list-table">
+            <table id="pricerule-table-event">
+                <thead>
+                    <tr>
+                        <th>Price Rule Type</th>
+                        <th>Event Type</th>
+                        <th>Price</th>
+                        <th>Price Type</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        
+		<div class="pricerule-list-table">
+            <table id="pricerule-table-cancel">
+                <thead>
+                    <tr>
+                        <th>Price Rule Type</th>
+                        <th>Cancellation Type</th>
+                        <th>Price</th>
+                        <th>Price Type</th>
+                        <th>Duration Type</th>
+                        <th>Duration</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+		
 	</div>    
 </div>
 <div class="add-form-container">
@@ -45,23 +98,210 @@
                         <h2>Add Price Rule</h2>
                     </div>									
 
-                    <form role="form" method="post" id="add-price-rules-form" action="/pricerules/addrules/" >
+                    
                         <div class="form-group hidden">
                             <label for="">&nbsp;</label>
                             <p class="form-controll msg error"></p>
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
-                            <label for="">Title:</label>
-                            <input type="textbox" name="title" class="form-control required" placeholder="Price Rule Type"/>
-                            <div class="clearfix"></div>
+                            <label>Price Rule type:</label>
+                            <select class="form-control form-selection">
+                                <option value="">Select Price Rule Type</option>
+                                <option value="group">Group</option>
+                                <option value="gender">Gender</option>
+                                <option value="discount">Discount</option>
+                                <option value="cancellation">Cancelation</option>
+                                <option value="event">Event</option>
+                            </select>
                         </div>
-                        <div class="form-group">
-                            <label for="">Description:</label>
-                            <input type="textbox" name="description" class="form-control required" placeholder="Price Rule Description"/>
-                            <div class="clearfix"></div>
+                        <div class="form-section" id="gender">
+                            <form role="form" id="gender-form">
+                                <input type="hidden" value="gender" name="priceRuleType"/>
+                                <div class="form-group">
+                                    <label for="">Gender:</label>
+                                    <select class="form-control" name="gender">
+                                        <option value="child">Child</option>
+                                        <option value="seniorcitizen">Senior Citizen</option>
+                                        <option value="adult">Adult</option>
+                                    </select>                                
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Price Type:</label>
+                                    <select name="priceType" class="required form-control price-type">
+                                        <option value="">Select</option>
+                                        <option selected="selected" value="percentage">Percentage</option>
+                                        <option value="INR">INR</option>
+                                    </select>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Price</label>
+                                    <input type="text" class="price-field" class="form-control" name="genderPrice" placeholder="Price"/>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default add-price-rule">Submit</button>
+                                    <button type="button" class="cancel-classification-addition btn btn-default">Cancel</button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="form-group">
+                        <div class="form-section" id="event">
+                            <form role="form" id="event-form">
+                                <input type="hidden" value="event" name="priceRuleType"/>
+                                <div class="form-group">
+                                    <label for="">Event Type:</label>
+                                    <select class="form-control" name="eventType">
+                                        <option value="birthday">Birth Day</option>
+                                        <option value="aniversary">Aniversary</option>
+                                    </select>                                
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Price Type:</label>
+                                    <select name="priceType" class="required form-control price-type">
+                                        <option value="">Select</option>
+                                        <option selected="selected" value="percentage">Percentage</option>
+                                        <option value="INR">INR</option>
+                                    </select>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Price</label>
+                                    <input type="text" class="price-field form-control" name="eventPrice" placeholder="Price"/>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default add-price-rule">Submit</button>
+                                    <button type="button" class="cancel-classification-addition btn btn-default">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="form-section" id="discount">
+                            <form role="form" id="discount-form">
+                                <input type="hidden" value="discount" name="priceRuleType"/>
+                                
+                                <div class="form-group">
+                                    <label for="">Discount Price Type:</label>
+                                    <select name="priceType" class="required form-control price-type">
+                                        <option value="">Select</option>
+                                        <option selected="selected" value="percentage">Percentage</option>
+                                        <option value="INR">INR</option>
+                                    </select>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Discount Price</label>
+                                    <input type="text" class="price-field form-control" name="discountPrice" placeholder="Price"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Discount Start Date</label>
+                                    <input type="text" class="form-control" name="startDate" placeholder="dd/mm/yyyy"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Discount End Date</label>
+                                    <input type="text" class="form-control" name="endDate" placeholder="dd/mm/yyyy"/>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default add-price-rule">Submit</button>
+                                    <button type="button" class="cancel-classification-addition btn btn-default">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    
+                        <div class="form-section" id="cancellation">
+                            <form role="form" id="discount-form">
+                                <input type="hidden" value="cancellation" name="priceRuleType"/>
+                                <div class="form-group">
+                                    <label for="">Cancellation Type:</label>
+                                    <select name="cancelType" class="required form-control cancel-type">
+                                        <option value="">Select</option>
+                                        <option selected="selected" value="nonRefundable">Non Refundable</option>
+                                        <option value="refundable">Refundable</option>
+                                    </select>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="cancel-details">
+                                    <div class="form-group">
+                                        <label for="">Cancellation Price Type:</label>
+                                        <select name="priceType" class="required form-control price-type">
+                                            <option value="">Select</option>
+                                            <option selected="selected" value="percentage">Percentage</option>
+                                            <option value="INR">INR</option>
+                                        </select>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Cancellation Price</label>
+                                        <input type="text" class="price-field form-control" name="cancelPrice" placeholder="Price"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Duration Type:</label>
+                                        <select class="form-control" name="durationType">
+                                            <option value="days">Days</option>
+                                            <option value="hours">Hours</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Duration:</label>
+                                        <input type="text" placeholder="Duration in Days or Hours" class="form-control required" name="duration"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Start Date</label>
+                                        <input type="text" class="form-control" name="startDate" placeholder="dd/mm/yyyy"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">End Date</label>
+                                        <input type="text" class="form-control"  name="endDate" placeholder="dd/mm/yyyy"/>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default add-price-rule">Submit</button>
+                                    <button type="button" class="cancel-classification-addition btn btn-default">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="form-section" id="group">
+                            <form role="form" id="group-form">
+                                <input type="hidden" value="group" name="priceRuleType"/>
+                                
+                                <div class="group-details">
+                                    <div class="form-group">
+                                        <label for="">Group Price Type:</label>
+                                        <select name="priceType" class="required form-control price-type">
+                                            <option value="">Select</option>
+                                            <option selected="selected" value="percentage">Percentage</option>
+                                            <option value="INR">INR</option>
+                                        </select>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Group Price</label>
+                                        <input type="text" class="price-field form-control required" name="groupPrice" placeholder="Price"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Group Limit:</label>
+                                        <input type="text" name="groupLimit" placeholder="No.of persons" class="form-control required"/>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="">Start Date</label>
+                                        <input type="text" class="form-control required" name="startDate" placeholder="dd/mm/yyyy"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">End Date</label>
+                                        <input type="text" class="form-control required"  name="endDate" placeholder="dd/mm/yyyy"/>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default add-price-rule">Submit</button>
+                                    <button type="button" class="cancel-classification-addition btn btn-default">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!--<div class="form-group">
                             <label for="">Cost:</label>
                             <input type="textbox" name="cost" class="form-control required" placeholder="Price Rule Cost"/>
                             <div class="clearfix"></div>
@@ -73,10 +313,7 @@
                                 <option value="INR">INR</option>
                             </select>
                             <div class="clearfix"></div>
-                        </div>
-                        <button type="button" class="btn btn-default" id="add-price-rule">Submit</button>
-                        <button type="button" class="cancel-classification-addition btn btn-default">Cancel</button>
-                     </form>
+                        </div>-->
                     <div class="image-preview">
                         Priview
                     </div>

@@ -16,10 +16,17 @@ mongoose.createConnection('mongodb://localhost/vacayplanner',options);
 
 
 var priceRulesSchema = mongoose.Schema({
-	title:String,
-	description:String,
-    cost: Number,
-    costType: String
+	priceRuleType: String,
+    genderType:String,
+    priceType:String,	
+    price:Number,
+    eventType:String,
+    cancellationType:String,
+    duration:Number,
+    durationType:String,
+    grouplimit: Number,
+    startDate:String,
+    endDate:String
 });
 
 var priceRules = mongoose.model('pricerules',priceRulesSchema);

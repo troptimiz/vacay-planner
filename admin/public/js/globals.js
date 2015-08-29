@@ -12,7 +12,15 @@ obj = {
             $('#'+id).attr('checked','checked');
         }  
     },
+    checkPriceRules :function(){
+        var priceRuleList = $('.pricerule-list').attr('data-selected-list').split(',');
+        for(i=0;i<priceRuleList.length-1;i++){
+            var id = priceRuleList[i];
+            $('#'+id).attr('checked','checked');
+        }  
+    },
 	init : function(){
+        
         $('#imageUrl').on('change',function(e){
             for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
                 var file = e.originalEvent.srcElement.files[i];
@@ -28,7 +36,82 @@ obj = {
                 $(".image-preview").empty().html(img).fadeIn();
             }
         });
+        $.ajax({
+            url:"/pricerules/getpricerules/group",
+            method:"GET",
+            success:function(data){
+                console.log(data);
+            }
+        });
         
+        
+        
+        $('.form-selection').on('change',function(){
+            var formId = $(this).val();
+            $('.form-section').hide();
+            $('#'+formId).show();
+        });
+        $('.cancel-type').on('change',function(){
+            var cancelType = $(this).val();
+            if(cancelType == 'refundable'){
+                $('.cancel-details').show();   
+            }
+            else{
+                $('.cancel-details').hide();    
+            }
+        });
+        $('.price-type').on('change',function(){
+            var pricetype = $(this).val();
+            var placeHolder = "";
+            if(pricetype == "percentage"){
+                placeHolder = "Price in Percentage";
+            }
+            else if(pricetype == "INR"){
+                placeHolder = "Price in INR";   
+            }
+            $('.price-field').attr('placeholder',placeHolder);
+        });
+        
+        $('.pricerule-list').find('ul li').find(':checkbox').on('click',function(){
+            var checkedVal = $(this).val();
+            var productId = $("#productId").val();
+            var packageId = $("#packageId").val();
+            var $this = $(this);
+            if($(this).is(':checked')){
+                $('.packageMsg').html("Adding....").show();
+                $.ajax({
+                    url : '/products/packages/addpricerule/'+productId+'/'+packageId+'/'+checkedVal,
+                    method:'POST',
+                    success: function(data){
+                        $('.packageMsg').html('<span>"'+$this.parent("li").text()+'"</span> Added Successfully').hide().fadeIn(1000,function(){
+                            setTimeout(function(){
+                                $('.packageMsg').fadeOut(1000,function(){
+                                    $('.packageMsg').html("")
+                                })
+                            },2000);
+                        });
+                    },
+                    error : function(e,er,err){
+
+                    }
+                });
+            } else{    
+                $('.packageMsg').html("Deleting....").show();
+                $.ajax({
+                    url:'/products/packages/updatepricerule/'+productId+'/'+packageId+'/'+checkedVal,
+                    method:'DELETE',
+                    success:function(){
+                        $('.packageMsg').html('<span>"'+$this.parent("li").text()+'"</span> Deleted Successfully').hide().fadeIn(1000,function(){
+                            setTimeout(function(){
+                                $('.packageMsg').fadeOut(1000,function(){
+                                    $('.packageMsg').html("")
+                                })
+                            },2000);
+                        });
+                    }
+                });
+            }
+        });
         $('.facilities-list').find('ul li').find(':checkbox').on('click',function(){
             var checkedVal = $(this).val();
             var productId = $("#productId").val();
@@ -91,7 +174,7 @@ obj = {
                 }
             });
         });
-        $('.tariff-tax-details .delete-edit-container,.facilities-list .delete-edit-container,.tariff-package-details .delete-edit-container').on('click','.edit',function(e){
+        $('.tariff-tax-details .delete-edit-container,.facilities-list .delete-edit-container').on('click','.edit',function(e){
             e.preventDefault();
             var formId = '#'+$(this).attr('href');
             $(formId).find('.form-cont').slideToggle(500);
@@ -136,6 +219,9 @@ obj = {
         }
         if(pageName == "product"){
             obj.checkFacilities();
+        }
+        if(pageParams[pageParams.length-3]=='package-view'){
+            obj.checkPriceRules();  
         }
         if(pageName == "categoryView"){
             var categoryName = $("#categoryName").val();
@@ -650,11 +736,11 @@ obj = {
 
         });
         
-        $('#add-price-rule').on('click',function(e){
+        $('.add-price-rule').on('click',function(e){
             e.preventDefault();
             e.stopPropagation();
             if($(this).parents('form').valid()){
-                var formData = $('#add-price-rules-form').serialize();
+                var formData = $(this).parents('form').serialize();
                 $.ajax({
                     url:"/pricerules/addrules/",
                     data:formData,
@@ -754,9 +840,131 @@ obj = {
                 window.location.href = "/products/product/"+productId;
             });        
         });
-
-
+        //Update packages /tariff/updatePackage/:id/:packageId
+        
+        $('.edit-packages').on('click',function(e){
+            e.preventDefault();
+            var formData = $(this).parents('form').serialize();
+            var productId = $("#productId").val();
+            var packageId = $(this).parents('form').find('input[name="id"]').val();
+            var URL = "/products/tariff/updatePackage/"+productId+"/"+packageId;
+            obj.sendAjax(URL,"POST",formData,function(data){
+                window.location.href = "/products/product/"+productId;
+            });        
+        });
+        $('#price-rule-type').on('change',function(){
+            var priceruleType= $(this).val();
+            var tableObj,columObj;
+            if(priceruleType == 'group'){
+                tableObj = "#pricerule-table-group";
+                columObj = [
+                    { "data": "priceRuleType" },
+                    {"data":"price"},
+                    {"data":"priceType"},
+                    {"data":"grouplimit"},                                
+                    {"data":"startDate"},
+                    {"data":"endDate"},
+                    {
+                        data: null,
+                        className: "center",
+                        defaultContent: '<div class="delete-edit-container"><a href="#" class="edit" title="Edit the row">Edit</a> / <a href="#" class="delete" title="Delete the row">Delete</a></div>'
+                    }
+                  ];                
+            }
+            else if(priceruleType == 'gender'){
+                tableObj = "#pricerule-table-gender";
+                columObj = [
+                    { "data": "priceRuleType" },
+                    {"data":"price"},
+                    {"data":"priceType"},
+                    {"data":"genderType"},
+                    {
+                        data: null,
+                        className: "center",
+                        defaultContent: '<div class="delete-edit-container"><a href="#" class="edit" title="Edit the row">Edit</a> / <a href="#" class="delete" title="Delete the row">Delete</a></div>'
+                    }
+                  ];                
+            }
+            else if(priceruleType == 'discount'){
+                tableObj = "#pricerule-table-discount";
+                columObj = [
+                    { "data": "priceRuleType" },
+                    {"data":"price"},
+                    {"data":"priceType"},                               
+                    {"data":"startDate"},
+                    {"data":"endDate"},
+                    {
+                        data: null,
+                        className: "center",
+                        defaultContent: '<div class="delete-edit-container"><a href="#" class="edit" title="Edit the row">Edit</a> / <a href="#" class="delete" title="Delete the row">Delete</a></div>'
+                    }
+                  ];    
+            }
+            else if(priceruleType == 'event'){
+                tableObj = "#pricerule-table-event";
+                columObj = [
+                    { "data": "priceRuleType" },                               
+                    {"data":"eventType"},
+                    {"data":"price"},
+                    {"data":"priceType"},
+                    {
+                        data: null,
+                        className: "center",
+                        defaultContent: '<div class="delete-edit-container"><a href="#" class="edit" title="Edit the row">Edit</a> / <a href="#" class="delete" title="Delete the row">Delete</a></div>'
+                    }
+                  ];    
+            }
+            
+            /*
+                    priceRuleType:req.body.priceRuleType,
+                cancellationType:req.body.cancelType,	
+                price:0,
+                priceType:na,
+                durationType:na,
+                duration:0,
+                startDate:na,
+                endDate:na
+                */
+            else if(priceruleType == 'cancellation'){
+                tableObj = "#pricerule-table-cancel";
+                columObj = [
+                    { "data": "priceRuleType" },                               
+                    {"data":"cancellationType"},
+                    {"data":"price"},
+                    {"data":"priceType"},
+                    {"data":"durationType"},
+                    {"data":"duration"},
+                    {"data":"startDate"},
+                    {"data":"endDate"},
+                    {
+                        data: null,
+                        className: "center",
+                        defaultContent: '<div class="delete-edit-container"><a href="#" class="edit" title="Edit the row">Edit</a> / <a href="#" class="delete" title="Delete the row">Delete</a></div>'
+                    }
+                  ];    
+            }
+            obj.priceRuleTable(tableObj,columObj,priceruleType);
+        });
 	},
+    priceRuleTable:function(tableObj,columnObj,priceruleType){
+        $(tableObj).dataTable( {
+             "processing": true,
+			"ajax": "/pricerules/getpricerules/"+priceruleType,
+			"columns": columnObj,
+            "destroy": true,
+            "pageLength": 10,
+            bFilter: false,
+            bInfo: false,
+            "ordering":false,
+            "bLengthChange": false,
+            "fnCreatedRow": function( nRow, aData, iDataIndex ) {
+                $(nRow).attr('id', aData['_id']);
+                $(nRow).find('.delete-edit-container a').attr('href','/products/product/'+aData['_id']);
+            }
+		});
+        $('.pricerule-list-table').hide();
+        $(tableObj).parents('div.pricerule-list-table').show();
+    },
     confirm:function(msg){
         var result="false";
         $('.confirm-alert-container .alertMesg').text(msg);

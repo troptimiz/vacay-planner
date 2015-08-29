@@ -242,12 +242,7 @@
                                 <input type="text" name="description" class="required"/>
                                 <span>Cost:</span>
                                 <input type="text" name="cost" class="required"/> <b>INR</b>
-                                <span>Price Rules</span>
-                                <select name="pricerules[]" multiple="true" size=2>                                    
-                                    {{#each pricerules}}
-                                        <option value="{{this._id}}">{{this.title}}</option>
-                                    {{/each}}
-                                </select>
+                                <span>Price Rules</span>                                
                                 <input type="submit" class="btn btn-success" id="add-packages" value="Submit" />
                             </div>
                         </form>
@@ -261,19 +256,20 @@
                             <th class="vacay-action">Action</th>
                         </tr>
                         
-                        {{#each product.tariffs.packages}}
+                        {{#each product.packages}}
                         <tr>
                             <td>{{this.title}}</td>
                             <td>{{this.description}}</td>
                             <td>{{this.cost}}</td>
                             <td>
                                 <div class="delete-edit-container">
-                                    <a href="{{this._id}}" class="edit" title="Edit the row">Edit</a> /
+                                    <!--<a href="{{this._id}}" class="edit" title="Edit the row">Edit</a> /-->
+                                    <a href="/products/package-view/{{../product.id}}/{{this._id}}" class="edit" title="Edit the row">Edit</a>
                                     <a href="/{{../productId}}/tariff/{{../productTariff.id}}/{{this._id}}" class="delete" title="Delete the row">Delete</a>
                                 </div>
                             </td>
                         </tr>
-                        <!--<tr class="update-form" id="{{this._id}}">
+                        <tr class="update-form" id="{{this._id}}">
                                 <td colspan="4">
                                     <div class="inline-form">
                                         <form method="post" >                                            
@@ -286,18 +282,18 @@
                                                 <input type="text" name="description" value="{{this.description}}"class="required"/>
                                                 <span>Cost:</span>
                                                 <input type="text" name="cost" value="{{this.cost}}" class="required"/> <b>INR</b>
-                                                <span>Price Rules</span>
+                                                <!--<span>Price Rules</span>
                                                 <select name="pricerules[]" multiple="true" size=2>                                    
                                                     {{#each ../pricerules}}
                                                         <option value="{{this._id}}">{{this.title}}</option>
                                                     {{/each}}
-                                                </select>
-                                                <input type="submit" class="btn btn-success" id="add-packages" value="Submit" />
+                                                </select>-->
+                                                <input type="button" class="btn btn-success edit-packages" value="Submit" />
                                             </div>
                                         </form>
                                     </div>
                                 </td>
-                            </tr>-->
+                            </tr>
                         {{/each}}
                     </table>
                 </div>
