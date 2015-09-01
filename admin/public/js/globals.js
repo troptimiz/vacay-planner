@@ -265,19 +265,44 @@ obj = {
                 });
             }
         });
-        $('.add-category,.add-calssification,.add-facilitygroup').on('click',function(e){
+        $('.add-category,.add-calssification').on('click',function(e){
             e.preventDefault();
+            
             $('.cat-list,.class-list').fadeOut(500,function(){
                 obj.resetFields();
                 $('.add-form-container').fadeIn(500);
             });
+        });
+        $('.add-facilitygroup').on('click',function(e){
+            e.preventDefault();
+            var priceruleType = $("#price-rule-type").val();
+            if(priceruleType != ""){
+                $('.cat-list,.class-list').fadeOut(500,function(){
+                    obj.resetFields();
+                    $('.add-form-container').fadeIn(500,function(){
+                        $('.form-section').hide();
+                        $('#'+priceruleType).show();
+                        $('.form-selection').find('option[value="'+priceruleType+'"]').attr('selected','selected');
+                    });
+                });
+            } else{
+                $('.error.msg').removeClass('hide');
+                setTimeout(function(){$('.error.msg').addClass('hide');},5000);
+            }
+            
         });
         $('.cancel-category-addition,.cancel-classification-addition').on('click',function(){
             $('.add-form-container').fadeOut(500,function(){
                 $('.cat-list,.class-list').fadeIn(500);
             });
         });
-
+        $('.cancel-pricerule-addition').on('click',function(){
+            var slectedVal = $('.form-selection').val();
+            $('.add-form-container').fadeOut(500,function(){
+                $('#price-rule-type').find('option[value="'+slectedVal+'"]').attr('selected','selected');
+                $('.cat-list,.class-list').fadeIn(500);
+            });
+        });
         //Add category service request
         $('#add-new-category').on('click',function(e){
             e.preventDefault();
