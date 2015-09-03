@@ -1,0 +1,91 @@
+<div class="edit-form-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item-container">
+                <div class="data-form">
+                    <div class="product-tariffs-details">
+                        <div class="">
+                            <h3 class="heading1">
+                                Tax Type
+                                <a href="/taxtypes/taxtype/{{taxType._id}}" class="add-tariff-details"><span class="icon-pencil"></span></a>
+                            </h3>
+                            <div class="clearfix"></div>
+                            <ul>
+                                <li>
+                                    <label>Tax Type:</label> {{taxType.taxType}}
+                                </li>
+                                <li>
+                                    <label>Tax Type Description:</label> {{taxType.taxDescription}}
+                                </li>
+                                <li>
+                                    <label>Is Active:</label>{{taxType.is_active}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="vacay-section">
+                        <h3 class="heading1">
+                            Tax
+                            <a href="#" class="add-facility-details"><span class="icon-plus"></span></a>                 
+                        </h3>
+                        <div class="inline-form add-form-inline">
+                            <form method="post" action="" id="tax-form" novalidate="novalidate">
+                                <div class="form-cont">
+                                    <span class="close-btn">X</span>
+                                    <input type="hidden" value="{{taxType._id}}" name="id"/>
+                                    <span>Tax Description:</span><input type="text" name="taxDesc">
+                                    <span>State:</span><input type="text" name="state">
+                                    <span>Tax:</span><input type="text" name="tax"> &nbsp; &nbsp;<b>%</b>
+                                    
+                                    <input type="submit" class="btn btn-success" value="Submit" id="addTax">
+                                </div>
+                            </form>
+                        </div>
+                        <table class="vacay-table facilities-list">
+                            <tr>
+                                <th>Tax Description</th>
+                                <th>State</th>
+                                <th>Tax (%)</th>
+                                <th class="vacay-action">Action</th>
+                            </tr>
+                            
+                            {{#each taxes}}
+                            <tr>
+                                <td>{{this.taxDescription}}</td>
+                                <td>{{this.state}}</td>
+                                <td>{{this.tax}}</td>
+                                <td>
+                                    <div class="delete-edit-container">
+                                        <a href="{{this._id}}" class="edit" title="Edit the row">Edit</a> 
+                                        <!--<a href="/{{../productId}}/tariff/{{../productTariff.id}}/{{this._id}}" class="delete" title="Delete the row">Delete</a>-->
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="update-form" id="{{this._id}}">
+                                <td colspan="4">
+                                    <div class="inline-form">
+                                        <form method="post" >                                            
+                                            <input type="hidden" value="{{this._id}}" name="id"/>
+                                            <div class="form-cont">
+                                                <span class="close-btn">X</span>
+                                                <input type="hidden" value="{{../taxType._id}}" class="taxTypeId"/>                                                
+                                                <span>Tax Description:</span><input type="text" value = "{{this.taxDescription}}"name="taxDesc">
+                                                <span>State:</span><input type="text" name="state" value = "{{this.state}}">
+                                                <span>Tax:</span><input type="text" name="tax" value="{{this.tax}}"> &nbsp; &nbsp;<b>%</b>
+                                                <input type="button" class="btn btn-success editTax" value="Submit">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            {{/each}}
+                        </table>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

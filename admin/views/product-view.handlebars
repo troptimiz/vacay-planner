@@ -199,23 +199,26 @@
                     </ul>
                     <div class="clearfix"></div>
                 </div>
-                        <!--<table class="vacay-table">
-                            <tr>
-                                <th>Facility Name</th>
-                                <th>Facility Description</th>
-                                <th>&nbsp;</th>
-                                <th class="col-sm-2"><input type="button" value="Save" class="btn btn-default"/></th>
-                            </tr>
-                            {{#each facilities}}
-                            <tr>                                
-                                <td>{{this.name}}</td>
-                                <td>{{this.description}}</td>
-                                <td><input type="checkbox" value="{{this._id}}" name="facilities[]"/></td>
-                            </tr>
-                            {{/each}}
-                        </table>-->
-
-
+            </div>
+        </div>
+        
+        <div class="product-tax-details">
+            <div class="">
+                <h3 class="heading1">
+                    Tax Details
+                    <div class="taxMsg pull-right"></div>
+                    <!--<a href="../{{product.id}}/add-new-facility" class="add-facility-detail"><span class="icon-plus"></span></a>-->
+                </h3>
+                <div class="clearfix"></div>
+                <div class="tax-list" data-selected-list="{{#each product.taxes}}{{this.taxId}},{{/each}}">
+                
+                    <ul>
+                        {{#each taxes}}
+                            <li><input type="checkbox" name="tax[]" id="{{this._id}}" value="{{this._id}}"/> {{this.taxDescription}}</li>
+                        {{/each}}
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
             </div>
         </div>
 

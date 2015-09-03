@@ -2,19 +2,19 @@
 	<div class="item-container">
 		<table>
 			<tr>
-				<th>Facility Group Name</th>
+				<th>Tax Type</th>
 				<th>Description</th>
                 <th>Active</th>
 				<th class="list-action">Action</th>
 				<th><a href="#" class="add-facilitygroup"><span class="icon-plus"></span></a></th>
 			</tr>
-			{{#each activeFacilityGroups}}
+			{{#each activeTaxTypes}}
 			<tr>
 				<td>
-					<span class="icon"></span>{{this.title}}
+					<span class="icon"></span>{{this.taxType}}
 				</td>
 				<td>
-                    <p class="cat-desc">{{this.description}}</p>
+                    <p class="cat-desc">{{this.taxDescription}}</p>
 				</td>
                 <td>
                     <p class="active-type">
@@ -28,7 +28,7 @@
 				<td>
 					<div class="delete-edit-container">                        
                         <input type="hidden" value="{{this.id}}" id="classification_id"/>
-                        <a href="/facilities/facilityView/{{this.id}}" class="edit" title="Edit facility">Edit</a> /
+                        <a href="/taxtypes/taxTypeView/{{this.id}}" class="edit" title="Edit facility">Edit</a> /
                         <a href="#" class="delete" title="Delete Category">Delete</a>
                         
                     </div>
@@ -44,23 +44,23 @@
             <div class="item-container">
                 <div class="data-form">
                     <div class="form-heading">
-                        <h2>Add Facility Group</h2>
+                        <h2>Add Tax Type</h2>
                     </div>									
 
-                    <form role="form" method="post" id="add-facility-group-form" action="/facilites/facilitygroup/" >
+                    <form role="form" method="post" id="add-tax-type-form" action="/taxtypes/taxtype/" >
                         <div class="form-group hidden">
                             <label for="">&nbsp;</label>
                             <p class="form-controll msg error"></p>
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
-                            <label for="">Facility Group Title:</label>
-                            <input type="textbox" name="facilityGroupTitle" class="form-control required" placeholder="Facility Type"/>
+                            <label for="">Tax type:</label>
+                            <input type="textbox" name="taxType" class="form-control required" placeholder="Tax type"/>
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
-                            <label for="">Facility Group Description:</label>
-                            <input type="textbox" name="facilityGroupDescription" class="form-control required" placeholder="Facility Description"/>
+                            <label for="">Description:</label>
+                            <input type="textbox" name="taxDescription" class="form-control required" placeholder="Tax Description"/>
                             <div class="clearfix"></div>
                         </div>
                         
@@ -72,7 +72,7 @@
                             </select>
                             <div class="clearfix"></div>
                         </div>
-                        <button type="button" class="btn btn-default" id="add-facility-group">Submit</button>
+                        <button type="button" class="btn btn-default" id="add-tax-type">Submit</button>
                         <button type="button" class="cancel-classification-addition btn btn-default">Cancel</button>
                      </form>
                     <div class="image-preview">

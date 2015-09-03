@@ -158,6 +158,9 @@ body{
                 font-family: Arial;
                 font-size: 11px;
                 text-decoration: none;
+                .icon{
+                    color:#333;   
+                }
 
                 &.item-default{
                     background: #7992BF;
@@ -167,6 +170,24 @@ body{
 							content:"";
 						}
 					}
+                }
+                &.item-tax{
+                    background: #7992BF;
+                    border: 1px solid #6884b7;
+                    .icon{
+                        &:before{
+                            content:"\e93b";
+                        }
+                    }
+                }
+                &.item-price-rules{
+                    background: #ECD48B;
+                    border: 1px solid #e8cc75;
+                    .icon{
+                        &:before{
+                            content:"\e936";
+                        }
+                    }
                 }
                 &.item-stats{
                     background: #7992BF;
@@ -196,8 +217,8 @@ body{
 					}
                 }
                 &.item-orders{
-                    background:#ECD48B;
-                    border:1px solid #e8cc75;
+                    background:#A9DC8E;
+                    border:1px solid #9ad67b;
 					.icon{
 						&:before{
 							content:"\e61c";
@@ -214,11 +235,11 @@ body{
 					}
                 }
                 &.item-classification{
-                    background:#A9DC8E;
-                    border:1px solid #9ad67b;
+                    background:#6BD5C3;
+                    border:1px solid #57cfbb;
 					.icon{
 						&:before{
-							content:"\e936";
+							content:"\e60c";
 						}
 					}
                 }
@@ -694,8 +715,8 @@ ul{
         }
     }
 }
-.product-facility-details{
-    .facilityMsg{        
+.product-facility-details,.product-tax-details{
+    .facilityMsg,.taxMsg{        
         font-size:16px;
         display: none;
         span{
@@ -703,7 +724,7 @@ ul{
             font-weight: bold;
         }
     }
-    .facilities-list{
+    .facilities-list,.tax-list{
         padding: 20px;
         background-color: #f0f0f0;
         ul{
@@ -719,20 +740,7 @@ ul{
         
     }
 }
-.pricerule-list{
-    padding: 20px;
-        ul{
-            li{
-                margin:10px 0;
-                input[type="checkbox"]{
-                    width:auto;
-                    margin:0 10px;
-                    position:relative;
-                    top:2px;
-                }   
-            }
-        }
-}
+
 .packageMsg{        
         font-size:16px;
         display: none;

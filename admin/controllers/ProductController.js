@@ -6,6 +6,7 @@ var facilitiesGroup = require('../models/facilitiesGroup.js');
 var facilities = require('../models/facilities.js');
 var priceRules = require('../models/pricerules.js');
 var priceRules = require('../models/pricerules.js');
+var tax = require('../models/tax.js');
 var bodyParser = require('body-parser');
 
 ProductController.use(bodyParser());
@@ -112,16 +113,22 @@ ProductController.put('/product/',function(req,res){
 
 ProductController.get('/product/:id',function(req,res){
 	Product.findById(req.params.id,function(err,product){
-		if(req.session.passport.user)
+		if(req.session.passport.user){
+            
             facilities.find({},function(err,facilitiesByGroup){                
                 priceRules.find({},function(err,priceRule){                        
-                    res.render("product-view",{'product':product,'pricerules':priceRule,'facilities':facilitiesByGroup,layout:'list'});
-                });                
+                    tax.find({},function(err,taxByType){
+                        res.render("product-view",{'product':product,'pricerules':priceRule,'facilities':facilitiesByGroup,'taxes':taxByType,layout:'list'});
+                
+                    });
+                });
             });
+        }
             
             //res.status(200).json({product:product});
-        else
+        else {
             res.redirect('/account/session');
+        }
         //res.status(200).json({product:product});
 
 	})
@@ -561,7 +568,23 @@ ProductController.post('/:id/facility/:facilityId',function(req,res){
 		});
 });
 
+// Add tax
 
+ProductController.post('/:id/tax/:taxId',function(req,res){
+	productId = req.params.id;
+    var taxObject = {'taxId':req.params.taxId};
+    console.log("Adding tax invoked for "+req.params.taxId);	
+	Product.update({_id:productId},{
+		$push:
+			{'taxes':
+					taxObject
+			}
+		},
+		{upsert:false},function(err){
+			if(err) return res.send(500,'Error Occured During Phone Update for Product with Id['+productId+']');
+			res.json({'status':'New tax Details Created for Product ['+productId+']'});
+		});
+});
 // Add Address
 
 ProductController.post('/:id/address',function(req,res){
@@ -979,7 +1002,22 @@ ProductController.delete('/:productId/facilities/:facilityId',function(req,res){
 				res.json({'status':'PhoneNumber Deleted for Product ['+productId+']'});
 	});
 });
+//Delete tax
+ProductController.delete('/:productId/tax/:taxId',function(req,res){
+	productId = req.params.productId;
+	taxId = req.params.taxId;
 
+	console.log("facility Delete Invoked for..."+taxId);
+
+	Product.update({_id : productId},
+	{
+		$pull:{taxes:{taxId : taxId}}
+	},{multi:true}
+		,function(err){
+				if(err) return res.send(500,'Error Occured During Tax Delete for Product with Id['+productId+']');
+				res.json({'status':'Tax Deleted for Product ['+productId+']'});
+	});
+});
 //Delete PhoneNumber
 
 ProductController.delete('/:productId/phoneNumber/:phoneNumberId',function(req,res){

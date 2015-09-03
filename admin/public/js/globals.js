@@ -12,6 +12,13 @@ obj = {
             $('#'+id).attr('checked','checked');
         }  
     },
+    checkTaxes :function(){
+        var taxList = $('.tax-list').attr('data-selected-list').split(',');
+        for(i=0;i<taxList.length-1;i++){
+            var id = taxList[i];
+            $('#'+id).attr('checked','checked');
+        }  
+    },
     checkPriceRules :function(){
         var priceRuleList = $('.pricerule-list').attr('data-selected-list').split(',');
         for(i=0;i<priceRuleList.length-1;i++){
@@ -111,6 +118,47 @@ obj = {
                     }
                 });
             }
+        });
+        $('.tax-list').find('ul li').find(':checkbox').on('click',function(){
+            var checkedVal = $(this).val();
+            var productId = $("#productId").val();
+            var $this = $(this);
+            if($(this).is(':checked')){
+                $('.taxMsg').html("Adding....").show();
+                $.ajax({
+                    url : '/products/'+productId+'/tax/'+checkedVal,
+                    method:'POST',
+                    success: function(data){
+                        $('.taxMsg').html('<span>"'+$this.parent("li").text()+'"</span> Added Successfully').hide().fadeIn(1000,function(){
+                            setTimeout(function(){
+                                $('.taxMsg').fadeOut(1000,function(){
+                                    $('.taxMsg').html("")
+                                })
+                            },2000);
+                        });
+                    },
+                    error : function(e,er,err){
+
+                    }
+                });
+            } else{    
+                $('.taxMsg').html("Deleting....").show();
+                $.ajax({
+                    url:'/products/'+productId+'/tax/'+checkedVal,
+                    method:'DELETE',
+                    success:function(){
+                        $('.taxMsg').html('<span>"'+$this.parent("li").text()+'"</span> Deleted Successfully').hide().fadeIn(1000,function(){
+                            setTimeout(function(){
+                                $('.taxMsg').fadeOut(1000,function(){
+                                    $('.taxMsg').html("")
+                                })
+                            },2000);
+                        });
+                    }
+                });
+            }
+            
+            
         });
         $('.facilities-list').find('ul li').find(':checkbox').on('click',function(){
             var checkedVal = $(this).val();
@@ -219,6 +267,7 @@ obj = {
         }
         if(pageName == "product"){
             obj.checkFacilities();
+            obj.checkTaxes();
         }
         if(pageParams[pageParams.length-3]=='package-view'){
             obj.checkPriceRules();  
@@ -761,6 +810,31 @@ obj = {
 
         });
         
+        $('#add-tax-type').on('click',function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            if($(this).parents('form').valid()){
+                var formData = $('#add-tax-type-form').serialize();
+                $.ajax({
+                    url:"/taxtypes/taxtype/",
+                    data:formData,
+                    method:"PUT",
+                    success:function(data){
+                        console.log(data);
+                        if(data.msg == "success"){
+                            console.log(data.msg);
+                            location.href="/taxtypes/all";
+                        }
+                        else{
+                            $('.msg').text(data.msg);
+                            $('.msg').parents('.form-group').removeClass('hidden');
+                            setTimeout(function(){$('.msg').parents('.form-group').addClass('hidden');},5000);
+                        }
+                    }
+                });
+            }
+
+        });
         $('.add-price-rule').on('click',function(e){
             e.preventDefault();
             e.stopPropagation();
@@ -804,6 +878,23 @@ obj = {
             });
         });
         
+        $('#edit-taxType').on('click',function(e){
+            var formData = $('#edit-tax-type-form').serialize();
+            var recordId = $('#edit-tax-type-form').find('input[name="id"]').val();
+            console.log(recordId);
+            e.preventDefault();
+            e.stopPropagation();
+            $.ajax({
+                url:"/taxtypes/taxtype/"+recordId,
+                data:formData,
+                method:"POST",
+                success:function(){
+                    location.href="/taxtypes/all";
+                    console.log("Updated");
+                }
+            });
+        });
+        
         $('#edit-price-rule').on('click',function(e){
             var formData = $('#edit-price-rules-form').serialize();
             var recordId = $('#edit-price-rules-form').find('input[name="id"]').val();
@@ -836,6 +927,21 @@ obj = {
             });
         });
         
+        $('#addTax').on('click',function(e){
+            var formData = $('#tax-form').serialize();
+            var taxTypeId = $('#tax-form').find('input[name="id"]').val();
+            e.preventDefault();
+            $.ajax({
+                url:"/taxtypes/addTax/"+taxTypeId,
+                data:formData,
+                method:"PUT",
+                success:function(data){
+                    location.href = "/taxtypes/taxTypeView/"+taxTypeId;
+                }
+            
+            });
+        });
+        
         $('.editFacility').on('click',function(e){
             e.preventDefault();
             e.stopPropagation();
@@ -851,6 +957,24 @@ obj = {
                 method:"POST",
                 success : function(data){
                     window.location.href = "/facilities/facilityView/"+facilityGroupId;   
+                }
+            });
+        });
+        
+        $('.editTax').on('click',function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            var formData = $(this).parents('form').serialize();
+            var taxId = $(this).parents('form').find('input[name="id"]').val();
+            var taxTypeId = $(this).parents('form').find(".taxTypeId").val();
+            
+            
+            $.ajax({
+                url:"/taxtypes/editTax/"+taxId,
+                data:formData,
+                method:"POST",
+                success : function(data){
+                    window.location.href = "/taxtypes/taxTypeView/"+taxTypeId;   
                 }
             });
         });
