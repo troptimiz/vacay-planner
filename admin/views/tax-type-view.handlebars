@@ -34,6 +34,7 @@
                                 <div class="form-cont">
                                     <span class="close-btn">X</span>
                                     <input type="hidden" value="{{taxType._id}}" name="id"/>
+									<input type="hidden" value="{{taxType.taxType}}" name="taxType"/>
                                     <span>Tax Description:</span><input type="text" name="taxDesc">
                                     <span>State:</span><input type="text" name="state">
                                     <span>Tax:</span><input type="text" name="tax"> &nbsp; &nbsp;<b>%</b>
@@ -69,7 +70,8 @@
                                             <input type="hidden" value="{{this._id}}" name="id"/>
                                             <div class="form-cont">
                                                 <span class="close-btn">X</span>
-                                                <input type="hidden" value="{{../taxType._id}}" class="taxTypeId"/>                                                
+                                                <input type="hidden" value="{{../taxType._id}}" class="taxTypeId"/>
+                                                <input type="hidden" value="{{taxType.taxType}}" name="taxType"/>                                                
                                                 <span>Tax Description:</span><input type="text" value = "{{this.taxDescription}}"name="taxDesc">
                                                 <span>State:</span><input type="text" name="state" value = "{{this.state}}">
                                                 <span>Tax:</span><input type="text" name="tax" value="{{this.tax}}"> &nbsp; &nbsp;<b>%</b>

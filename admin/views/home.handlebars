@@ -1,6 +1,6 @@
 <input type="hidden" value="{{name}}" id="categoryName" />
 <div class="category-list min-list">
-
+    
     {{#each activeCategories}}
     <div class="list-item ">
         <a class="{{this.cssClass}} item-default" href="/categories/categoryView/{{this.name}}" title="{{this.name}}">
@@ -59,12 +59,30 @@
                         <a href="#" class="add-row" title="Add Row">Add</a>
                     </div>
                 </div>
+                <span> Filter the Products By </span>
+                <label>Country:</label>
+                <select  class="required country">
+                    <option value="">Select Country</option>
+                    {{#each countries}}
+                        <option value="{{this.countryCode}}">{{this.countryName}}</option>
+                    {{/each}}
+                </select>
+                <label>State:</label>
+                <select name="state" class="state required">
+                </select>
+                <label>City:</label>
+                <select name="city" class="required city">
+                </select>
+                
                 <table id="result-table" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>Name</th>
                             <th>Description</th>
                             <th>Email</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Country</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -113,21 +131,27 @@
                         </div>
                         <div class="form-group">
                             <label for="">City:</label>
-                            <input type="text" name="city" class="form-control required" placeholder="city">
+                            <!--<input type="text" name="city" class="form-control required" placeholder="city">-->
+                            <select name = "city" class="form-control required">
+                                
+                            </select>
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
                             <label for="">State:</label>
-                            <input type="text" name="state" class="form-control required" placeholder="State">
+                            <!--<input type="text" name="state" class="form-control required" placeholder="State">-->
+                            <select name = "state" class="form-control required">
+                                
+                            </select>
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
                             <label for="">Country:</label>
                             <select name="country" class="form-control required">
                                 <option value="">Select Country</option>
-                                <option value="india">India</option>
-                                <option value="unitedstates">United States</option>
-                                <option value="united kingdom">United Kingdom</option>
+                                {{#each countries}}
+                                    <option value="{{this.countryCode}}">{{this.countryName}}</option>
+                                {{/each}}
                             </select>
                             <div class="clearfix"></div>
                         </div>

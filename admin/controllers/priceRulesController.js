@@ -1,5 +1,6 @@
 var express = require('express');
 var priceRules = require('../models/pricerules.js');
+var Product = require('../models/products.js');
 var bodyParser = require('body-parser');
 
 var priceRulesController = express();
@@ -117,6 +118,16 @@ priceRulesController.post('/editrule/:id',function(req,res){
 		console.log('pricerule Updated for id '+req.body.title);
         res.json({'status':'pricerule '+pricerule._id+' Updated '});        
         //res.redirect(backUrl); 
+	});
+});
+
+// Delete priceRules By Id
+
+priceRulesController.delete('/pricerule/:id',function(req,res){
+	priceRules.findById(req.params.id,function(err,pricerule){
+		if(err)return res.send(500,'Error Occured:database error'+err);
+		pricerule.remove();
+		res.status(200).json({'status':'Price Rule '+req.params.id +' Deleted'});
 	});
 });
 

@@ -8,18 +8,25 @@ var taxTypeController = express();
 
 taxTypeController.use(bodyParser());
 
+
+
+//Londing the view for all Tax Type saved 
 taxTypeController.get('/all',function(req,res){
     taxTypes.find({},function(err,taxType){		
         res.render("tax-type-list",{'activeTaxTypes':taxType,layout:'list'});
 	});
 });
+
+//Not sure, if it is used
 taxTypeController.get('/addTaxTypes',function(req,res){
     res.render('add-new-tax-type',{layout:'list'}); 
 });
 
+//Saving Newly added Tax Type to db using PUT
 taxTypeController.put('/taxType',function(req,res){
     var taxTypeValue = req.body.taxType;
 	taxTypes.find({taxType:taxTypeValue},function(err,tax){
+		console.log(taxTypeValue);
         console.log(tax);
         if(err){
             return res.send(500,'Error Occured:database error'+err);
@@ -45,6 +52,7 @@ taxTypeController.put('/taxType',function(req,res){
     
 });
 
+//obtaining the particular saved Tax type and invoking the corresponding handlebar template - View
 taxTypeController.get('/taxTypeView/:id',function(req,res){
 	var taxTypeId = req.params.id;
 	taxTypes.findById(taxTypeId,function(err,taxType){
@@ -55,6 +63,7 @@ taxTypeController.get('/taxTypeView/:id',function(req,res){
 	})
 });
 
+//loading the handlebar template on click edit on particular tax type
 taxTypeController.get('/taxtype/:id',function(req,res){
 	var taxTypeId = req.params.id;
 	taxTypes.findById(taxTypeId,function(err,taxType){
@@ -66,7 +75,7 @@ taxTypeController.get('/taxtype/:id',function(req,res){
 	})
 });
 
-
+//Editing the existing handlebar template Tax Type
 taxTypeController.post('/taxtype/:id',function(req,res){
     
     var taxTypeToBeUpdated = {
@@ -84,21 +93,41 @@ taxTypeController.post('/taxtype/:id',function(req,res){
 });
 
 
+//Deleting Tax Type
+taxTypeController.delete('/taxtype/:id',function(req,res){
+	taxTypes.findById(req.params.id,function(err,taxType){
+		if(err)return res.send(500,'Error Occured:database error'+err);
+		/* tax.find({},function(err,tax){
+			if(err)return res.send(500,'Error Occured:database error'+err);
+			tax.remove({"taxTypeId": req.params.id});
+			res.status(200).json({'status':'tax'+req.params.id +' Deleted'});
+		});  */
+		taxType.remove();
+		res.status(200).json({'status':'taxTypes '+req.params.id +' Deleted'});
+	});
+});
+
+
+//Adding new tax in tax type
 taxTypeController.put('/addTax/:id',function(req,res){ 
     var taxTypeId = req.params.id;
+	var taxTypes = req.body.taxType;
 	var taxTobeSave = new tax({
         taxDescription:req.body.taxDesc,
         state:req.body.state,
         tax:req.body.tax,
-        taxTypeId : taxTypeId
+        taxTypeId : taxTypeId,
+		taxType:req.body.taxType
     });
     taxTobeSave.save(function(err,a){
         if(err) return res.send(500,'Error Occured: database error');
+		console.log('Tax Added for '+ taxTypes);
         res.json({'status':'ClassificationGroup '+a.taxDescription+' Created ',msg:"success"});
     });
     
 });
 
+//Editing tax in Tax Type
 taxTypeController.post('/editTax/:id',function(req,res){
     var taxToBeUpdated = {
             taxDescription:req.body.taxDesc,
@@ -113,6 +142,8 @@ taxTypeController.post('/editTax/:id',function(req,res){
 	});
     
 });
+
+
 
 
 

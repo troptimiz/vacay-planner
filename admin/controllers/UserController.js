@@ -135,8 +135,9 @@ UserController.get('/authenticate',
 });
 */
 
-UserController.get('/session',function(req,res){
+UserController.get('/session/:url',function(req,res){
   //res.json({'UserID':req.session.passport.user});
+    console.log(req.params.url);
     if(req.session.passport.user){
         res.redirect("/dashboard");
     }

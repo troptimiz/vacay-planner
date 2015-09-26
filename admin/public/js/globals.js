@@ -28,6 +28,44 @@ obj = {
     },
 	init : function(){
         
+        $('select[name="country"').on('change',function(){
+            var URL = "/categories/states/"+$(this).val();
+            var ths = $(this);
+            $.ajax({
+                url:URL,
+                method:"GET",
+                success:function(data){
+                    var options = "<option value=''>Select State</option>";
+                    data.states.forEach(function(state){
+                        options = options + "<option value="+state.stateCode+">"+state.stateName+"</option>";
+                    });
+                    $('select[name="state"]').html(options);
+                },
+                error:function(){
+                    alert("error");   
+                }
+            });
+        });
+        $('select[name="state"').on('change',function(){
+            var URL = "/categories/cities/"+$(this).val();
+            var ths = $(this);
+            $.ajax({
+                url:URL,
+                method:"GET",
+                success:function(data){
+                    var options = "<option value=''>Select City</option>";
+                    
+                    data.cities.forEach(function(city){
+                        options = options + "<option value="+city.cityName+">"+city.cityName+"</option>";
+                    });
+                    $('select[name="city"]').html(options);
+                },
+                error:function(){
+                    alert("error");   
+                }
+            });
+        });
+        
         $('#imageUrl').on('change',function(e){
             for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
                 var file = e.originalEvent.srcElement.files[i];
@@ -297,11 +335,10 @@ obj = {
                 });
             }
         });
-        $('.class-list .delete').on('click',function(e){
+        $('a.delete-classifications').on('click',function(e){
             e.preventDefault();
             var $ths = $(this);
             var del_id = $ths.parents('.delete-edit-container').find('#classification_id').val();
-
             if(confirm("Do you want to delete the record")){
                 $.ajax({
                     url:"/classifications/classification/"+del_id,
@@ -314,6 +351,28 @@ obj = {
                 });
             }
         });
+		
+		$('a.delete-tax-type').on('click',function(e){
+            var $ths = $(this);
+            var del_id = $ths.parents('.delete-edit-container').find('#tax_id').val();
+            if(confirm("Do you want to delete the record")){
+                $.ajax({
+                    url:"/taxtypes/taxtype/"+del_id,
+                    method:"DELETE",
+                    success:function(data){
+                        $ths.parents('tr').fadeOut(500,function(){
+                            $ths.parents('tr').remove();
+                        });
+                    },
+					error: function (request, error) {
+						console.log(arguments);
+						alert(" Can't do because: " + error);
+					}
+                });
+            }
+			e.preventDefault();
+        });
+		
         $('.add-category,.add-calssification').on('click',function(e){
             e.preventDefault();
             
@@ -548,7 +607,16 @@ obj = {
                 var productId = $('#edit-product-form').find('input[name="id"]').val();
                 var URL = "/products/product/"+productId;
                 var formData = $('#edit-product-form').serialize();
-                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+				$.ajax({
+                    url:URL,
+                    data:formData,
+                    method:"POST",
+                    success:function(data){
+                        console.log(data);
+						obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+                    }
+                });
+                
             }
 
         });
@@ -879,20 +947,24 @@ obj = {
         });
         
         $('#edit-taxType').on('click',function(e){
-            var formData = $('#edit-tax-type-form').serialize();
-            var recordId = $('#edit-tax-type-form').find('input[name="id"]').val();
-            console.log(recordId);
-            e.preventDefault();
+			e.preventDefault();
             e.stopPropagation();
-            $.ajax({
-                url:"/taxtypes/taxtype/"+recordId,
-                data:formData,
-                method:"POST",
-                success:function(){
-                    location.href="/taxtypes/all";
-                    console.log("Updated");
-                }
-            });
+            if($(this).parents('form').valid()){
+				var formData = $('#edit-tax-type-form').serialize();
+				var recordId = $('#edit-tax-type-form').find('input[name="id"]').val();
+				console.log(recordId);
+				e.preventDefault();
+				e.stopPropagation();
+				$.ajax({
+					url:"/taxtypes/taxtype/"+recordId,
+					data:formData,
+					method:"POST",
+					success:function(){
+						location.href="/taxtypes/all";
+						console.log("Updated");
+					}
+				});
+			}
         });
         
         $('#edit-price-rule').on('click',function(e){
@@ -930,13 +1002,14 @@ obj = {
         $('#addTax').on('click',function(e){
             var formData = $('#tax-form').serialize();
             var taxTypeId = $('#tax-form').find('input[name="id"]').val();
+			console.log(formData);
             e.preventDefault();
             $.ajax({
                 url:"/taxtypes/addTax/"+taxTypeId,
                 data:formData,
                 method:"PUT",
                 success:function(data){
-                    location.href = "/taxtypes/taxTypeView/"+taxTypeId;
+                   location.href = "/taxtypes/taxTypeView/"+taxTypeId;
                 }
             
             });
@@ -1115,7 +1188,7 @@ obj = {
             "bLengthChange": false,
             "fnCreatedRow": function( nRow, aData, iDataIndex ) {
                 $(nRow).attr('id', aData['_id']);
-                $(nRow).find('.delete-edit-container a').attr('href','/products/product/'+aData['_id']);
+                $(nRow).find('.delete-edit-container a.edit').attr('href','/pricerules/priceruleEdit/'+aData['_id']);
             }
 		});
         $('.pricerule-list-table').hide();
@@ -1169,7 +1242,7 @@ obj = {
 			"columns": listObj,
             "destroy": true,
             "pageLength": 10,
-            bFilter: false,
+            bFilter: true,
             bInfo: false,
             "ordering":false,
             "bLengthChange": false,
@@ -1178,6 +1251,52 @@ obj = {
                 $(nRow).find('.delete-edit-container a').attr('href','/products/product/'+aData['_id']);
             }
 		});
+        $('#result-table_filter').hide();
+        $('.state').on('change',function(){
+            tableObject.dataTable().fnFilter( $(this).val() );
+            var URL = "/categories/cities/"+$(this).val();
+            var ths = $(this);
+            $.ajax({
+                url:URL,
+                method:"GET",
+                success:function(data){
+                    var options = "<option value=''>Select City</option>";
+                    
+                    data.cities.forEach(function(city){
+                        options = options + "<option value="+city.cityName+">"+city.cityName+"</option>";
+                    });
+                    $('.city').html(options);
+                },
+                error:function(){
+                    alert("error");   
+                }
+            });
+        });
+        $('.city').on('change',function(){
+            tableObject.dataTable().fnFilter( $(this).val() ); 
+        });
+        $('.country').on('change',function(){
+            var URL = "/categories/states/"+$(this).val();
+            var ths = $(this);
+            $.ajax({
+                url:URL,
+                method:"GET",
+                success:function(data){
+                    var options = "<option value=''>Select State</option>";
+                    data.states.forEach(function(state){
+                        options = options + "<option value="+state.stateCode+">"+state.stateName+"</option>";
+                    });
+                    $('.state').html(options);
+                    
+                },
+                error:function(){
+                    alert("error");   
+                }
+            });
+            tableObject.dataTable().fnFilter( ths.val() ); 
+            
+            
+        });
         $('.search-result-table').fadeIn(1000,function(){
             $('.category-list').addClass('min-list');
         });
@@ -1202,6 +1321,9 @@ obj = {
 		var arr = [{ "data": "name" },
                    {"data":"description"},
                    {"data":"emailAddress"},
+                   {"data":"city"},
+                   {"data":"state"},
+                   {"data":"country"},
                     {
                         data: null,
                         className: "center",

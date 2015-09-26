@@ -49,6 +49,9 @@ ProductController.use(flash());
     }
 }));*/
 
+
+
+
 // All Active Products
 ProductController.get('/',function(req,res){
 	Product.find({"is_active":true},function(err,products){
@@ -122,7 +125,7 @@ ProductController.get('/product/:id',function(req,res){
                 
                     });
                 });
-            });
+            }); 
         }
             
             //res.status(200).json({product:product});

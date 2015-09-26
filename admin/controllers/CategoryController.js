@@ -5,6 +5,9 @@ var done = false;
 var CategoryController = express();
 var Categories = require('../models/categories.js');
 var ClassificationGroup = require('../models/classification.js');
+var Countries = require('../models/countries.js');
+var States = require('../models/states.js');
+var Cities = require('../models/cities.js');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var imageName ="";
@@ -51,14 +54,29 @@ app.post('/api/photo',function(req,res){
     res.end("File uploaded.");
   }*/
 });
-
+CategoryController.get('/cities/:id',function(req,res){
+    var stateID = req.params.id;
+    Cities.find({'stateCode':stateID},function(err,selectedCities){
+        res.status(200).json({'cities':selectedCities});
+    }); 
+});
+CategoryController.get('/states/:id',function(req,res){
+    var countryID = req.params.id;
+    States.find({'countryCode':countryID},function(err,selectedStates){
+        res.status(200).json({'states':selectedStates});
+    }); 
+});
 // All Active Categories
 CategoryController.get('/categoryView/:name',function(req,res){
 	Categories.find({'is_active':true},function(err,categories){        
-		if(req.session.passport.user)
-            res.render("home",{'activeCategories':categories,'name':req.params.name,layout:'list'});
-        else
+		if(req.session.passport.user){
+            Countries.find({},function(err,countries){
+                res.render("home",{'countries':countries,'activeCategories':categories,'name':req.params.name,layout:'list'});
+            });
+        }
+        else {
             res.redirect('/account/session');
+        }
         
 		//res.status(200).json({activeCategories:categories});
 	});	
