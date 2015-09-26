@@ -1,0 +1,43 @@
+db = db.getSiblingDB("vacayplanner");
+db.cities.drop();
+
+db.cities.save({
+    "cityName":"Bangalore",
+    "stateCode":"KA"
+});
+db.cities.save({
+    "cityName":"Udupi",
+    "stateCode":"KA"
+});
+db.cities.save({
+    "cityName":"Mysore",
+    "stateCode":"KA"
+});
+db.cities.save({
+    "cityName":"Hyderabad",
+    "stateCode":"AP"
+});
+db.cities.save({
+    "cityName":"Visakhapattanam",
+    "stateCode":"AP"
+});
+db.cities.save({
+    "cityName":"Vijayawada",
+    "stateCode":"AP"
+});
+db.cities.save({
+    "cityName":"Tirupati",
+    "stateCode":"AP"
+});
+db.cities.save({
+    "cityName":"Kakinada",
+    "stateCode":"AP"
+});
+db.cities.save({
+    "cityName":"Boston",
+    "stateCode":"NY"
+});
+db.cities.save({
+    "cityName":"New York City",
+    "stateCode":"NY"
+});

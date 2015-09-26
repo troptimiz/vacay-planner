@@ -1,0 +1,159 @@
+db = db.getSiblingDB("vacayplanner");
+db.states.drop();
+
+db.states.save({
+    "stateName":"Andhra Pradesh",
+    "countryCode":"IN",
+    "stateCode":"AP"
+});
+db.states.save({
+    "stateName":"Arunachal Pradesh",
+    "countryCode":"IN",
+    "stateCode":"AR"
+});
+db.states.save({
+    "stateName":"Assam",
+    "countryCode":"IN",
+    "stateCode":"AS"
+});
+db.states.save({
+    "stateName":"Bihar",
+    "countryCode":"IN",
+    "stateCode":"BR"
+});
+db.states.save({
+    "stateName":"Chhattisgarh",
+    "countryCode":"IN",
+    "stateCode":"CT"
+});
+db.states.save({
+    "stateName":"Goa",
+    "countryCode":"IN",
+    "stateCode":"GA"
+});
+db.states.save({
+    "stateName":"Gujarat",
+    "countryCode":"IN",
+    "stateCode":"GJ"
+});
+db.states.save({
+    "stateName":"Haryana",
+    "countryCode":"IN",
+    "stateCode":"HR"
+});
+db.states.save({
+    "stateName":"Himachal Pradesh",
+    "countryCode":"IN",
+    "stateCode":"HP"
+});
+db.states.save({
+    "stateName":"Jammu Kashmir",
+    "countryCode":"IN",
+    "stateCode":"JK"
+});
+db.states.save({
+    "stateName":"Jharkhand",
+    "countryCode":"IN",
+    "stateCode":"JH"
+});
+db.states.save({
+    "stateName":"Karnataka",
+    "countryCode":"IN",
+    "stateCode":"KA"
+});
+db.states.save({
+    "stateName":"Kerala",
+    "countryCode":"IN",
+    "stateCode":"KL"
+});
+db.states.save({
+    "stateName":"Madhya Pradesh",
+    "countryCode":"IN",
+    "stateCode":"MP"
+});
+db.states.save({
+    "stateName":"Maharashtra",
+    "countryCode":"IN",
+    "stateCode":"MH"
+});
+db.states.save({
+    "stateName":"Manipur",
+    "countryCode":"IN",
+    "stateCode":"MN"
+});
+db.states.save({
+    "stateName":"Meghalaya",
+    "countryCode":"IN",
+    "stateCode":"ML"
+});
+db.states.save({
+    "stateName":"Mizoram",
+    "countryCode":"IN",
+    "stateCode":"MZ"
+});
+db.states.save({
+    "stateName":"Nagaland",
+    "countryCode":"IN",
+    "stateCode":"NL"
+});
+
+db.states.save({
+    "stateName":"Odisha (Orissa)",
+    "countryCode":"IN",
+    "stateCode":"OR"
+});
+db.states.save({
+    "stateName":"Punjab",
+    "countryCode":"IN",
+    "stateCode":"PB"
+});
+db.states.save({
+    "stateName":"Rajasthan",
+    "countryCode":"IN",
+    "stateCode":"RJ"
+});
+db.states.save({
+    "stateName":"Tamil Nadu",
+    "countryCode":"IN",
+    "stateCode":"TN"
+});
+db.states.save({
+    "stateName":"Telangana",
+    "countryCode":"IN",
+    "stateCode":"TG"
+});
+db.states.save({
+    "stateName":"Tripura",
+    "countryCode":"IN",
+    "stateCode":"TR"
+});
+db.states.save({
+    "stateName":"Uttarakhand",
+    "countryCode":"IN",
+    "stateCode":"UT"
+});
+db.states.save({
+    "stateName":"Uttar Pradesh",
+    "countryCode":"IN",
+    "stateCode":"UP"
+});
+db.states.save({
+    "stateName":"West Bengal",
+    "countryCode":"IN",
+    "stateCode":"WB"
+});
+db.states.save({
+    "stateName":"New York",
+    "countryCode":"US",
+    "stateCode":"NY"
+});
+db.states.save({
+    "stateName":"North Carolina",
+    "countryCode":"US",
+    "stateCode":"NC"
+});
+db.states.save({
+    "stateName":"California",
+    "countryCode":"US",
+    "stateCode":"CA"
+});
