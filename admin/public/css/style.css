@@ -868,3 +868,10 @@ ul li {
 .packageUpdateForm input[type="button"] {
   margin-right: 5px;
 }
+
+/* line 771, ../sass/style.scss */
+.ui-widget-header {
+  border: 1px solid #D8D8D8;
+  background: #D8D8D8;
+  color: #000;
+}

@@ -239,7 +239,70 @@ obj = {
             
             
         });
-        
+        $( "#start-date-group" ).datepicker({
+		  changeMonth: true,
+		  changeYear: true,
+		  dateFormat: "dd/mm/yy",
+		  numberOfMonths: 1,
+		  onClose: function( selectedDate ) {
+			$( "#end-date-group" ).datepicker( "option", "minDate", selectedDate );
+		  }
+		});
+		$( "#end-date-group" ).datepicker({
+		  changeMonth: true,
+		  changeYear: true,
+		  dateFormat: "dd/mm/yy",
+		  numberOfMonths: 1,
+		  onClose: function( selectedDate ) {
+			$( "#start-date-group" ).datepicker( "option", "maxDate", selectedDate );
+		  }
+		});
+		$( "#start-date-cancellation" ).datepicker({
+		  changeMonth: true,
+		  changeYear: true,
+		  dateFormat: "dd/mm/yy",
+		  numberOfMonths: 1,
+		  onClose: function( selectedDate ) {
+			$( "#end-date=cancellation" ).datepicker( "option", "minDate", selectedDate );
+		  }
+		});
+		$( "#end-date-cancellation" ).datepicker({
+		  changeMonth: true,
+		  changeYear: true,
+		  dateFormat: "dd/mm/yy",
+		  numberOfMonths: 1,
+		  onClose: function( selectedDate ) {
+			$( "#start-date-cancellation" ).datepicker( "option", "maxDate", selectedDate );
+		  }
+		});
+		$( "#start-date-discount" ).datepicker({
+		  changeMonth: true,
+		  changeYear: true,
+		  dateFormat: "dd/mm/yy",
+		  numberOfMonths: 1,
+		  onClose: function( selectedDate ) {
+			$( "#end-date-discount" ).datepicker( "option", "minDate", selectedDate );
+		  }
+		});
+		$( "#end-date-discount" ).datepicker({
+		  changeMonth: true,
+		  changeYear: true,
+		  dateFormat: "dd/mm/yy",
+		  numberOfMonths: 1,
+		  onClose: function( selectedDate ) {
+			$( "#start-date-discount" ).datepicker( "option", "maxDate", selectedDate );
+		  }
+		});
+		/* $('a.edit-general-details').on('click',function(){
+			var productId = $('input#productId').val();
+			$.ajax({
+				url:"/products/productDetails/"+productId,
+				method:"GET",
+				success:function(data){
+					console.log(data);
+				}
+			});
+		}); */
         
         $('.save-facilities').on('click',function(){
             var checkedValues = [];

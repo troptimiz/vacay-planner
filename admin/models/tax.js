@@ -19,7 +19,8 @@ var taxSchema = mongoose.Schema({
 	taxDescription:String,
 	state:String,
     tax:Number,
-    taxTypeId: String
+    taxTypeId: String,
+	taxType:String
 });
 
 var tax = mongoose.model('tax',taxSchema);
