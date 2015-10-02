@@ -41,7 +41,8 @@
                                 </div>
                             </form>
                         </div>
-                        <table class="vacay-table facilities-list">
+                        <div class="error msg"></div>
+                        <table class="genaral-table facilities-list">
                             <tr>
                                 <th>Facility Name</th>
                                 <th>Description</th>
@@ -54,7 +55,7 @@
                                 <td>
                                     <div class="delete-edit-container">
                                         <a href="{{this._id}}" class="edit" title="Edit the row">Edit</a> /
-                                        <a href="/{{../productId}}/tariff/{{../productTariff.id}}/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                                        <a href="{{this._id}}" class="delete deleteFacility" title="Delete the row">Delete</a>
                                     </div>
                                 </td>
                             </tr>

@@ -1,6 +1,7 @@
 var express = require('express');
 var facilitiesGroup = require('../models/facilitiesGroup.js');
 var facilities = require('../models/facilities.js');
+var Product = require('../models/products.js');
 var bodyParser = require('body-parser');
 
 var facilitiesGroupsController = express();
@@ -83,16 +84,57 @@ facilitiesGroupsController.post('/facility/:id',function(req,res){
         //res.redirect(backUrl); 
 	});
 });
-/*
+
 // Delete facility group By Id
 
-facilitiesGroupsController.delete('/classification/:id',function(req,res){
-	facilitiesGroup.findById(req.params.id,function(err,classification){
-		if(err)return res.send(500,'Error Occured:database error'+err);
-		classification.remove();
-		res.status(200).json({'status':'ClassificationGroup '+req.params.id +' Deleted'});
-	});
-});*/
+facilitiesGroupsController.delete('/facilitygroup/:id',function(req,res){
+    var facilityGroupId = req.params.id;
+    facilities.count({'facilityGroupId':facilityGroupId},function(err,count){
+        if(count > 0){
+            res.status(200).json({"status":"error","msg":"Facility Group contains associated facilities and it can't be removed. Delete all the facilites and try again."});  
+        }
+        else{
+            facilitiesGroup.findById(req.params.id,function(err,facility){
+                if(err)return res.send(500,'Error Occured:database error'+err);
+                facility.remove();
+                res.status(200).json({'status':'success','msg':'Facility '+req.params.id +' Deleted'});
+            }); 
+        }
+    });
+    
+    /*Product.count({"facilities.facilityId":req.params.id},function(err,count){
+        if(count > 0){
+            res.status(200).json({"status":"Facility trying to delete is associated with the product and it can't be removed"});  
+        }
+        else{
+            facilitiesGroup.findById(req.params.id,function(err,facility){
+                if(err)return res.send(500,'Error Occured:database error'+err);
+                facility.remove();
+                res.status(200).json({'status':'Facility '+req.params.id +' Deleted'});
+            }); 
+        }
+    });*/
+	/**/
+});
+
+/**
+ * Delete facility by ID
+**/
+facilitiesGroupsController.delete('/facility/:id',function(req,res){
+    var facilityId = req.params.id;
+    Product.count({"facilities.facilityId":req.params.id},function(err,count){
+        if(count > 0){
+            res.status(200).json({"status":"error","msg":"Facility trying to delete is associated with the product and it can't be removed"});  
+        }
+        else{
+            facilities.findById(req.params.id,function(err,facility){
+                if(err)return res.send(500,'Error Occured:database error'+err);
+                facility.remove();
+                res.status(200).json({'status':'success','msg':'Facility '+req.params.id +' Deleted'});
+            }); 
+        }
+    });
+});
 
 facilitiesGroupsController.put('/addFacility/:id',function(req,res){
     var facilityGroupId = req.params.id;

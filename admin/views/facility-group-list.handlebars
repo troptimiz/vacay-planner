@@ -1,5 +1,6 @@
 <div class="class-list">
 	<div class="item-container">
+        <div class="msg error"></div>
 		<table>
 			<tr>
 				<th>Facility Group Name</th>
@@ -29,7 +30,7 @@
 					<div class="delete-edit-container">                        
                         <input type="hidden" value="{{this.id}}" id="classification_id"/>
                         <a href="/facilities/facilityView/{{this.id}}" class="edit" title="Edit facility">Edit</a> /
-                        <a href="#" class="delete" title="Delete Category">Delete</a>
+                        <a href="{{this.id}}" class="delete deleteFacilityGroup" title="Delete Category">Delete</a>
                         
                     </div>
 				</td>

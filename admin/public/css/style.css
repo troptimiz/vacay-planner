@@ -669,17 +669,17 @@ ul li {
 }
 
 /* line 593, ../sass/style.scss */
-.vacay-table, .vacaytable {
+.vacay-table, .vacaytable, .facility-table, .genaral-table {
   width: 95%;
   margin: 20px auto;
 }
 /* line 596, ../sass/style.scss */
-.vacay-table th, .vacaytable th {
+.vacay-table th, .vacaytable th, .facility-table th, .genaral-table th {
   border-bottom: 1px solid #333;
   padding-bottom: 5px;
 }
 /* line 600, ../sass/style.scss */
-.vacay-table td, .vacaytable td {
+.vacay-table td, .vacaytable td, .facility-table td, .genaral-table td {
   font-size: 12px;
 }
 

@@ -396,6 +396,33 @@ obj = {
 
             obj.showResults(categoryName);
         }
+        /* Delete facilityGroup */
+        
+        $('.deleteFacilityGroup').on('click',function(e){
+            e.preventDefault();
+            if(confirm('Do you want to delete the record?')){
+                var facilityId = $(this).attr('href');
+                var $this = $(this);
+                $.ajax({
+                    url:'/facilities/facilitygroup/'+facilityId,
+                    method: 'DELETE',
+                    dataType:'json',
+                    success:function(result){
+                        if(result.status == "error"){
+                            $('.msg.error').html(result.msg).show();
+                        }
+                        else{
+                            $this.parents('tr').fadeOut(500,function(){
+                                $this.parents('tr').remove();
+                            });
+                        }
+                    }
+                });
+                
+            }
+            
+        });
+        
         $('.cat-list .delete').on('click',function(e){
             e.preventDefault();
             var $ths = $(this);
@@ -875,7 +902,7 @@ obj = {
             }
         });
 
-				/*Add Facility*/
+        /*Add Facility*/
         $('#add-facility').on('click',function(){
             if($(this).parents('form').valid()){
                 var formData = $('#add-facility-form').serialize();
@@ -886,6 +913,33 @@ obj = {
             }
         });
         
+        /* Delete facility */
+        
+        $('.deleteFacility').on('click',function(e){
+            e.preventDefault();
+            if(confirm('Do you want to delete the facility?')){
+                var $this = $(this);
+                var facilityId = $this.attr('href');
+                $.ajax({
+                    url:"/facilities/facility/"+facilityId,
+                    method:"DELETE",
+                    dataType: "json",
+                    success:function(result){
+                        if(result.status == "error"){
+                            $('.error.msg').html(result.msg).fadeIn(100,function(){
+                                setTimeout(function(){$('.error.msg').fadeOut()},5000);
+                            });
+                        }
+                        else{
+                            $this.parents('tr').fadeOut(500,function(){
+                                $this.parents('tr').remove();
+                            });   
+                        }
+                    }
+                });
+                
+            }
+        });
         
         /*Update phone /:productId/address/:addressId*/
         $('#update-phone').on('click',function(e){
