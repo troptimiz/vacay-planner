@@ -359,12 +359,27 @@ obj = {
 
             });
         });
+        
         $('form').validate({});
         var pageParams = location.href.split("/");
         var pageName = pageParams[pageParams.length-2];
         var tLength = $('.vacay-table').length;
         for(i=0;i<tLength;i++){
             $('.vacay-table').eq(i).find('td').length > 0 ?  $('.vacay-table').eq(i).show() : $('.vacay-table').eq(i).hide();
+        }
+        if(pageName == "productDetails"){
+            var selectBoxCountry = $('select[selectedCountry]');
+            var selectBoxState = $('select[selectedState]');
+            var selectBoxCity = $('select[selectedCity]');
+            if(selectBoxCountry.length > 0){
+                selectBoxCountry.val(selectBoxCountry.attr('selectedCountry')).change();
+                setTimeout(function(){
+                    selectBoxState.val(selectBoxState.attr('selectedState')).change();
+                    setTimeout(function(){
+                        selectBoxCity.val(selectBoxCity.attr('selectedCity'));
+                    },100);
+                },100);
+            }
         }
         if(pageName == "product"){
             obj.checkFacilities();

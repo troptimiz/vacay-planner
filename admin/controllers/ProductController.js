@@ -6,6 +6,7 @@ var facilitiesGroup = require('../models/facilitiesGroup.js');
 var facilities = require('../models/facilities.js');
 var priceRules = require('../models/pricerules.js');
 var priceRules = require('../models/pricerules.js');
+var Countries = require('../models/countries.js');
 var tax = require('../models/tax.js');
 var bodyParser = require('body-parser');
 
@@ -140,10 +141,14 @@ ProductController.get('/product/:id',function(req,res){
 //Update product details
 ProductController.get('/productDetails/:id',function(req,res){
 	Product.findById(req.params.id,function(err,product){
-		if(req.session.passport.user)
-            res.render("update-product-details",{'product':product,layout:'list'});
-        else
+		if(req.session.passport.user) {
+            Countries.find({},function(err,countries){
+                res.render("update-product-details",{'product':product,'countries':countries,layout:'list'});
+            });
+        
+        } else {
             res.redirect('/account/session');
+        }
         //res.status(200).json({product:product});
 
 	})
