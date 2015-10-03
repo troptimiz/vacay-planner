@@ -464,10 +464,18 @@ obj = {
                 $.ajax({
                     url:"/taxtypes/taxtype/"+del_id,
                     method:"DELETE",
-                    success:function(data){
-                        $ths.parents('tr').fadeOut(500,function(){
-                            $ths.parents('tr').remove();
-                        });
+                    success:function(result){
+                        if(result.status == "error"){
+                            $('.msg.error').html(result.msg).fadeIn(500,function(){
+                                setTimeout(function(){
+                                    $('.msg.error').fadeOut(500);
+                                },5000);
+                            });   
+                        } else {
+                            $ths.parents('tr').fadeOut(500,function(){
+                                $ths.parents('tr').remove();
+                            });   
+                        }                            
                     },
 					error: function (request, error) {
 						console.log(arguments);
@@ -1306,6 +1314,55 @@ obj = {
             }
             obj.priceRuleTable(tableObj,columObj,priceruleType);
         });
+        
+        /* Price rule delete */
+        $('.pricerule-list-table').on('click','.delete-edit-container a.delete',function(e){
+            e.preventDefault();
+            var $this = $(this);
+            var url = $this.attr('href');
+            $.ajax({
+                url: url,
+                method:"DELETE",
+                dataType:"json",
+                success: function(result){
+                    if(result.status == "error"){
+                        $('.error.msg').html(result.msg).fadeIn(500,function(){
+                            setTimeout(function(){
+                                $('.error.msg').fadeOut(500);
+                            },5000);
+                        });   
+                    } else {
+                        $this.parents('tr').fadeOut(500,function(){
+                            $this.parents('tr').remove();
+                        });   
+                    }
+                }
+            });
+        });
+        
+        /* Delete Tax*/
+        $('.deleteTax').on('click',function(e){
+            e.preventDefault();
+            var $this = $(this);
+            var taxId = $this.attr('href');
+            
+            $.ajax({
+                url:'/taxtypes/tax/'+taxId,
+                method: 'DELETE',
+                dataType: 'json',
+                success:function(result){
+                    if(result.status == "error"){
+                        $('.msg.error').html(result.msg).fadeIn(500, function(){
+                            setTimeout(function(){$('.msg.error').fadeOut(500)},5000);
+                        });   
+                    } else {
+                        $this.parents('tr').fadeOut(500, function(){
+                            $this.parents('tr').remove();
+                        });   
+                    }
+                }
+            });
+        });
 	},
     priceRuleTable:function(tableObj,columnObj,priceruleType){
         $(tableObj).dataTable( {
@@ -1321,9 +1378,11 @@ obj = {
             "fnCreatedRow": function( nRow, aData, iDataIndex ) {
                 $(nRow).attr('id', aData['_id']);
                 $(nRow).find('.delete-edit-container a.edit').attr('href','/pricerules/priceruleEdit/'+aData['_id']);
+                $(nRow).find('.delete-edit-container a.delete').attr('href','/pricerules/priceruleDelete/'+aData['_id']);
             }
 		});
-        $('.pricerule-list-table').hide();
+        $('.pricerule-list-table')
+            .hide();
         $(tableObj).parents('div.pricerule-list-table').show();
     },
     confirm:function(msg){

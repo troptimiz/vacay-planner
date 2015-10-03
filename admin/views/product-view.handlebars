@@ -1,6 +1,366 @@
 <div class="product-view">
     <div class="item-container">
-		<div class="panel-group" id="accordion">
+        <a href="/categories/categoryView/{{product.category}}" title="Back" class="btn btn-default">&lt; Back</a>
+        <div class="clearfix"><br/></div>
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a data-toggle="tab" href="#general">General</a>
+            </li>
+            <li><a data-toggle="tab" href="#images">Images</a></li>
+            <li><a data-toggle="tab" href="#address">Addresses</a></li>
+            <li><a data-toggle="tab" href="#classifications">Classifications</a></li>
+            <li><a data-toggle="tab" href="#contacts">Contacts</a></li>
+            <li><a data-toggle="tab" href="#facilities">Facilities</a></li>
+            <li><a data-toggle="tab" href="#tax">Tax</a></li>
+            <li><a data-toggle="tab" href="#tariffs">tariffs</a></li>
+            <li><a data-toggle="tab" href="#amenities">amenities</a></li>
+            <li><a data-toggle="tab" href="#tnc">Terms &amp; Conditions</a></li>            
+        </ul>
+        
+        <div class="tab-content">
+            <div id="general" class="tab-pane fade in active">
+                <h4 class="heading">                    
+                    <a href="../productDetails/{{product.id}}" class="edit-general-details pull-right"><span class="icon-pencil"></span></a>
+                    <div class="clearfix"></div>
+                </h4>
+                <input type="hidden" name="id" value="{{product.id}}" id="productId"/>
+                <div id="product-general-details">
+                    <ul>
+                        <li>
+                            <label>Name:</label>{{product.name}}
+                        </li>
+                        <li>
+                            <label>Description:</label>{{product.description}}
+                        </li>
+                        <li>
+                            <label>City:</label>{{product.city}}
+                        </li>
+                        <li>
+                            <label>State:</label>{{product.state}}
+                        </li>
+                        <li>
+                            <label>Country:</label>{{product.country}}
+                        </li>
+                        <li>
+                            <label>Email Address:</label>{{product.emailAddress}}
+                        </li>
+                        <li>
+                            <label>Category:</label>{{product.category}}
+                        </li>
+                        <li>
+                            <label>Route Tips:</label>{{product.routeTips}}
+                        </li>
+                        <li>
+                            <label>Star Rating:</label>{{product.starRating}}
+                        </li>                    
+                        <li>
+                            <label>Is Active:</label>{{product.is_active}}
+                        </li>
+                    </ul>
+				</div>
+            </div>
+            <div id="images" class="tab-pane fade">
+                <div id="product-image-details">
+					<h4 class="heading">
+				        <a href="../{{product.id}}/{{product.category}}/add-new-image" class="edit-address-details pull-right"><span class="icon-plus"></span></a>
+				        <div class="clearfix"></div>
+                    </h4> 
+                    <div class="panel-body">
+						<table class="vacay-table">
+							<tr>
+								<th>Image</th>
+								<th>Name</th>
+								<th>Caption</th>
+								<th>Title</th>
+								<th>Sort Order</th>
+								<th>Category</th>
+								<th class="vacay-action">Action</th>
+							</tr>
+							{{#each product.images}}
+							<tr>
+								<td><img src="/uploads/{{../product.category}}/{{this.imageUrl}}" height=50/></td>
+								<td>{{this.imageUrl}}</td>
+								<td>{{this.captionText}}</td>
+								<td>{{this.title}}</td>
+								<td>{{../product.category}}</td>                        
+								<td>{{this.sortOrder}}</td>
+								<td>
+									<div class="delete-edit-container">
+										<a href="../{{../product.id}}/image/{{this._id}}/{{../product.category}}" class="edit" title="Edit the row">Edit</a> /
+										<a href="/{{../product.id}}/{{../product.category}}/image/{{this._id}}/{{this.imageUrl}}" class="delete" title="Delete the row">Delete</a>
+									</div>
+								</td>
+							</tr>
+
+							{{/each}}
+						</table>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+            </div>
+            <div id="address" class="tab-pane fade">
+                <div class="product-address-details">
+                    <h4 class="heading">                        
+                        <a href="../{{product.id}}/add-new-address" class="edit-address-details pull-right"><span class="icon-plus"></span></a>
+                        <div class="clearfix"></div>
+                    </h4>
+                    <div id="product-address-details">
+                        <table class="vacay-table">
+                            <tr>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Postal Code</th>
+                                <th class="vacay-action">Action</th>
+                            </tr>
+                            {{#each product.addresses}}
+                            <tr>
+                                <td>{{this.address1}},{{this.address2}}</td>
+                                <td>{{this.city}}</td>
+                                <td>{{this.state}}</td>
+                                <td>{{this.postalCode}}</td>
+                                <td>
+                                    <div class="delete-edit-container">
+                                        <a href="../{{../product.id}}/addresses/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
+                                        <a href="/{{../product.id}}/address/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </table>
+                        <div class="clearfix"></div>                        
+                    </div>
+                </div>
+            </div>
+            <div id="classifications" class="tab-pane fade">
+                <div class="product-classifications-details">
+					<h4 class="heading">
+				        <a href="../{{product.id}}/classification" class="edit-address-details pull-right"><span class="icon-plus"></span></a>
+				        <div class="clearfix"></div>
+                    </h4>
+				    <div id="product-classifications-details">
+                        <table class="vacaytable">
+                            <tr>
+                                <th>Name</th>
+                                <th class="vacay-action">Action</th>
+                            </tr>
+                            {{#each product.classifications}}
+                            <tr>
+
+                                <td>{{this.name}}</td>
+                                <td>
+                                    <div class="delete-edit-container">
+                                        <a href="../{{../product.id}}/productclassification/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </table>
+                        <div class="clearfix"></div>					
+                    </div>
+                </div>
+            </div>
+            <div id="contacts" class="tab-pane fade">
+                <div class="product-phonenumber-details">
+					<h4 class="heading">
+						<a href="../{{product.id}}/add-new-phoneNumber" class="add-phoneNumber-details pull-right"><span class="icon-plus"></span></a>
+				        <div class="clearfix"></div>
+                    </h4>
+                    <div id="product-phonenumber-details">
+                        <table class="vacay-table">
+                            <tr>
+                                <th>Contact Name</th>
+                                <th>Contact Number</th>
+                                <th class="vacay-action">Action</th>
+                            </tr>
+                            {{#each product.phoneNumbers}}
+                            <tr>
+                                <td>{{this.contactType}}</td>
+                                <td>{{this.contactNumber}}</td>
+                                <td>
+                                    <div class="delete-edit-container">
+                                        <a href="/{{../product.id}}/phoneNumber/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="facilities" class="tab-pane fade">
+                <div class="product-facility-details">
+					<h4 class="heading">
+						<div class="facilityMsg pull-right"></div>
+						<!--<a href="../{{product.id}}/add-new-facility" class="add-facility-detail"><span class="icon-plus"></span></a>-->
+				        <div class="clearfix"></div>
+                    </h4>
+				    <div id="product-facility-details">
+						<div class="facilities-list" data-selected-list="{{#each product.facilities}}{{this.facilityId}},{{/each}}">
+							<ul>
+								{{#each facilities}}
+									<li><input type="checkbox" name="facilities[]" id="{{this._id}}" value="{{this._id}}"/> {{this.name}}</li>
+								{{/each}}
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+            <div id="tax" class="tab-pane fade">
+                <div class="product-tax-details">
+					<h4 class="heading">
+						<div class="taxMsg pull-right"></div>
+						<!--<a href="../{{product.id}}/add-new-facility" class="add-facility-detail"><span class="icon-plus"></span></a>-->
+				        <div class="clearfix"></div>
+                    </h4>
+				    <div id="product-tax-details">
+						<div class="tax-list" data-selected-list="{{#each product.taxes}}{{this.taxId}},{{/each}}">
+							<ul>
+								{{this.taxType}}
+								{{#each taxes}}
+									<li><input type="checkbox" name="tax[]" id="{{this._id}}" value="{{this._id}}"/> {{this.taxType}} - {{this.taxDescription}}</li>
+								{{/each}}
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+				    </div> 
+			     </div>
+            </div>
+            <div id="tariffs" class="tab-pane fade">
+                <div class="product-tariffs-details">
+					
+					<div class="clearfix"></div>
+                    <div id="product-tariffs-details">
+						<div class="vacay-section product-view-sub-section">
+							<h4 class="heading">
+								Packages
+								<a href="#" class="add-tax-details pull-right"><span class="icon-plus"></span></a>
+							</h4>
+							<div class="inline-form add-form-inline">
+								<form method="post" action="" id="package-form">
+									<div class="form-cont">
+										<span class="close-btn">X</span>
+										<span>Title:</span>
+										<input type="text" name="title" class="required" />
+										<span>Description:</span>
+										<input type="text" name="description" class="required"/>
+										<span>Cost:</span>
+										<input type="text" name="cost" class="required"/> <b>INR</b>
+										<span>Price Rules</span>                                
+										<input type="submit" class="btn btn-success" id="add-packages" value="Submit" />
+									</div>
+								</form>
+							</div>
+							<table class="vacay-table tariff-package-details">
+								<tr>
+									<th>Title</th>
+									<th>Description</th>
+									<th>Cost</th>                            
+									<th class="vacay-action">Action</th>
+								</tr>
+								
+								{{#each product.packages}}
+								<tr>
+									<td>{{this.title}}</td>
+									<td>{{this.description}}</td>
+									<td>{{this.cost}}</td>
+									<td>
+										<div class="delete-edit-container">
+											<!--<a href="{{this._id}}" class="edit" title="Edit the row">Edit</a> /-->
+											<a href="/products/package-view/{{../product.id}}/{{this._id}}" class="edit" title="Edit the row">Edit</a>
+											<a href="/{{../productId}}/tariff/{{../productTariff.id}}/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+										</div>
+									</td>
+								</tr>
+								<tr class="update-form" id="{{this._id}}">
+									<td colspan="4">
+										<div class="inline-form">
+											<form method="post" >                                            
+												<input type="hidden" value="{{this._id}}" name="id"/>
+												<div class="form-cont">
+													<span class="close-btn">X</span>
+													<span>Title:</span>
+													<input type="text" name="title" value="{{this.title}}" class="required" />
+													<span>Description:</span>
+													<input type="text" name="description" value="{{this.description}}"class="required"/>
+													<span>Cost:</span>
+													<input type="text" name="cost" value="{{this.cost}}" class="required"/> <b>INR</b>
+													<!--<span>Price Rules</span>
+													<select name="pricerules[]" multiple="true" size=2>                                    
+														{{#each ../pricerules}}
+															<option value="{{this._id}}">{{this.title}}</option>
+														{{/each}}
+													</select>-->
+													<input type="button" class="btn btn-success edit-packages" value="Submit" />
+												</div>
+											</form>
+										</div>
+										</td>
+								</tr>
+								{{/each}}
+							</table>
+						</div>
+				    </div>
+			     </div>
+            </div>
+            <div id="amenities" class="tab-pane fade">
+                <div class="product-amenities-details">
+					<h4 class="heading">
+						<a href="../{{product.id}}/add-new-amenity" class="add-amenity-details pull-right"><span class="icon-plus"></span></a>
+				        <div class="clearfix"></div>
+                    </h4>
+				    <div id="product-amenities-details">
+                        <table class="vacay-table">
+                            <tr>
+                                <th>Description</th>
+                                <th class="vacay-action">Action</th>
+                            </tr>
+                            {{#each product.amenities}}
+                            <tr>
+                                <td>{{this.description}}</td>
+                                <td>
+                                    <div class="delete-edit-container">
+                                        <a href="../{{../product.id}}/amenity/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
+                                        <a href="/{{../product.id}}/amenity/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </table>
+				    </div>
+			     </div>
+            </div>
+            <div id="tnc" class="tab-pane fade">
+                <div class="product-tnc-details">
+					<h4 class="heading">
+						<a href="../{{product.id}}/add-new-termsAndConditions" class="add-termsAndConditions-details pull-right"><span class="icon-plus"></span></a>
+				        <div class="clearfix"></div>
+                    </h4>
+				    <div id="product-tnc-details">
+                        <table class="vacay-table">
+                            <tr>
+                                <th>Description</th>
+                                <th class="vacay-action">Action</th>
+                            </tr>
+                            {{#each product.termsAndConditions}}
+                            <tr>
+                                <td>{{this.description}}</td>
+                                <td>
+                                    <div class="delete-edit-container">
+                                        <a href="../{{../product.id}}/termsAndConditions/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
+                                        <a href="/{{../product.id}}/termsAndCondition/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </table>
+				    </div>
+			     </div>
+            </div>
+        </div>
+        
+		<!--<div class="panel-group" id="accordion">
 			<div class="panel panel-default product-genaral-details">
 				<div class="panel-heading">
 					<h4 class="heading">
@@ -191,8 +551,7 @@
 				<div class="panel-heading">
 					<h4 class="heading">
 						<a data-toggle="collapse" data-parent="#accordion" href="#product-facility-details"> Facilities Details </a> 
-						<div class="facilityMsg pull-right"></div>
-						<!--<a href="../{{product.id}}/add-new-facility" class="add-facility-detail"><span class="icon-plus"></span></a>-->
+						<div class="facilityMsg pull-right"></div>						
 					</h4>
 				</div>
 				<div id="product-facility-details" class="panel-collapse collapse">
@@ -213,8 +572,7 @@
 				<div class="panel-heading">
 					<h4 class="heading">
 						<a data-toggle="collapse" data-parent="#accordion" href="#product-tax-details"> Tax Details </a> 
-						<div class="taxMsg pull-right"></div>
-						<!--<a href="../{{product.id}}/add-new-facility" class="add-facility-detail"><span class="icon-plus"></span></a>-->
+						<div class="taxMsg pull-right"></div>						
 					</h4>
 				</div>
 				<div id="product-tax-details" class="panel-collapse collapse">
@@ -236,8 +594,7 @@
 				<div class="panel-heading">
 					<h4 class="heading">
 						<a data-toggle="collapse" data-parent="#accordion" href="#product-tariffs-details"> Tariffs Details </a> 
-						<!--<a href="../{{product.id}}/add-new-tariff" class="add-tariff-details pull-right"><span class="icon-plus"></span></a>-->
-					</h4>
+				    </h4>
 					<div class="clearfix"></div>
 				</div>
                 <div id="product-tariffs-details" class="panel-collapse collapse">
@@ -276,8 +633,7 @@
 									<td>{{this.description}}</td>
 									<td>{{this.cost}}</td>
 									<td>
-										<div class="delete-edit-container">
-											<!--<a href="{{this._id}}" class="edit" title="Edit the row">Edit</a> /-->
+										<div class="delete-edit-container">											
 											<a href="/products/package-view/{{../product.id}}/{{this._id}}" class="edit" title="Edit the row">Edit</a>
 											<a href="/{{../productId}}/tariff/{{../productTariff.id}}/{{this._id}}" class="delete" title="Delete the row">Delete</a>
 										</div>
@@ -296,12 +652,7 @@
 													<input type="text" name="description" value="{{this.description}}"class="required"/>
 													<span>Cost:</span>
 													<input type="text" name="cost" value="{{this.cost}}" class="required"/> <b>INR</b>
-													<!--<span>Price Rules</span>
-													<select name="pricerules[]" multiple="true" size=2>                                    
-														{{#each ../pricerules}}
-															<option value="{{this._id}}">{{this.title}}</option>
-														{{/each}}
-													</select>-->
+													
 													<input type="button" class="btn btn-success edit-packages" value="Submit" />
 												</div>
 											</form>
@@ -323,14 +674,7 @@
 				</div>
 				<div id="product-amenities-details" class="panel-collapse collapse">
 					<div class="panel-body">
-						<div class="clearfix"></div>
-                        <!--<div class="amenities-container">
-                            <div class="delete-edit-container pull-right">
-                                <a href="../{{../product.id}}/amenity/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
-                                <a href="/{{../product.id}}/amenity/{{this._id}}" class="delete" title="Delete the row">Delete</a>
-                            </div>
-                            <p><label>Description: </label>{{this.description}}</p>
-                        </div>-->
+						<div class="clearfix"></div>                        
                         <table class="vacay-table">
                             <tr>
                                 <th>Description</th>
@@ -361,13 +705,6 @@
 				<div id="product-tnc-details" class="panel-collapse collapse">
 					<div class="panel-body">
 						<div class="clearfix"></div>
-                        <!--<div class="tnc-container">
-                            <div class="delete-edit-container pull-right">
-                                <a href="../{{../product.id}}/termsAndConditions/{{this._id}}" class="edit" title="Edit the row">Edit</a> /
-                                <a href="/{{../product.id}}/termsAndCondition/{{this._id}}" class="delete" title="Delete the row">Delete</a>
-                            </div>
-                            <p><label>Description: </label>{{this.description}}</p>
-                        </div>-->
                         <table class="vacay-table">
                             <tr>
                                 <th>Description</th>
@@ -388,8 +725,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<a href="/categories/categoryView/{{product.category}}" title="Cancel" class="btn btn-default">Cancel</a>
+		</div> -->
+		<a href="/categories/categoryView/{{product.category}}" title="Back" class="btn btn-default">&lt; Back</a>
     </div>
 </div>
 <div class="confirm-alert-container">

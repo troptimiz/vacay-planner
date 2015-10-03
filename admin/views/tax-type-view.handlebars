@@ -43,7 +43,8 @@
                                 </div>
                             </form>
                         </div>
-                        <table class="vacay-table facilities-list">
+                        <div class="msg error"></div>
+                        <table class="genaral-table facilities-list">
                             <tr>
                                 <th>Tax Description</th>
                                 <th>State</th>
@@ -59,7 +60,7 @@
                                 <td>
                                     <div class="delete-edit-container">
                                         <a href="{{this._id}}" class="edit" title="Edit the row">Edit</a> 
-                                        <!--<a href="/{{../productId}}/tariff/{{../productTariff.id}}/{{this._id}}" class="delete" title="Delete the row">Delete</a>-->
+                                        <a href="{{this._id}}" class="delete deleteTax" title="Delete the row">Delete</a>
                                     </div>
                                 </td>
                             </tr>

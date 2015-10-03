@@ -1,6 +1,7 @@
 var express = require('express');
 var taxTypes = require('../models/taxType.js');
 var tax = require('../models/tax.js');
+var Product = require('../models/products.js');
 var bodyParser = require('body-parser');
 
 var taxTypeController = express();
@@ -97,13 +98,14 @@ taxTypeController.post('/taxtype/:id',function(req,res){
 taxTypeController.delete('/taxtype/:id',function(req,res){
 	taxTypes.findById(req.params.id,function(err,taxType){
 		if(err)return res.send(500,'Error Occured:database error'+err);
-		/* tax.find({},function(err,tax){
-			if(err)return res.send(500,'Error Occured:database error'+err);
-			tax.remove({"taxTypeId": req.params.id});
-			res.status(200).json({'status':'tax'+req.params.id +' Deleted'});
-		});  */
-		taxType.remove();
-		res.status(200).json({'status':'taxTypes '+req.params.id +' Deleted'});
+		tax.count({"taxTypeId":req.params.id},function(err,count){
+            if(count > 0){
+                res.status(200).json({"status":"error","msg":"The tax type contains associated taxes with product and this taxtype can't be removed."});   
+            } else {
+                taxType.remove();
+                res.status(200).json({'status':'success','msg':'taxTypes '+req.params.id +' Deleted'});
+            }
+		});		
 	});
 });
 
@@ -143,7 +145,20 @@ taxTypeController.post('/editTax/:id',function(req,res){
     
 });
 
-
+//Delete tax in tax type
+taxTypeController.delete('/tax/:id',function(req,res){
+    Product.count({"taxes.taxId":req.params.id},function(err,count){
+        if(count > 0) {
+            res.status(200).json({"status":"error","msg":"The tax associated with product and it can't be removed"});   
+        } else {
+            tax.findById(req.params.id, function(err, taxById){
+                if(err) res.send(500,'Error Occured:database error'+err);
+                taxById.remove();
+                res.status(200).json({"status":"success", "msg":"The tax "+req.params.id+"deleted successfully"});
+            });
+        }
+    });
+});
 
 
 

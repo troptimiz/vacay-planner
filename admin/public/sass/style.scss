@@ -773,5 +773,11 @@ ul{
     background: #D8D8D8;
 	color:#000;
 }
-
-
+.product-view{
+    .tab-content{
+        padding:10px 20px;
+        border:1px solid #ddd;
+        border-top:0 none;
+        margin-bottom: 30px;
+    }
+}

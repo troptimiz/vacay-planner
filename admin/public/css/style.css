@@ -875,3 +875,11 @@ ul li {
   background: #D8D8D8;
   color: #000;
 }
+
+/* line 777, ../sass/style.scss */
+.product-view .tab-content {
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-top: 0 none;
+  margin-bottom: 30px;
+}

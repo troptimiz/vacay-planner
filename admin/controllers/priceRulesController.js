@@ -90,7 +90,7 @@ priceRulesController.put('/addrules',function(req,res){
                 
     newPriceRule.save(function(err,a){
         if(err) return res.send(500,'Error Occured: database error');
-        res.json({'status':'ClassificationGroup '+a.gender+' Created ',msg:"success"});
+        res.json({'status':'Pricerule '+a.gender+' Created ',msg:"success"});
     });
             
     
@@ -123,12 +123,19 @@ priceRulesController.post('/editrule/:id',function(req,res){
 
 // Delete priceRules By Id
 
-priceRulesController.delete('/pricerule/:id',function(req,res){
-	priceRules.findById(req.params.id,function(err,pricerule){
-		if(err)return res.send(500,'Error Occured:database error'+err);
-		pricerule.remove();
-		res.status(200).json({'status':'Price Rule '+req.params.id +' Deleted'});
-	});
+priceRulesController.delete('/priceruleDelete/:id',function(req,res){
+	Product.count({"packages.pricerules.priceRuleId":req.params.id},function(err, count){
+        if(count > 0){
+            res.status(200).json({"status":"error",msg:"The price rule associated with product and it can't be removed."});   
+        } else {
+            priceRules.findById(req.params.id,function(err,pricerule){
+                if(err)return res.send(500,'Error Occured:database error'+err);
+                pricerule.remove();
+                res.status(200).json({'status':'Price Rule '+req.params.id +' Deleted'});
+            });   
+        }
+    });
+    
 });
 
 module.exports = priceRulesController;
