@@ -7,6 +7,7 @@ var facilities = require('../models/facilities.js');
 var priceRules = require('../models/pricerules.js');
 var priceRules = require('../models/pricerules.js');
 var Countries = require('../models/countries.js');
+var States = require('../models/states.js');
 var tax = require('../models/tax.js');
 var bodyParser = require('body-parser');
 
@@ -169,7 +170,9 @@ ProductController.get('/:productId/add-new-address',function(req,res){
 	Product.findById(req.params.id,function(err,product){
 		//res.status(200).json({product:product});
         prodId = req.params.productId;
-        res.render("add-new-address",{'productId':prodId,layout:'list'});
+        States.find({},function(err,states){
+            res.render("add-new-address",{'productId':prodId,'states':states,layout:'list'});
+        });
 	})
 });
 

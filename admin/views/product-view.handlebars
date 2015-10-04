@@ -12,8 +12,8 @@
             <li><a data-toggle="tab" href="#contacts">Contacts</a></li>
             <li><a data-toggle="tab" href="#facilities">Facilities</a></li>
             <li><a data-toggle="tab" href="#tax">Tax</a></li>
-            <li><a data-toggle="tab" href="#tariffs">tariffs</a></li>
-            <li><a data-toggle="tab" href="#amenities">amenities</a></li>
+            <li><a data-toggle="tab" href="#tariffs">Tariffs</a></li>
+            <li><a data-toggle="tab" href="#amenities">Amenities</a></li>
             <li><a data-toggle="tab" href="#tnc">Terms &amp; Conditions</a></li>            
         </ul>
         
@@ -217,7 +217,6 @@
 				    <div id="product-tax-details">
 						<div class="tax-list" data-selected-list="{{#each product.taxes}}{{this.taxId}},{{/each}}">
 							<ul>
-								{{this.taxType}}
 								{{#each taxes}}
 									<li><input type="checkbox" name="tax[]" id="{{this._id}}" value="{{this._id}}"/> {{this.taxType}} - {{this.taxDescription}}</li>
 								{{/each}}
