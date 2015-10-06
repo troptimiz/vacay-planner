@@ -371,6 +371,8 @@ obj = {
             var selectBoxCountry = $('select[selectedCountry]');
             var selectBoxState = $('select[selectedState]');
             var selectBoxCity = $('select[selectedCity]');
+            var selectBoxRaing = $("select[name^=starRating]").attr("selectedRating");
+            $("select[name^=starRating]").val($("select[name^=starRating]").attr("selectedRating")).change();
             if(selectBoxCountry.length > 0){
                 selectBoxCountry.val(selectBoxCountry.attr('selectedCountry')).change();
                 setTimeout(function(){
@@ -1140,19 +1142,22 @@ obj = {
         });
         
         $('#addTax').on('click',function(e){
-            var formData = $('#tax-form').serialize();
-            var taxTypeId = $('#tax-form').find('input[name="id"]').val();
-			console.log(formData);
-            e.preventDefault();
-            $.ajax({
-                url:"/taxtypes/addTax/"+taxTypeId,
-                data:formData,
-                method:"PUT",
-                success:function(data){
-                   location.href = "/taxtypes/taxTypeView/"+taxTypeId;
-                }
+            if($(this).parents('form').valid()){
+                var formData = $('#tax-form').serialize();
+                var taxTypeId = $('#tax-form').find('input[name="id"]').val();
+                console.log(formData);
+                e.preventDefault();
+               $.ajax({
+                    url:"/taxtypes/addTax/"+taxTypeId,
+                    data:formData,
+                    method:"PUT",
+                    success:function(data){
+                       location.href = "/taxtypes/taxTypeView/"+taxTypeId;
+                    }
+                
+                });
+            }
             
-            });
         });
         
         $('.editFacility').on('click',function(e){
@@ -1177,19 +1182,19 @@ obj = {
         $('.editTax').on('click',function(e){
             e.preventDefault();
             e.stopPropagation();
-            var formData = $(this).parents('form').serialize();
-            var taxId = $(this).parents('form').find('input[name="id"]').val();
-            var taxTypeId = $(this).parents('form').find(".taxTypeId").val();
-            
-            
-            $.ajax({
-                url:"/taxtypes/editTax/"+taxId,
-                data:formData,
-                method:"POST",
-                success : function(data){
-                    window.location.href = "/taxtypes/taxTypeView/"+taxTypeId;   
-                }
-            });
+            if($(this).parents('form').valid()){
+                var formData = $(this).parents('form').serialize();
+                var taxId = $(this).parents('form').find('input[name="id"]').val();
+                var taxTypeId = $(this).parents('form').find(".taxTypeId").val();
+                $.ajax({
+                    url:"/taxtypes/editTax/"+taxId,
+                    data:formData,
+                    method:"POST",
+                    success : function(data){
+                        window.location.href = "/taxtypes/taxTypeView/"+taxTypeId;   
+                    }
+                });
+            }
         });
         
         //add package

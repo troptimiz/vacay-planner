@@ -781,3 +781,25 @@ ul{
         margin-bottom: 30px;
     }
 }
+
+#tax-form, #update-tax-form {
+	label.error{
+		width:55% !important;	
+	}
+	label{
+		padding-left:10px;
+	}
+}
+
+#update-tax-form{
+	label.error{
+		padding-right:0px;	
+	}
+}
+
+ul#tax-item-list{
+	li{
+		float: left;
+		clear: both;
+	}
+}

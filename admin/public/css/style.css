@@ -883,3 +883,23 @@ ul li {
   border-top: 0 none;
   margin-bottom: 30px;
 }
+
+/* line 786, ../sass/style.scss */
+#tax-form label.error, #update-tax-form label.error {
+  width: 55% !important;
+}
+/* line 789, ../sass/style.scss */
+#tax-form label, #update-tax-form label {
+  padding-left: 10px;
+}
+
+/* line 795, ../sass/style.scss */
+#update-tax-form label.error {
+  padding-right: 0px;
+}
+
+/* line 801, ../sass/style.scss */
+ul#tax-item-list li {
+  float: left;
+  clear: both;
+}

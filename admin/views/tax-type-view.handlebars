@@ -35,11 +35,21 @@
                                     <span class="close-btn">X</span>
                                     <input type="hidden" value="{{taxType._id}}" name="id"/>
 									<input type="hidden" value="{{taxType.taxType}}" name="taxType"/>
-                                    <span>Tax Description:</span><input type="text" name="taxDesc">
-                                    <span>State:</span><input type="text" name="state">
-                                    <span>Tax:</span><input type="text" name="tax"> &nbsp; &nbsp;<b>%</b>
-                                    
-                                    <input type="submit" class="btn btn-success" value="Submit" id="addTax">
+                                    <div class="form-group">
+                                        <label>Tax Description:</label>
+                                        <input type="text" name="taxDesc" class="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>State:</label>
+                                        <input type="text" name="state" class="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tax:</label>
+                                        <input type="text" name="tax" class="required"> &nbsp; &nbsp;<b>%</b>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-success" value="Submit" id="addTax">
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -67,16 +77,28 @@
                             <tr class="update-form" id="{{this._id}}">
                                 <td colspan="4">
                                     <div class="inline-form">
-                                        <form method="post" >                                            
+                                        <form method="post" id="update-tax-form" >                           
                                             <input type="hidden" value="{{this._id}}" name="id"/>
                                             <div class="form-cont">
                                                 <span class="close-btn">X</span>
                                                 <input type="hidden" value="{{../taxType._id}}" class="taxTypeId"/>
-                                                <input type="hidden" value="{{taxType.taxType}}" name="taxType"/>                                                
-                                                <span>Tax Description:</span><input type="text" value = "{{this.taxDescription}}"name="taxDesc">
-                                                <span>State:</span><input type="text" name="state" value = "{{this.state}}">
-                                                <span>Tax:</span><input type="text" name="tax" value="{{this.tax}}"> &nbsp; &nbsp;<b>%</b>
-                                                <input type="button" class="btn btn-success editTax" value="Submit">
+                                                <input type="hidden" value="{{taxType.taxType}}" name="taxType"/> 
+
+                                                <div class="form-group">                                            
+                                                    <label>Tax Description:</label>
+                                                    <input type="text" value = "{{this.taxDescription}}" name="taxDesc" class="required">
+                                                </div>
+                                                <div class="form-group"> 
+                                                    <label>State:</label>
+                                                    <input type="text" name="state" value = "{{this.state}}" class="required">
+                                                </div>
+                                                <div class="form-group"> 
+                                                    <label>Tax:</label>
+                                                    <input type="text" name="tax" value="{{this.tax}}" class="required"> &nbsp; &nbsp;<b>%</b>
+                                                </div>
+                                                <div class="form-group"> 
+                                                    <input type="button" class="btn btn-success editTax" value="Submit">
+                                                </div>
                                             </div>
                                         </form>
                                     </div>

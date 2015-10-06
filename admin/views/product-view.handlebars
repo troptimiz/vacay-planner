@@ -72,8 +72,8 @@
 								<th>Name</th>
 								<th>Caption</th>
 								<th>Title</th>
-								<th>Sort Order</th>
 								<th>Category</th>
+								<th>Sort Order</th>
 								<th class="vacay-action">Action</th>
 							</tr>
 							{{#each product.images}}
@@ -216,9 +216,9 @@
                     </h4>
 				    <div id="product-tax-details">
 						<div class="tax-list" data-selected-list="{{#each product.taxes}}{{this.taxId}},{{/each}}">
-							<ul>
+							<ul id="tax-item-list">
 								{{#each taxes}}
-									<li><input type="checkbox" name="tax[]" id="{{this._id}}" value="{{this._id}}"/> {{this.taxType}} - {{this.taxDescription}}</li>
+									<li><input type="checkbox" name="tax[]" id="{{this._id}}" value="{{this._id}}"/> {{this.taxType}} - {{this.taxDescription}} - {{this.tax}}%</li>
 								{{/each}}
 							</ul>
 							<div class="clearfix"></div>
