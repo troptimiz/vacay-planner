@@ -55,7 +55,7 @@
                             <input type="hidden" id="packageId" value="{{productPackage._id}}"/>
                             <ul>
                                 {{#each priceRuleList}}
-                                    <li><input id="{{this._id}}" type="checkbox" value="{{this._id}}"/>{{this.priceRuleType}} - Price Rule - {{this.price}} ({{this.priceType}})</li>
+                                    <li><input id="{{this._id}}" type="checkbox" value="{{this._id}}"/>{{this.priceRuleType}} {{#with genderType}} ({{../this.genderType}}) {{/with}} - Price Rule - {{this.price}} {{#with priceType}} ({{../this.priceType}}) {{/with}}</li>
                                 {{/each}}
                             </ul>
                             <div class="clearfix"></div>

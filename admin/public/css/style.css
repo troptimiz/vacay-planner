@@ -902,4 +902,6 @@ ul li {
 ul#tax-item-list li {
   float: left;
   clear: both;
+  width: 100%;
+  margin: 5px;
 }

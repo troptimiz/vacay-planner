@@ -6,8 +6,198 @@
                     <div class="form-heading">
                         <h2>Update Price Rule</h2>
                     </div>
-                    
-                    <form role="form" method="post" id="edit-price-rules-form" action="/pricerules/addrules/" >
+                   <!-- {{priceRuleById}} -->
+                    <div class="form-section" id="gender">
+                        <form role="form" id="gender-form">
+                            <input type="hidden" value="gender" name="priceRuleType"/>
+                            <input type="hidden" value="{{priceRuleById._id}}" name="id"/>
+                            <div class="form-group">
+                                <label for="">Gender:</label>
+                                <select class="form-control" name="gender">
+                                    <option value="child">Child</option>
+                                    <option value="seniorcitizen">Senior Citizen</option>
+                                    <option value="adult">Adult</option>
+                                </select>                                
+                            </div>
+                            <div class="form-group">
+                                <label for="">Price Type:</label>
+                                <select name="priceType" class="required form-control price-type">
+                                    <option value="">Select</option>
+                                    <option selected="selected" value="percentage">Percentage</option>
+                                    <option value="INR">INR</option>
+                                </select>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Gender Discount</label>
+                                <input type="text" class="price-field form-control" name="genderPrice" placeholder="Price" value="{{priceRuleById.price}}"/>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-default edit-price-rule" >Submit</button>
+                                <button type="button" class="cancel-classification-addition btn btn-default" onClick="javascript:history.go(-1)">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="form-section" id="event">
+                        <form role="form" id="event-form">
+                            <input type="hidden" value="event" name="priceRuleType"/>
+                            <input type="hidden" value="{{priceRuleById._id}}" name="id"/>
+                            <div class="form-group">
+                                <label for="">Event Type:</label>
+                                <select class="form-control" name="eventType">
+                                    <option value="birthday">Birth Day</option>
+                                    <option value="aniversary">Aniversary</option>
+                                </select>                                
+                            </div>
+                            <div class="form-group">
+                                <label for="">Price Type:</label>
+                                <select name="priceType" class="required form-control price-type">
+                                    <option value="">Select</option>
+                                    <option selected="selected" value="percentage">Percentage</option>
+                                    <option value="INR">INR</option>
+                                </select>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Event Discount</label>
+                                <input type="text" class="price-field form-control" name="eventPrice" placeholder="Price"/>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-default edit-price-rule" >Submit</button>
+                                <button type="button" class="cancel-classification-addition btn btn-default" onClick="javascript:history.go(-1)">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="form-section" id="discount">
+                        <form role="form" id="discount-form">
+                            <input type="hidden" value="discount" name="priceRuleType"/>
+                            <input type="hidden" value="{{priceRuleById._id}}" name="id"/>
+
+                            <div class="form-group">
+                                <label for="">Discount Price Type:</label>
+                                <select name="priceType" class="required form-control price-type">
+                                    <option value="">Select</option>
+                                    <option selected="selected" value="percentage">Percentage</option>
+                                    <option value="INR">INR</option>
+                                </select>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Discount Price</label>
+                                <input type="text" value="{{priceRuleById.price}}" class="price-field form-control" name="discountPrice" placeholder="Price"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Discount Start Date</label>
+                                <input type="text" value="{{priceRuleById.startDate}}" class="form-control" name="startDate" id="start-date-discount" placeholder="dd/mm/yyyy"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Discount End Date</label>
+                                <input type="text" value="{{priceRuleById.endDate}}" class="form-control" name="endDate" id="end-date-discount" placeholder="dd/mm/yyyy"/>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="button" class="btn btn-default edit-price-rule" >Submit</button>
+                                <button type="button" class="cancel-classification-addition btn btn-default" onClick="javascript:history.go(-1)">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="form-section" id="cancellation">
+                        <form role="form" id="discount-form">
+                            <input type="hidden" value="cancellation" name="priceRuleType"/>
+                            <input type="hidden" value="{{priceRuleById._id}}" name="id"/>
+                            <div class="form-group">
+                                <label for="">Cancellation Type:</label>
+                                <select name="cancelType" class="required form-control cancel-type">
+                                    <option value="">Select</option>
+                                    <option selected="selected" value="nonRefundable">Non Refundable</option>
+                                    <option value="refundable">Refundable</option>
+                                </select>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="cancel-details">
+                                <div class="form-group">
+                                    <label for="">Cancellation Price Type:</label>
+                                    <select name="priceType" class="required form-control price-type">
+                                        <option value="">Select</option>
+                                        <option selected="selected" value="percentage">Percentage</option>
+                                        <option value="INR">INR</option>
+                                    </select>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Cancellation Charge</label>
+                                    <input type="text" class="price-field form-control" name="cancelPrice" placeholder="Price"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Duration Type:</label>
+                                    <select class="form-control" name="durationType">
+                                        <option value="days">Days</option>
+                                        <option value="hours">Hours</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Duration:</label>
+                                    <input type="text" placeholder="Duration in Days or Hours" class="form-control required" name="duration"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Start Date</label>
+                                    <input type="text" class="form-control" name="startDate" id="start-date-cancellation" placeholder="dd/mm/yyyy"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">End Date</label>
+                                    <input type="text" class="form-control"  name="endDate" id="end-date-cancellation" placeholder="dd/mm/yyyy"/>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <button type="button" class="btn btn-default edit-price-rule" >Submit</button>
+                                <button type="button" class="cancel-classification-addition btn btn-default" onClick="javascript:history.go(-1)">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="form-section" id="group">
+                        <form role="form" id="group-form">
+                            <input type="hidden" value="group" name="priceRuleType"/>
+                            <input type="hidden" value="{{priceRuleById._id}}" name="id"/>
+                            <div class="group-details">
+                                <div class="form-group">
+                                    <label for="">Group Price Type:</label>
+                                    <select name="priceType" class="required form-control price-type">
+                                        <option value="">Select</option>
+                                        <option selected="selected" value="percentage">Percentage</option>
+                                        <option value="INR">INR</option>
+                                    </select>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Group Discount</label>
+                                    <input type="text" value="{{priceRuleById.price}}" class="price-field form-control required" name="groupPrice" placeholder="Price"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>No.of Persons:</label>
+                                    <input type="text" value="{{priceRuleById.grouplimit}}" name="groupLimit" placeholder="No.of persons" class="form-control required"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="">Start Date</label>
+                                    <input type="text" value="{{priceRuleById.startDate}}" class="form-control required" name="startDate" id="start-date-group" placeholder="dd/mm/yyyy"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">End Date</label>
+                                    <input type="text" value="{{priceRuleById.endDate}}" class="form-control required"  name="endDate" id="end-date-group" placeholder="dd/mm/yyyy"/>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <button type="button" class="btn btn-default edit-price-rule" >Submit</button>
+                                <button type="button" class="cancel-classification-addition btn btn-default" onClick="javascript:history.go(-1)">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!--<form role="form" method="post" id="edit-price-rules-form" action="/pricerules/addrules/" >
                         <input type="hidden" value="{{priceRuleById._id}}" name="id"/>
                         <div class="form-group hidden">
                             <label for="">&nbsp;</label>
@@ -39,7 +229,7 @@
                         </div>
                         <button type="button" class="btn btn-default" id="edit-price-rule">Submit</button>
                         <button type="button" class="cancel-classification-addition btn btn-default" onClick="javascript:history.go(-1)">Cancel</button>
-                     </form>                   
+                     </form>-->                   
                     
                 </div>
             </div>

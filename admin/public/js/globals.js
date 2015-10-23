@@ -25,9 +25,52 @@ obj = {
             var id = priceRuleList[i];
             $('#'+id).attr('checked','checked');
         }  
-    },
+    },    
 	init : function(){
-        
+        $('form').validate({});
+        var pageParams = location.href.split("/");
+        var pageName = pageParams[pageParams.length-2];
+        var tLength = $('.vacay-table').length;
+        for(i=0;i<tLength;i++){
+            $('.vacay-table').eq(i).find('td').length > 0 ?  $('.vacay-table').eq(i).show() : $('.vacay-table').eq(i).hide();
+        }
+        if(pageName == "priceruleEdit"){
+            var formID = location.href.split("?")[1].split("=")[1];
+            $('.form-section').hide();
+            $('#'+formID).show();
+            
+        }
+        if(pageName == "productDetails"){
+            var selectBoxCountry = $('select[selectedCountry]');
+            var selectBoxState = $('select[selectedState]');
+            var selectBoxCity = $('select[selectedCity]');
+            var selectBoxRaing = $("select[name^=starRating]").attr("selectedRating");
+            $("select[name^=starRating]").val($("select[name^=starRating]").attr("selectedRating")).change();
+            if(selectBoxCountry.length > 0){
+                selectBoxCountry.val(selectBoxCountry.attr('selectedCountry')).change();
+                setTimeout(function(){
+                    selectBoxState.val(selectBoxState.attr('selectedState')).change();
+                    setTimeout(function(){
+                        selectBoxCity.val(selectBoxCity.attr('selectedCity'));
+                    },100);
+                },100);
+            }
+        }
+        if(pageName == "product"){
+            obj.checkFacilities();
+            obj.checkTaxes();
+        }
+        if(pageParams[pageParams.length-3]=='package-view'){
+            obj.checkPriceRules();  
+        }
+        if(pageName == "categoryView"){
+            var categoryName = $("#categoryName").val();
+            $('.category-list .list-item').find('a.item-default[title="'+categoryName+'"]').parent('.list-item').addClass('active');
+            var wtCount = $('.category-list .list-item').length * 102;
+            $('.category-list').css('width',wtCount).fadeIn();
+
+            obj.showResults(categoryName);
+        }
         $('select[name="country"').on('change',function(){
             var URL = "/categories/states/"+$(this).val();
             var ths = $(this);
@@ -360,44 +403,7 @@ obj = {
             });
         });
         
-        $('form').validate({});
-        var pageParams = location.href.split("/");
-        var pageName = pageParams[pageParams.length-2];
-        var tLength = $('.vacay-table').length;
-        for(i=0;i<tLength;i++){
-            $('.vacay-table').eq(i).find('td').length > 0 ?  $('.vacay-table').eq(i).show() : $('.vacay-table').eq(i).hide();
-        }
-        if(pageName == "productDetails"){
-            var selectBoxCountry = $('select[selectedCountry]');
-            var selectBoxState = $('select[selectedState]');
-            var selectBoxCity = $('select[selectedCity]');
-            var selectBoxRaing = $("select[name^=starRating]").attr("selectedRating");
-            $("select[name^=starRating]").val($("select[name^=starRating]").attr("selectedRating")).change();
-            if(selectBoxCountry.length > 0){
-                selectBoxCountry.val(selectBoxCountry.attr('selectedCountry')).change();
-                setTimeout(function(){
-                    selectBoxState.val(selectBoxState.attr('selectedState')).change();
-                    setTimeout(function(){
-                        selectBoxCity.val(selectBoxCity.attr('selectedCity'));
-                    },100);
-                },100);
-            }
-        }
-        if(pageName == "product"){
-            obj.checkFacilities();
-            obj.checkTaxes();
-        }
-        if(pageParams[pageParams.length-3]=='package-view'){
-            obj.checkPriceRules();  
-        }
-        if(pageName == "categoryView"){
-            var categoryName = $("#categoryName").val();
-            $('.category-list .list-item').find('a.item-default[title="'+categoryName+'"]').parent('.list-item').addClass('active');
-            var wtCount = $('.category-list .list-item').length * 102;
-            $('.category-list').css('width',wtCount).fadeIn();
-
-            obj.showResults(categoryName);
-        }
+        
         /* Delete facilityGroup */
         
         $('.deleteFacilityGroup').on('click',function(e){
@@ -1109,12 +1115,12 @@ obj = {
 			}
         });
         
-        $('#edit-price-rule').on('click',function(e){
-            var formData = $('#edit-price-rules-form').serialize();
-            var recordId = $('#edit-price-rules-form').find('input[name="id"]').val();
-            console.log(recordId);
+        $('.edit-price-rule').on('click',function(e){
             e.preventDefault();
-            e.stopPropagation();
+            var formData = $(this).parents('form').serialize();
+            var recordId = $(this).parents('form').find('input[name="id"]').val();
+            console.log(recordId);
+            
             $.ajax({
                 url:"/pricerules/editrule/"+recordId,
                 data:formData,
@@ -1382,7 +1388,7 @@ obj = {
             "bLengthChange": false,
             "fnCreatedRow": function( nRow, aData, iDataIndex ) {
                 $(nRow).attr('id', aData['_id']);
-                $(nRow).find('.delete-edit-container a.edit').attr('href','/pricerules/priceruleEdit/'+aData['_id']);
+                $(nRow).find('.delete-edit-container a.edit').attr('href','/pricerules/priceruleEdit/'+aData['_id']+'?type='+aData['priceRuleType']);
                 $(nRow).find('.delete-edit-container a.delete').attr('href','/pricerules/priceruleDelete/'+aData['_id']);
             }
 		});
