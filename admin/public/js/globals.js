@@ -71,6 +71,25 @@ obj = {
 
             obj.showResults(categoryName);
         }
+        if(pageName == "pricerules"){
+            var priceruleType="group";
+            var tableObj,columObj;
+            tableObj = "#pricerule-table-group";
+            columObj = [
+                { "data": "priceRuleType" },
+                {"data":"price"},
+                {"data":"priceType"},
+                {"data":"grouplimit"},                                
+                {"data":"startDate"},
+                {"data":"endDate"},
+                {
+                    data: null,
+                    className: "center",
+                    defaultContent: '<div class="delete-edit-container"><a href="#" class="edit" title="Edit the row">Edit</a> / <a href="#" class="delete" title="Delete the row">Delete</a></div>'
+                }
+            ];    
+            obj.priceRuleTable(tableObj,columObj,priceruleType);
+        }
         $('select[name="country"').on('change',function(){
             var URL = "/categories/states/"+$(this).val();
             var ths = $(this);
@@ -526,7 +545,7 @@ obj = {
             });
         });
         $('.cancel-pricerule-addition').on('click',function(){
-            var slectedVal = $('.form-selection').val();
+            var slectedVal = $('.price-rule-type').val();
             $('.add-form-container').fadeOut(500,function(){
                 $('#price-rule-type').find('option[value="'+slectedVal+'"]').attr('selected','selected');
                 $('.cat-list,.class-list').fadeIn(500);
@@ -1055,6 +1074,7 @@ obj = {
             e.preventDefault();
             e.stopPropagation();
             if($(this).parents('form').valid()){
+                var priceRuleType = $(".price-rule-type").val();
                 var formData = $(this).parents('form').serialize();
                 $.ajax({
                     url:"/pricerules/addrules/",
@@ -1063,8 +1083,13 @@ obj = {
                     success:function(data){
                         console.log(data);
                         if(data.msg == "success"){
-                            console.log(data.msg);
-                            location.href="/pricerules/all";
+                            //location.href="/pricerules/all";
+                            $('.add-form-container').fadeOut(500,function(){
+                               $('#price-rule-type option[value="'+priceRuleType+'"]').attr("selected","selected");
+                                $('.cat-list,.class-list').fadeIn(500);
+                                console.log($('#price-rule-type').val());
+                                $('#price-rule-type').trigger("change");
+                            });    
                         }
                         else{
                             $('.msg').text(data.msg);
@@ -1203,6 +1228,29 @@ obj = {
             }
         });
         
+        $('.update-traiff').on('click',function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            if($(this).parents('form').valid()){
+                var formData = $(this).parents('form').serialize();
+                var productId = $(this).parents('form').find('input[name="productId"]').val();
+                var packageId = $(this).parents('form').find('input[name="id"]').val();
+                $.ajax({
+                    url:"/products/packages/updatepackagetraiff/"+productId+"/"+packageId,
+                    data:formData,
+                    method:"POST",
+                    success : function(data){
+                        //alert("in success");
+                        window.location.href = "/products/package-view/"+productId+"/"+packageId;   
+                    }
+                });
+            }
+        });
+        $('.cancel-traiff').on('click',function(e){
+            e.preventDefault();
+            $(".packageUpdateForm").hide();
+        });
+        
         //add package
         $('#add-packages').on('click',function(e){
             e.preventDefault();
@@ -1234,6 +1282,7 @@ obj = {
         });
         $('#price-rule-type').on('change',function(){
             var priceruleType= $(this).val();
+            console.log(priceruleType);
             var tableObj,columObj;
             if(priceruleType == 'group'){
                 tableObj = "#pricerule-table-group";

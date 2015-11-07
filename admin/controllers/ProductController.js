@@ -88,6 +88,7 @@ ProductController.put('/product/',function(req,res){
     console.log(classificationArray);
 	var product = new Product({
 		category:req.body.category,
+		actualName:req.body.actualName,
 		name:req.body.name,
 		type:req.body.type,
         city:req.body.city,
@@ -235,6 +236,7 @@ ProductController.get('/:productId/add-edit-address/:addressId',function(req,res
 ProductController.post('/product/:id',function(req,res){
 
 	productToBeUpdated = {
+		actualName:req.body.actualName,
 		name:req.body.name,
 		type:req.body.type,
 		description:req.body.description,
@@ -910,7 +912,6 @@ ProductController.delete('/:productId/amenity/:amenityId',function(req,res){
 });
 
 // Update Tariff
-
 ProductController.post('/:productId/tariff/:tariffId',function(req,res){
 
 	productId = req.params.productId;
@@ -1286,7 +1287,7 @@ ProductController.get('/package-view/:productId/:packageId',function(req,res){
 	});
 });
 //update tarrif packages
-ProductController.post('/tariff/updatePackage/:id/:packageId',function(req,res){
+ProductController.post('/packages/updatepackagetraiff/:id/:packageId',function(req,res){
 
 	var productId = req.params.id;
     var packageId = req.params.packageId;

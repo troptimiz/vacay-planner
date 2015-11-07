@@ -15,6 +15,7 @@ mongoose.createConnection('mongodb://localhost/vacayplanner',options);
 var productSchema = mongoose.Schema({
 	type:String,
 	category:String,
+	actualName:String,
 	name:String,
     city:String,
     state:String,

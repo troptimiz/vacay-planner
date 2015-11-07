@@ -102,11 +102,19 @@
                     
                     <form role="form" id="add-product-form">
                         <input type="hidden" value="{{product.id}}" name="id" />
+
                         <div class="form-group">
-                            <label for="">Name:</label>
-                            <input type="textbox" name="name" class="form-control required" placeholder="Name">
+                            <label for="">Actual Name:</label>
+                            <input type="textbox" name="actualName" class="form-control required" placeholder="Actual Name">
                             <div class="clearfix"></div>
                         </div>
+
+                        <div class="form-group">
+                            <label for="">Display Name:</label>
+                            <input type="textbox" name="name" class="form-control required" placeholder="Display Name">
+                            <div class="clearfix"></div>
+                        </div>
+
 
                         <div class="form-group">
                             <label for="">Category:</label>
