@@ -1,3 +1,0 @@
-INDEX VERSION 1.127
-/Users/raghavan/Consulting/VacayPlanner/vacay-planner/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1710631772.index
-/vacayplanner/src/main/java
