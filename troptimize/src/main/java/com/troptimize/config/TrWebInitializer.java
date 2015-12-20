@@ -21,6 +21,6 @@ public class TrWebInitializer implements WebApplicationInitializer {
 
 		ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcher", new DispatcherServlet(mvcContext));
 		dispatcher.setLoadOnStartup(1);
-		dispatcher.addMapping("/");
+		dispatcher.addMapping("/api");
 	}
 }

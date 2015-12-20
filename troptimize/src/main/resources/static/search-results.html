@@ -1,0 +1,569 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Ttimz - Your New Travel Partner</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="favicon/manifest.json">
+<link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="favicon/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/typeahead.css">
+<link rel="stylesheet" type="text/css" href="css/datepicker.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+<!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]--> 
+<!-- Header
+    ================================================== -->
+<header>
+  <div class="logo"><a href="index.html"><img src="images/ttimz-logo.svg" class="img-responsive" alt="Ttimz Logo"></a></div>
+<!--Responsive Menu Cotent-->
+<div class="mobilenav">
+  <div class="header-right"> <span class="tel"><a href="tel:1800 258 025"><i class="fa fa-phone"></i> 1800 258 025</a></span>
+    <div class="clearfix"></div>
+    <div class="log-sign-acc"> <span><a href="#"><i class="fa fa-user"></i> my account</a></span> <span><a data-toggle="modal" data-target=".signup-pop"><i class="fa fa-pencil"></i> sign up</a></span> <span><a data-toggle="modal" data-target=".login-pop"><i class="fa fa-sign-in"></i> login</a></span> </div>
+  </div>
+  </div>
+<!-- Responsive Menu Icon --> 
+<a href="javascript:void(0)" class="icon-menu">
+<div class="hamburger">
+  <div class="menui top-menu"></div>
+  <div class="menui mid-menu"></div>
+  <div class="menui bottom-menu"></div>
+</div>
+</a>
+</header>
+
+<!-- Inner Search
+    ================================================== -->
+        <!-- Filter Search Icon Open --> 
+<a href="javascript:void(0)" class="icon-filter">Search Filter</a>
+    <!--Filter Content-->
+    <div class="filter-search">
+<div class="main-search-container-inner tab-content">
+  <a href="javascript:void(0)" class="icon-filter">Close</a>
+<!--Dayout Search-->
+  <div class="main-search-inner" style="display:block;">
+  <!-- Filter Search Icon Close --> 
+    <form method="get" action="search-results.html" class="filter-inner">
+      <div class="col-md-4 padding-reset">
+        <label>Where do you want to go?</label>
+        <input id="dayout-location" class="home-location-box" type="text" placeholder="Enter a location" required />
+      </div>
+      <div class="col-md-2 padding-reset">
+        <label>Date</label>
+        <input type="text" class="form-control date-input textbox textbox-padding-reset" id="date-fld1" placeholder="Select Date" required/>
+      </div>
+      <div class="col-md-2 padding-reset">
+        <label>Adult</label>
+        <div class="input-group">
+          <input type="text" data-ride="spinner" id="dayout-adult" class="form-control input-number textbox textbox-padding-reset" value="1">
+          <span class="input-group-btn">
+          <button type="button" class="btn btn-default" data-value="decrease" data-target="#dayout-adult" data-toggle="spinner"> <span class="glyphicon glyphicon-minus"></span> </button>
+          </span> <span class="input-group-btn">
+          <button type="button" class="btn btn-default" data-value="increase" data-target="#dayout-adult" data-toggle="spinner"> <span class="glyphicon glyphicon-plus"></span> </button>
+          </span> </div>
+      </div>
+      <div class="col-md-2 padding-reset">
+        <label>Child</label>
+        <div class="input-group">
+          <input type="text" data-ride="spinner" id="dayout-child" class="form-control input-number textbox textbox-padding-reset" value="0">
+          <span class="input-group-btn">
+          <button type="button" class="btn btn-default" data-value="decrease" data-target="#dayout-child" data-toggle="spinner"> <span class="glyphicon glyphicon-minus"></span> </button>
+          </span> <span class="input-group-btn">
+          <button type="button" class="btn btn-default" data-value="increase" data-target="#dayout-child" data-toggle="spinner"> <span class="glyphicon glyphicon-plus"></span> </button>
+          </span> </div>
+      </div>
+      <div class="col-md-2 padding-reset">
+        <button class="searchbtn" type="submit"><i class="fa fa-search"></i> SEARCH</button>
+      </div>
+    </form>
+  </div>
+  <div class="clearfix"></div>
+  <!--Hotel Search-->
+  <div class="main-search-inner" style="display:none;">
+    <form method="get" action="search-results.html" class="filter-inner">
+      <div class="col-md-4 padding-reset">
+        <label>Where do you want to go?</label>
+        <input id="hotel-location" class="home-location-box" type="text" placeholder="Enter a city name /  Hotel name" required>
+      </div>
+      <div class="col-md-2 padding-reset col-12-custom-reset">
+        <label>Check-In</label>
+        <input type="text" class="form-control date-input textbox textbox-padding-reset" id="date-fld1" placeholder="Select Date" required />
+      </div>
+      <div class="col-md-2 padding-reset col-12-custom-reset">
+        <label>Check-Out</label>
+        <input type="text" class="form-control date-input textbox textbox-padding-reset" id="date-fld1" placeholder="Select Date" required />
+      </div>
+      <div class="col-md-2 padding-reset col-12-custom-reset">
+        <label>Adult</label>
+        <div class="input-group">
+          <input type="text" data-ride="spinner" id="hotel-adult" class="form-control input-number textbox textbox-padding-reset" value="1">
+          <span class="input-group-btn">
+          <button type="button" class="btn btn-default" data-value="decrease" data-target="#hotel-adult" data-toggle="spinner"> <span class="glyphicon glyphicon-minus"></span> </button>
+          </span> <span class="input-group-btn">
+          <button type="button" class="btn btn-default" data-value="increase" data-target="#hotel-adult" data-toggle="spinner"> <span class="glyphicon glyphicon-plus"></span> </button>
+          </span> </div>
+      </div>
+      <div class="col-md-2 padding-reset col-12-custom-reset">
+        <label>Child</label>
+        <div class="input-group">
+          <input type="text" data-ride="spinner" id="hotel-child" class="form-control input-number textbox textbox-padding-reset" value="0">
+          <span class="input-group-btn">
+          <button type="button" class="btn btn-default" data-value="decrease" data-target="#hotel-child" data-toggle="spinner"> <span class="glyphicon glyphicon-minus"></span> </button>
+          </span> <span class="input-group-btn">
+          <button type="button" class="btn btn-default" data-value="increase" data-target="#hotel-child" data-toggle="spinner"> <span class="glyphicon glyphicon-plus"></span> </button>
+          </span> </div>
+      </div>
+      <div class="col-md-2 padding-reset col-12-custom-reset">
+        <button class="searchbtn" type="submit"><i class="fa fa-search"></i> SEARCH</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!--Filter-->
+<div class="filter-container" style="display:block;">
+  <div class="filter-content">
+    <h1><i class="fa fa-filter"></i> Filter</h1>
+    <form name="filter" method="post" action="">
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_0">
+        Banaswadi</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_1">
+        Majestic</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_2">
+        Banaswadi</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_3">
+        Majestic</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_4">
+        Banaswadi</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_5">
+        Majestic</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_6">
+        Banaswadi</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_7">
+        Majestic</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_8">
+        Majestic</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_9">
+        Banaswadi</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_10">
+        Majestic</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_11">
+        Banaswadi</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_12">
+        Majestic</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_13">
+        Majestic</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_14">
+        Banaswadi</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_15">
+        Majestic</label>
+    </form>
+  </div>
+</div>
+</div>
+<!--Filter Content End-->
+<div class="inner-content-container-main">
+  <div class="inner-content-container">
+    <h1>day-out resorts</h1>
+    <div class="offer">
+      <ul>
+        <li><i class="fa fa-tags"></i> Get free room night with 4 bookings</li>
+        <li><i class="fa fa-tags"></i> Get 50% discount for all bookings</li>
+      </ul>
+    </div>
+    <div class="vertical-line"></div>
+    <!--Result-->
+    <h2>Low Cost</h2>
+    <div class="search-result-box-container">
+      <div class="search-result-box">
+        <div class="left-area">
+          <div class="col-md-6 padding-reset">
+            <h1>Golden Palm Resort</h1>
+            <div class="stars"><i class="fa fa-star star-filled"></i><i class="fa fa-star star-filled"></i><i class="fa fa-star star-filled"></i><i class="fa fa-star-o star-blank"></i><i class="fa fa-star-o star-blank"></i></div>
+          </div>
+          <div class="col-md-6 padding-reset">
+            <p><strong>Review - Good</strong></p>
+            <p><strong>2 hrs drive from Majestic</strong></p>
+          </div>
+          <div class="col-md-12 padding-reset">
+            <div class="thumbs">
+              <div><a href="details-page.html">
+                <h1>Sit Out Area</h1>
+                <img src="gallery/1.jpg" width="219" height="176"></a></div>
+              <div><a href="details-page.html">
+                <h1>Front View</h1>
+                <img src="gallery/2.jpg" width="219" height="176"></a></div>
+              <div><a href="details-page.html">
+                <h1>Guest Waiting Room</h1>
+                <img src="gallery/3.jpg" width="219" height="176"></a></div>
+              <div><a href="details-page.html">
+                <h1>Sit Out Area</h1>
+                <img src="gallery/4.jpg" width="219" height="176"></a></div>
+            </div>
+          </div>
+          <div class="vertical-line"></div>
+          <div class="desc">
+            <h1>What you get</h1>
+            <ul>
+              <li>Food</li>
+              <li>Resort Facilities</li>
+              <li>Resort Facilities</li>
+              <li>Indor games</li>
+              <li>Outdoor games</li>
+              <li>Other facilities</li>
+              <li>Resort Facilities</li>
+              <li>Resort Facilities</li>
+              <li>Indor games</li>
+              <li>Outdoor games</li>
+              <li>Other facilities</li>
+            </ul>
+          </div>
+        </div>
+        <div class="right-area"> 
+          <!--Dayout Search-->
+          <div class="result-search" style="display:block">
+            <div class="col-md-6 padding-reset">
+              <label>Date</label>
+              <input type="text" class="form-control date-input" id="date-fld1" placeholder="Select Date"/>
+            </div>
+            <div class="col-md-3 padding-reset">
+              <label>Adult</label>
+              <select name="adult">
+              <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+            <div class="col-md-3 padding-reset">
+              <label>Child</label>
+              <select name="child">
+              <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+          </div>
+          <!--Hotel Search-->
+          <div class="result-search" style="display:none">
+            <div class="col-md-4 padding-reset">
+              <label>Check-In</label>
+              <input type="text" class="form-control date-input" id="date-fld1" placeholder="Select Date"/>
+            </div>
+            <div class="col-md-4 padding-reset">
+              <label>Check-Out</label>
+              <input type="text" class="form-control date-input" id="date-fld1" placeholder="Select Date"/>
+            </div>
+            <div class="col-md-2 padding-reset">
+              <label>Adult</label>
+              <select name="adult">
+              <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+            <div class="col-md-2 padding-reset">
+              <label>Child</label>
+              <select name="child">
+              <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+          </div>
+          <form action="details-page.html" method="post">
+            <div class="clearfix"></div>
+            <div class="price-area">
+              <div class="panel-group" id="accordion">
+                <!--Price for Day-Out-->
+                <div class="panel panel-default">                
+                  <div class="panel-heading">
+                    <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#price-for-dayout">Price for Day-Out</a> </h4>
+                  </div>
+                  <div id="price-for-dayout" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                      <div class="details">
+                      <label><b>(Child 50% of Adult Price)</b> - Below 2.9 feet</label>
+                        <div class="radio">
+                          <label>
+                            <input  type="radio" name="price" value="radio" checked />
+                            Breakfast, Lunch with Games 
+                            (9am to 5pm) – Rs.1050.00 Per Person</label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="price" value="radio" />
+                            OnlyLunch with Games 
+                            (12 noon to 3pm) – Rs.850 per person</label>
+                        </div>
+                        
+                        <div class="radio">
+                          <label>
+                            <input name="price" type="radio"  value="radio"/>
+                            <a class="tooltip-show" data-placement="bottom" data-toggle="tooltip" 
+      title="2 Adult+ 1Child Free+1Child Free">All 3 Breakfast, Lunch, Dinner with Games 
+                            (9am to 5pm) – Rs.2000</a></label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="price"  value="radio" />
+                            Breakfast (7am to 8am) Rs.250 per person</label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="price"  value="radio" />
+                            <a class="tooltip-show" data-placement="bottom" data-toggle="tooltip" 
+      title="Only Couple">Only Lunch (1pm to 2pm) Rs.850</a></label>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--Price for Others-->
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#others">Others</a> </h4>
+                  </div>
+                  <div id="others" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <div class="details">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="others-price" value="radio" />
+                            Lorem ipsum dolor sit amet, consectetur adipisicing</label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="others-price" value="radio" />
+                            Incididunt ut labore et dolore magna aliqua</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-default book-now-btn">book now</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!--More Results Button-->
+      <div class="vertical-line line-position"></div>
+      <button class="more-results-btn" type="submit"><i class="fa fa-arrow-down"></i> more <i class="fa fa-arrow-down"></i></button>
+    </div>
+    <!--Result End--> 
+  </div>
+</div>
+<div class="clearfix"></div>
+<footer>
+  <div class="quick-links">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="aboutus.html">About Us</a></li>
+      <li><a href="help.html">Help</a></li>
+      <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+      <li><a href="list-your-properties.html">List your Properties</a></li>
+    </ul>
+  </div>
+  <div class="social">
+    <ul>
+      <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+      <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+      <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+    </ul>
+  </div>
+  <div class="copyright">2014-15 © TR Optimiz Private Limited - All rights reserved</div>
+</footer>
+<!-- Login Popup -->
+<div class="modal fade login-pop" tabindex="-1" role="dialog" aria-labelledby="login">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="col-md-12 padding-reset">
+        <h1>Log In</h1>
+      </div>
+      <div class="col-md-6 padding-reset">
+        <form>
+          <input type="text" class="form-control textbox-signup" placeholder="Email Address" required />
+          <input type="password" class="form-control textbox-signup" placeholder="Password" required />
+          <input name="" class="checkbox" type="checkbox" value="" />
+          <label class="pull-left">Remember me</label>
+          <label class="pull-right"><a data-toggle="modal" data-target=".reset-pop" data-dismiss="modal">Forgot password?</a></label>
+          <div class="clearfix"></div>
+          <button class="common-button" type="submit">LOG IN</button>
+        </form>
+      </div>
+      <div class="col-md-1">
+        <div class="login-devider">
+          <div class="or">OR</div>
+        </div>
+      </div>
+      <div class="col-md-5 padding-reset">
+        <div class="social-signup-icon google"><a href="#"><i class="fa fa-google"></i> Log In with Google</a></div>
+        <div class="social-signup-icon fb"><a href="#"><i class="fa fa-facebook"></i> Log In with Facebook</a></div>
+      </div>
+      <div class="clearfix"></div>
+      <label class="signup-bottom">Don’t have an account? <a data-toggle="modal" data-target=".signup-pop" data-dismiss="modal">Sign up</a></label>
+    </div>
+  </div>
+</div>
+<!-- Forgot Password Popup -->
+<div class="modal fade reset-pop" tabindex="-1" role="dialog" aria-labelledby="reset-password">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="col-md-12 padding-reset">
+        <h1>Reset Password</h1>
+      </div>
+      <div class="col-md-12 padding-reset">
+        <form>
+          <label>Enter the email address associated with your account, and we'll email you a link to reset your password.</label>
+          <input type="text" class="form-control textbox-signup" placeholder="Email Address" required />
+          <button class="common-button" type="submit">SEND RESET LINK</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Signup Popup -->
+<div class="modal fade signup-pop" tabindex="-1" role="dialog" aria-labelledby="signup">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="col-md-12 padding-reset">
+        <h1>Sign Up with Email</h1>
+      </div>
+      <div class="col-md-6 padding-reset">
+        <form>
+          <input type="text" class="form-control textbox-signup" placeholder="First Name" required />
+          <input type="text" class="form-control textbox-signup" placeholder="Last Name" required />
+          <input type="text" class="form-control textbox-signup" placeholder="Email Address" required />
+          <input type="password" class="form-control textbox-signup" placeholder="Password" required />
+          <input name="" class="checkbox" type="checkbox" value="" required />
+          <label>By signing up, I agree to Ttimz's <br>
+            <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+          <div class="clearfix"></div>
+          <button class="common-button" type="submit">SIGN UP</button>
+        </form>
+      </div>
+      <div class="col-md-1">
+        <div class="signup-devider">
+          <div class="or">OR</div>
+        </div>
+      </div>
+      <div class="col-md-5 padding-reset">
+        <div class="social-signup-icon google"><a href="#"><i class="fa fa-google"></i> Sign Up with Google</a></div>
+        <div class="social-signup-icon fb"><a href="#"><i class="fa fa-facebook"></i> Sign Up with Facebook</a></div>
+      </div>
+      <div class="clearfix"></div>
+      <label class="signup-bottom">Already an Ttimz member? <a data-toggle="modal" data-target=".login-pop" data-dismiss="modal">Log in</a></label>
+    </div>
+  </div>
+</div>
+<!-- Responsive Menu -->
+<script src="js/jquery.min.js"> </script>
+<script src="js/responsive-menu.js"> </script>
+<link rel="stylesheet" href="css/responsive-menu.css">
+<!--Common Scripts-->
+<script src="js/vendor/bootstrap.min.js"></script> 
+<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script> 
+<script src="js/main.js"></script> 
+<script src="js/bootstrap-tabcollapse.js"></script> 
+<script src="js/bootstrap-spinner.js"></script> 
+<script src="js/mousehold.js"></script> 
+<script src="js/typeahead.min.js"></script> 
+<script type='text/javascript' src="js/bootstrap-datepicker.min.js"></script> 
+<script type="text/javascript" src="js/jquery-validate.bootstrap-tooltip.js" /></script> 
+<script type='text/javascript' src="js/enscroll-0.6.0.min.js"></script> 
+<!--Result Thumbs-->
+<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+<script type="text/javascript" src="slick/slick.min.js"></script>  
+<script>
+$('.thumbs').slick({
+  dots: false,
+  infinite: true,
+  autoplay: true,
+  arrows: true,
+  speed: 700,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+    responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3
+      }
+    },
+    {
+      breakpoint: 730,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    },
+	{
+      breakpoint: 320,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+});
+ </script> 
+</body>
+</html>

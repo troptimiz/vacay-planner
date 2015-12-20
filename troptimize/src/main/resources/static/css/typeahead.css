@@ -1,0 +1,52 @@
+.tt-dropdown-menu {
+	text-align: left;
+}
+.typeahead, .tt-query, .tt-hint {
+	float: left;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	font-weight: 300;
+	padding: 10px 30px 10px 10px;
+	width: 100% !important;
+	border: none;
+	outline: none;
+	border-radius: 0;
+	color: #000;
+	height: 42px;
+	background: url(../images/pin.jpg) no-repeat right #fff;
+}
+.typeahead {
+	background-color: #fff;
+}
+.typeahead:focus {
+}
+.tt-query {
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.tt-hint {
+	color: #999
+}
+.tt-dropdown-menu {
+	min-width: 326px;
+	background-color: #fff;
+	-webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+	box-shadow: 0 5px 10px rgba(0,0,0,.2);
+	padding:10px 0
+}
+.tt-suggestion {
+	font-family: 'Montserrat', sans-serif;
+	padding: 3px 20px;
+	font-size: 15px;
+	line-height: 24px;
+	color: #000;
+}
+.tt-suggestion.tt-is-under-cursor {
+	color: #fff;
+	background-color: #ed3824;
+}
+.tt-suggestion p {
+	margin: 0;
+}
