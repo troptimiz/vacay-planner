@@ -1,0 +1,31 @@
+db = db.getSiblingDB("ekin-core");
+db.students.drop();
+
+db.Students.save({
+   _id: 1,
+   firstName: 'John', 
+   lastName: 'John'
+});
+
+db.Students.save({
+   _id: 2,
+   firstName: 'Ram', 
+   lastName: 'Ram'
+});
+
+db.Students.save({
+   _id: 3,
+   firstName: 'Abhi', 
+   lastName: 'Abhi'
+});
+
+db.Students.save({
+   _id: 4,
+   firstName: 'Hello', 
+   lastName: 'Hello'
+});
+db.Students.save({
+   _id: 5,
+   firstName: 'Sam', 
+   lastName: 'Sam'
+});
