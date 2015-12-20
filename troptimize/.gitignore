@@ -1,0 +1,7 @@
+#ignore below files/folders
+.classpath
+.project
+bin/
+.gradle
+.settings
+build/
