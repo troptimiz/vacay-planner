@@ -1,8 +1,0 @@
-package com.vacayplanner.model
-
-class Tariffs {
-	
-	String description
-	double cost
-
-}

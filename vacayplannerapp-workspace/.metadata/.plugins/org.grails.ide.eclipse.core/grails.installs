@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
-<installs>
-<install is-default="true">
-<home>/Users/raghavan/ggts-bundle/grails-2.4.3/</home>
-<name>Grails 2.4.3</name>
-</install>
-</installs>
