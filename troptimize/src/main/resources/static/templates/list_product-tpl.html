@@ -1,0 +1,186 @@
+{{~it.content :value:index}}
+<div class="search-result-box">
+    <div class="left-area">
+        <div class="col-md-6 padding-reset">
+            <h1>{{=value.name}}</h1>
+
+            <div class="stars"><i class="fa fa-star star-filled"></i><i class="fa fa-star star-filled"></i><i
+                    class="fa fa-star star-filled"></i><i class="fa fa-star-o star-blank"></i><i
+                    class="fa fa-star-o star-blank"></i></div>
+        </div>
+        <div class="col-md-6 padding-reset">
+            <p><strong>Review - Good({{=value.starRating}})</strong></p>
+
+            <p><strong><strike>2 hrs drive from Majestic</strike>{{=value.routeTips}}</strong></p>
+        </div>
+        <div class="col-md-12 padding-reset">
+            <div class="thumbs">
+                <div><a href="details-page.html">
+                    <h1>Sit Out Area</h1>
+                    <img src="gallery/1.jpg" width="219" height="176"></a></div>
+                <div><a href="details-page.html">
+                    <h1>Front View</h1>
+                    <img src="gallery/2.jpg" width="219" height="176"></a></div>
+                <div><a href="details-page.html">
+                    <h1>Guest Waiting Room</h1>
+                    <img src="gallery/3.jpg" width="219" height="176"></a></div>
+                <div><a href="details-page.html">
+                    <h1>Sit Out Area</h1>
+                    <img src="gallery/4.jpg" width="219" height="176"></a></div>
+            </div>
+        </div>
+        <div class="vertical-line"></div>
+        <div class="desc">
+            <h1>What you get</h1>
+            <ul>
+                <li>Food</li>
+                <li>Resort Facilities</li>
+                <li>Resort Facilities</li>
+                <li>Indor games</li>
+                <li>Outdoor games</li>
+                <li>Other facilities</li>
+                <li>Resort Facilities</li>
+                <li>Resort Facilities</li>
+                <li>Indor games</li>
+                <li>Outdoor games</li>
+                <li>Other facilities</li>
+            </ul>
+        </div>
+    </div>
+    <div class="right-area">
+        <!--Dayout Search-->
+        <div class="result-search" style="display:block">
+            <div class="col-md-6 padding-reset">
+                <label>Date</label>
+                <input type="text" class="form-control date-input" id="date-fld1" placeholder="Select Date"/>
+            </div>
+            <div class="col-md-3 padding-reset">
+                <label>Adult</label>
+                <select name="adult">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <div class="col-md-3 padding-reset">
+                <label>Child</label>
+                <select name="child">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+        </div>
+        <!--Hotel Search-->
+        <div class="result-search" style="display:none">
+            <div class="col-md-4 padding-reset">
+                <label>Check-In</label>
+                <input type="text" class="form-control date-input" id="date-fld1" placeholder="Select Date"/>
+            </div>
+            <div class="col-md-4 padding-reset">
+                <label>Check-Out</label>
+                <input type="text" class="form-control date-input" id="date-fld1" placeholder="Select Date"/>
+            </div>
+            <div class="col-md-2 padding-reset">
+                <label>Adult</label>
+                <select name="adult">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <div class="col-md-2 padding-reset">
+                <label>Child</label>
+                <select name="child">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+        </div>
+        <form action="details-page.html" method="post">
+            <div class="clearfix"></div>
+            <div class="price-area">
+                <div class="panel-group" id="accordion">
+                    <!--Price for Day-Out-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                       href="#price-for-dayout">Price for Day-Out</a></h4>
+                        </div>
+                        <div id="price-for-dayout" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="details">
+                                    <label><b>(Child 50% of Adult Price)</b> - Below 2.9 feet</label>
+
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="price" value="radio" checked/>
+                                            Breakfast, Lunch with Games
+                                            (9am to 5pm) – Rs.1050.00 Per Person</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="price" value="radio"/>
+                                            OnlyLunch with Games
+                                            (12 noon to 3pm) – Rs.850 per person</label>
+                                    </div>
+
+                                    <div class="radio">
+                                        <label>
+                                            <input name="price" type="radio" value="radio"/>
+                                            <a class="tooltip-show" data-placement="bottom" data-toggle="tooltip"
+                                               title="2 Adult+ 1Child Free+1Child Free">All 3 Breakfast, Lunch, Dinner
+                                                with Games
+                                                (9am to 5pm) – Rs.2000</a></label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="price" value="radio"/>
+                                            Breakfast (7am to 8am) Rs.250 per person</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="price" value="radio"/>
+                                            <a class="tooltip-show" data-placement="bottom" data-toggle="tooltip"
+                                               title="Only Couple">Only Lunch (1pm to 2pm) Rs.850</a></label>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Price for Others-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#others">Others</a>
+                            </h4>
+                        </div>
+                        <div id="others" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="details">
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="others-price" value="radio"/>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="others-price" value="radio"/>
+                                            Incididunt ut labore et dolore magna aliqua</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-default book-now-btn">book now</button>
+            </div>
+        </form>
+    </div>
+</div>
+{{~}}
