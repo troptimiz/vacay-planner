@@ -4,7 +4,7 @@
     var $productListContainer = $('.productListContainer');
 
     globals.sendJSONRequest(URL, 'GET', '', '', function (data) {
-        var productList = globals.sendJSONRequest(tpl,'GET','','',function(templ){
+        globals.sendJSONRequest(tpl,'GET','','',function(templ){
         	var tempFn = doT.template(templ);
         	console.log(JSON.toString(data));
         	productList = tempFn(data);

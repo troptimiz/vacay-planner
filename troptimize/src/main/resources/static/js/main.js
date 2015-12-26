@@ -14,12 +14,6 @@ $(function() {
 
 });
 
-// Datepicker
-$(window).load(function() {
-	$(".date-input").datepicker({
-		autoclose : true
-	});
-});
 
 // Home Search Tab
 $(function() {

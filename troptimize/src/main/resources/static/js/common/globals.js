@@ -12,16 +12,18 @@ globals.path = {
     api: {
         product: {
             listing: '',
-            details: ''
+            details:'/troptimize/product'
         },
         search: {
             results: '/troptimize/product'
         }
     },
     templates: {
-        productList: 'templates/list_product-tpl.html'
+        productList: 'templates/list_product-tpl.html',
+        productImages: 'templates/product-details_images.html'
     }
 };
+
 /**
  * Send JSON Request
  */
@@ -30,6 +32,11 @@ globals.path = {
 	 * Global initializations
 	 */
 	gb.initialize = function () {
+		// Datepicker
+		$(".date-input").datepicker({
+			autoclose : true
+		});
+		
 		$('.thumbs').slick({
 			  dots: false,
 			  infinite: true,
@@ -70,6 +77,10 @@ globals.path = {
 			  ]
 			});
 	};
+	
+	gb.pgSlideshowInitialize = function () {
+		$('.productSlideshow').pgwSlideshow();
+	};
 
     /**
      * Global function to send ajax request.
@@ -101,14 +112,10 @@ globals.path = {
      * @param JSONData
      * @returns {*}
      */
-    gb.getTemplate = function (tpl, JSONData) {
-        console.log('getTemplate initialized');
-        resultText = '';
-        $.get(tpl, function (templ) {
-            var tempFn = doT.template(templ);
-            resultText = tempFn(JSONData);
+    gb.getTemplate = function (tpl, JSONData, callback) {
+        $.get(tpl, callback || function(data){
+        	console.log("No callback");
         });
-        return resultText;
     };
     
 })(globals);
