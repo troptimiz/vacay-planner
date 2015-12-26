@@ -1,3 +1,4 @@
+define(['jquery'], function(jQuery){
 /**
  * @preserve
  * jQuery Validation Bootstrap Tooltip extention v0.10.0
@@ -78,3 +79,4 @@
     },
   });
 }(jQuery));
+});

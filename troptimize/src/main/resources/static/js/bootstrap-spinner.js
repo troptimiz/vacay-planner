@@ -1,3 +1,5 @@
+define(['jquery'], function(jQuery){
+
 /* ========================================================================
  * Bootstrap: spinner.js v3.1.1
  * http://github.com/indigojs
@@ -154,4 +156,5 @@
     })
   })
 
-}(jQuery);
+}(jQuery)
+});

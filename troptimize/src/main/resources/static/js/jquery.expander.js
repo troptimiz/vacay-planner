@@ -1,3 +1,4 @@
+define(['jquery'], function(jQuery){
 /*!
  * Expander - v1.4.8 - 2014-05-01
  * http://plugins.learningjquery.com/expander/
@@ -409,3 +410,4 @@
   // plugin defaults
   $.fn.expander.defaults = $.expander.defaults;
 })(jQuery);
+});

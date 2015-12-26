@@ -1,3 +1,5 @@
+define(['jquery'], function(jQuery) {
+
 !function ($) {
 
     "use strict";
@@ -234,4 +236,6 @@
     $.fn.tabCollapse.Constructor = TabCollapse;
 
 
-}(window.jQuery);
+}(jQuery);
+
+});

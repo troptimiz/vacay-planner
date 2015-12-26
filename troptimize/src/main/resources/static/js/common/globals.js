@@ -36,7 +36,22 @@ globals.path = {
 		$(".date-input").datepicker({
 			autoclose : true
 		});
+
+		//tooltip
+		$('.tooltip-show').tooltip({
+        	trigger : 'manual'
+        }).tooltip('show');
 		
+		$('#dayout-location, #hotel-location').typeahead({
+    		name : 'countries',
+
+    		// data source
+    		prefetch : 'data/countries.json',
+
+    		// max item numbers list in the dropdown
+    		limit : 10
+    	});
+
 		$('.thumbs').slick({
 			  dots: false,
 			  infinite: true,

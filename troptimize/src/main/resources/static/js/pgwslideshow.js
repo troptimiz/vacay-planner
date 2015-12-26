@@ -1,3 +1,4 @@
+define(['jquery'], function(jQuery){
 /**
  * PgwSlideshow - Version 2.0
  *
@@ -871,4 +872,5 @@
 
         return this;
     }
-})(window.Zepto || window.jQuery);
+})(window.Zepto || jQuery);
+});

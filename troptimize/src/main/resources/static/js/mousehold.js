@@ -1,3 +1,4 @@
+define(['jquery'], function(jQuery) {
 /* ========================================================================
  * mousehold.js v1.0.0
  * http://github.com/indigojs
@@ -56,3 +57,4 @@
   })
 
 }(jQuery);
+});

@@ -1,16 +1,27 @@
 define(
     [
         'jquery',
+        'bootstrap',
         '../../common/globals',
         'slick',
-        'datepicker'
-
+        'datepicker',
+        'pgwslideshow',
+        'responsive-menu',
+        '../../main',
+        'bspinner',
+        'boostrap-tooltip'
     ],
     function( 
         $,
+        bootstrap,
         core,
         slick,
-        datepicker
+        datepicker,
+        pgwslideshow,
+        responsiveMenu,
+        main,
+        bspinner,
+        btooltip
     ) {
             
         'use strict';
@@ -28,22 +39,11 @@ define(
                 globals.sendJSONRequest(URL, 'GET', '', '', function (data) {
                 	var prodListContent = productList.render(data);
                 	$productListContainer.html(prodListContent).promise().done(function(){
-                		globals.initialize();
+                		globals.initialize();                		
                 	});
-                });                
+                }); 
+                
             }
          )
     }
 );
-
-/*
- * (function(ts){ var URL = globals.path.api.search.results; var tpl =
- * globals.path.templates.productList; var $productListContainer =
- * $('.productListContainer');
- * 
- * globals.sendJSONRequest(URL, 'GET', '', '', function (data) {
- * globals.sendJSONRequest(tpl,'GET','','',function(templ){ var tempFn =
- * doT.template(templ); console.log(JSON.toString(data)); productList =
- * tempFn(data); $productListContainer.html(productList); globals.initialize();
- * }); }); })(ttimz);
- */

@@ -1,19 +1,4 @@
-// Autotype
-$(function() {
-
-	// applied typeahead to the text input box
-	$('#dayout-location, #hotel-location').typeahead({
-		name : 'countries',
-
-		// data source
-		prefetch : 'data/countries.json',
-
-		// max item numbers list in the dropdown
-		limit : 10
-	});
-
-});
-
+define(['jquery','typeahead','btab','enscroll'],function($, typeahead, btab, enscroll){
 
 // Home Search Tab
 $(function() {
@@ -21,18 +6,14 @@ $(function() {
 });
 
 // Scrollbar
-$(function() {
 	$('.details').enscroll({
 		showOnHover : false,
 		verticalTrackClass : 'track',
 		verticalHandleClass : 'handle'
 	});
-});
 
 // Tooltip pop
-$('.tooltip-show').tooltip({
-	trigger : 'manual'
-}).tooltip('show');
+
 
 // Sildeshow
 $(document).ready(function() {
@@ -51,4 +32,6 @@ $(document).ready(function() {
 //									// Less.
 //	});
 //	$('div.expandDiv').expander();
+});
+
 });
