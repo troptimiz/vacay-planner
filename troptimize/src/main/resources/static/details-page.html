@@ -49,9 +49,11 @@
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/typeahead.css">
 <link rel="stylesheet" type="text/css" href="css/datepicker.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/pgwslideshow.css" />
+<link rel="stylesheet" href="css/responsive-menu.css">
+<link rel="stylesheet" type="text/css" href="css/details-tabs.css"/>
+
 </head>
 <body onload="initialize()">
 	<!--[if lt IE 8]>
@@ -252,12 +254,12 @@
 				<div class="left">
 					<div class="white-box">
 						<ul class="productSlideshow">
-							
+							<li><div class="loader"></div></li>
 						</ul>
 					</div>
 					<div class="white-box">
 						<div class="product-details-tabs">
-							
+							<div class="loader"></div>
 						</div>
 					</div>
 				</div>
@@ -993,39 +995,14 @@
 				</div>
 			</div>
 		</div>
-		<!-- Responsive Menu -->
-		<script src="js/jquery.min.js">
-			
-		</script>
-		<script src="js/responsive-menu.js">
-			
-		</script>
-		<link rel="stylesheet" href="css/responsive-menu.css">
-		<!--Common Scripts-->
-		<script src="js/vendor/bootstrap.min.js"></script>
-		<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-		<script src="js/main.js"></script>
-		<script src="js/bootstrap-tabcollapse.js"></script>
-		<script src="js/bootstrap-spinner.js"></script>
-		<script src="js/mousehold.js"></script>
-		<script src="js/typeahead.min.js"></script>
-		<script type='text/javascript' src="js/bootstrap-datepicker.min.js"></script>
-		<script type="text/javascript"
-			src="js/jquery-validate.bootstrap-tooltip.js" /></script>
-		<script type="text/javascript" src="js/jquery.validate-1.14.0.min.js" /></script>
-		<script type='text/javascript' src="js/enscroll-0.6.0.min.js"></script>
-		<!--Details Tabs-->
-		<link rel="stylesheet" type="text/css" href="css/details-tabs.css" />
-		<script src="js/details-tabs.js"></script>
-		<script src="js/pgwslideshow.js"></script>
+		
+		<!-- <script type="text/javascript" src="js/pages/product-details.js"></script> -->
+		
+		<script src="js/vendor/require.js" data-main="js/pages/productdetails"></script>
 
-		<script type="text/javascript" src="js/vendor/doT.min.js"></script>
-		<script type="text/javascript" src="js/common/globals.js"></script>
-		<script type="text/javascript" src="js/pages/product-details.js"></script>
-		
-		
 		<!--Custom Map-->
-		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript"
+			src="http://maps.google.com/maps/api/js?sensor=false"></script>
 		<script type="text/javascript">
 			function CustomMarker(latlng, map) {
 				this.latlng_ = latlng;
@@ -1111,10 +1088,5 @@
 				overlay.setMap(null);
 			}
 		</script>
-		<!--Gallery-->
-		<!-- 
-		 -->
-		<!--Read More-->
-		<script src="js/jquery.expander.js"></script>
 </body>
 </html>

@@ -33,6 +33,8 @@ require.config({
 		'mousehold' : '../../js/mousehold',
 		//bootstrap tool tip
 		'boostrap-tooltip' : '../../js/jquery-validate.bootstrap-tooltip',
+		//expander
+		'expander' : '../../js/jquery.expander',
 		
 		// Plugins
 		'text' : 'plugins/text',

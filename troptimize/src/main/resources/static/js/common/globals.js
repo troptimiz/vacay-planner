@@ -19,8 +19,9 @@ globals.path = {
         }
     },
     templates: {
-        productList: 'templates/list_product-tpl.html',
-        productImages: 'templates/product-details_images.html'
+        productList: '/troptimize/templates/list_product-tpl.html',
+        productImages: '/troptimize/templates/product-details_images.html',
+        productSpecs : '/troptimize/templates/product-details_tabs.html'
     }
 };
 
@@ -42,6 +43,7 @@ globals.path = {
         	trigger : 'manual'
         }).tooltip('show');
 		
+		//typeahead		
 		$('#dayout-location, #hotel-location').typeahead({
     		name : 'countries',
 

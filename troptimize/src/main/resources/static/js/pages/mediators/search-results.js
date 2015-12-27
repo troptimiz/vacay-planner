@@ -26,9 +26,10 @@ define(
             
         'use strict';
         var path = 'templates/list_product-tpl.html';
+        var tpl = globals.path.templates.productList;
         require(
             [
-                'tpl!/troptimize/templates/list_product-tpl.html'
+                'tpl!'+tpl
             ], 
             function (
                 productList
