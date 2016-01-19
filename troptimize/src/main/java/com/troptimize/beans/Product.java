@@ -1,7 +1,14 @@
 package com.troptimize.beans;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author m4ver1k
@@ -35,6 +42,30 @@ public class Product {
 	
 	private String emailAddress;
 	
+	private List<Address> addresses;
+	
+	private List<ClassificationGroup> classifications;
+	
+	private List<Image> images;
+	
+	@JsonIgnore
+	private List<Map<String, String>> facilities;
+	
+	private List<Package> packages;
+	
+	private List<PhoneNumber> phoneNumbers;
+	
+	private List<Map<String, String>> termsAndConditions;
+	
+	private List<Map<String, String>> amenities;
+	
+	private List<Map<String, String>> taxes;
+	
+	@Transient
+	private List<Facility> facilityDetails;
+	
+	
+	@Field("is_active")
 	private Boolean active;
 
 	public String getId() {
@@ -139,5 +170,85 @@ public class Product {
 
 	public void setActive(Boolean active) {
 		this.active = active;
+	}
+
+	public List<Address> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
+	}
+
+	public List<ClassificationGroup> getClassifications() {
+		return classifications;
+	}
+
+	public void setClassifications(List<ClassificationGroup> classifications) {
+		this.classifications = classifications;
+	}
+
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
+	}
+
+	public List<Map<String, String>> getFacilities() {
+		return facilities;
+	}
+
+	public void setFacilities(List<Map<String, String>> facilities) {
+		this.facilities = facilities;
+	}
+
+	public List<Package> getPackages() {
+		return packages;
+	}
+
+	public void setPackages(List<Package> packages) {
+		this.packages = packages;
+	}
+
+	public List<PhoneNumber> getPhoneNumbers() {
+		return phoneNumbers;
+	}
+
+	public void setPhoneNumbers(List<PhoneNumber> phoneNumbers) {
+		this.phoneNumbers = phoneNumbers;
+	}
+
+	public List<Map<String, String>> getTermsAndConditions() {
+		return termsAndConditions;
+	}
+
+	public void setTermsAndConditions(List<Map<String, String>> termsAndConditions) {
+		this.termsAndConditions = termsAndConditions;
+	}
+
+	public List<Map<String, String>> getAmenities() {
+		return amenities;
+	}
+
+	public void setAmenities(List<Map<String, String>> amenities) {
+		this.amenities = amenities;
+	}
+
+	public List<Map<String, String>> getTaxes() {
+		return taxes;
+	}
+
+	public void setTaxes(List<Map<String, String>> taxes) {
+		this.taxes = taxes;
+	}
+
+	public List<Facility> getFacilityDetails() {
+		return facilityDetails;
+	}
+
+	public void setFacilityDetails(List<Facility> facilityDetails) {
+		this.facilityDetails = facilityDetails;
 	}
 }
