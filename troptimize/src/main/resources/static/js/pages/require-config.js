@@ -11,6 +11,7 @@ require.config({
 
 		// jQuery
 		'jquery' : '../../js/jquery.min',
+		'url' : '../../js/url.min',
 		//responsive-menu
 		'responsive-menu': '../../js/responsive-menu',
 		//bootstrap
@@ -43,6 +44,8 @@ require.config({
 		
 		// Templating
 		'dot' : '../../js/vendor/doT.min',
+		
+		'raty':'../../js/jquery.raty'
 	},
 	waitSeconds : 200
 });

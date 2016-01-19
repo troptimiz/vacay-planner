@@ -12,10 +12,11 @@ globals.path = {
     api: {
         product: {
             listing: '',
-            details:'/troptimize/product'
+            details:'/troptimize/product',
+            facility:'facilities'
         },
         search: {
-            results: '/troptimize/product'
+            results: '/troptimize/product/search'
         }
     },
     templates: {
@@ -45,10 +46,10 @@ globals.path = {
 		
 		//typeahead		
 		$('#dayout-location, #hotel-location').typeahead({
-    		name : 'countries',
+    		name : 'cities-simple',
 
     		// data source
-    		prefetch : 'data/countries.json',
+    		prefetch : 'data/cities-simple.json',
 
     		// max item numbers list in the dropdown
     		limit : 10

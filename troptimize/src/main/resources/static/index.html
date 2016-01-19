@@ -35,6 +35,8 @@
 <link rel="stylesheet" href="css/typeahead.css">
 <link rel="stylesheet" type="text/css" href="css/datepicker.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/responsive-menu.css">
+<link rel="stylesheet" href="css/jquery.raty.css">
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -74,10 +76,10 @@
       <!--Dayout Tab Content-->
       
       <div class="tab-pane fade in active" id="dayout">
-        <form method="post" action="search-results.html">
+        <form method="get" action="search-results.html">
           <div class="col-md-4 padding-reset">
             <label>Where do you want to go?</label>
-            <input id="dayout-location" class="home-location-box" type="text" placeholder="Enter a location" required />
+            <input id="dayout-location" name="dayout-location" class="home-location-box" type="text" placeholder="Enter a location" required />
           </div>
           <div class="col-md-2 padding-reset">
             <label>Date</label>
@@ -364,11 +366,15 @@
     });
 </script>
 <!-- Responsive Menu -->
-<script src="js/responsive-menu.js"> </script>
-<link rel="stylesheet" href="css/responsive-menu.css">
+
+
 <!--Common Scripts-->
-<script src="js/vendor/bootstrap.min.js"></script> 
 <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script> 
+
+<!-- 
+
+<script src="js/vendor/bootstrap.min.js"></script> 
+
 <script src="js/main.js"></script> 
 <script src="js/bootstrap-tabcollapse.js"></script> 
 <script src="js/bootstrap-spinner.js"></script> 
@@ -376,6 +382,8 @@
 <script src="js/typeahead.min.js"></script> 
 <script type='text/javascript' src="js/bootstrap-datepicker.min.js"></script> 
 <script type="text/javascript" src="js/jquery-validate.bootstrap-tooltip.js" /></script> 
-<script type="text/javascript" src="js/jquery.validate-1.14.0.min.js" /></script> 
+<script type="text/javascript" src="js/jquery.validate-1.14.0.min.js" /></script>  -->
+<script src="js/vendor/require.js" data-main="js/pages/index"></script>
+
 </body>
 </html>

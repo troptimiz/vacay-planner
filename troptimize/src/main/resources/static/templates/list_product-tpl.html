@@ -3,47 +3,30 @@
     <div class="left-area">
         <div class="col-md-6 padding-reset">
             <h1>{{=value.name}}</h1>
-
-            <div class="stars"><i class="fa fa-star star-filled"></i><i class="fa fa-star star-filled"></i><i
-                    class="fa fa-star star-filled"></i><i class="fa fa-star-o star-blank"></i><i
-                    class="fa fa-star-o star-blank"></i></div>
+            <div class="star-rating" data-score="{{=value.starRating}}"></div>
         </div>
-        <div class="col-md-6 padding-reset">
-            <p><strong>Review - Good({{=value.starRating}})</strong></p>
+        <div class="col-md-6 padding-reset" >
+            <p style="display:none"><strong>Review - Good({{=value.starRating}})</strong></p>
 
-            <p><strong><strike>2 hrs drive from Majestic</strike>{{=value.routeTips}}</strong></p>
+            <p style="display:none"><strong>{{=value.routeTips}}</strong></p>
         </div>
         <div class="col-md-12 padding-reset">
             <div class="thumbs">
+                {{~value.images:ivalue:iindex}}
                 <div><a href="details-page.html">
-                    <h1>Sit Out Area</h1>
-                    <img src="gallery/1.jpg" width="219" height="176"></a></div>
-                <div><a href="details-page.html">
-                    <h1>Front View</h1>
-                    <img src="gallery/2.jpg" width="219" height="176"></a></div>
-                <div><a href="details-page.html">
-                    <h1>Guest Waiting Room</h1>
-                    <img src="gallery/3.jpg" width="219" height="176"></a></div>
-                <div><a href="details-page.html">
-                    <h1>Sit Out Area</h1>
-                    <img src="gallery/4.jpg" width="219" height="176"></a></div>
+                    <h1>{{=ivalue.captionText}}</h1>
+                    <img src="http://admin-troptimiz.rhcloud.com/uploads/{{=value.category}}/{{=ivalue.imageUrl}}" width="219" height="176"></a>
+                </div>
+                {{~}}
             </div>
         </div>
         <div class="vertical-line"></div>
         <div class="desc">
             <h1>What you get</h1>
             <ul>
-                <li>Food</li>
-                <li>Resort Facilities</li>
-                <li>Resort Facilities</li>
-                <li>Indor games</li>
-                <li>Outdoor games</li>
-                <li>Other facilities</li>
-                <li>Resort Facilities</li>
-                <li>Resort Facilities</li>
-                <li>Indor games</li>
-                <li>Outdoor games</li>
-                <li>Other facilities</li>
+                {{~value.facilityDetails:fvalue:findex}}
+                <li>{{=fvalue.name}}</li>
+                {{~}}
             </ul>
         </div>
     </div>
@@ -102,7 +85,7 @@
                 </select>
             </div>
         </div>
-        <form action="details-page.html" method="post">
+        <form action="details-page.html" method="get">
             <div class="clearfix"></div>
             <div class="price-area">
                 <div class="panel-group" id="accordion">
@@ -115,47 +98,20 @@
                         <div id="price-for-dayout" class="panel-collapse collapse in">
                             <div class="panel-body">
                                 <div class="details">
-                                    <label><b>(Child 50% of Adult Price)</b> - Below 2.9 feet</label>
-
+                                    <label style="display:none"><b>(Child 50% of Adult Price)</b> - Below 2.9 feet</label>
+									{{~value.packages:pvalue:pindex}}
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="price" value="radio" checked/>
-                                            Breakfast, Lunch with Games
-                                            (9am to 5pm) – Rs.1050.00 Per Person</label>
+                                            <input type="radio" name="package" value="{{=pvalue.id}}" checked/>
+                                           {{=pvalue.title}} – Rs.{{=pvalue.cost}} Per Person</label>
                                     </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="price" value="radio"/>
-                                            OnlyLunch with Games
-                                            (12 noon to 3pm) – Rs.850 per person</label>
-                                    </div>
-
-                                    <div class="radio">
-                                        <label>
-                                            <input name="price" type="radio" value="radio"/>
-                                            <a class="tooltip-show" data-placement="bottom" data-toggle="tooltip"
-                                               title="2 Adult+ 1Child Free+1Child Free">All 3 Breakfast, Lunch, Dinner
-                                                with Games
-                                                (9am to 5pm) – Rs.2000</a></label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="price" value="radio"/>
-                                            Breakfast (7am to 8am) Rs.250 per person</label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="price" value="radio"/>
-                                            <a class="tooltip-show" data-placement="bottom" data-toggle="tooltip"
-                                               title="Only Couple">Only Lunch (1pm to 2pm) Rs.850</a></label>
-                                    </div>
-
+									{{~}}
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!--Price for Others-->
-                    <div class="panel panel-default">
+                    <div class="panel panel-default" style="display:none">
                         <div class="panel-heading">
                             <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#others">Others</a>
                             </h4>
@@ -178,6 +134,7 @@
                         </div>
                     </div>
                 </div>
+                <input type="hidden" name="pid" value={{=value.id}}>
                 <button type="submit" class="btn btn-default book-now-btn">book now</button>
             </div>
         </form>

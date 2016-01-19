@@ -78,7 +78,7 @@
     <form method="get" action="search-results.html" class="filter-inner">
       <div class="col-md-4 padding-reset">
         <label>Where do you want to go?</label>
-        <input id="dayout-location" class="home-location-box" type="text" placeholder="Enter a location" required />
+        <input id="dayout-location" name="dayout-location" class="home-location-box" type="text" placeholder="Enter a location" required />
       </div>
       <div class="col-md-2 padding-reset">
         <label>Date</label>
@@ -152,7 +152,7 @@
   </div>
 </div>
 <!--Filter-->
-<div class="filter-container" style="display:block;">
+<div class="filter-container" style="display:none;">
   <div class="filter-content">
     <h1><i class="fa fa-filter"></i> Filter</h1>
     <form name="filter" method="post" action="">

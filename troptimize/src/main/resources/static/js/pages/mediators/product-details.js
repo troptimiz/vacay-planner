@@ -10,7 +10,9 @@ define(
         '../../main',
         'bspinner',
         'boostrap-tooltip',
-        'expander'
+        'expander',
+        'raty',
+        'url'
     ],
     function( 
         $,
@@ -23,7 +25,9 @@ define(
         main,
         bspinner,
         btooltip,
-        expander
+        expander,
+        raty,
+        url
     ) {
             
         'use strict';
@@ -43,17 +47,25 @@ define(
                 var tpl = globals.path.templates.productImages;
                 var $productImagesContainer = $('.productSlideshow');
                 var $productTabsContainer = $('.product-details-tabs');
-                var productId = window.location.href.split('id=')[1];
-                URL = URL+'/'+productId;                
-            	
+                var productId = $.url('?pid');
+                var selectedPackageId=$.url('?package');
+                URL = URL+'/'+productId;   
+                
                 globals.sendJSONRequest(URL, 'GET', '', '', function (data) {
+                	data.selpackage=selectedPackageId;
+                	
                 	var productImages = tplImages.render(data);
                 	var productTabs = tplSpecs.render(data);
                 	
                 	$productImagesContainer.html(productImages);
                 	$productTabsContainer.html(productTabs);
-                    globals.pgSlideshowInitialize();
+
+                	globals.pgSlideshowInitialize();
                     globals.initialize();
+                   
+                    $("#name").text(data.name);
+                    $(".star-rating").raty({  score: data.starRating}); 
+                    
                 });
                 
             }
