@@ -1,0 +1,26 @@
+<div class="class-list">
+    <div class="item-container">
+        <h2>Sales</h2>
+        <table class="vacay-table">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Contact Number</th>
+                <th>Booking Date</th>
+                <th>Total Amount</th>
+            </tr>
+            {{#each bookingList}}
+                <tr>
+                    <td>{{this.firstName}}</td>
+                    <td>{{this.lastName}}</td>
+                    <td>{{this.email}}</td>
+                    <td>{{this.contactNumnber}}</td>
+                    <td>{{this.bookingDate}}</td>
+                    <td>{{this.totalAmount}}</td>
+                </tr>
+
+            {{/each}}
+        </table>
+    </div>
+</div>

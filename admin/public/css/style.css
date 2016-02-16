@@ -117,7 +117,7 @@ body {
 }
 /* line 101, ../sass/style.scss */
 .admin-result-container .dashboad-list {
-  width: 40%;
+  width: 50%;
 }
 /* line 104, ../sass/style.scss */
 .admin-result-container .category-list, .admin-result-container .dashboad-list {
@@ -223,7 +223,7 @@ body {
 }
 /* line 192, ../sass/style.scss */
 .admin-result-container .category-list .list-item a.item-stats, .admin-result-container .dashboad-list .list-item a.item-stats {
-  background: #7992BF;
+  background: #7992A0;
   border: 1px solid #6884b7;
 }
 /* line 196, ../sass/style.scss */
