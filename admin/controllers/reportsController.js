@@ -36,11 +36,13 @@ reportsController.get('/bookings',function(req,res){
     });
 });
 
-reportsController.get('/bookings/:status', function(req,res){
-    bookings.find({status:req.params.status}, function(err, bookings){
-        res.status(200).json({'data':bookings});
-    })
-})
+reportsController.get('/cancellations',function(req,res){
+    bookings.find({status:'Cancelled'},function(err,booking){
+        Countries.find({},function (err, countries){
+            res.render("cancellation-list",{'bookingList':booking,countries:countries,layout:'list'});
+        });
+    });
+});
 
 
 module.exports = reportsController;
