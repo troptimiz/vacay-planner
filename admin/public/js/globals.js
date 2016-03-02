@@ -1441,8 +1441,7 @@ obj = {
                 $(nRow).find('.delete-edit-container a.delete').attr('href','/pricerules/priceruleDelete/'+aData['_id']);
             }
 		});
-        $('.pricerule-list-table')
-            .hide();
+        $('.pricerule-list-table').hide();
         $(tableObj).parents('div.pricerule-list-table').show();
     },
     confirm:function(msg){
