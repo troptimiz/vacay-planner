@@ -12,6 +12,7 @@ $(document).ready(function(){
     var listObj = [{ "data": "firstName" },
         {"data":"lastName"},
         {"data":"email"},
+		{"data":"country_code"},
         {"data":"contactNumnber"},
         {"data":"bookingDate"},
         {"data":"totalAmount"}
@@ -76,18 +77,19 @@ $(document).ready(function(){
         });
     });
 	
-	$( "#from" ).on('change', function () {
-		tableObject.dataTable().fnFilter( $(this).val() );
+	$( "#from" ).on('change', function () {		
+		renderTable();
 	});
 	
 	$( "#to" ).on('change', function () {
-		tableObject.dataTable().fnFilter( $(this).val() );
+		renderTable();
 	});
 	
 	$( "#from" ).datepicker({
       defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 1,
+	  dateFormat: 'dd/mm/yy',
       onClose: function( selectedDate ) {
         $( "#to" ).datepicker( "option", "minDate", selectedDate );
       }
@@ -96,8 +98,36 @@ $(document).ready(function(){
       defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 1,
+	  dateFormat: 'dd/mm/yy',
       onClose: function(selectedDate ) {
         $( "#from" ).datepicker( "option", "maxDate", selectedDate );
       }
     });
+	function renderTable() {
+		var stDate = $( "#from" ).val();
+		var enDate = $( "#to" ).val();
+		var formData = '?startDate='+stDate;
+		if (enDate) {
+			formData = formData+'&endDate='+enDate;
+		}
+		
+		var url = '/reports/getByDate'+formData;
+		tableObject.dataTable().fnClearTable();
+		
+		tableObject.dataTable({
+			"processing": true,
+			"ajax": url,
+			"columns": listObj,
+			"destroy": true,
+			"pageLength": 10,
+			bFilter: true,
+			bInfo: false,
+			"ordering":false,
+			"bLengthChange": false,
+			dom: 'Bfrtip',
+			buttons: [
+				'copy', 'csv', 'excel', 'pdf', 'print'
+			]
+		});
+	}
 });
