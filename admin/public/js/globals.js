@@ -179,7 +179,7 @@ obj = {
             $('.price-field').attr('placeholder',placeHolder);
         });
         
-        $('.pricerule-list').find('ul li').find(':checkbox').on('click',function(){
+        $('.pricerule-list').find(':checkbox').on('click',function(){
             var checkedVal = $(this).val();
             var productId = $("#productId").val();
             var packageId = $("#packageId").val();
@@ -190,7 +190,7 @@ obj = {
                     url : '/products/packages/addpricerule/'+productId+'/'+packageId+'/'+checkedVal,
                     method:'POST',
                     success: function(data){
-                        $('.packageMsg').html('<span>"'+$this.parent("li").text()+'"</span> Added Successfully').hide().fadeIn(1000,function(){
+                        $('.packageMsg').html('Selected Price Rule <span>Added</span> Successfully').hide().fadeIn(1000,function(){
                             setTimeout(function(){
                                 $('.packageMsg').fadeOut(1000,function(){
                                     $('.packageMsg').html("")
@@ -208,7 +208,7 @@ obj = {
                     url:'/products/packages/updatepricerule/'+productId+'/'+packageId+'/'+checkedVal,
                     method:'DELETE',
                     success:function(){
-                        $('.packageMsg').html('<span>"'+$this.parent("li").text()+'"</span> Deleted Successfully').hide().fadeIn(1000,function(){
+                        $('.packageMsg').html('Price Rule <span>Deleted</span> Successfully').hide().fadeIn(1000,function(){
                             setTimeout(function(){
                                 $('.packageMsg').fadeOut(1000,function(){
                                     $('.packageMsg').html("")
