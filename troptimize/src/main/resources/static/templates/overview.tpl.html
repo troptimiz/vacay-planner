@@ -1,0 +1,81 @@
+  {{?it.bookingStatus==="PAYMENT_SUCESSFUL"}}
+  <p>Your Booking is being processed and you will be notified over e-mail once confirmed by Hotel/Resort.</p>
+  {{?? true}}
+   <p>Your payment have <strong>failed</strong> please contact us for any assistance.</p>
+  
+  {{?}}
+          <div class="vertical-line"></div>
+ <div class="col-md-4 col-sm-4 padding-reset" >
+            <p><strong>Route</strong></p>
+          </div>
+          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
+          <div class="col-md-7 col-sm-7 padding-reset">
+            <p>{{=it.product.routeTips}}</p>
+          </div>
+          <div class="vertical-line"></div>
+ <div class="col-md-4 col-sm-4 padding-reset">
+            <p><strong>Resort Details</strong></p>
+          </div>
+          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
+          <div class="col-md-7 col-sm-7 padding-reset">
+            <p>{{=it.product.actualName}}<br>
+              {{=it.product.addresses[0].address1}}, <br>
+              {{=it.product.addresses[0].address2}}, <br>
+              {{=it.product.addresses[0].city}}, <br>
+              {{=it.product.addresses[0].state}}, <br>
+              {{=it.product.addresses[0].postalCode}}, <br>
+              Contact Number - {{=it.product.phoneNumbers[0].contactNumber}}</p>
+          </div>
+          <div class="vertical-line"></div>
+          <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Primary Guest Name</strong></p></div>
+          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
+          <div class="col-md-7 col-sm-7 padding-reset"><p>{{=it.firstName}}</p></div>
+          
+          <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Booking Date </strong></p></div>
+          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
+          <div class="col-md-7 col-sm-7 padding-reset"><p>{{=it.bookingDate}}</p></div>
+          
+          <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Check-In Date</strong></p></div>
+          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
+          <div class="col-md-7 col-sm-7 padding-reset"><p>{{=it.checkInDate}}</p></div>
+          {{?it.checkoutDate}}
+          <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Check-Out Date</strong></p></div>
+          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
+          <div class="col-md-7 col-sm-7 padding-reset"><p>{{=it.checkoutDate}}</p></div>
+          {{?}}
+          <!-- <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Time</strong></p></div>
+          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
+          <div class="col-md-7 col-sm-7 padding-reset"><p>8am to 6pm</p></div>
+          
+          <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Total Nights</strong></p></div>
+          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
+          <div class="col-md-7 col-sm-7 padding-reset"><p>4</p></div>
+          
+          <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Total Rooms </strong></p></div>
+          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
+          <div class="col-md-7 col-sm-7 padding-reset"><p>2</p></div>
+           -->
+          <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Total Gents</strong></p></div>
+          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
+          <div class="col-md-7 col-sm-7 padding-reset"><p>{{=it.numOfGents}}</p></div>
+          
+          <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Total Ladies</strong></p></div>
+          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
+          <div class="col-md-7 col-sm-7 padding-reset"><p>{{=it.numOfLadies}}</p></div>
+          
+          <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Total Child</strong></p></div>
+          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
+          <div class="col-md-7 col-sm-7 padding-reset"><p>{{=it.numOfChild}}</p></div>
+          
+          <!-- <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Extra Guest</strong></p></div>
+          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
+          <div class="col-md-7 col-sm-7 padding-reset"><p>0</p></div> -->
+          <div class="vertical-line"></div>
+          <div class="col-md-4 col-sm-4 padding-reset">
+            <p><strong>Package Includes</strong></p>
+          </div>
+          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
+          <div class="col-md-7 col-sm-7 padding-reset">
+            <p><strong>{{=it.selectedPackage.title}}</strong></p>
+		<p>{{=it.selectedPackage.description}}</p>
+          </div>

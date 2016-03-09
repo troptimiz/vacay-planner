@@ -31,12 +31,60 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/responsive-menu.css">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/typeahead.css">
 <link rel="stylesheet" type="text/css" href="css/datepicker.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+ <script src="https://apis.google.com/js/api:client.js"></script>
+ 
+ <script>
+ var googleUser = {};
+ var startApp = function() {
+   gapi.load('auth2', function(){
+     // Retrieve the singleton for the GoogleAuth library and set up the client.
+     auth2 = gapi.auth2.init({
+       client_id: '371916229194-mbgso91vdsd2f3a6rmac86q0rapfag9m.apps.googleusercontent.com',
+       cookiepolicy: 'single_host_origin',
+       // Request scopes in addition to 'profile' and 'email'
+       //scope: 'additional_scope'
+     });
+     attachSignin(document.getElementById('google-btn'));
+   });
+ };
+
+ function attachSignin(element) {
+   auth2.attachClickHandler(element, {},
+       function(googleUser) {
+	   globals.security.googleLogin(googleUser);
+       
+       
+       }, function(error) {
+         alert(JSON.stringify(error, undefined, 2));
+       });
+ }
+ </script>
+ <script src="js/jspdf.min.js" ></script>
 </head>
 <body>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '144680732583690',
+      xfbml      : true,
+      version    : 'v2.5',
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]--> 
@@ -48,7 +96,7 @@
   <div class="mobilenav">
     <div class="header-right"> <span class="tel"><a href="tel:1800 258 025"><i class="fa fa-phone"></i> 1800 258 025</a></span>
       <div class="clearfix"></div>
-      <div class="log-sign-acc"> <span><a href="#"><i class="fa fa-user"></i> my account</a></span> <span><a data-toggle="modal" data-target=".signup-pop"><i class="fa fa-pencil"></i> sign up</a></span> <span><a data-toggle="modal" data-target=".login-pop"><i class="fa fa-sign-in"></i> login</a></span> </div>
+      <div class="log-sign-acc"> <span class="my-acc"><a href="#"><i class="fa fa-user"></i> my account</a></span> <span class="h-signup"><a data-toggle="modal" data-target=".signup-pop"><i class="fa fa-pencil"></i> sign up</a></span> <span class="h-login"><a data-toggle="modal" data-target=".login-pop"><i class="fa fa-sign-in"></i> login</a></span><span class="logout" style="display:none"><form id="logout-form" action="/troptimize/logout" method="post"><a class="logout-btn" href="#" ><i class="fa fa-sign-out"></i> logout</a></form> </span></div>
     </div>
   </div>
   <!-- Responsive Menu Icon --> 
@@ -69,108 +117,24 @@
         <div class="clearfix"></div>
         <div class="left-area">
           <div class="red">Thank you for using Ttimz</div>
-          <p>Your Booking is confirmed at <strong>Confident Resort at Bangalore on 25-dec-2014</strong> and confirmation number is: <strong>ELIBLR111</strong></p>
-          <div class="vertical-line"></div>
-          <div class="col-md-4 col-sm-4 padding-reset">
-            <p><strong>Route</strong></p>
-          </div>
-          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
-          <div class="col-md-7 col-sm-7 padding-reset">
-            <p>1st reach Mysore road - Ramnagar (Reach Ramnagar)</p>
-          </div>
-          <div class="vertical-line"></div>
-          <div class="col-md-4 col-sm-4 padding-reset">
-            <p><strong>Resort Details</strong></p>
-          </div>
-          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
-          <div class="col-md-7 col-sm-7 padding-reset">
-            <p>Confident Amoon Galmour Resort + Spa<br>
-              NH4, Old Madras Road, <br>
-              Near Hoskote, Bangalore <br>
-              Contact Number - +91 895478958</p>
-          </div>
-          <div class="vertical-line"></div>
-          <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Primary Guest Name</strong></p></div>
-          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
-          <div class="col-md-7 col-sm-7 padding-reset"><p>Aftab Alam</p></div>
-          
-          <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Booking Date </strong></p></div>
-          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
-          <div class="col-md-7 col-sm-7 padding-reset"><p>01-Oct-2015</p></div>
-          
-          <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Check-In Date</strong></p></div>
-          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
-          <div class="col-md-7 col-sm-7 padding-reset"><p>Mon, 25 Oct 2015</p></div>
-          
-          <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Check-Out Date</strong></p></div>
-          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
-          <div class="col-md-7 col-sm-7 padding-reset"><p>Wed, 28 Oct 2015</p></div>
-          
-          <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Time</strong></p></div>
-          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
-          <div class="col-md-7 col-sm-7 padding-reset"><p>8am to 6pm</p></div>
-          
-          <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Total Nights</strong></p></div>
-          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
-          <div class="col-md-7 col-sm-7 padding-reset"><p>4</p></div>
-          
-          <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Total Rooms </strong></p></div>
-          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
-          <div class="col-md-7 col-sm-7 padding-reset"><p>2</p></div>
-          
-          <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Total Gents</strong></p></div>
-          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
-          <div class="col-md-7 col-sm-7 padding-reset"><p>3</p></div>
-          
-          <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Total Ladies</strong></p></div>
-          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
-          <div class="col-md-7 col-sm-7 padding-reset"><p>2</p></div>
-          
-          <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Total Child</strong></p></div>
-          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
-          <div class="col-md-7 col-sm-7 padding-reset"><p>2</p></div>
-          
-          <div class="col-md-4 col-sm-4 padding-reset"><p><strong>Extra Guest</strong></p></div>
-          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
-          <div class="col-md-7 col-sm-7 padding-reset"><p>0</p></div>
-          <div class="vertical-line"></div>
-          <div class="col-md-4 col-sm-4 padding-reset">
-            <p><strong>Package Includes</strong></p>
-          </div>
-          <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
-          <div class="col-md-7 col-sm-7 padding-reset">
-            <p><strong>Breakfast, Lunch, Dinner with Games</strong></p>
-<p>Breakfast, Lunch (Welcome Drink, Breakfast, Buffet Lunch, High Tea Usage of Swimming Pool) Volley Ball, Kids Play Area</p>
-          </div>
+          <!-- <p>Your Booking is confirmed at <strong>Confident Resort at Bangalore on 25-dec-2014</strong> and confirmation number is: <strong>ELIBLR111</strong></p> -->
+        
+         
+         
+         <div id="details">
+         
+         </div>
+         
+         
+         
           <div class="vertical-line"></div>
           <div class="col-md-4 col-sm-4 padding-reset">
             <p><strong>Price Details</strong></p>
           </div>
           <div class="col-md-1 col-sm-1 padding-reset hyphen"><p>-</p></div>
           <div class="col-md-7 col-sm-7 padding-reset">
-            <table class="table borderless">
-            <tbody>
-            <tr>
-              <td width="42%">Adult - 1800 x 2</td>
-              <td width="8%">=</td>
-              <td width="50%">3600.00</td>
-            </tr>
-            <tr>
-              <td>Child - 1800 x 2</td>
-              <td>=</td>
-              <td>3600.00</td>
-            </tr>
-            <tr>
-              <td>Service Tax - 400 x 2</td>
-              <td>=</td>
-              <td>800.00</td>
-            </tr>
-            <tr>
-              <td>Service Fee - 400 x 2</td>
-              <td>=</td>
-              <td>800.00</td>
-            </tr>
-          </tbody>
+            <table class="table borderless" id="pricingDetails">
+            
             </table>
           </div>
           <div class="vertical-line"></div>
@@ -178,14 +142,14 @@
             <div class="youpay">You pay all inclusive</div>
           </div>
           <div class="col-md-7 col-sm-7 padding-reset">
-            <div class="red">Rs. 8800</div>
+            <div class="red" id="total"></div>
           </div>
           <div class="vertical-line"></div>
           <div class="col-md-3 col-sm-3 padding-reset">
-          <button type="submit" class="btn btn-default book-now-btn">save</button>
+          <button type="submit" class="btn btn-default book-now-btn" onClick="globals.savepdf()">save</button>
           </div>
           <div class="col-md-3 col-sm-3 padding-reset left-padding">
-          <button type="submit" class="btn btn-default book-now-btn">print</button>
+          <button type="submit" class="btn btn-default book-now-btn" onclick="javascript:window.print();">print</button>
           </div>
         </div>
         <div class="right-area"> 
@@ -198,7 +162,7 @@
           <div class="vertical-line"></div>
           <h3>Call us on: 1800 258 025</h3>
           </div>
-          <div class="helpbox">
+          <div class="helpbox" style="display:none">
           <h4>My Account</h4>
           <div class="vertical-line"></div>
           <h5>Login for:</h5>
@@ -484,15 +448,15 @@
         <h1>Log In</h1>
       </div>
       <div class="col-md-6 padding-reset">
-        <form>
-          <input type="text" class="form-control textbox-signup" placeholder="Email Address" required />
-          <input type="password" class="form-control textbox-signup" placeholder="Password" required />
-          <input name="" class="checkbox" type="checkbox" value="" />
-          <label class="pull-left">Remember me</label>
-          <label class="pull-right"><a data-toggle="modal" data-target=".reset-pop" data-dismiss="modal">Forgot password?</a></label>
+      <!--  	<form class="login-form"> -->
+          <input type="text" class="form-control textbox-signup login-uname" name="username" placeholder="Email Address" required />
+          <input type="password" class="form-control textbox-signup login-pass" name="password" placeholder="Password" required />
+          <input  class="checkbox login-remember" name="remember-me" type="checkbox"/>
+          <label class="pull-left">Remember me</label><label class="pull-right"><a data-toggle="modal" data-target=".reset-pop" data-dismiss="modal">Forgot password?</a></label>
           <div class="clearfix"></div>
-          <button class="common-button" type="submit">LOG IN</button>
-        </form>
+          <button class="common-button log-in">LOG IN</button>
+          <label id="badlogin" style="color: #ed3824;display:none">The username/password that you've entered is incorrect.</label>
+       <!-- </form>  -->
       </div>
       <div class="col-md-1">
         <div class="login-devider">
@@ -500,8 +464,8 @@
         </div>
       </div>
       <div class="col-md-5 padding-reset">
-        <div class="social-signup-icon google"><a href="#"><i class="fa fa-google"></i> Log In with Google</a></div>
-        <div class="social-signup-icon fb"><a href="#"><i class="fa fa-facebook"></i> Log In with Facebook</a></div>
+        <div class="social-signup-icon google"><a  id="google-btn" href="#"><i class="fa fa-google"></i> Log In with Google</a></div>
+        <div class="social-signup-icon fb"><a class="fb-login" href="#"><i class="fa fa-facebook"></i> Log In with Facebook</a></div>
       </div>
       <div class="clearfix"></div>
       <label class="signup-bottom">Don’t have an account? <a data-toggle="modal" data-target=".signup-pop" data-dismiss="modal">Sign up</a></label>
@@ -517,7 +481,7 @@
       </div>
       <div class="col-md-12 padding-reset">
         <form>
-          <label>Enter the email address associated with your account, and we'll email you a link to reset your password.</label>
+        <label>Enter the email address associated with your account, and we'll email you a link to reset your password.</label>
           <input type="text" class="form-control textbox-signup" placeholder="Email Address" required />
           <button class="common-button" type="submit">SEND RESET LINK</button>
         </form>
@@ -529,41 +493,33 @@
 <div class="modal fade signup-pop" tabindex="-1" role="dialog" aria-labelledby="signup">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
-      <div class="col-md-12 padding-reset">
+      <div class="col-md-8 padding-reset">
         <h1>Sign Up with Email</h1>
       </div>
-      <div class="col-md-6 padding-reset">
+      <div class="col-md-8 padding-reset">
         <form>
-          <input type="text" class="form-control textbox-signup" placeholder="First Name" required />
-          <input type="text" class="form-control textbox-signup" placeholder="Last Name" required />
-          <input type="text" class="form-control textbox-signup" placeholder="Email Address" required />
-          <input type="password" class="form-control textbox-signup" placeholder="Password" required />
+          <input type="text" class="form-control textbox-signup signup-fname" placeholder="First Name" required />
+          <input type="text" class="form-control textbox-signup signup-lname" placeholder="Last Name" required />
+          <input type="text" class="form-control textbox-signup signup-email" placeholder="Email Address" required />
+          <input type="password" class="form-control textbox-signup signup-password" placeholder="Password" required />
           <input name="" class="checkbox" type="checkbox" value="" required />
           <label>By signing up, I agree to Ttimz's <br>
             <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
           <div class="clearfix"></div>
-          <button class="common-button" type="submit">SIGN UP</button>
+          <button class="common-button sign-up">SIGN UP</button>
         </form>
       </div>
-      <div class="col-md-1">
-        <div class="signup-devider">
-          <div class="or">OR</div>
-        </div>
-      </div>
-      <div class="col-md-5 padding-reset">
-        <div class="social-signup-icon google"><a href="#"><i class="fa fa-google"></i> Sign Up with Google</a></div>
-        <div class="social-signup-icon fb"><a href="#"><i class="fa fa-facebook"></i> Sign Up with Facebook</a></div>
-      </div>
+ 
       <div class="clearfix"></div>
       <label class="signup-bottom">Already an Ttimz member? <a data-toggle="modal" data-target=".login-pop" data-dismiss="modal">Log in</a></label>
     </div>
   </div>
 </div>
 <!-- Responsive Menu --> 
-<script src="js/jquery.min.js"> </script> 
+<!-- <script src="js/jquery.min.js"> </script> 
 <script src="js/responsive-menu.js"> </script>
 <link rel="stylesheet" href="css/responsive-menu.css">
-<!--Common Scripts--> 
+Common Scripts 
 <script src="js/vendor/bootstrap.min.js"></script> 
 <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script> 
 <script src="js/main.js"></script> 
@@ -573,6 +529,10 @@
 <script src="js/typeahead.min.js"></script> 
 <script type='text/javascript' src="js/bootstrap-datepicker.min.js"></script> 
 <script type="text/javascript" src="js/jquery-validate.bootstrap-tooltip.js" /></script> 
-<script type='text/javascript' src="js/enscroll-0.6.0.min.js"></script> 
+<script type='text/javascript' src="js/enscroll-0.6.0.min.js"></script> -->
+<!--Common Scripts-->
+<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script> 
+<script src="js/vendor/require.js" data-main="js/pages/overview"></script>
+ <script>startApp();</script> 
 </body>
 </html>

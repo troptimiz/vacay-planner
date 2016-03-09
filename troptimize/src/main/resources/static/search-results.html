@@ -1,3 +1,4 @@
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -38,8 +39,55 @@
 <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
 <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
 <link rel="stylesheet" href="css/responsive-menu.css">
+
+
+ <script src="https://apis.google.com/js/api:client.js"></script>
+ 
+ <script>
+ var googleUser = {};
+ var startApp = function() {
+   gapi.load('auth2', function(){
+     // Retrieve the singleton for the GoogleAuth library and set up the client.
+     auth2 = gapi.auth2.init({
+       client_id: '371916229194-mbgso91vdsd2f3a6rmac86q0rapfag9m.apps.googleusercontent.com',
+       cookiepolicy: 'single_host_origin',
+       // Request scopes in addition to 'profile' and 'email'
+       //scope: 'additional_scope'
+     });
+     attachSignin(document.getElementById('google-btn'));
+   });
+ };
+
+ function attachSignin(element) {
+   auth2.attachClickHandler(element, {},
+       function(googleUser) {
+	   globals.security.googleLogin(googleUser);
+       
+       
+       }, function(error) {
+         alert(JSON.stringify(error, undefined, 2));
+       });
+ }
+ </script>
 </head>
 <body>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '144680732583690',
+      xfbml      : true,
+      version    : 'v2.5',
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]--> 
@@ -51,7 +99,7 @@
 <div class="mobilenav">
   <div class="header-right"> <span class="tel"><a href="tel:1800 258 025"><i class="fa fa-phone"></i> 1800 258 025</a></span>
     <div class="clearfix"></div>
-    <div class="log-sign-acc"> <span><a href="#"><i class="fa fa-user"></i> my account</a></span> <span><a data-toggle="modal" data-target=".signup-pop"><i class="fa fa-pencil"></i> sign up</a></span> <span><a data-toggle="modal" data-target=".login-pop"><i class="fa fa-sign-in"></i> login</a></span> </div>
+    <div class="log-sign-acc"> <span class="my-acc"><a href="#"><i class="fa fa-user"></i> my account</a></span> <span class="h-signup"><a data-toggle="modal" data-target=".signup-pop"><i class="fa fa-pencil"></i> sign up</a></span> <span class="h-login"><a data-toggle="modal" data-target=".login-pop"><i class="fa fa-sign-in"></i> login</a></span><span class="logout" style="display:none"><form id="logout-form" action="/troptimize/logout" method="post"><a class="logout-btn" href="#" ><i class="fa fa-sign-out"></i> logout</a></form> </span></div>
   </div>
   </div>
 <!-- Responsive Menu Icon --> 
@@ -73,21 +121,22 @@
 <div class="main-search-container-inner tab-content">
   <a href="javascript:void(0)" class="icon-filter">Close</a>
 <!--Dayout Search-->
-  <div class="main-search-inner" style="display:block;">
+  <div class="main-search-inner" style="display:none;" id="dayOutSearch">
   <!-- Filter Search Icon Close --> 
     <form method="get" action="search-results.html" class="filter-inner">
+    	<input name="type" value="DAY_OUT" type="hidden"/>	
       <div class="col-md-4 padding-reset">
         <label>Where do you want to go?</label>
-        <input id="dayout-location" name="dayout-location" class="home-location-box" type="text" placeholder="Enter a location" required />
+        <input id="dayout-location" name="location" class="home-location-box" type="text" placeholder="Enter a location" required />
       </div>
       <div class="col-md-2 padding-reset">
         <label>Date</label>
-        <input type="text" class="form-control date-input textbox textbox-padding-reset" id="date-fld1" placeholder="Select Date" required/>
+        <input type="text" name="in-date" class="form-control date-input textbox textbox-padding-reset" id="date-fld1" placeholder="Select Date" required/>
       </div>
       <div class="col-md-2 padding-reset">
         <label>Adult</label>
         <div class="input-group">
-          <input type="text" data-ride="spinner" id="dayout-adult" class="form-control input-number textbox textbox-padding-reset" value="1">
+          <input type="text" data-ride="spinner" name="adult" id="dayout-adult" class="form-control input-number textbox textbox-padding-reset" value="1">
           <span class="input-group-btn">
           <button type="button" class="btn btn-default" data-value="decrease" data-target="#dayout-adult" data-toggle="spinner"> <span class="glyphicon glyphicon-minus"></span> </button>
           </span> <span class="input-group-btn">
@@ -97,7 +146,7 @@
       <div class="col-md-2 padding-reset">
         <label>Child</label>
         <div class="input-group">
-          <input type="text" data-ride="spinner" id="dayout-child" class="form-control input-number textbox textbox-padding-reset" value="0">
+          <input type="text" name="child" data-ride="spinner" id="dayout-child" class="form-control input-number textbox textbox-padding-reset" value="0">
           <span class="input-group-btn">
           <button type="button" class="btn btn-default" data-value="decrease" data-target="#dayout-child" data-toggle="spinner"> <span class="glyphicon glyphicon-minus"></span> </button>
           </span> <span class="input-group-btn">
@@ -111,24 +160,25 @@
   </div>
   <div class="clearfix"></div>
   <!--Hotel Search-->
-  <div class="main-search-inner" style="display:none;">
+  <div class="main-search-inner" style="display:none;" id="hotelSearch">
     <form method="get" action="search-results.html" class="filter-inner">
+     <input name="type" value="HOTEL" type="hidden"/>
       <div class="col-md-4 padding-reset">
         <label>Where do you want to go?</label>
-        <input id="hotel-location" class="home-location-box" type="text" placeholder="Enter a city name /  Hotel name" required>
+        <input id="hotel-location" name="location" class="home-location-box" type="text" placeholder="Enter a location" required>
       </div>
       <div class="col-md-2 padding-reset col-12-custom-reset">
         <label>Check-In</label>
-        <input type="text" class="form-control date-input textbox textbox-padding-reset" id="date-fld1" placeholder="Select Date" required />
+        <input name="in-date" type="text" class="form-control date-input textbox textbox-padding-reset" id="inDate" placeholder="Select Date" required />
       </div>
       <div class="col-md-2 padding-reset col-12-custom-reset">
         <label>Check-Out</label>
-        <input type="text" class="form-control date-input textbox textbox-padding-reset" id="date-fld1" placeholder="Select Date" required />
+        <input name="out-date" type="text" class="form-control date-input textbox textbox-padding-reset" id="outDate" placeholder="Select Date" required />
       </div>
       <div class="col-md-2 padding-reset col-12-custom-reset">
         <label>Adult</label>
         <div class="input-group">
-          <input type="text" data-ride="spinner" id="hotel-adult" class="form-control input-number textbox textbox-padding-reset" value="1">
+          <input name="adult" type="text" data-ride="spinner" id="hotel-adult" class="form-control input-number textbox textbox-padding-reset" value="1">
           <span class="input-group-btn">
           <button type="button" class="btn btn-default" data-value="decrease" data-target="#hotel-adult" data-toggle="spinner"> <span class="glyphicon glyphicon-minus"></span> </button>
           </span> <span class="input-group-btn">
@@ -138,7 +188,7 @@
       <div class="col-md-2 padding-reset col-12-custom-reset">
         <label>Child</label>
         <div class="input-group">
-          <input type="text" data-ride="spinner" id="hotel-child" class="form-control input-number textbox textbox-padding-reset" value="0">
+          <input name="child" type="text" data-ride="spinner" id="hotel-child" class="form-control input-number textbox textbox-padding-reset" value="0">
           <span class="input-group-btn">
           <button type="button" class="btn btn-default" data-value="decrease" data-target="#hotel-child" data-toggle="spinner"> <span class="glyphicon glyphicon-minus"></span> </button>
           </span> <span class="input-group-btn">
@@ -211,7 +261,7 @@
 <!--Filter Content End-->
 <div class="inner-content-container-main">
   <div class="inner-content-container">
-    <h1>day-out resorts</h1>
+    <h1 id="ptype">day-out resorts</h1>
     <div class="offer">
       <ul>
         <li><i class="fa fa-tags"></i> Get free room night with 4 bookings</li>
@@ -221,15 +271,44 @@
     <div class="vertical-line"></div>
     <!--Result-->
     <h2>Low Cost</h2>
-    <div class="search-result-box-container">
-      <div class="productListContainer">
+    <div class="search-result-box-container" id="lowCost">
+    
+      <div id="lowCostList" class="productListContainer">
           <!-- Product Template -->
+          No Products found.
       </div>
       <!--More Results Button-->
       <div class="vertical-line line-position"></div>
-      <button class="more-results-btn" type="submit"><i class="fa fa-arrow-down"></i> more <i class="fa fa-arrow-down"></i></button>
+      <button style="display:none" class="more-results-btn" type="submit"><i class="fa fa-arrow-down"></i> <span>more</span> <i class="fa fa-arrow-down"></i></button>
     </div>
-    <!--Result End--> 
+    <!--Result End-->
+    <div class="vertical-line"></div>
+    <!--Result-->
+    <h2>Mid Cost</h2>
+    <div  class="search-result-box-container" id="midCost">
+      <div id="midCostList" class="productListContainer">
+          No Products found.
+      </div>
+      <!--More Results Button-->
+      <div class="vertical-line line-position"></div>
+      <button style="display:none" class="more-results-btn" type="submit"><i class="fa fa-arrow-down"></i> <span>more</span> <i class="fa fa-arrow-down"></i></button>
+    </div>
+    <!--Result End-->
+    <div class="vertical-line"></div>
+    <!--Result-->
+    <h2>Elite</h2>
+    <div class="search-result-box-container" id="elite">
+      <div id="eliteList" class="productListContainer">
+          <!-- Product Template -->
+          No Products found.
+      </div>
+      <!--More Results Button-->
+      <div class="vertical-line line-position"></div>
+      <button style="display:none" class="more-results-btn" type="submit"><i class="fa fa-arrow-down"></i> <span>more</span> <i class="fa fa-arrow-down"></i></button>
+    </div>
+    <!--Result End-->
+    
+     
   </div>
 </div>
 <div class="clearfix"></div>
@@ -260,15 +339,15 @@
         <h1>Log In</h1>
       </div>
       <div class="col-md-6 padding-reset">
-        <form>
-          <input type="text" class="form-control textbox-signup" placeholder="Email Address" required />
-          <input type="password" class="form-control textbox-signup" placeholder="Password" required />
+       
+          <input type="text" class="form-control textbox-signup login-uname" placeholder="Email Address" required />
+          <input type="password" class="form-control textbox-signup login-pass" placeholder="Password" required />
           <input name="" class="checkbox" type="checkbox" value="" />
           <label class="pull-left">Remember me</label>
           <label class="pull-right"><a data-toggle="modal" data-target=".reset-pop" data-dismiss="modal">Forgot password?</a></label>
           <div class="clearfix"></div>
-          <button class="common-button" type="submit">LOG IN</button>
-        </form>
+          <button class="common-button log-in">LOG IN</button>
+        
       </div>
       <div class="col-md-1">
         <div class="login-devider">
@@ -276,8 +355,8 @@
         </div>
       </div>
       <div class="col-md-5 padding-reset">
-        <div class="social-signup-icon google"><a href="#"><i class="fa fa-google"></i> Log In with Google</a></div>
-        <div class="social-signup-icon fb"><a href="#"><i class="fa fa-facebook"></i> Log In with Facebook</a></div>
+        <div class="social-signup-icon google"><a  id="google-btn" href="#"><i class="fa fa-google"></i> Log In with Google</a></div>
+        <div class="social-signup-icon fb"><a class="fb-login" href="#"><i class="fa fa-facebook"></i> Log In with Facebook</a></div>
       </div>
       <div class="clearfix"></div>
       <label class="signup-bottom">Don’t have an account? <a data-toggle="modal" data-target=".signup-pop" data-dismiss="modal">Sign up</a></label>
@@ -310,23 +389,23 @@
       </div>
       <div class="col-md-6 padding-reset">
         <form>
-          <input type="text" class="form-control textbox-signup" placeholder="First Name" required />
-          <input type="text" class="form-control textbox-signup" placeholder="Last Name" required />
-          <input type="text" class="form-control textbox-signup" placeholder="Email Address" required />
-          <input type="password" class="form-control textbox-signup" placeholder="Password" required />
+          <input type="text" class="form-control textbox-signup signup-fname" placeholder="First Name" required />
+          <input type="text" class="form-control textbox-signup signup-lname" placeholder="Last Name" required />
+          <input type="text" class="form-control textbox-signup signup-email" placeholder="Email Address" required />
+          <input type="password" class="form-control textbox-signup signup-password" placeholder="Password" required />
           <input name="" class="checkbox" type="checkbox" value="" required />
           <label>By signing up, I agree to Ttimz's <br>
             <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
           <div class="clearfix"></div>
-          <button class="common-button" type="submit">SIGN UP</button>
+          <button class="common-button sign-up" type="submit">SIGN UP</button>
         </form>
       </div>
-      <div class="col-md-1">
+      <div class="col-md-1" style="display:none">
         <div class="signup-devider">
           <div class="or">OR</div>
         </div>
       </div>
-      <div class="col-md-5 padding-reset">
+      <div class="col-md-5 padding-reset" style="display:none">
         <div class="social-signup-icon google"><a href="#"><i class="fa fa-google"></i> Sign Up with Google</a></div>
         <div class="social-signup-icon fb"><a href="#"><i class="fa fa-facebook"></i> Sign Up with Facebook</a></div>
       </div>
@@ -341,5 +420,6 @@
 <!-- <script type="text/javascript" src="js/pages/search-results.js"></script> -->
   
 <script src="js/vendor/require.js" data-main="js/pages/search"></script>
+<script>startApp();</script>
 </body>
 </html>

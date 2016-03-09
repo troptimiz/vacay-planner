@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.troptimize.beans.Facility;
 import com.troptimize.beans.Product;
+import com.troptimize.commons.CostClassification;
+import com.troptimize.commons.PropertyClassification;
 import com.troptimize.service.ProductService;
 
 /**
@@ -27,8 +29,8 @@ public class ProductController {
 	
 	
 	@RequestMapping("/search")
-	public Page<Product> searchProduct(@RequestParam("q") String keyword,Pageable pageable){
-		return productService.searchProduct(keyword, pageable);
+	public Page<Product> searchProduct(@RequestParam("q") String keyword,Pageable pageable,@RequestParam("type") PropertyClassification classification,@RequestParam("ctype")CostClassification costClassification){
+		return productService.searchProduct(keyword,classification.getValue(),costClassification.getValue(),pageable);
 	}
 	
 	@RequestMapping
