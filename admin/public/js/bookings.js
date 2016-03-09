@@ -7,15 +7,26 @@ $(document).ready(function(){
         "ordering":false,
         "bLengthChange": false
     });*/
-
+	var page = location.href;
+	var fileName = "sales_report";
+	var dt = "bookingDate";
+	var status = "Confirmed";
+	if(page.split("/").indexOf('cancellations') > 0) {
+		fileName = "cancellation_report";
+		dt = "cancellationDate";
+		status = "Cancelled";
+	}
     var tableObject = $('#bookings');
-    var listObj = [{ "data": "firstName" },
-        {"data":"lastName"},
-        {"data":"email"},
-		{"data":"country_code"},
-        {"data":"contactNumnber"},
-        {"data":"bookingDate"},
-        {"data":"totalAmount"}
+    var listObj = [{ "data": "firstName",render:function(data, type, full, meta) {
+			return full.firstName +" "+ full.lastName
+		} },
+        {"data":dt},
+        {"data":"propertyName"},
+		{"data":"city"},
+        {"data":"numOfAdult"},
+        {"data":"numOfChild"},
+        {"data":"totalAmount"},
+        {"data":"paymentAuthId"}
     ];
 
     var table=tableObject.dataTable({
@@ -26,9 +37,17 @@ $(document).ready(function(){
         "ordering":false,
         "bLengthChange": false,
         dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
+		buttons: [
+			{
+				extend: 'excelHtml5',
+				title: fileName,
+			},
+			{
+				extend: 'pdfHtml5',
+				title: fileName
+			}
+		]
+    
     });
     $('#bookings_filter').hide();
 
@@ -111,7 +130,7 @@ $(document).ready(function(){
 			formData = formData+'&endDate='+enDate;
 		}
 		
-		var url = '/reports/getByDate'+formData;
+		var url = '/reports/getByDate/' + status + formData;
 		tableObject.dataTable().fnClearTable();
 		
 		tableObject.dataTable({
@@ -126,8 +145,20 @@ $(document).ready(function(){
 			"bLengthChange": false,
 			dom: 'Bfrtip',
 			buttons: [
-				'copy', 'csv', 'excel', 'pdf', 'print'
-			]
+			{
+				extend: 'excelHtml5',
+				title: 'sales_report'
+			},
+			{
+				extend: 'pdfHtml5',
+				title: 'sales_report',
+				init: function(dt, node, config) {
+					$("#filename").on('change', function() {
+						config.title = this.value;
+					})
+				}
+			}]
 		});
+		$("#bookings_filter").hide();
 	}
 });

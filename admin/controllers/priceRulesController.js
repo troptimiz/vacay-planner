@@ -24,13 +24,27 @@ priceRulesController.get('/getpricerules/:type',function(req,res){
 priceRulesController.put('/addrules',function(req,res){
     var priceRuleType = req.body.priceRuleType;
     var newPriceRule = {};
+	var ageCriteria;
     if(priceRuleType == "gender"){
         console.log('inside pricerule');
+		if(req.body.ageCriteria == '$btween') {
+			ageCriteria = {
+				valueFrom: req.body.fAge,
+				valueTo: req.body.tAge,
+				criteria: req.body.ageCriteria
+			};
+		} else {
+			ageCriteria = {
+				value: req.body.age,
+				criteria: req.body.ageCriteria
+			};
+		}
         newPriceRule = new priceRules({            
             priceRuleType:req.body.priceRuleType,
             genderType:req.body.gender,
             priceType:req.body.priceType,	
-            price:req.body.genderPrice
+            price:req.body.genderPrice,
+			ageCriteria: ageCriteria
         });   
     } 
     else if(priceRuleType == "event"){
