@@ -60,9 +60,38 @@
                         <div class="pricerule-list" data-selected-list="{{#each productPackage.pricerules}}{{this.priceRuleId}},{{/each}}">
                             <input type="hidden" id="packageId" value="{{productPackage._id}}"/>
                             <ul>
-                                {{#each priceRuleList}}
-                                    <li><input id="{{this._id}}" type="checkbox" value="{{this._id}}"/>{{this.priceRuleType}} {{#with genderType}} ({{../this.genderType}}) {{/with}} - Price Rule - {{this.price}} {{#with priceType}} ({{../this.priceType}}) {{/with}}</li>
-                                {{/each}}
+                                <table class="genaral-table">
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Price Rule Type</th>
+                                        <th>Price</th>
+                                        <th>Price Type</th>
+                                        <th>Gender Type</th>
+                                    </tr>
+
+                                    {{#each priceRuleList}}
+                                    <tr>
+                                        <td><input style="width:20px;" id="{{this._id}}" type="checkbox" value="{{this._id}}"/></td>
+                                        <td>{{this.priceRuleType}}</td>
+                                        <td>{{this.price}}</td>
+                                        <td>
+                                            {{#if priceType}}
+                                                {{../this.priceType}}
+                                            {{else}}
+                                                -
+                                            {{/if}}
+                                        </td>
+                                        <td>
+                                            {{#if genderType}}
+                                                {{../this.genderType}}
+                                            {{else}}
+                                                -
+                                            {{/if}}
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                </table>
+
                             </ul>
                             <div class="clearfix"></div>
                         </div>

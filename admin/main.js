@@ -8,6 +8,7 @@ var ClassificationController = require('./controllers/ClassificationController.j
 var FacilitiesGroupsController = require('./controllers/facilitiesGroupController.js');
 var PriceRulesController = require('./controllers/priceRulesController.js');
 var TaxTypeController = require('./controllers/taxTypeController.js');
+var ReportsController = require('./controllers/reportsController.js');
 var path = require('path');
 var Passport = require('passport');
  var flash = require('connect-flash'); 
@@ -55,7 +56,8 @@ app.use('/classifications',ClassificationController);
 app.use('/facilities',FacilitiesGroupsController);
 app.use('/pricerules',PriceRulesController);
 app.use('/taxtypes',TaxTypeController);
-app.get("/multiple",function(req,res){
+app.use('/reports', ReportsController);
+app.get("/multiple",function(req, res){
     res.render('multiple-select',{layout:'dashboard'});
 });
 
