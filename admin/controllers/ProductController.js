@@ -124,8 +124,11 @@ ProductController.get('/product/:id',function(req,res){
             facilities.find({},function(err,facilitiesByGroup){                
                 priceRules.find({},function(err,priceRule){                        
                     tax.find({},function(err,taxByType){
-                        res.render("product-view",{'product':product,'pricerules':priceRule,'facilities':facilitiesByGroup,'taxes':taxByType,layout:'list'});
-                
+                        console.log("state: "+product.state);
+                        States.find({stateCode: product.state}, function(err, st) {
+                            console.log(st[0].stateName);
+                            res.render("product-view",{'product':product, 'stateName': st[0].stateName, 'pricerules':priceRule,'facilities':facilitiesByGroup,'taxes':taxByType,layout:'list'});
+                        });
                     });
                 });
             }); 

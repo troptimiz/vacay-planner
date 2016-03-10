@@ -47,13 +47,16 @@ obj = {
             var selectBoxRaing = $("select[name^=starRating]").attr("selectedRating");
             $("select[name^=starRating]").val($("select[name^=starRating]").attr("selectedRating")).change();
             if(selectBoxCountry.length > 0){
-                selectBoxCountry.val(selectBoxCountry.attr('selectedCountry')).change();
                 setTimeout(function(){
-                    selectBoxState.val(selectBoxState.attr('selectedState')).change();
+                    selectBoxCountry.val(selectBoxCountry.attr('selectedCountry')).trigger('change');
                     setTimeout(function(){
-                        selectBoxCity.val(selectBoxCity.attr('selectedCity'));
+                        selectBoxState.val(selectBoxState.attr('selectedState')).change();
+                        setTimeout(function(){
+                            selectBoxCity.val(selectBoxCity.attr('selectedCity'));
+                        },100);
                     },100);
-                },100);
+                },1000);
+
             }
         }
         if(pageName == "product"){
@@ -118,7 +121,7 @@ obj = {
                     var options = "<option value=''>Select City</option>";
                     
                     data.cities.forEach(function(city){
-                        options = options + "<option value="+city.cityName+">"+city.cityName+"</option>";
+                        options = options + "<option value=" + city.cityName + ">" + city.cityName + "</option>";
                     });
                     $('select[name="city"]').html(options);
                 },
