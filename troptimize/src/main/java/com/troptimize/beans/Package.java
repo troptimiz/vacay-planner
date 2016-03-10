@@ -3,12 +3,23 @@ package com.troptimize.beans;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.data.annotation.Transient;
+
 public class Package {
+	
 	private String id;
+	
 	private String title;
+	
 	private String description;
+	
 	private double cost;
+	
 	private List<Map<String, String>> pricerules;
+	
+	@Transient
+	private List<PriceRule> priceRuleDetails;
+	
 	public String getId() {
 		return id;
 	}
@@ -39,6 +50,11 @@ public class Package {
 	public void setPricerules(List<Map<String, String>> pricerules) {
 		this.pricerules = pricerules;
 	}
-	
+	public List<PriceRule> getPriceRuleDetails() {
+		return priceRuleDetails;
+	}
+	public void setPriceRuleDetails(List<PriceRule> priceRuleDetails) {
+		this.priceRuleDetails = priceRuleDetails;
+	}
 	
 }

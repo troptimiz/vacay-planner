@@ -527,7 +527,7 @@ body {
 
 /* line 468, ../sass/style.scss */
 .cat-list table, .class-list table {
-  width: 100%;
+  width: 100% !important;
 }
 /* line 471, ../sass/style.scss */
 .cat-list table tr th, .class-list table tr th {

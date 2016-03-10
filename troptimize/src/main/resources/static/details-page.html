@@ -54,8 +54,58 @@
 <link rel="stylesheet" href="css/responsive-menu.css">
 <link rel="stylesheet" type="text/css" href="css/details-tabs.css"/>
 
+
+
+ <script src="https://apis.google.com/js/api:client.js"></script>
+ 
+ <script>
+ var googleUser = {};
+ var startApp = function() {
+   gapi.load('auth2', function(){
+     // Retrieve the singleton for the GoogleAuth library and set up the client.
+     auth2 = gapi.auth2.init({
+       client_id: '371916229194-mbgso91vdsd2f3a6rmac86q0rapfag9m.apps.googleusercontent.com',
+       cookiepolicy: 'single_host_origin',
+       // Request scopes in addition to 'profile' and 'email'
+       //scope: 'additional_scope'
+     });
+     attachSignin(document.getElementById('google-btn'));
+   });
+ };
+
+ function attachSignin(element) {
+   auth2.attachClickHandler(element, {},
+       function(googleUser) {
+	   globals.security.googleLogin(googleUser);
+       
+       
+       }, function(error) {
+         alert(JSON.stringify(error, undefined, 2));
+       });
+ }
+ </script>
+
 </head>
+
+
 <body onload="initialize()">
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '144680732583690',
+      xfbml      : true,
+      version    : 'v2.5',
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 	<!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -67,19 +117,12 @@
 				class="img-responsive" alt="Ttimz Logo"></a>
 		</div>
 		<!--Responsive Menu Cotent-->
-		<div class="mobilenav">
-			<div class="header-right">
-				<span class="tel"><a href="tel:1800 258 025"><i
-						class="fa fa-phone"></i> 1800 258 025</a></span>
-				<div class="clearfix"></div>
-				<div class="log-sign-acc">
-					<span><a href="#"><i class="fa fa-user"></i> my account</a></span>
-					<span><a data-toggle="modal" data-target=".signup-pop"><i
-							class="fa fa-pencil"></i> sign up</a></span> <span><a
-						data-toggle="modal" data-target=".login-pop"><i
-							class="fa fa-sign-in"></i> login</a></span>
-				</div>
-			</div>
+<div class="mobilenav">
+  <div class="header-right"> <span class="tel"><a href="tel:1800 258 025"><i class="fa fa-phone"></i> 1800 258 025</a></span>
+    <div class="clearfix"></div>
+    <div class="log-sign-acc"> <span class="my-acc"><a href="#"><i class="fa fa-user"></i> my account</a></span> <span class="h-signup"><a data-toggle="modal" data-target=".signup-pop"><i class="fa fa-pencil"></i> sign up</a></span> <span class="h-login"><a data-toggle="modal" data-target=".login-pop"><i class="fa fa-sign-in"></i> login</a></span><span class="logout" style="display:none"><form id="logout-form" action="/troptimize/logout" method="post"><a class="logout-btn" href="#" ><i class="fa fa-sign-out"></i> logout</a></form> </span></div>
+  </div>
+ 
 		</div>
 		<!-- Responsive Menu Icon -->
 		<a href="javascript:void(0)" class="icon-menu">
@@ -96,7 +139,7 @@
 	<!-- Filter Search Icon Open -->
 	<a href="javascript:void(0)" class="icon-filter">Search Filter</a>
 	<!--Filter Content-->
-	<div class="filter-search">
+	<div class="filter-search" style="display:none">
 		<div class="main-search-container-inner tab-content">
 			<a href="javascript:void(0)" class="icon-filter">Close</a>
 			<!--Dayout Search-->
@@ -237,12 +280,12 @@
 					<h1>Day-Out Package Details</h1>
 					<div class="vertical-line"></div>
 					<div class="col-md-6 padding-reset">
-						<h2 id="name">Golden Palm Resort</h2>
+						<h2 id="name">Login to view data</h2>
 						<div class="clearfix"></div>
 						 <div class="star-rating"></div>
 					</div>
 					<div class="col-md-6 padding-reset back-link">
-						<a href="search-results.html">Back to Results</a>
+						<a href="javascript:history.back()">Back to Results</a>
 					</div>
 				</div>
 				<div class="left">
@@ -264,7 +307,7 @@
 					</div>
 					<div class="white-box pricing">
 						<!--Dayout Search-->
-						<div class="result-search" style="display: block">
+						<div class="result-search" style="display: none">
 							<div class="col-md-6 padding-reset">
 								<label>Date</label> <input type="text"
 									class="form-control date-input" id="date-fld1"
@@ -318,33 +361,12 @@
 						</div>
 						<div class="vertical-line"></div>
 						<h1>Fare Details</h1>
-						<table class="table">
-							<tbody>
-								<tr>
-									<td width="50%">Adult - 1800 x 2</td>
-									<td width="13%">=</td>
-									<td width="37%">3600.00</td>
-								</tr>
-								<tr>
-									<td>Child - 1800 x 2</td>
-									<td>=</td>
-									<td>3600.00</td>
-								</tr>
-								<tr>
-									<td>Service Tax - 400 x 2</td>
-									<td>=</td>
-									<td>800.00</td>
-								</tr>
-								<tr>
-									<td>Service Fee - 400 x 2</td>
-									<td>=</td>
-									<td>800.00</td>
-								</tr>
-							</tbody>
+						<table class="table" id="priceDetails">
+							
 						</table>
 						<div class="vertical-line"></div>
 						<div class="youpay">
-							You Pay All Inclusive: <span>Rs. 8800</span>
+							You Pay All Inclusive: <span>Rs. <span id="totalAmount"></span></span>
 						</div>
 						<!--<p>Eight thousand eight hundred only.</p>-->
 						<!--Detail Pricing Panel-->
@@ -427,7 +449,7 @@
 						</div>
 						<!--End Detail Pricing Panel-->
 						<div class="vertical-line"></div>
-						<form method="post" action="confirmation.html">
+						<form  action="confirmation.html" id="booking">
 							<h1>Primary Guest Details</h1>
 							<div class="clearfix"></div>
 							<div class="col-md-3 padding-reset">
@@ -438,10 +460,10 @@
 								</select>
 							</div>
 							<div class="col-md-9 padding-reset left-padding">
-								<input type="text" class="form-control textbox-pricing"
+								<input id="fname" type="text" class="form-control textbox-pricing"
 									placeholder="First Name" required />
 							</div>
-							<input type="text" class="form-control textbox-pricing"
+							<input id="lname" type="text" class="form-control textbox-pricing"
 								placeholder="Last Name" required />
 							<div class="col-md-3 padding-reset">
 								<select name="country-code" class="form-control textbox-pricing">
@@ -449,37 +471,22 @@
 								</select>
 							</div>
 							<div class="col-md-9 padding-reset left-padding">
-								<input type="text" class="form-control textbox-pricing"
+								<input id="mobNo" type="text" class="form-control textbox-pricing"
 									placeholder="Mobile Number" required />
 							</div>
-							<input type="text" class="form-control textbox-pricing"
+							<input id="email" type="text" class="form-control textbox-pricing"
 								placeholder="Email Address" required />
-							<div class="col-md-4 padding-reset">
-								<label>Tot Gents</label> <select name="tot-gents"
-									class="form-control textbox-pricing">
-									<option value="0">0</option>
-									<option value="1" selected>1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-								</select>
+							<!-- <div class="col-md-4 padding-reset">
+								<label>Tot Gents</label> <input id="totGents" type="text" class="form-control textbox-pricing"
+									placeholder="" required />
 							</div>
 							<div class="col-md-4 padding-reset left-padding">
-								<label>Tot Ladies</label> <select name="tot-ladies"
-									class="form-control textbox-pricing">
-									<option value="0">0</option>
-									<option value="1" selected>1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-								</select>
-							</div>
-							<div class="col-md-4 padding-reset left-padding">
-								<label>Tot Children</label> <select name="tot-children"
-									class="form-control textbox-pricing">
-									<option value="0">0</option>
-									<option value="1" selected>1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-								</select>
+								<label>Tot Ladies</label> <input id="totLadies" type="text" class="form-control textbox-pricing"
+									placeholder="" required />
+							</div> -->
+							<div class="col-md-4 padding-reset left-padding" style="display:none">
+								<label>Tot Children</label><input id="totChild" type="text" class="form-control textbox-pricing"
+									placeholder=""  />
 							</div>
 							<div class="checkbox">
 								<input type="checkbox" value=""
@@ -492,11 +499,19 @@
 								<button type="submit" class="btn btn-default book-now-btn">pay
 									now</button>
 							</div>
-							<div class="col-md-6 padding-reset left-padding">
+							<div class="col-md-6 padding-reset left-padding" style="display:none">
 								<button type="submit" class="btn btn-default book-now-btn">pay
 									at hotel</button>
 							</div>
 						</form>
+						<form id="payProcess" method="post" action="https://sandbox.citruspay.com/sslperf/tmztest">
+			             <input type="hidden" id="merchantTxnId" name="merchantTxnId"  />
+			             <input type="hidden" id="orderAmount" name="orderAmount"  />
+			             <input type="hidden" id="currency" name="currency" />
+			             <input type="hidden" id="returnUrl" name="returnUrl"  />
+			             <!-- <input type="hidden" id="notifyUrl" name="notifyUrl" value="<%=notifyUrl%>" /> -->
+			             <input type="hidden" id="secSignature" name="secSignature" />			             
+			         </form>
 					</div>
 				</div>
 				<!--Details End-->
@@ -887,18 +902,20 @@
 						<h1>Log In</h1>
 					</div>
 					<div class="col-md-6 padding-reset">
-						<form>
-							<input type="text" class="form-control textbox-signup"
-								placeholder="Email Address" required /> <input type="password"
-								class="form-control textbox-signup" placeholder="Password"
-								required /> <input name="" class="checkbox" type="checkbox"
+						
+							<input type="text" class="form-control textbox-signup login-uname"
+								placeholder="Email Address" required />
+							 <input type="password"
+								class="form-control textbox-signup login-pass" placeholder="Password"
+								required /> 
+							<input name="" class="checkbox" type="checkbox"
 								value="" /> <label class="pull-left">Remember me</label> <label
 								class="pull-right"><a data-toggle="modal"
 								data-target=".reset-pop" data-dismiss="modal">Forgot
 									password?</a></label>
 							<div class="clearfix"></div>
-							<button class="common-button" type="submit">LOG IN</button>
-						</form>
+							<button class="common-button log-in">LOG IN</button>
+					
 					</div>
 					<div class="col-md-1">
 						<div class="login-devider">
@@ -906,13 +923,8 @@
 						</div>
 					</div>
 					<div class="col-md-5 padding-reset">
-						<div class="social-signup-icon google">
-							<a href="#"><i class="fa fa-google"></i> Log In with Google</a>
-						</div>
-						<div class="social-signup-icon fb">
-							<a href="#"><i class="fa fa-facebook"></i> Log In with
-								Facebook</a>
-						</div>
+						 <div class="social-signup-icon google"><a  id="google-btn" href="#"><i class="fa fa-google"></i> Log In with Google</a></div>
+						<div class="social-signup-icon fb"><a class="fb-login" href="#"><i class="fa fa-facebook"></i> Log In with Facebook</a></div>
 					</div>
 					<div class="clearfix"></div>
 					<label class="signup-bottom">Don’t have an account? <a
@@ -952,28 +964,25 @@
 					</div>
 					<div class="col-md-6 padding-reset">
 						<form>
-							<input type="text" class="form-control textbox-signup"
-								placeholder="First Name" required /> <input type="text"
-								class="form-control textbox-signup" placeholder="Last Name"
-								required /> <input type="text"
-								class="form-control textbox-signup" placeholder="Email Address"
-								required /> <input type="password"
-								class="form-control textbox-signup" placeholder="Password"
-								required /> <input name="" class="checkbox" type="checkbox"
+							<input type="text" class="form-control textbox-signup signup-fname" placeholder="First Name" required />
+          <input type="text" class="form-control textbox-signup signup-lname" placeholder="Last Name" required />
+          <input type="text" class="form-control textbox-signup signup-email" placeholder="Email Address" required />
+          <input type="password" class="form-control textbox-signup signup-password" placeholder="Password" required />
+          <input name="" class="checkbox" type="checkbox"
 								value="" required /> <label>By signing up, I agree to
 								Ttimz's <br> <a href="#">Terms of Service</a> and <a
 								href="#">Privacy Policy</a>
 							</label>
 							<div class="clearfix"></div>
-							<button class="common-button" type="submit">SIGN UP</button>
+							<button class="common-button sign-up" type="submit">SIGN UP</button>
 						</form>
 					</div>
-					<div class="col-md-1">
+					<div class="col-md-1" style="display:none">
 						<div class="signup-devider">
 							<div class="or">OR</div>
 						</div>
 					</div>
-					<div class="col-md-5 padding-reset">
+					<div class="col-md-5 padding-reset" style="display:none">
 						<div class="social-signup-icon google">
 							<a href="#"><i class="fa fa-google"></i> Sign Up with Google</a>
 						</div>
@@ -1082,5 +1091,6 @@
 				overlay.setMap(null);
 			}
 		</script>
+<script>startApp();</script>
 </body>
 </html>

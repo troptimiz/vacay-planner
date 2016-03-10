@@ -126,7 +126,5 @@ public class PriceRule {
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
-	
-	
 }
 

@@ -26,7 +26,8 @@ var priceRulesSchema = mongoose.Schema({
     durationType:String,
     grouplimit: Number,
     startDate:String,
-    endDate:String
+    endDate:String,
+	ageCriteria:{value:Number,criteria:String,valueFrom:Number,valueTo:Number}
 });
 
 var priceRules = mongoose.model('pricerules',priceRulesSchema);

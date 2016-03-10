@@ -53,6 +53,9 @@ public class Product {
 	
 	private List<Package> packages;
 	
+	@Transient
+	private Map<String, Package> packagesMap;
+	
 	private List<PhoneNumber> phoneNumbers;
 	
 	private List<Map<String, String>> termsAndConditions;
@@ -63,7 +66,6 @@ public class Product {
 	
 	@Transient
 	private List<Facility> facilityDetails;
-	
 	
 	@Field("is_active")
 	private Boolean active;
@@ -251,4 +253,14 @@ public class Product {
 	public void setFacilityDetails(List<Facility> facilityDetails) {
 		this.facilityDetails = facilityDetails;
 	}
+
+	public Map<String, Package> getPackagesMap() {
+		return packagesMap;
+	}
+
+	public void setPackagesMap(Map<String, Package> packagesMap) {
+		this.packagesMap = packagesMap;
+	}
+	
+	
 }

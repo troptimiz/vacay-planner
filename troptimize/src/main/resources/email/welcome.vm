@@ -1,0 +1,13 @@
+<html>
+    <body>
+        Hi ${name},
+
+        <div>
+           You have just signed up with Ttimz. Welcome and start planning your holiday now.
+           <br/>
+           Click <a href="http://pilot-troptimiz.rhcloud.com/troptimize/account/verify?id=${id}">this link</a> to verify your email.
+           <br/>
+           Regards,<br/>
+          Ttimz Team<br/>
+        </div>
+    </body>

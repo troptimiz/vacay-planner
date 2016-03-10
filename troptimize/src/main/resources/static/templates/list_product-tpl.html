@@ -1,5 +1,10 @@
 {{~it.content :value:index}}
+{{?index===0}}
 <div class="search-result-box">
+{{??index!=0}}
+<div class="search-result-box" style="display:none">
+{{??}}
+{{?}}
     <div class="left-area">
         <div class="col-md-6 padding-reset">
             <h1>{{=value.name}}</h1>
@@ -13,7 +18,7 @@
         <div class="col-md-12 padding-reset">
             <div class="thumbs">
                 {{~value.images:ivalue:iindex}}
-                <div><a href="details-page.html">
+                <div><a>
                     <h1>{{=ivalue.captionText}}</h1>
                     <img src="http://admin-troptimiz.rhcloud.com/uploads/{{=value.category}}/{{=ivalue.imageUrl}}" width="219" height="176"></a>
                 </div>
@@ -32,61 +37,68 @@
     </div>
     <div class="right-area">
         <!--Dayout Search-->
-        <div class="result-search" style="display:block">
+        <form action="details-page.html" method="get">
+         <div class="clearfix"></div>
+        <div class="result-search result-search-day-out" style="display:none">
             <div class="col-md-6 padding-reset">
                 <label>Date</label>
-                <input type="text" class="form-control date-input" id="date-fld1" placeholder="Select Date"/>
+                <input name="in-date" type="text" class="form-control date-input in-date" id="date-fld1" placeholder="Select Date"/>
             </div>
             <div class="col-md-3 padding-reset">
                 <label>Adult</label>
-                <select name="adult">
+               <!--  <select name="adult">
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
-                </select>
+                </select> -->
+                <input name="adult" type="text" class="form-control input-number textbox textbox-padding-reset  adultcount" >
             </div>
             <div class="col-md-3 padding-reset">
                 <label>Child</label>
-                <select name="child">
+                <!-- <select name="child">
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
-                </select>
+                </select> -->
+                <input name="child" type="text" class="form-control input-number textbox textbox-padding-reset childcount" >
             </div>
         </div>
         <!--Hotel Search-->
-        <div class="result-search" style="display:none">
+        <div class="result-search result-search-hotel" style="display:none">
             <div class="col-md-4 padding-reset">
                 <label>Check-In</label>
-                <input type="text" class="form-control date-input" id="date-fld1" placeholder="Select Date"/>
+                <input name="in-date" type="text" class="form-control date-input in-date" id="date-fld1" placeholder="Select Date"/>
             </div>
             <div class="col-md-4 padding-reset">
                 <label>Check-Out</label>
-                <input type="text" class="form-control date-input" id="date-fld1" placeholder="Select Date"/>
+                <input name="out-date" type="text" class="form-control date-input out-date" id="date-fld1" placeholder="Select Date"/>
             </div>
             <div class="col-md-2 padding-reset">
                 <label>Adult</label>
-                <select name="adult">
+               <!--  <select name="adult">
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
-                </select>
+                </select> -->
+                 <input name="adult" type="text" class="form-control input-number textbox textbox-padding-reset  adultcount" >
             </div>
             <div class="col-md-2 padding-reset">
                 <label>Child</label>
-                <select name="child">
+                <!-- <select name="child">
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
-                </select>
+                </select> -->
+                 <input name="child" type="text" class="form-control input-number textbox textbox-padding-reset  childcount" >
+                
             </div>
         </div>
-        <form action="details-page.html" method="get">
-            <div class="clearfix"></div>
+        
+           
             <div class="price-area">
                 <div class="panel-group" id="accordion">
                     <!--Price for Day-Out-->
@@ -139,5 +151,6 @@
             </div>
         </form>
     </div>
+</div>
 </div>
 {{~}}

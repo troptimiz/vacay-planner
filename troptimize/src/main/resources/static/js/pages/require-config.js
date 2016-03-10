@@ -47,5 +47,5 @@ require.config({
 		
 		'raty':'../../js/jquery.raty'
 	},
-	waitSeconds : 200
+	waitSeconds : 600
 });

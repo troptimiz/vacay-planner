@@ -27,7 +27,25 @@ obj = {
         }  
     },    
 	init : function(){
-        $('form').validate({});
+        $('form').validate({
+			rules: {
+				age: {
+				  required: true,
+				  rangelength: [1, 2],
+				  digits: true
+				},
+				fAge: {
+				  required: true,
+				  rangelength: [1, 2],
+				  digits: true
+				},
+				tAge: {
+				  required: true,
+				  rangelength: [1, 2],
+				  digits: true
+				}
+			  }
+		});
         var pageParams = location.href.split("/");
         var pageName = pageParams[pageParams.length-2];
         var tLength = $('.vacay-table').length;
@@ -372,7 +390,6 @@ obj = {
         $('.save-facilities').on('click',function(){
             var checkedValues = [];
             var productId = $("#productId").val();
-            alert(productId);
             $('.facilities-list').find('ul li').find(':checkbox:checked').each(function(i){
                 checkedValues[i] = $(this).val();
             });
@@ -552,6 +569,8 @@ obj = {
             $('.add-form-container').fadeOut(500,function(){
                 $('#price-rule-type').find('option[value="'+slectedVal+'"]').attr('selected','selected');
                 $('.cat-list,.class-list').fadeIn(500);
+				$('#ageCriteriaField').addClass('hide');
+				$('.ageCriteriaFieldContainer').html("");
             });
         });
         //Add category service request
@@ -1073,6 +1092,16 @@ obj = {
             }
 
         });
+		$('#ageCriteria').on('change',function(e) {
+			var dataField = $(this).find('option:selected').data('field');
+			$('#ageCriteriaField').removeClass('hide');
+			if(dataField == "") {
+				$('.ageCriteriaFieldContainer').html("");
+			} else {
+				$('.ageCriteriaFieldContainer').html(dataField);
+			}
+		});
+		
         $('.add-price-rule').on('click',function(e){
             e.preventDefault();
             e.stopPropagation();
@@ -1092,6 +1121,8 @@ obj = {
                                 $('.cat-list,.class-list').fadeIn(500);
                                 console.log($('#price-rule-type').val());
                                 $('#price-rule-type').trigger("change");
+								$('#ageCriteriaField').addClass('hide');
+								$('.ageCriteriaFieldContainer').html("");
                             });    
                         }
                         else{

@@ -2,7 +2,7 @@
         <h2>Sales</h2>
         <div class="filter-container">
             <form class="form-inline">
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label>Country:</label>
                     <select class="form-control form-control-lg country">
                         <option value="">Select Country</option>
@@ -22,13 +22,13 @@
                     <select class="form-control form-control-lg city">
                         <option value="">Select City</option>
                     </select>
-                </div>
+                </div> 
                 <div class="form-group">
                     <label>Status</label>
                     <select class="form-control form-control-lg">
                         <option value="">Select Status</option>
                     </select>
-                </div>
+                </div>-->
 				<label for="from">From</label>
 				<input type="text" id="from" name="from">
 				<label for="to">to</label>
@@ -39,25 +39,27 @@
         <table class="cell-border vacay-table" id="bookings">
             <thead>
                 <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-					<th>Country Code</th>
-                    <th>Email</th>					
-                    <th>Contact Number</th>
+                    <th>Customer Name</th>
                     <th>Booking Date</th>
-                    <th>Total Amount</th>					
+                    <th>Property Name</th>					
+                    <th>City</th>
+                    <th>Number Of Adult</th>
+                    <th>Number Of Child</th>					
+                    <th>Total Amout</th>					
+                    <th>Payment Details</th>					
                 </tr>
             </thead>
             <tbody>
                 {{#each bookingList}}
                     <tr>
-                        <td>{{this.firstName}}</td>
-                        <td>{{this.lastName}}</td>
-						<td>{{this.country_code}}</td>
-                        <td>{{this.email}}</td>					
-                        <td>{{this.contactNumnber}}</td>
+                        <td>{{this.firstName}} {{this.lastName}}</td>
                         <td>{{this.bookingDate}}</td>
+						<td>{{this.propertyName}}</td>
+                        <td>City</td>					
+                        <td>{{this.numOfAdult}}</td>
+                        <td>{{this.numOfChild}}</td>
                         <td>{{this.totalAmount}}</td>
+                        <td>{{this.paymentAuthId}}</td>
                     </tr>
                 {{/each}}
             </tbody>

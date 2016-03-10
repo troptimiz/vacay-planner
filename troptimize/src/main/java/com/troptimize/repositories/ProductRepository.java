@@ -15,7 +15,7 @@ public interface ProductRepository extends MongoRepository<Product, String> {
 
 	public Page<Product> findByNameLikeOrCityLikeAndActiveTrue(String keyword,String keyword2,Pageable pageable);
 	
-	public Page<Product> findByCityLikeIgnoreCaseAndActiveTrue(String keyword,Pageable pageable);
+	public Page<Product> findByCityLikeIgnoreCaseAndCategoryLikeIgnoreCaseAndClassifications_NameLikeIgnoreCaseAndActiveTrue(String keyword,String category,String costClassification,Pageable pageable);
 	
 	default public Page<Product> searchProduct(String keyword,Pageable pageable){
 		return this.findByNameLikeOrCityLikeAndActiveTrue(keyword, keyword, pageable);

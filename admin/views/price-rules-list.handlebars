@@ -128,6 +128,22 @@
                                         <option value="adult">Adult</option>
                                     </select>                                
                                 </div>
+								<div class="form-group">
+                                    <label for="">Age Criteria:</label>
+                                    <select class="form-control" name="ageCriteria" id="ageCriteria">
+										<option value="">Select Age Criteria</option>
+                                        <option value="$gt" data-field="<input type='text' id='numberField' class='form-control required number' name='age' placeholder='Age'>">&gt;</option>
+                                        <option value="$gte" data-field="<input type='text' class='form-control required' name='age' placeholder='Age'>">&gt;=</option>
+                                        <option value="$lt" data-field="<input type='text' class='form-control required' name='age' placeholder='Age'>">&lt;</option>
+                                        <option value="$lte" data-field="<input type='text' class='form-control required' name='age' placeholder='Age'>">&lt;=</option>
+                                        <option value="$btween" data-field="<input type='text' class='form-control required' name='fAge' placeholder='From Age'> <input class='form-control' placeholder='To Age' type='text' name='tAge'>">Between</option>
+                                    </select>                                
+                                </div>
+								
+								<div class="form-group hide" id="ageCriteriaField">
+                                    <label for="">Age:</label>
+                                    <span class="ageCriteriaFieldContainer"></span>
+                                </div>
                                 <div class="form-group">
                                     <label for="">Price Type:</label>
                                     <select name="priceType" class="required form-control price-type">

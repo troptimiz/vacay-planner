@@ -23,6 +23,10 @@ var bookingsScema = mongoose.Schema({
 	country:String,
 	state:String,
 	city:String,
+	numOfAdult:Number,
+	numOfChild:Number,
+	paymentAuthId:String,
+	propertyName:String,
     customerId : String,
     firstName : String,
     lastName : String,
@@ -38,7 +42,8 @@ var bookingsScema = mongoose.Schema({
     bookingDate : String,
     totalAmount : Number,
     totalDiscount : Number,
-    totalTax : Number
+    totalTax : Number,
+	cancellationDate:String
 });
 
 var bookings = mongoose.model('bookings',bookingsScema);

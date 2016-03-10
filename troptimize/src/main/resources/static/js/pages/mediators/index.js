@@ -28,5 +28,7 @@ define(
             
         'use strict';
         globals.initialize();
+        globals.security.initHeader();
+        
     }
 );
