@@ -56,7 +56,7 @@ obj = {
             var formID = location.href.split("?")[1].split("=")[1];
             $('.form-section').hide();
             $('#'+formID).show();
-            
+
         }
         if(pageName == "productDetails"){
             var selectBoxCountry = $('select[selectedCountry]');
@@ -82,7 +82,7 @@ obj = {
             obj.checkTaxes();
         }
         if(pageParams[pageParams.length-3]=='package-view'){
-            obj.checkPriceRules();  
+            obj.checkPriceRules();
         }
         if(pageName == "categoryView"){
             var categoryName = $("#categoryName").val();
@@ -100,7 +100,7 @@ obj = {
                 { "data": "priceRuleType" },
                 {"data":"price"},
                 {"data":"priceType"},
-                {"data":"grouplimit"},                                
+                {"data":"grouplimit"},
                 {"data":"startDate"},
                 {"data":"endDate"},
                 {
@@ -108,10 +108,10 @@ obj = {
                     className: "center",
                     defaultContent: '<div class="delete-edit-container"><a href="#" class="edit" title="Edit the row">Edit</a> / <a href="#" class="delete" title="Delete the row">Delete</a></div>'
                 }
-            ];    
+            ];
             obj.priceRuleTable(tableObj,columObj,priceruleType);
         }
-        $('select[name="country"').on('change',function(){
+        $('select[name="country"]').on('change',function(){
             var URL = "/categories/states/"+$(this).val();
             var ths = $(this);
             $.ajax({
@@ -125,11 +125,11 @@ obj = {
                     $('select[name="state"]').html(options);
                 },
                 error:function(){
-                    alert("error");   
+                    alert("error");
                 }
             });
         });
-        $('select[name="state"').on('change',function(){
+        $('select[name="state"]').on('change',function(){
             var URL = "/categories/cities/"+$(this).val();
             var ths = $(this);
             $.ajax({
@@ -137,18 +137,18 @@ obj = {
                 method:"GET",
                 success:function(data){
                     var options = "<option value=''>Select City</option>";
-                    
+
                     data.cities.forEach(function(city){
                         options = options + "<option value=" + city.cityName + ">" + city.cityName + "</option>";
                     });
                     $('select[name="city"]').html(options);
                 },
                 error:function(){
-                    alert("error");   
+                    alert("error");
                 }
             });
         });
-        
+
         $('#imageUrl').on('change',function(e){
             for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
                 var file = e.originalEvent.srcElement.files[i];
@@ -171,9 +171,9 @@ obj = {
                 console.log(data);
             }
         });
-        
-        
-        
+
+
+
         $('.form-selection').on('change',function(){
             var formId = $(this).val();
             $('.form-section').hide();
@@ -182,10 +182,10 @@ obj = {
         $('.cancel-type').on('change',function(){
             var cancelType = $(this).val();
             if(cancelType == 'refundable'){
-                $('.cancel-details').show();   
+                $('.cancel-details').show();
             }
             else{
-                $('.cancel-details').hide();    
+                $('.cancel-details').hide();
             }
         });
         $('.price-type').on('change',function(){
@@ -195,11 +195,11 @@ obj = {
                 placeHolder = "Price in Percentage";
             }
             else if(pricetype == "INR"){
-                placeHolder = "Price in INR";   
+                placeHolder = "Price in INR";
             }
             $('.price-field').attr('placeholder',placeHolder);
         });
-        
+
         $('.pricerule-list').find(':checkbox').on('click',function(){
             var checkedVal = $(this).val();
             var productId = $("#productId").val();
@@ -223,7 +223,7 @@ obj = {
 
                     }
                 });
-            } else{    
+            } else{
                 $('.packageMsg').html("Deleting....").show();
                 $.ajax({
                     url:'/products/packages/updatepricerule/'+productId+'/'+packageId+'/'+checkedVal,
@@ -262,7 +262,7 @@ obj = {
 
                     }
                 });
-            } else{    
+            } else{
                 $('.taxMsg').html("Deleting....").show();
                 $.ajax({
                     url:'/products/'+productId+'/tax/'+checkedVal,
@@ -278,8 +278,8 @@ obj = {
                     }
                 });
             }
-            
-            
+
+
         });
         $('.facilities-list').find('ul li').find(':checkbox').on('click',function(){
             var checkedVal = $(this).val();
@@ -303,7 +303,7 @@ obj = {
 
                     }
                 });
-            } else{    
+            } else{
                 $('.facilityMsg').html("Deleting....").show();
                 $.ajax({
                     url:'/products/'+productId+'/facilities/'+checkedVal,
@@ -319,8 +319,8 @@ obj = {
                     }
                 });
             }
-            
-            
+
+
         });
         $( "#start-date-group" ).datepicker({
 		  changeMonth: true,
@@ -386,7 +386,7 @@ obj = {
 				}
 			});
 		}); */
-        
+
         $('.save-facilities').on('click',function(){
             var checkedValues = [];
             var productId = $("#productId").val();
@@ -401,7 +401,7 @@ obj = {
                     console.log(data);
                 },
                 error : function(e,er,err){
-                    
+
                 }
             });
         });
@@ -441,10 +441,10 @@ obj = {
 
             });
         });
-        
-        
+
+
         /* Delete facilityGroup */
-        
+
         $('.deleteFacilityGroup').on('click',function(e){
             e.preventDefault();
             if(confirm('Do you want to delete the record?')){
@@ -465,11 +465,11 @@ obj = {
                         }
                     }
                 });
-                
+
             }
-            
+
         });
-        
+
         $('.cat-list .delete').on('click',function(e){
             e.preventDefault();
             var $ths = $(this);
@@ -503,7 +503,7 @@ obj = {
                 });
             }
         });
-		
+
 		$('a.delete-tax-type').on('click',function(e){
             var $ths = $(this);
             var del_id = $ths.parents('.delete-edit-container').find('#tax_id').val();
@@ -517,12 +517,12 @@ obj = {
                                 setTimeout(function(){
                                     $('.msg.error').fadeOut(500);
                                 },5000);
-                            });   
+                            });
                         } else {
                             $ths.parents('tr').fadeOut(500,function(){
                                 $ths.parents('tr').remove();
-                            });   
-                        }                            
+                            });
+                        }
                     },
 					error: function (request, error) {
 						console.log(arguments);
@@ -532,10 +532,10 @@ obj = {
             }
 			e.preventDefault();
         });
-		
+
         $('.add-category,.add-calssification').on('click',function(e){
             e.preventDefault();
-            
+
             $('.cat-list,.class-list').fadeOut(500,function(){
                 obj.resetFields();
                 $('.add-form-container').fadeIn(500);
@@ -557,7 +557,7 @@ obj = {
                 $('.error.msg').removeClass('hide');
                 setTimeout(function(){$('.error.msg').addClass('hide');},5000);
             }
-            
+
         });
         $('.cancel-category-addition,.cancel-classification-addition').on('click',function(){
             $('.add-form-container').fadeOut(500,function(){
@@ -778,7 +778,7 @@ obj = {
 						obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
                     }
                 });
-                
+
             }
 
         });
@@ -969,9 +969,9 @@ obj = {
                 obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
             }
         });
-        
+
         /* Delete facility */
-        
+
         $('.deleteFacility').on('click',function(e){
             e.preventDefault();
             if(confirm('Do you want to delete the facility?')){
@@ -990,14 +990,14 @@ obj = {
                         else{
                             $this.parents('tr').fadeOut(500,function(){
                                 $this.parents('tr').remove();
-                            });   
+                            });
                         }
                     }
                 });
-                
+
             }
         });
-        
+
         /*Update phone /:productId/address/:addressId*/
         $('#update-phone').on('click',function(e){
             e.preventDefault();
@@ -1066,7 +1066,7 @@ obj = {
             }
 
         });
-        
+
         $('#add-tax-type').on('click',function(e){
             e.preventDefault();
             e.stopPropagation();
@@ -1101,7 +1101,7 @@ obj = {
 				$('.ageCriteriaFieldContainer').html(dataField);
 			}
 		});
-		
+
         $('.add-price-rule').on('click',function(e){
             e.preventDefault();
             e.stopPropagation();
