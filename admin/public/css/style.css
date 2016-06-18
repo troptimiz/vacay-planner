@@ -905,3 +905,14 @@ ul#tax-item-list li {
   width: 100%;
   margin: 5px;
 }
+
+/* line 808, ../sass/style.scss */
+.data-form .form-group span.ageCriteriaFieldContainer {
+  margin-left: 0;
+  width: 63%;
+}
+/* line 811, ../sass/style.scss */
+.data-form .form-group span.ageCriteriaFieldContainer input.form-control {
+  width: 327px;
+  margin-right: 10px;
+}

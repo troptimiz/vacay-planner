@@ -111,6 +111,14 @@ obj = {
             ];
             obj.priceRuleTable(tableObj,columObj,priceruleType);
         }
+        if (pageName == 'priceruleEdit') {
+            var ageCriteria = $('#ageCriteria').attr('selectedValue');
+            $('#ageCriteria').val(ageCriteria);
+            setTimeout(function() {
+                $('#ageCriteria').change();
+            }, 500)
+
+        }
         $('select[name="country"]').on('change',function(){
             var URL = "/categories/states/"+$(this).val();
             var ths = $(this);
