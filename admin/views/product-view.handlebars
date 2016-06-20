@@ -179,7 +179,8 @@
                                 <td>{{this.contactNumber}}</td>
                                 <td>
                                     <div class="delete-edit-container">
-                                        <a href="/{{../product.id}}/phoneNumber/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                                        <a href="/products/{{../product.id}}/phone/{{this._id}}" class="edit" title="Edit the row">Edit</a>/
+										<a href="/{{../product.id}}/phoneNumber/{{this._id}}" class="delete" title="Delete the row">Delete</a>
                                     </div>
                                 </td>
                             </tr>
@@ -258,7 +259,6 @@
 									<th>Cost</th>                            
 									<th class="vacay-action">Action</th>
 								</tr>
-								
 								{{#each product.packages}}
 								<tr>
 									<td>{{this.title}}</td>
@@ -268,7 +268,7 @@
 										<div class="delete-edit-container">
 											<!--<a href="{{this._id}}" class="edit" title="Edit the row">Edit</a> /-->
 											<a href="/products/package-view/{{../product.id}}/{{this._id}}" class="edit" title="Edit the row">Edit</a>
-											<a href="/{{../productId}}/tariff/{{../productTariff.id}}/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+											<a href="/{{../product.id}}/productPackages/{{this._id}}" class="delete" title="Delete the row">Delete</a>
 										</div>
 									</td>
 								</tr>

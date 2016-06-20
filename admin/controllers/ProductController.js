@@ -677,7 +677,7 @@ ProductController.post('/:id/:source/image',multer({
             filename: req.files.imageUrl.name
         });
         read_stream.pipe(writestream);
-        res.redirect("/products/product/"+productId);
+        res.redirect("/products/product/"+productId+"?tab=images");
 	});
 });
 // Update Address
@@ -737,7 +737,7 @@ ProductController.post('/:productId/image/:imageId/:source',multer({
     dest = req.params.source;
     prevUrl = req.body.prevUrl;
 
-    bUrl = "/products/product/"+productId;
+    bUrl = "/products/product/"+productId+"?tab=images";
     var fileImage = imageName;
 
     if(imageName =="" || imageName === undefined){
@@ -1109,6 +1109,22 @@ ProductController.delete('/:productId/productclassification/:classId',function(r
 		,function(err){
 				if(err) return res.send(500,'Error Occured During TermsCondition Delete for Product with Id['+productId+']');
 				res.json({'status':'TermsCondition Deleted for Product ['+productId+']'});
+	});
+});
+
+// Delete packages
+
+ProductController.delete('/:productId/productPackages/:packageId',function(req,res){
+	productId = req.params.productId;
+	packageId = req.params.packageId;
+
+	Product.update({_id:productId},
+	{
+		$pull:{packages:{_id:packageId}}
+	},{multi:true}
+		,function(err){
+				if(err) return res.send(500,'Error Occured During Package Delete for Product with Id['+productId+']');
+				res.json({'status':'Package Deleted for Product ['+productId+']'});
 	});
 });
 

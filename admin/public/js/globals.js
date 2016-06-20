@@ -25,7 +25,20 @@ obj = {
             var id = priceRuleList[i];
             $('#'+id).attr('checked','checked');
         }  
-    },    
+    },
+	switchTab: function () {
+		var loc = location.href.split("tab=");
+		if (loc.length > 1) {
+			var activeTabId = loc[1];
+			var $navTab = $('.product-view .nav-tabs li');
+			var $navTabContainer = $('.product-view .tab-content');
+			$navTab.removeClass('active');
+			$navTab.find('a[href=#'+activeTabId+']').parent('li').addClass('active');
+			$navTabContainer.find('.tab-pane').removeClass('active in');
+			$navTabContainer.find('#'+activeTabId).addClass('active in');
+		
+		}
+	},
 	init : function(){
         $('form').validate({
 			rules: {
@@ -58,6 +71,7 @@ obj = {
             $('#'+formID).show();
 
         }
+		
         if(pageName == "productDetails"){
             var selectBoxCountry = $('select[selectedCountry]');
             var selectBoxState = $('select[selectedState]');
@@ -80,6 +94,7 @@ obj = {
         if(pageName == "product"){
             obj.checkFacilities();
             obj.checkTaxes();
+			obj.switchTab();
         }
         if(pageParams[pageParams.length-3]=='package-view'){
             obj.checkPriceRules();
@@ -824,7 +839,7 @@ obj = {
                 var formData = $('#add-address-form').serialize();
                 var productId = $('#add-address-form').find('input[name="id"]').val();
                 var URL = "/products/"+productId+"/address";
-                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId+"?tab=address"));
             } else {
             }
 
@@ -842,7 +857,7 @@ obj = {
                         if(data.msg !== undefined){
                             $(".error.msg").text(data.msg).parents(".form-group").removeClass("hide").show();
                         } else{
-                            obj.newaddressSuccess(productId);
+                            obj.newaddressSuccess(productId+"?tab=classifications");
                         }
 
                     }
@@ -861,7 +876,7 @@ obj = {
                 var productId = $('#update-address-form').find('input[name="id"]').val();
                 var addressId = $('#update-address-form').find('input[name="addressId"]').val();
                 var URL = "/products/"+productId+"/address/"+addressId;
-                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId+"?tab=address"));
             }
         });
 
@@ -910,7 +925,7 @@ obj = {
                 var formData = $('#add-amenity-form').serialize();
                 var productId = $('#add-amenity-form').find('input[name="id"]').val();
                 var URL = "/products/"+productId+"/amenity";
-                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId+'?tab=amenities'));
             }
         });
 
@@ -922,7 +937,7 @@ obj = {
                 var productId = $('#update-amenity-form').find('input[name="id"]').val();
                 var amenityId = $('#update-amenity-form').find('input[name="amenityId"]').val();
                 var URL = "/products/"+productId+"/amenity/"+amenityId;
-                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId+'?tab=amenities'));
             }
         });
 
@@ -933,7 +948,7 @@ obj = {
                 var formData = $('#add-termsAndConditions-form').serialize();
                 var productId = $('#add-termsAndConditions-form').find('input[name="id"]').val();
                 var URL = "/products/"+productId+"/termsconditions";
-                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId+"?tab=tnc"));
             }
         });
 
@@ -945,7 +960,7 @@ obj = {
                 var productId = $('#update-termsAndConditions-form').find('input[name="id"]').val();
                 var amenityId = $('#update-termsAndConditions-form').find('input[name="termsAndConditionsId"]').val();
                 var URL = "/products/"+productId+"/termsAndCondition/"+amenityId;
-                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId+"?tab=tnc"));
             }
         });
 
@@ -955,7 +970,7 @@ obj = {
                 var formData = $('#add-phoneNumber-form').serialize();
                 var productId = $('#add-phoneNumber-form').find('input[name="id"]').val();
                 var URL = "/products/"+productId+"/phone";
-                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId+"?tab=contacts"));
             }
         });
 
@@ -1006,7 +1021,7 @@ obj = {
                 var productId = $('#update-phone-form').find('input[name="id"]').val();
                 var phoneId = $('#update-phone-form').find('input[name="phoneId"]').val();
                 var URL = "/products/"+productId+"/phoneNumber/"+phoneId;
-                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId));
+                obj.sendAjax(URL,"POST",formData,obj.newaddressSuccess(productId+"?tab=contacts"));
             }
         });
 
@@ -1292,7 +1307,7 @@ obj = {
             var productId = $("#productId").val();
             var URL = "/products/tariff/addPackage/"+productId;
             obj.sendAjax(URL,"POST",formData,function(data){
-                window.location.href = "/products/product/"+productId;
+                window.location.href = "/products/product/"+productId+"?tab=tariffs";
             });        
         });
         //Update packages /tariff/updatePackage/:id/:packageId
