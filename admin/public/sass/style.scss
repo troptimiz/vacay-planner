@@ -805,3 +805,11 @@ ul#tax-item-list{
         margin:5px;
 	}
 }
+.data-form .form-group span.ageCriteriaFieldContainer {
+    margin-left: 0;
+    width: 63%;
+    input.form-control {
+      width: 327px;
+      margin-right: 10px;
+    }
+}
