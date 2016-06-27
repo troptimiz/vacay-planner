@@ -17,6 +17,7 @@ mongoose.createConnection('mongodb://localhost/vacayplanner',options);
 
 var bookingsScema = mongoose.Schema({
     _class : String,
+    vendor: String,
     propertyId : String,
     packageId : String,
 	country_code: String,
@@ -43,7 +44,8 @@ var bookingsScema = mongoose.Schema({
     totalAmount : Number,
     totalDiscount : Number,
     totalTax : Number,
-	cancellationDate:String
+	cancellationDate:String,
+    status: String
 });
 
 var bookings = mongoose.model('bookings',bookingsScema);

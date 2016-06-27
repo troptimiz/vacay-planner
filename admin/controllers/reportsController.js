@@ -104,4 +104,18 @@ reportsController.get('/cancellations',function(req,res){
 });
 
 
+reportsController.get('/vendorReports',function(req,res){
+	if(req.session.passport.user){
+		bookings.find({},function(err,booking){
+			Countries.find({},function (err, countries){
+                bookings.distinct('vendor', function(err, vendorList){
+                    res.render("vendor-wise-reports",{'bookingList':booking,countries:countries,'vendors':vendorList,layout:'list'});
+                });
+			});
+		});
+	} else {
+		res.redirect('/account/session');
+	}
+});
+
 module.exports = reportsController;

@@ -50,7 +50,9 @@ $(document).ready(function(){
     
     });
     $('#bookings_filter').hide();
-
+    $('#vendorSelect').on('change',function(){
+        tableObject.dataTable().fnFilter( $(this).val() );
+    });
     $('.state').on('change',function(){
         tableObject.dataTable().fnFilter( $(this).val() );
         var URL = "/categories/cities/"+$(this).val();
