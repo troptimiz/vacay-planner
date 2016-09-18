@@ -746,7 +746,7 @@ ul li {
 /* line 659, ../sass/style.scss */
 .vacay-section .form-cont {
   padding-top: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 45px;
   background: #f0f0f0;
   position: relative;
   display: none;
@@ -759,14 +759,19 @@ ul li {
 }
 /* line 670, ../sass/style.scss */
 .vacay-section .form-cont input[type="text"] {
-  width: 100px;
+  width: 130px;
 }
 /* line 673, ../sass/style.scss */
+.vacay-section .form-cont select[name="state"] {
+  padding: 3px 0;
+  font-size: 12px;
+}
+/* line 677, ../sass/style.scss */
 .vacay-section .form-cont input[type="submit"], .vacay-section .form-cont input[type="button"] {
   width: auto;
   margin-left: 10px;
 }
-/* line 677, ../sass/style.scss */
+/* line 681, ../sass/style.scss */
 .vacay-section .form-cont .close-btn {
   position: absolute;
   right: 0px;
@@ -778,15 +783,15 @@ ul li {
   border-radius: 15px;
   cursor: pointer;
 }
-/* line 692, ../sass/style.scss */
+/* line 696, ../sass/style.scss */
 .vacay-section .vacay-table.tariff-tax-details .update-form .form-cont input[type="text"] {
   width: 90px;
 }
-/* line 695, ../sass/style.scss */
+/* line 699, ../sass/style.scss */
 .vacay-section .vacay-table.tariff-tax-details .update-form .form-cont span.input-field {
   position: relative;
 }
-/* line 698, ../sass/style.scss */
+/* line 702, ../sass/style.scss */
 .vacay-section .vacay-table.tariff-tax-details .update-form .form-cont label.error {
   position: absolute;
   white-space: nowrap;
@@ -795,88 +800,88 @@ ul li {
   font-size: 10px;
   color: #f00;
 }
-/* line 709, ../sass/style.scss */
+/* line 713, ../sass/style.scss */
 .vacay-section.product-view-sub-section {
   padding: 0 20px;
 }
-/* line 711, ../sass/style.scss */
+/* line 715, ../sass/style.scss */
 .vacay-section.product-view-sub-section .heading1 {
   font-size: 14px;
   font-weight: bold;
   border-bottom: 1px dashed #333;
 }
 
-/* line 719, ../sass/style.scss */
+/* line 723, ../sass/style.scss */
 .product-facility-details .facilityMsg, .product-facility-details .taxMsg, .product-tax-details .facilityMsg, .product-tax-details .taxMsg {
   font-size: 16px;
   display: none;
 }
-/* line 722, ../sass/style.scss */
+/* line 726, ../sass/style.scss */
 .product-facility-details .facilityMsg span, .product-facility-details .taxMsg span, .product-tax-details .facilityMsg span, .product-tax-details .taxMsg span {
   color: #7992BF;
   font-weight: bold;
 }
-/* line 727, ../sass/style.scss */
+/* line 731, ../sass/style.scss */
 .product-facility-details .facilities-list, .product-facility-details .tax-list, .product-tax-details .facilities-list, .product-tax-details .tax-list {
   padding: 20px;
   background-color: #f0f0f0;
 }
-/* line 731, ../sass/style.scss */
+/* line 735, ../sass/style.scss */
 .product-facility-details .facilities-list ul li, .product-facility-details .tax-list ul li, .product-tax-details .facilities-list ul li, .product-tax-details .tax-list ul li {
   float: left;
   width: 150px;
   margin: 10px 0;
 }
-/* line 735, ../sass/style.scss */
+/* line 739, ../sass/style.scss */
 .product-facility-details .facilities-list ul li input[type="checkbox"], .product-facility-details .tax-list ul li input[type="checkbox"], .product-tax-details .facilities-list ul li input[type="checkbox"], .product-tax-details .tax-list ul li input[type="checkbox"] {
   width: auto;
 }
 
-/* line 744, ../sass/style.scss */
+/* line 748, ../sass/style.scss */
 .packageMsg {
   font-size: 16px;
   display: none;
 }
-/* line 747, ../sass/style.scss */
+/* line 751, ../sass/style.scss */
 .packageMsg span {
   color: #7992BF;
   font-weight: bold;
 }
 
-/* line 752, ../sass/style.scss */
+/* line 756, ../sass/style.scss */
 .form-section {
   display: none;
 }
 
-/* line 755, ../sass/style.scss */
+/* line 759, ../sass/style.scss */
 .cancel-details, .pricerule-list-table {
   display: none;
 }
 
-/* line 758, ../sass/style.scss */
+/* line 762, ../sass/style.scss */
 .packageUpdateForm {
   display: none;
   background: #f9f9f9;
   padding: 20px;
   margin-top: 30px;
 }
-/* line 763, ../sass/style.scss */
+/* line 767, ../sass/style.scss */
 .packageUpdateForm .data-form .form-group {
   width: 85%;
 }
-/* line 766, ../sass/style.scss */
+/* line 770, ../sass/style.scss */
 .packageUpdateForm input[type="button"] {
   margin-right: 5px;
 }
 
-/* line 771, ../sass/style.scss */
+/* line 775, ../sass/style.scss */
 .ui-widget-header {
   border: 1px solid #D8D8D8;
   background: #D8D8D8;
   color: #000;
 }
 
-/* line 777, ../sass/style.scss */
+/* line 781, ../sass/style.scss */
 .product-view .tab-content {
   padding: 10px 20px;
   border: 1px solid #ddd;
@@ -884,21 +889,21 @@ ul li {
   margin-bottom: 30px;
 }
 
-/* line 786, ../sass/style.scss */
+/* line 790, ../sass/style.scss */
 #tax-form label.error, #update-tax-form label.error {
   width: 55% !important;
 }
-/* line 789, ../sass/style.scss */
+/* line 793, ../sass/style.scss */
 #tax-form label, #update-tax-form label {
   padding-left: 10px;
 }
 
-/* line 795, ../sass/style.scss */
+/* line 799, ../sass/style.scss */
 #update-tax-form label.error {
   padding-right: 0px;
 }
 
-/* line 801, ../sass/style.scss */
+/* line 805, ../sass/style.scss */
 ul#tax-item-list li {
   float: left;
   clear: both;
@@ -906,12 +911,12 @@ ul#tax-item-list li {
   margin: 5px;
 }
 
-/* line 808, ../sass/style.scss */
+/* line 812, ../sass/style.scss */
 .data-form .form-group span.ageCriteriaFieldContainer {
   margin-left: 0;
   width: 63%;
 }
-/* line 811, ../sass/style.scss */
+/* line 815, ../sass/style.scss */
 .data-form .form-group span.ageCriteriaFieldContainer input.form-control {
   width: 327px;
   margin-right: 10px;

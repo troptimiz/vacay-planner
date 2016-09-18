@@ -658,7 +658,7 @@ ul{
 .vacay-section{
     .form-cont{
         padding-top:30px;
-        padding-bottom: 30px;
+        padding-bottom: 45px;
         background: #f0f0f0;
         position: relative;
         display: none;
@@ -668,8 +668,12 @@ ul{
             font-size:11px;
         }
         input[type="text"]{
-            width:100px;
+            width:130px;
         }
+		select[name="state"]{
+			padding: 3px 0;
+			font-size:12px;
+		}
         input[type="submit"],input[type="button"]{
             width:auto;
             margin-left:10px;

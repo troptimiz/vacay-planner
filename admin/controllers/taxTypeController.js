@@ -3,6 +3,7 @@ var taxTypes = require('../models/taxType.js');
 var tax = require('../models/tax.js');
 var Product = require('../models/products.js');
 var bodyParser = require('body-parser');
+var States = require('../models/states.js');
 
 var taxTypeController = express();
 
@@ -58,7 +59,9 @@ taxTypeController.get('/taxTypeView/:id',function(req,res){
 	var taxTypeId = req.params.id;
 	taxTypes.findById(taxTypeId,function(err,taxType){
         tax.find({'taxTypeId':taxTypeId},function(err,taxByType){
-            res.render("tax-type-view",{'taxType':taxType, 'taxes':taxByType, layout:'list'});
+			States.find({}, function(err, states) {
+				res.render("tax-type-view",{'taxType':taxType, 'taxes':taxByType, 'states':states, layout:'list'});
+			});
         });    
         
 	})
