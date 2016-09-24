@@ -65,6 +65,15 @@ obj = {
         for(i=0;i<tLength;i++){
             $('.vacay-table').eq(i).find('td').length > 0 ?  $('.vacay-table').eq(i).show() : $('.vacay-table').eq(i).hide();
         }
+        
+        if(pageName == 'taxTypeView') {
+            var states = $('select[name=state]');
+            console.log(states.length);
+            for(var i=0; i<states.length;i++) {
+                $(states[i]).val($(states[i]).attr('data-option'));
+            }
+        }
+        
         if(pageName == "priceruleEdit"){
             var formID = location.href.split("?")[1].split("=")[1];
             $('.form-section').hide();

@@ -95,7 +95,12 @@
                                                 </div>
                                                 <div class="form-group"> 
                                                     <label>State:</label>
-                                                    <input type="text" name="state" value = "{{this.state}}" class="required">
+                                                    <select name="state" class="requered" data-option="{{this.state}}">
+													<option>Select</option>
+													{{#each ../states}}
+														<option value="{{this.stateName}}">{{this.stateName}}</options>
+													{{/each}}
+												</select>
                                                 </div>
                                                 <div class="form-group"> 
                                                     <label>Tax:</label>
