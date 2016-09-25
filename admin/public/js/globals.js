@@ -1501,6 +1501,7 @@ obj = {
             bInfo: false,
             "ordering":false,
             "bLengthChange": false,
+            "dom": '<"top"iflp<"clear">>rt<"bottom"iflp<"clear">>',
             "fnCreatedRow": function( nRow, aData, iDataIndex ) {
                 $(nRow).attr('id', aData['_id']);
                 $(nRow).find('.delete-edit-container a.edit').attr('href','/pricerules/priceruleEdit/'+aData['_id']+'?type='+aData['priceRuleType']);
@@ -1562,12 +1563,13 @@ obj = {
             bInfo: false,
             "ordering":false,
             "bLengthChange": false,
+            "dom": '<"top"iflp<"clear">>rt<"bottom"iflp<"clear">>',
             "fnCreatedRow": function( nRow, aData, iDataIndex ) {
                 $(nRow).attr('id', aData['_id']);
                 $(nRow).find('.delete-edit-container a').attr('href','/products/product/'+aData['_id']);
             }
 		});
-        $('#result-table_filter').hide();
+        $('#result-table_filter,.dataTables_filter').hide();
         $('.state').on('change',function(){
             tableObject.dataTable().fnFilter( $(this).val() );
             var URL = "/categories/cities/"+$(this).val();
