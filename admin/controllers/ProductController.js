@@ -750,22 +750,20 @@ ProductController.post('/:productId/image/:imageId/:source',multer({
         sortOrder:req.body.sort_order,
 		_id:imageId
 	};
-    if(fileImage.trim() != "" && req.body.prevUrl != "" && fileImage.trim() != req.body.prevUrl ){
-        try{
-        fs.unlink('uploads/'+dest+"/"+prevUrl, function (err) {
-          if (err) throw err;
-          console.log('successfully deleted '+prevUrl);
-        });
-
-        gfs.remove({filename:prevUrl}, function (err) {
-          if (err) return handleError(err);
-          console.log('success');
-        });
-        }
-        catch(e){
-            console.log("something went wrong");
-        }
-    }
+//    if(fileImage.trim() != "" && req.body.prevUrl != "" && fileImage.trim() != req.body.prevUrl ){
+//        try{
+//        fs.unlink('uploads/'+dest+"/"+prevUrl, function (err) {
+//          console.log('successfully deleted '+prevUrl);
+//        });
+//
+//        gfs.remove({filename:prevUrl}, function (err) {
+//          console.log('success');
+//        });
+//        }
+//        catch(e){
+//            console.log("something went wrong");
+//        }
+//    }
 
 	Product.update({_id:productId,'images._id':imageId},
 		{
