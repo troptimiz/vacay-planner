@@ -10,10 +10,12 @@
 									<td>{{=it.childTotal}}</td>
 								</tr>
 								{{~it.taxes :value:index}}
-								<tr>
-									<td>{{=value.text}} - {{=value.amount}} x {{=value.count}}</td>
-									<td>=</td>
-									<td>{{=value.total}}</td>
-								</tr>
+									{{? value.amount > 0}}
+									<tr>
+										<td>{{=value.text}} - {{=value.amount}} x {{=value.count}}</td>
+										<td>=</td>
+										<td>{{=value.total}}</td>
+									</tr>
+									{{?}}
 								{{~}}
 							</tbody>
