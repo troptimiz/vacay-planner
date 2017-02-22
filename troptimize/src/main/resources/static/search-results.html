@@ -1,0 +1,425 @@
+
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Ttimz - Your New Travel Partner</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="favicon/manifest.json">
+<link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="favicon/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/typeahead.css">
+<link rel="stylesheet" type="text/css" href="css/datepicker.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+<link rel="stylesheet" href="css/responsive-menu.css">
+
+
+ <script src="https://apis.google.com/js/api:client.js"></script>
+ 
+ <script>
+ var googleUser = {};
+ var startApp = function() {
+   gapi.load('auth2', function(){
+     // Retrieve the singleton for the GoogleAuth library and set up the client.
+     auth2 = gapi.auth2.init({
+       client_id: '371916229194-mbgso91vdsd2f3a6rmac86q0rapfag9m.apps.googleusercontent.com',
+       cookiepolicy: 'single_host_origin',
+       // Request scopes in addition to 'profile' and 'email'
+       //scope: 'additional_scope'
+     });
+     attachSignin(document.getElementById('google-btn'));
+   });
+ };
+
+ function attachSignin(element) {
+   auth2.attachClickHandler(element, {},
+       function(googleUser) {
+	   globals.security.googleLogin(googleUser);
+       
+       
+       }, function(error) {
+         alert(JSON.stringify(error, undefined, 2));
+       });
+ }
+ </script>
+</head>
+<body>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '144680732583690',
+      xfbml      : true,
+      version    : 'v2.5',
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]--> 
+<!-- Header
+    ================================================== -->
+<header>
+  <div class="logo"><a href="index.html"><img src="images/ttimz-logo.svg" class="img-responsive" alt="Ttimz Logo"></a></div>
+<!--Responsive Menu Cotent-->
+<div class="mobilenav">
+  <div class="header-right"> <span class="tel"><a href="tel:1800 258 025"><i class="fa fa-phone"></i> 1800 258 025</a></span>
+    <div class="clearfix"></div>
+    <div class="log-sign-acc"> <span class="my-acc"><a href="#"><i class="fa fa-user"></i> my account</a></span> <span class="h-signup"><a data-toggle="modal" data-target=".signup-pop"><i class="fa fa-pencil"></i> sign up</a></span> <span class="h-login"><a data-toggle="modal" data-target=".login-pop"><i class="fa fa-sign-in"></i> login</a></span><span class="logout" style="display:none"><form id="logout-form" action="/troptimize/logout" method="post"><a class="logout-btn" href="#" ><i class="fa fa-sign-out"></i> logout</a></form> </span></div>
+  </div>
+  </div>
+<!-- Responsive Menu Icon --> 
+<a href="javascript:void(0)" class="icon-menu">
+<div class="hamburger">
+  <div class="menui top-menu"></div>
+  <div class="menui mid-menu"></div>
+  <div class="menui bottom-menu"></div>
+</div>
+</a>
+</header>
+
+<!-- Inner Search
+    ================================================== -->
+        <!-- Filter Search Icon Open --> 
+<a href="javascript:void(0)" class="icon-filter">Search Filter</a>
+    <!--Filter Content-->
+    <div class="filter-search">
+<div class="main-search-container-inner tab-content">
+  <a href="javascript:void(0)" class="icon-filter">Close</a>
+<!--Dayout Search-->
+  <div class="main-search-inner" style="display:none;" id="dayOutSearch">
+  <!-- Filter Search Icon Close --> 
+    <form method="get" action="search-results.html" class="filter-inner">
+    	<input name="type" value="DAY_OUT" type="hidden"/>	
+      <div class="col-md-4 padding-reset">
+        <label>Where do you want to go?</label>
+        <input id="dayout-location" name="location" class="home-location-box" type="text" placeholder="Enter a location" required />
+      </div>
+      <div class="col-md-2 padding-reset">
+        <label>Date</label>
+        <input type="text" name="in-date" class="form-control date-input textbox textbox-padding-reset" id="date-fld1" placeholder="Select Date" required/>
+      </div>
+      <div class="col-md-2 padding-reset">
+        <label>Adult</label>
+        <div class="input-group">
+          <input type="text" data-ride="spinner" name="adult" id="dayout-adult" class="form-control input-number textbox textbox-padding-reset" value="1">
+          <span class="input-group-btn">
+          <button type="button" class="btn btn-default" data-value="decrease" data-target="#dayout-adult" data-toggle="spinner"> <span class="glyphicon glyphicon-minus"></span> </button>
+          </span> <span class="input-group-btn">
+          <button type="button" class="btn btn-default" data-value="increase" data-target="#dayout-adult" data-toggle="spinner"> <span class="glyphicon glyphicon-plus"></span> </button>
+          </span> </div>
+      </div>
+      <div class="col-md-2 padding-reset">
+        <label>Child</label>
+        <div class="input-group">
+          <input type="text" name="child" data-ride="spinner" id="dayout-child" class="form-control input-number textbox textbox-padding-reset" value="0">
+          <span class="input-group-btn">
+          <button type="button" class="btn btn-default" data-value="decrease" data-target="#dayout-child" data-toggle="spinner"> <span class="glyphicon glyphicon-minus"></span> </button>
+          </span> <span class="input-group-btn">
+          <button type="button" class="btn btn-default" data-value="increase" data-target="#dayout-child" data-toggle="spinner"> <span class="glyphicon glyphicon-plus"></span> </button>
+          </span> </div>
+      </div>
+      <div class="col-md-2 padding-reset">
+        <button class="searchbtn" type="submit"><i class="fa fa-search"></i> SEARCH</button>
+      </div>
+    </form>
+  </div>
+  <div class="clearfix"></div>
+  <!--Hotel Search-->
+  <div class="main-search-inner" style="display:none;" id="hotelSearch">
+    <form method="get" action="search-results.html" class="filter-inner">
+     <input name="type" value="HOTEL" type="hidden"/>
+      <div class="col-md-4 padding-reset">
+        <label>Where do you want to go?</label>
+        <input id="hotel-location" name="location" class="home-location-box" type="text" placeholder="Enter a location" required>
+      </div>
+      <div class="col-md-2 padding-reset col-12-custom-reset">
+        <label>Check-In</label>
+        <input name="in-date" type="text" class="form-control date-input textbox textbox-padding-reset" id="inDate" placeholder="Select Date" required />
+      </div>
+      <div class="col-md-2 padding-reset col-12-custom-reset">
+        <label>Check-Out</label>
+        <input name="out-date" type="text" class="form-control date-input textbox textbox-padding-reset" id="outDate" placeholder="Select Date" required />
+      </div>
+      <div class="col-md-2 padding-reset col-12-custom-reset">
+        <label>Adult</label>
+        <div class="input-group">
+          <input name="adult" type="text" data-ride="spinner" id="hotel-adult" class="form-control input-number textbox textbox-padding-reset" value="1">
+          <span class="input-group-btn">
+          <button type="button" class="btn btn-default" data-value="decrease" data-target="#hotel-adult" data-toggle="spinner"> <span class="glyphicon glyphicon-minus"></span> </button>
+          </span> <span class="input-group-btn">
+          <button type="button" class="btn btn-default" data-value="increase" data-target="#hotel-adult" data-toggle="spinner"> <span class="glyphicon glyphicon-plus"></span> </button>
+          </span> </div>
+      </div>
+      <div class="col-md-2 padding-reset col-12-custom-reset">
+        <label>Child</label>
+        <div class="input-group">
+          <input name="child" type="text" data-ride="spinner" id="hotel-child" class="form-control input-number textbox textbox-padding-reset" value="0">
+          <span class="input-group-btn">
+          <button type="button" class="btn btn-default" data-value="decrease" data-target="#hotel-child" data-toggle="spinner"> <span class="glyphicon glyphicon-minus"></span> </button>
+          </span> <span class="input-group-btn">
+          <button type="button" class="btn btn-default" data-value="increase" data-target="#hotel-child" data-toggle="spinner"> <span class="glyphicon glyphicon-plus"></span> </button>
+          </span> </div>
+      </div>
+      <div class="col-md-2 padding-reset col-12-custom-reset">
+        <button class="searchbtn" type="submit"><i class="fa fa-search"></i> SEARCH</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!--Filter-->
+<div class="filter-container" style="display:none;">
+  <div class="filter-content">
+    <h1><i class="fa fa-filter"></i> Filter</h1>
+    <form name="filter" method="post" action="">
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_0">
+        Banaswadi</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_1">
+        Majestic</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_2">
+        Banaswadi</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_3">
+        Majestic</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_4">
+        Banaswadi</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_5">
+        Majestic</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_6">
+        Banaswadi</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_7">
+        Majestic</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_8">
+        Majestic</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_9">
+        Banaswadi</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_10">
+        Majestic</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_11">
+        Banaswadi</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_12">
+        Majestic</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_13">
+        Majestic</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_14">
+        Banaswadi</label>
+      <label>
+        <input type="radio" name="filter" value="radio" id="filter_15">
+        Majestic</label>
+    </form>
+  </div>
+</div>
+</div>
+<!--Filter Content End-->
+<div class="inner-content-container-main">
+  <div class="inner-content-container">
+    <h1 id="ptype">day-out resorts</h1>
+    <div class="offer">
+      <ul>
+        <li><i class="fa fa-tags"></i> Get free room night with 4 bookings</li>
+        <li><i class="fa fa-tags"></i> Get 50% discount for all bookings</li>
+      </ul>
+    </div>
+    <div class="vertical-line"></div>
+    <!--Result-->
+    <h2>Low Cost</h2>
+    <div class="search-result-box-container" id="lowCost">
+    
+      <div id="lowCostList" class="productListContainer">
+          <!-- Product Template -->
+          No Products found.
+      </div>
+      <!--More Results Button-->
+      <div class="vertical-line line-position"></div>
+      <button style="display:none" class="more-results-btn" type="submit"><i class="fa fa-arrow-down"></i> <span>more</span> <i class="fa fa-arrow-down"></i></button>
+    </div>
+    <!--Result End-->
+    <div class="vertical-line"></div>
+    <!--Result-->
+    <h2>Mid Cost</h2>
+    <div  class="search-result-box-container" id="midCost">
+      <div id="midCostList" class="productListContainer">
+          No Products found.
+      </div>
+      <!--More Results Button-->
+      <div class="vertical-line line-position"></div>
+      <button style="display:none" class="more-results-btn" type="submit"><i class="fa fa-arrow-down"></i> <span>more</span> <i class="fa fa-arrow-down"></i></button>
+    </div>
+    <!--Result End-->
+    <div class="vertical-line"></div>
+    <!--Result-->
+    <h2>Elite</h2>
+    <div class="search-result-box-container" id="elite">
+      <div id="eliteList" class="productListContainer">
+          <!-- Product Template -->
+          No Products found.
+      </div>
+      <!--More Results Button-->
+      <div class="vertical-line line-position"></div>
+      <button style="display:none" class="more-results-btn" type="submit"><i class="fa fa-arrow-down"></i> <span>more</span> <i class="fa fa-arrow-down"></i></button>
+    </div>
+    <!--Result End-->
+    
+     
+  </div>
+</div>
+<div class="clearfix"></div>
+<footer>
+  <div class="quick-links">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="aboutus.html">About Us</a></li>
+      <li><a href="help.html">Help</a></li>
+      <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+      <li><a href="list-your-properties.html">List your Properties</a></li>
+    </ul>
+  </div>
+  <div class="social">
+    <ul>
+      <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+      <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+      <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+    </ul>
+  </div>
+  <div class="copyright">2014-15 © TR Optimiz Private Limited - All rights reserved</div>
+</footer>
+<!-- Login Popup -->
+<div class="modal fade login-pop" tabindex="-1" role="dialog" aria-labelledby="login">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="col-md-12 padding-reset">
+        <h1>Log In</h1>
+      </div>
+      <div class="col-md-6 padding-reset">
+       
+          <input type="text" class="form-control textbox-signup login-uname" placeholder="Email Address" required />
+          <input type="password" class="form-control textbox-signup login-pass" placeholder="Password" required />
+          <input name="" class="checkbox" type="checkbox" value="" />
+          <label class="pull-left">Remember me</label>
+          <label class="pull-right"><a data-toggle="modal" data-target=".reset-pop" data-dismiss="modal">Forgot password?</a></label>
+          <div class="clearfix"></div>
+          <button class="common-button log-in">LOG IN</button>
+        
+      </div>
+      <div class="col-md-1">
+        <div class="login-devider">
+          <div class="or">OR</div>
+        </div>
+      </div>
+      <div class="col-md-5 padding-reset">
+        <div class="social-signup-icon google"><a  id="google-btn" href="#"><i class="fa fa-google"></i> Log In with Google</a></div>
+        <div class="social-signup-icon fb"><a class="fb-login" href="#"><i class="fa fa-facebook"></i> Log In with Facebook</a></div>
+      </div>
+      <div class="clearfix"></div>
+      <label class="signup-bottom">Don’t have an account? <a data-toggle="modal" data-target=".signup-pop" data-dismiss="modal">Sign up</a></label>
+    </div>
+  </div>
+</div>
+<!-- Forgot Password Popup -->
+<div class="modal fade reset-pop" tabindex="-1" role="dialog" aria-labelledby="reset-password">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="col-md-12 padding-reset">
+        <h1>Reset Password</h1>
+      </div>
+      <div class="col-md-12 padding-reset">
+        <form>
+          <label>Enter the email address associated with your account, and we'll email you a link to reset your password.</label>
+          <input type="text" class="form-control textbox-signup" placeholder="Email Address" required />
+          <button class="common-button" type="submit">SEND RESET LINK</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Signup Popup -->
+<div class="modal fade signup-pop" tabindex="-1" role="dialog" aria-labelledby="signup">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="col-md-12 padding-reset">
+        <h1>Sign Up with Email</h1>
+      </div>
+      <div class="col-md-6 padding-reset">
+        <form>
+          <input type="text" class="form-control textbox-signup signup-fname" placeholder="First Name" required />
+          <input type="text" class="form-control textbox-signup signup-lname" placeholder="Last Name" required />
+          <input type="text" class="form-control textbox-signup signup-email" placeholder="Email Address" required />
+          <input type="password" class="form-control textbox-signup signup-password" placeholder="Password" required />
+          <input name="" class="checkbox" type="checkbox" value="" required />
+          <label>By signing up, I agree to Ttimz's <br>
+            <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+          <div class="clearfix"></div>
+          <button class="common-button sign-up" type="submit">SIGN UP</button>
+        </form>
+      </div>
+      <div class="col-md-1" style="display:none">
+        <div class="signup-devider">
+          <div class="or">OR</div>
+        </div>
+      </div>
+      <div class="col-md-5 padding-reset" style="display:none">
+        <div class="social-signup-icon google"><a href="#"><i class="fa fa-google"></i> Sign Up with Google</a></div>
+        <div class="social-signup-icon fb"><a href="#"><i class="fa fa-facebook"></i> Sign Up with Facebook</a></div>
+      </div>
+      <div class="clearfix"></div>
+      <label class="signup-bottom">Already an Ttimz member? <a data-toggle="modal" data-target=".login-pop" data-dismiss="modal">Log in</a></label>
+    </div>
+  </div>
+</div>
+<!-- Responsive Menu -->
+<!--Common Scripts-->
+<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+<!-- <script type="text/javascript" src="js/pages/search-results.js"></script> -->
+  
+<script src="js/vendor/require.js" data-main="js/pages/search"></script>
+<script>startApp();</script>
+</body>
+</html>

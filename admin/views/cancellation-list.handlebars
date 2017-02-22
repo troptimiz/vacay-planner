@@ -1,0 +1,67 @@
+    <div class="item-container">
+        <h2>Cancellations</h2>
+        <div class="filter-container">
+            <form class="form-inline">
+                <!-- <div class="form-group">
+                    <label>Country:</label>
+                    <select class="form-control form-control-lg country">
+                        <option value="">Select Country</option>
+                        {{#each countries}}
+                            <option value="{{this.countryCode}}">{{this.countryName}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>State:</label>
+                    <select class="form-control form-control-lg state">
+                        <option value="">Select State</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>City:</label>
+                    <select class="form-control form-control-lg city">
+                        <option value="">Select City</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select class="form-control form-control-lg">
+                        <option value="">Select Status</option>
+                    </select>
+                </div> -->
+				<label for="from">From</label>
+				<input type="text" id="from" name="from">
+				<label for="to">to</label>
+				<input type="text" id="to" name="to">
+            </form>
+        </div>
+        <br/><br/>
+        <table class="cell-border vacay-table" id="bookings">
+            <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Cancellation Date</th>
+                    <th>Property Name</th>					
+                    <th>City</th>
+                    <th>Number Of Adult</th>
+                    <th>Number Of Child</th>					
+                    <th>Total Amout</th>					
+                    <th>Payment Details</th>					
+                </tr>
+            </thead>
+            <tbody>
+                {{#each bookingList}}
+                    <tr>
+                        <td>{{this.firstName}} {{this.lastName}}</td>
+                        <td>{{this.cancellationDate}}</td>
+						<td>{{this.propertyName}}</td>
+                        <td>City</td>					
+                        <td>{{this.numOfAdult}}</td>
+                        <td>{{this.numOfChild}}</td>
+                        <td>{{this.totalAmount}}</td>
+                        <td>{{this.paymentAuthId}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>

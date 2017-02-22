@@ -1,0 +1,28 @@
+<div class="edit-form-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item-container">
+                <div class="data-form">
+                    <div class="form-heading">
+                        <h2>Update Terms And Conditions</h2>
+                    </div>
+                    
+                    <form role="form" id="update-termsAndConditions-form">
+                        <input type="hidden" name="id" value="{{productId}}"/>
+                        <input type="hidden" name="termsAndConditionsId" value="{{producttermsAndConditions._id}}"/>
+                        <div class="form-group">
+                            <label for="">Description:</label>
+                            <textarea name="description" class="form-control required" placeholder="Description">{{producttermsAndConditions.description}}</textarea>
+                            <div class="clearfix"></div>
+                        </div>
+                        
+                        
+                        
+                        <button type="button" class="btn btn-default" id="update-termsAndConditions">Submit</button>
+                        <a href="/products/product/{{productId}}" title="Cancel" class="btn btn-default">Cancel</a>
+                     </form>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>

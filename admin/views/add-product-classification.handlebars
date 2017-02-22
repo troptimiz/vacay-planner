@@ -1,0 +1,36 @@
+<div class="edit-form-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item-container">
+                <div class="data-form">
+                    <div class="form-heading">
+                        <h2>Add Classification</h2>                        
+                    </div>
+                    <form role="form" method="post"  id="add-product-classification-form">
+                        <div class="form-group hide">
+                            <label for="">&nbsp;</label>
+                            <p class="error msg">{{msg}}</p>
+                            <div class="clearfix"></div>
+                        </div>
+                        <input type="hidden" name="id" value="{{productId}}"/>
+                        <div class="form-group">
+                            <label for="">Name:</label>
+                            <select name="classification" class="required form-control">
+                                {{#each classifications}}
+                                    <option value="{{this.name}}">{{this.name}}</option>                                
+                                {{/each}}
+                            </select>
+                            <div class="clearfix"></div>
+                        </div>
+                        
+                        <button type="button" class="btn btn-default" id="add-product-classification">Submit</button>
+                        <a href="/products/product/{{productId}}" title="Cancel" class="btn btn-default">Cancel</a>
+                        
+                    </form>
+                    
+                    
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>

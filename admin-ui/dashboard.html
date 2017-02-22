@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+    <link href="icomoon/style.css" rel="stylesheet" type="text/css" />
+	<link href="css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>
+
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/sign-in.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <header class="header-admin">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">VACAY-PLANNER</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav  pull-right">                        
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="icon-settings"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Action</a>
+                                </li>
+                                <li><a href="#">Another action</a>
+                                </li>
+                                <li><a href="#">Something else here</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Nav header</li>
+                                <li><a href="#">Separated link</a>
+                                </li>
+                                <li><a href="#">One more separated link</a>
+                                </li>
+                            </ul>
+                        </li>
+						<li>
+							<a>Welcome <span>satish!</span></a>
+						</li>
+						<li><a href="#" title="Sign Out"><i class="icon-switch"></i></a></li>
+                    </ul>
+                    <!--<ul class="nav navbar-nav navbar-right">
+            <li><a href="../navbar/">Default</a></li>
+            <li><a href="../navbar-static-top/">Static top</a></li>
+            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+          </ul>-->
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </nav>
+    </header>
+    <!-- Content -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                <ul id="sidebar" class="nav nav-stacked affix">
+                    <li><a href="#">menu item label</a>
+                    </li>
+                    <li><a href="#">menu item label</a>
+                    </li>
+                    <li><a href="#">menu item label</a>
+                    </li>
+                    <li><a href="#">menu item label</a>
+                    </li>
+                    <li><a href="#">menu item label</a>
+                    </li>
+                    <li><a href="#">menu item label</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-10 admin-result-container">
+                <div class="category-list">
+                    <div class="list-item">
+                        <a class="item-resorts" href="#" title="Resorts">
+                            <span class="icon icon-library"></span>
+                            <span class="ico-label">Resorts</span>
+                        </a>
+
+                    </div>
+                    <div class="list-item">
+                        <a class="item-hotels" href="#" title="Hotels">
+                            <span class="icon icon-office"></span>
+                            <span class="ico-label">Hotels</span>
+                        </a>
+
+                    </div>
+                    <div class="list-item">
+                        <a class="item-spa" href="#" title="Spa">
+                            <span class="icon icon-leaf"></span>
+                            <span class="ico-label">SPA</span>
+                        </a>
+
+                    </div>
+                    <div class="list-item">
+                        <a class="item-car" href="#" title="Travel">
+                            <span class="icon icon-truck"></span>
+                            <span class="ico-label">Travel</span>
+                        </a>
+                    </div>
+					<div class="list-item">
+                        <a class="item-flight" href="#" title="Travel">
+                            <span class="icon icon-airplane"></span>
+                            <span class="ico-label">Travel</span>
+                        </a>
+                    </div>
+                    <div class="list-item">
+                        <a class="item-movies" href="#" title="Movies">
+                            <span class="icon icon-film"></span>
+                            <span class="ico-label">Movies</span>
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+				<div class="search-form">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="item-container">
+								<div class="item-content">
+									<form action="" method="POST">
+										<div class="form-item location">
+											<label>Resort Name:</label>
+											<input type="text" name="resortName" placeholder="Resort Name"/>
+										</div>
+										<div class="form-item location">
+											<label>Location:</label>
+											<select>
+												<option>--Select Location--</option>
+												<option>Location Name</option>
+												<option>Location Name</option>
+												<option>Location Name</option>
+												<option>Location Name</option>
+											</select>
+										</div>
+										<div class="form-item location">
+											<label>Price Range:</label>
+											<select>
+												<option>--Select Range--</option>
+												<option>1000-5000</option>
+												<option>6000-10000</option>
+												<option>11000-15000</option>
+												<option>15000 Above</option>
+											</select>
+										</div>
+										<div class="form-item location">
+											<input type="submit" value="Search" name="search" id="search-result"/>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="search-result-table">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="item-container">
+								<div class="action-container">
+									<div class="delete-edit-container disabled pull-right">
+										<a href="#" class="edit" title="Edit the row">Edit</a> /
+										<a href="#" class="delete" title="Delete the row">Delete</a> /
+										<a href="#" class="add-row" title="Add Row">Add</a>
+									</div>
+								</div>
+								<table id="result-table" class="display" cellspacing="0" width="100%">
+									<thead>
+										<tr>
+											<th>Name</th>
+											<th>Location</th>
+											<th>Country</th>
+											<th>Code</th>
+											<th>Start date</th>
+											<th>Price</th>
+										</tr>
+									</thead>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="add-form-container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="item-container">
+								<div class="data-form">
+									<div class="form-heading">
+										<h2>Add Resort</h2>
+									</div>
+									<!-- <div class="form-item">
+										<label>Name:</label>
+										<input type="text" placeholder="Name" name=""/>
+									</div>
+									<div class="form-item">
+										<label>Description:</label>
+										<textarea></textarea>
+									</div>
+									<div class="form-item">
+										<label>Short Description:</label>
+										<textarea></textarea>
+									</div>
+									<div class="form-item">
+										<label>Long Description:</label>
+										<textarea></textarea>
+									</div>
+									<div class="form-item">
+										<label>Small Image:</label>
+										<input type="file" name=""/>
+									</div>
+									<div class="form-item">
+										<label>Large Image:</label>
+										<input type="file" name=""/>
+									</div> -->
+									
+									<form role="form">
+										<div class="form-group">
+											<label for="">Name:</label>
+											<input type="textbox" class="form-control" placeholder="Enter Name">
+											<div class="clearfix"></div>
+										</div>
+										<div class="form-group">
+											<label for="">Description:</label>
+											<textarea></textarea>
+											<div class="clearfix"></div>
+										</div>
+										<div class="form-group">
+											<label for="">Short Description:</label>
+											<textarea></textarea>
+											<div class="clearfix"></div>
+										</div>
+										<div class="form-group">
+											<label for="">Long Description:</label>
+											<textarea></textarea>
+											<div class="clearfix"></div>
+										</div>
+										<div class="form-group">
+											<label for="">Small Image:</label>
+											<input type="file" name=""/>
+											<div class="clearfix"></div>
+										</div>
+										<div class="form-group">
+											<label for="">Large Image:</label>
+											<input type="file" name=""/>
+											<div class="clearfix"></div>
+										</div>
+										<div class="form-group">
+											<label for="">Thumbnail Image:</label>
+											<input type="file" name=""/>
+											<div class="clearfix"></div>
+										</div>
+										<div class="form-group">
+											<label for="">Active:</label>
+											<label class="checkbox" for=""><input type="radio" name="active"/> Yes</label>
+											<label class="checkbox" for=""><input type="radio" name="active"/> No</label>
+											<div class="clearfix"></div>
+										</div>
+										<div class="form-group">
+											<label for="">Price:</label>
+											<input type="textbox" class="form-control" placeholder="Enter Price">
+											<div class="clearfix"></div>
+										</div>
+										<div class="form-group">
+											<label for="">Address Line 1:</label>
+											<input type="textbox" class="form-control" placeholder="Enter Address Line 1">
+											<div class="clearfix"></div>
+										</div>
+										<div class="form-group">
+											<label for="">Address Line 2:</label>
+											<input type="textbox" class="form-control" placeholder="Enter Address Line 2">
+											<div class="clearfix"></div>
+										</div>
+										<div class="form-group">
+											<label for="">Location:</label>
+											<input type="textbox" class="form-control" placeholder="Enter Location">
+											<div class="clearfix"></div>
+										</div>
+										<div class="form-group">
+											<label for="">Street:</label>
+											<input type="textbox" class="form-control" placeholder="Enter Street">
+											<div class="clearfix"></div>
+										</div>
+										<div class="form-group">
+											<label for="">City:</label>
+											<input type="textbox" class="form-control" placeholder="Enter City">
+											<div class="clearfix"></div>
+										</div>
+										<div class="form-group">
+											<label for="">State:</label>
+											<input type="textbox" class="form-control" placeholder="Enter State">
+											<div class="clearfix"></div>
+										</div>
+										<div class="form-group">
+											<label for="">Pin:</label>
+											<input type="textbox" class="form-control" placeholder="Enter Pin">
+											<div class="clearfix"></div>
+										</div>
+										<div class="form-group">
+											<label for="">Phone:</label>
+											<input type="textbox" class="form-control" placeholder="Enter Phone">
+											<div class="clearfix"></div>
+										</div>
+										<div class="form-group">
+											<label for="">Primary Number:</label>
+											<input type="textbox" class="form-control" placeholder="Enter Primary Number">
+											<div class="clearfix"></div>
+										</div>
+										<div class="form-group">
+											<label for="">Secondary Number:</label>
+											<input type="textbox" class="form-control" placeholder="Enter Secondary Number">
+											<div class="clearfix"></div>
+										</div>
+										<button type="submit" class="btn btn-default">Submit</button>
+									</form>									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+    <script src="js/vendors/jquery-1.11.2.min.js"></script>
+    <script src="js/vendors/bootstrap.js"></script>
+	<script src="js/vendors/jquery.dataTables.js" type="text/javascript"></script>
+	<script src="js/globals.js" type="text/javascript"></script>
+</body>

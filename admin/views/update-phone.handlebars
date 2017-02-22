@@ -1,0 +1,30 @@
+<div class="edit-form-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item-container">
+                <div class="data-form">
+                    <div class="form-heading">
+                        <h2>Update Phone Number</h2>
+                    </div>
+                    <form role="form" id="update-phone-form">
+                        <input type="hidden" name="id" value="{{productId}}"/>
+                        <input type="hidden" name="phoneId" value="{{productPhone._id}}"/>
+                        <div class="form-group">
+                            <label for="">Contact Name:</label>
+                            <input type="textbox" name="contactType" value="{{productPhone.contactType}}" class="form-control required" placeholder="Contact Name"/>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Contact Number:</label>
+                            <input type="textbox" name="contactNumber" value="{{productPhone.contactNumber}}" class="form-control required" placeholder="Contact Number"/>
+                            <div class="clearfix"></div>
+                        </div>
+                        
+                        <button type="button" class="btn btn-default" id="update-phone">Submit</button>
+                        <a href="/products/product/{{productId}}" title="Cancel" class="btn btn-default">Cancel</a>
+                     </form>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>

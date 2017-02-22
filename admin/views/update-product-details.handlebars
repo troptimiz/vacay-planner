@@ -1,0 +1,87 @@
+<div class="edit-form-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item-container">
+                <div class="data-form">
+                    <div class="form-heading">
+                        <h2>Update Product Details</h2>
+                    </div>
+                    <form role="form" id="edit-product-form">
+                        <input type="hidden" value="{{product.id}}" name="id" />
+                        <div class="form-group">
+                            <label for="">Name:</label>
+                            <input type="textbox" value="{{product.name}}" name="name" class="form-control required" placeholder="Name">
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Description:</label>
+                            <textarea name="description" value="{{product.description}}" class="form-control required" placeholder="Description">{{product.description}}</textarea>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Country:</label>
+                            <select name="country" class="form-control required" selectedCountry="{{product.country}}">
+                                <option value="">Select Country</option>
+                                {{#each countries}}
+                                    <option value="{{this.countryCode}}">{{this.countryName}}</option>
+                                {{/each}}
+                            </select>
+                            <div class="clearfix"></div>
+                        </div>
+						<div class="form-group">
+                            <label for="">State:</label>
+                            <!--<input type="text" name="state" class="form-control required" placeholder="State">-->
+                            <select name = "state" class="form-control required" selectedState="{{product.state}}">
+                                
+                            </select>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">City:</label>
+                            <!--<input type="text" name="city" class="form-control required" placeholder="city">-->
+                            <select name = "city" class="form-control required" selectedCity="{{product.city}}">
+                                
+                            </select>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Route Tips:</label>
+                            <textarea name="routeTips" class="form-control required" value="{{product.routeTips}}" placeholder="Route Details">{{product.routeTips}}</textarea>
+                            <div class="clearfix"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="">Star Rating:</label>
+                            <select name="starRating" class="form-control" selectedRating="{{product.starRating}}">
+                                <option value="">Select Rating</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email:</label>
+                            <input type="email" value="{{product.emailAddress}}" name="emailAddress" class="form-control required email" placeholder="Email">
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Activate:</label>
+                            <select name="is_active">
+                                <option selected="selected" value="true">True</option>
+                                <option value="false">False</option>
+                            </select>
+                            <div class="clearfix"></div>
+                        </div>
+                        <button type="button" class="btn btn-default" id="edit-product">Submit</button>
+                        <a href="/products/product/{{product.id}}" title="Cancel" class="btn btn-default">Cancel</a>
+                     </form>									
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>

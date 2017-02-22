@@ -1,0 +1,88 @@
+<div class="edit-form-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item-container">
+                <div class="data-form">
+                    <div class="product-tariffs-details">
+                        <div class="">
+                            <h3 class="heading1">
+                                Facility Group
+                                <a href="/facilities/facility/{{facilityById._id}}" class="add-tariff-details"><span class="icon-pencil"></span></a>
+                            </h3>
+                            <div class="clearfix"></div>
+                            <ul>
+                                <li>
+                                    <label>Facility Group Title:</label> {{facilityById.title}}.{{productTariff.displayedCost}}
+                                </li>
+                                <li>
+                                    <label>Facility Group Description:</label> {{facilityById.description}}.{{productTariff.netCost}}
+                                </li>
+                                <li>
+                                    <label>Is Active:</label>{{facilityById.is_active}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="vacay-section">
+                        <h3 class="heading1">
+                            Facility
+                            <a href="#" class="add-facility-details"><span class="icon-plus"></span></a>                 
+                        </h3>
+                        <div class="inline-form add-form-inline">
+                            <form method="post" action="" id="facility-form" novalidate="novalidate">
+                                <div class="form-cont">
+                                    <span class="close-btn">X</span>
+                                    <input type="hidden" value="{{facilityById._id}}" name="id"/>
+                                    <span>Facility Name:</span><input type="text" name="name">
+                                    <span>Description:</span><input type="text" name="description">
+                                    
+                                    <input type="submit" class="btn btn-success" value="Submit" id="addFacility">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="error msg"></div>
+                        <table class="genaral-table facilities-list">
+                            <tr>
+                                <th>Facility Name</th>
+                                <th>Description</th>
+                                <th class="vacay-action">Action</th>
+                            </tr>
+                            {{#each facilities}}
+                            <tr>
+                                <td>{{this.name}}</td>
+                                <td>{{this.description}}</td>
+                                <td>
+                                    <div class="delete-edit-container">
+                                        <a href="{{this._id}}" class="edit" title="Edit the row">Edit</a> /
+                                        <a href="{{this._id}}" class="delete deleteFacility" title="Delete the row">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="update-form" id="{{this._id}}">
+                                <td colspan="4">
+                                    <div class="inline-form">
+                                        <form method="post" >                                            
+                                            <input type="hidden" value="{{this._id}}" name="id"/>
+                                            <div class="form-cont">
+                                                <span class="close-btn">X</span>
+                                                <input type="hidden" value="{{../facilityById._id}}" class="facilityId"/>                                                
+                                                <span>Facility Name:</span><input value="{{this.name}}" type="text" name="name">
+                                                <span>Description:</span><input type="text" value="{{this.description}}" name="description">
+
+                                                <input type="button" class="btn btn-success editFacility" value="Submit">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            {{/each}}
+                        </table>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

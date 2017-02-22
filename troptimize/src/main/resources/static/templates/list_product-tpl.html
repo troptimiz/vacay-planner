@@ -1,0 +1,156 @@
+{{~it.content :value:index}}
+{{?index===0}}
+<div class="search-result-box">
+{{??index!=0}}
+<div class="search-result-box" style="display:none">
+{{??}}
+{{?}}
+    <div class="left-area">
+        <div class="col-md-6 padding-reset">
+            <h1>{{=value.name}}</h1>
+            <div class="star-rating" data-score="{{=value.starRating}}"></div>
+        </div>
+        <div class="col-md-6 padding-reset" >
+            <p style="display:none"><strong>Review - Good({{=value.starRating}})</strong></p>
+
+            <p style="display:none"><strong>{{=value.routeTips}}</strong></p>
+        </div>
+        <div class="col-md-12 padding-reset">
+            <div class="thumbs">
+                {{~value.images:ivalue:iindex}}
+                <div><a>
+                    <h1>{{=ivalue.captionText}}</h1>
+                    <img src="http://admin-troptimiz.rhcloud.com/uploads/{{=value.category}}/{{=ivalue.imageUrl}}" width="219" height="176"></a>
+                </div>
+                {{~}}
+            </div>
+        </div>
+        <div class="vertical-line"></div>
+        <div class="desc">
+            <h1>What you get</h1>
+            <ul>
+                {{~value.facilityDetails:fvalue:findex}}
+                <li>{{=fvalue.name}}</li>
+                {{~}}
+            </ul>
+        </div>
+    </div>
+    <div class="right-area">
+        <!--Dayout Search-->
+        <form action="details-page.html" method="get">
+         <div class="clearfix"></div>
+        <div class="result-search result-search-day-out" style="display:none">
+            <div class="col-md-6 padding-reset">
+                <label>Date</label>
+                <input name="in-date" type="text" class="form-control date-input in-date" id="date-fld1" placeholder="Select Date"/>
+            </div>
+            <div class="col-md-3 padding-reset">
+                <label>Adult</label>
+               <!--  <select name="adult">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select> -->
+                <input name="adult" type="text" class="form-control input-number textbox textbox-padding-reset  adultcount" >
+            </div>
+            <div class="col-md-3 padding-reset">
+                <label>Child</label>
+                <!-- <select name="child">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select> -->
+                <input name="child" type="text" class="form-control input-number textbox textbox-padding-reset childcount" >
+            </div>
+        </div>
+        <!--Hotel Search-->
+        <div class="result-search result-search-hotel" style="display:none">
+            <div class="col-md-4 padding-reset">
+                <label>Check-In</label>
+                <input name="in-date" type="text" class="form-control date-input in-date" id="date-fld1" placeholder="Select Date"/>
+            </div>
+            <div class="col-md-4 padding-reset">
+                <label>Check-Out</label>
+                <input name="out-date" type="text" class="form-control date-input out-date" id="date-fld1" placeholder="Select Date"/>
+            </div>
+            <div class="col-md-2 padding-reset">
+                <label>Adult</label>
+               <!--  <select name="adult">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select> -->
+                 <input name="adult" type="text" class="form-control input-number textbox textbox-padding-reset  adultcount" >
+            </div>
+            <div class="col-md-2 padding-reset">
+                <label>Child</label>
+                <!-- <select name="child">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select> -->
+                 <input name="child" type="text" class="form-control input-number textbox textbox-padding-reset  childcount" >
+                
+            </div>
+        </div>
+        
+           
+            <div class="price-area">
+                <div class="panel-group" id="accordion">
+                    <!--Price for Day-Out-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
+                                                       href="#price-for-dayout">Price for Day-Out</a></h4>
+                        </div>
+                        <div id="price-for-dayout" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="details">
+                                    <label style="display:none"><b>(Child 50% of Adult Price)</b> - Below 2.9 feet</label>
+									{{~value.packages:pvalue:pindex}}
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="package" value="{{=pvalue.id}}" checked/>
+                                           {{=pvalue.title}} – Rs.{{=pvalue.cost}} Per Person</label>
+                                    </div>
+									{{~}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Price for Others-->
+                    <div class="panel panel-default" style="display:none">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#others">Others</a>
+                            </h4>
+                        </div>
+                        <div id="others" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="details">
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="others-price" value="radio"/>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="others-price" value="radio"/>
+                                            Incididunt ut labore et dolore magna aliqua</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="pid" value={{=value.id}}>
+                <button type="submit" class="btn btn-default book-now-btn">book now</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+{{~}}

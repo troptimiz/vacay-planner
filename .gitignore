@@ -1,0 +1,12 @@
+#ignore packages installed by npm
+node_modules
+admin/node_modules
+vacayplanner-web/build
+vacayplanner-web/bin
+vacayplanner-workspace/
+
+#put any other files/folders that don't want to be check in here
+*.sass
+*.bat
+*.rb
+.idea

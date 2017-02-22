@@ -1,0 +1,106 @@
+
+
+
+<div class="edit-form-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item-container">
+                <div class="data-form">
+                    <input type="hidden" value="{{productId}}" id="productId" name="id"/>
+                    <div class="product-package-details">
+                        <div class="">
+                            <h3 class="heading1">
+                                Package Details
+                                <a href="#" class="update-package-details"><span class="icon-pencil"></span></a>
+                            </h3>
+                            <div class="clearfix"></div>
+                            
+                            <ul>
+                                <li>
+                                    <label>Title:</label> {{productPackage.title}}
+                                </li>
+                                <li>
+                                    <label>Cost:</label> {{productPackage.cost}} INR
+                                </li>
+                                <li>
+                                    <label>Description:</label>{{productPackage.description}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="packageUpdateForm">
+                        <form method="post" >       
+                            <input type="hidden" value="{{productId}}" name="productId">                                     
+                            <input type="hidden" value="{{productPackage._id}}" name="id"/>
+                            <div class="form-group">
+                                <label>Title:</label>
+                                <input type="text" name="title" value="{{productPackage.title}}" class="required form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Description:</label>
+                                <input type="text" name="description" value="{{productPackage.description}}"class="required form-control"/>
+                            </div> 
+                            <div class="form-group">
+                                <label>Cost:</label>
+                                <input type="text" name="cost" value="{{productPackage.cost}}" class="required form-control"/><span> INR</span>
+                            </div>
+                            <div class="form-group">
+                                <a title="Submit" class="btn btn-default back update-traiff">Submit</a> 
+                                <a title="Cancel" class="btn btn-default back cancel-traiff">Cancel</a> 
+                            </div>
+                                                     
+                        </form>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="vacay-section">
+                        <h3 class="heading1">
+                            Associated Price Rules
+                            <div class="packageMsg pull-right"></div>                            
+                        </h3>
+                        <div class="pricerule-list" data-selected-list="{{#each productPackage.pricerules}}{{this.priceRuleId}},{{/each}}">
+                            <input type="hidden" id="packageId" value="{{productPackage._id}}"/>
+                            <ul>
+                                <table class="genaral-table">
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>Price Rule Type</th>
+                                        <th>Price</th>
+                                        <th>Price Type</th>
+                                        <th>Gender Type</th>
+                                    </tr>
+
+                                    {{#each priceRuleList}}
+                                    <tr>
+                                        <td><input style="width:20px;" id="{{this._id}}" type="checkbox" value="{{this._id}}"/></td>
+                                        <td>{{this.priceRuleType}}</td>
+                                        <td>{{this.price}}</td>
+                                        <td>
+                                            {{#if priceType}}
+                                                {{../this.priceType}}
+                                            {{else}}
+                                                -
+                                            {{/if}}
+                                        </td>
+                                        <td>
+                                            {{#if genderType}}
+                                                {{../this.genderType}}
+                                            {{else}}
+                                                -
+                                            {{/if}}
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                </table>
+
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <a href="/products/product/{{productId}}?tab=tariffs" title="Submit" class="btn btn-default back">Submit</a>
+                    <a href="/products/product/{{productId}}?tab=tariffs" title="Cancel" class="btn btn-default back">Cancel</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

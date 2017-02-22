@@ -1,0 +1,73 @@
+<div class="product-view">
+    <div class="item-container">
+        <div class="product-genaral-details">
+            <input type="hidden" name="id" value="{{product.id}}" id="productId"/>
+            <div class="product-name">
+                <h3 class="heading1">
+                    Category Details
+                    
+                    <a href="../category/{{activeCategories.id}}" class="edit-general-details"><span class="icon-pencil"></span></a>                    
+                </h3>
+                
+                
+                <div class="clearfix"></div>
+                <ul>
+                    <li>
+                        <label>Name:</label>{{activeCategories.name}}
+                    </li>
+                    <li>
+                        <label>Description:</label>{{activeCategories.description}}
+                    </li>
+                    <li>
+                        <label>Short Description:</label>{{activeCategories.short_desc}}
+                    </li>
+                    
+                    <li>
+                        <label>Is Active:</label>{{activeCategories.is_active}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="product-category-details">
+            <div class="product-name">
+                <h3 class="heading1">
+                    Classifications
+                    <a href="../{{activeCategories.id}}/classification" class="edit-address-details"><span class="icon-plus"></span></a>
+                </h3>
+                <table class="vacaytable">
+                    <tr>
+                        <th>Name</th>                        
+                        <th class="vacay-action">Action</th>
+                    </tr>
+                    {{#each activeCategories.classification}}
+                    <tr>
+                        
+                        <td>{{this.name}}</td>
+                        <td>
+                            <div class="delete-edit-container">                                
+                                <a href="../{{../activeCategories.id}}/classification/{{this._id}}" class="delete" title="Delete the row">Delete</a>
+                            </div>
+                        </td>
+                    </tr>    
+                    
+                    {{/each}}
+                </table>
+                
+                
+                <div class="clearfix"></div>
+                
+            </div>
+        </div>        
+    </div>
+</div>
+<div class="confirm-alert-container">
+    <div class="overlay"></div>
+    <div class="cofirmation-alert">
+        <p class="alertMesg"></p>
+        <p>
+            <input type="button" value="Delete" class="confirm-delete btn btn-success"/>
+            <input type="button" value="Cancel" class="confirm-cancel btn btn-warning"/>
+        </p>
+    </div>
+</div>

@@ -1,0 +1,210 @@
+<input type="hidden" value="{{name}}" id="categoryName" />
+<div class="category-list min-list">
+    
+    {{#each activeCategories}}
+    <div class="list-item ">
+        <a class="{{this.cssClass}} item-default" href="/categories/categoryView/{{this.name}}" title="{{this.name}}">
+            <span class="icon"></span>
+            <span class="ico-label">{{this.name}}</span>
+        </a>
+    </div>
+    {{/each}}    
+    <div class="clearfix"></div>
+</div>
+<div class="search-form">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item-container">
+                <div class="item-content">
+                    <form action="" method="POST">
+                        <div class="form-item location">
+                            <label>Resort Name:</label>
+                            <input type="text" name="resortName" placeholder="Resort Name" />
+                        </div>
+                        <div class="form-item location">
+                            <label>Location:</label>
+                            <select>
+                                <option>--Select Location--</option>
+                                <option>Location Name</option>
+                                <option>Location Name</option>
+                                <option>Location Name</option>
+                                <option>Location Name</option>
+                            </select>
+                        </div>
+                        <div class="form-item location">
+                            <label>Price Range:</label>
+                            <select>
+                                <option>--Select Range--</option>
+                                <option>1000-5000</option>
+                                <option>6000-10000</option>
+                                <option>11000-15000</option>
+                                <option>15000 Above</option>
+                            </select>
+                        </div>
+                        <div class="form-item location">
+                            <input type="submit" value="Search" name="search" id="search-result" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result-table">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item-container">
+                <div class="action-container">
+                    <div class="delete-edit-container disabled pull-right">
+                        <a href="#" class="add-row" title="Add Row">Add</a>
+                    </div>
+                </div>
+                <span> Filter the Products By </span>
+                <label>Country:</label>
+                <select  class="required country">
+                    <option value="">Select Country</option>
+                    {{#each countries}}
+                        <option value="{{this.countryCode}}">{{this.countryName}}</option>
+                    {{/each}}
+                </select>
+                <label>State:</label>
+                <select name="state" class="state required">
+                </select>
+                <label>City:</label>
+                <select name="city" class="required city">
+                </select>
+                
+                <table id="result-table" class="display" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Email</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Country</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="add-form-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item-container">
+                <div class="data-form">
+                    <div class="form-heading">
+                        <h2>{{name}} : Add Product</h2>
+                    </div>
+                    
+                    <form role="form" id="add-product-form">
+                        <input type="hidden" value="{{product.id}}" name="id" />
+
+                        <div class="form-group">
+                            <label for="">Actual Name:</label>
+                            <input type="textbox" name="actualName" class="form-control required" placeholder="Actual Name">
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Display Name:</label>
+                            <input type="textbox" name="name" class="form-control required" placeholder="Display Name">
+                            <div class="clearfix"></div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="">Category:</label>
+
+                            <select name="category" id="categories" class="form-control required">
+                                <option value="">-- Select Category --</option>
+                                {{#each activeCategories}}
+                                <option value="{{~this.name}}" cat-id="{{this._id}}">{{this.name}}</option>
+                                {{/each}}
+                            </select>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Description:</label>
+                            <textarea name="description" class="form-control required" placeholder="Description"></textarea>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email:</label>
+                            <input type="email" name="emailAddress" class="form-control required email" placeholder="Email">
+                            <div class="clearfix"></div>
+                        </div>
+						<div class="form-group">
+                            <label for="">Country:</label>
+                            <select name="country" class="form-control required">
+                                <option value="">Select Country</option>
+                                {{#each countries}}
+                                    <option value="{{this.countryCode}}">{{this.countryName}}</option>
+                                {{/each}}
+                            </select>
+                            <div class="clearfix"></div>
+                        </div>
+						<div class="form-group">
+                            <label for="">State:</label>
+                            <!--<input type="text" name="state" class="form-control required" placeholder="State">-->
+                            <select name = "state" class="form-control required">
+                                
+                            </select>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">City:</label>
+                            <!--<input type="text" name="city" class="form-control required" placeholder="city">-->
+                            <select name = "city" class="form-control required">
+                                
+                            </select>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Route Tips:</label>
+                            <textarea name="routeTips" class="form-control required" placeholder="Route Details"></textarea>
+                            <div class="clearfix"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="">Star Rating:</label>
+                            <select name="starRating" class="form-control">
+                                <option value="">Select Rating</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Activate:</label>
+                            <select name="is_active" class="form-control">
+                                <option selected="selected" value="true">True</option>
+                                <option value="false">False</option>
+                            </select>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Classification:</label>
+                            <select name="classification[]" class="form-control classifications required" multiple>
+                                {{#each activeCategories.classification}}
+                                <option value="{{this._id}}">{{this.name}}</option>
+                                {{/each}}
+                            </select>
+                            <div class="clearfix"></div>
+                        </div>
+                        <button type="button" class="btn btn-default" id="add-product">Submit</button>
+                        <button type="button" class="cancel-add-category btn btn-default">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

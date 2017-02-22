@@ -1,0 +1,342 @@
+<div class="class-list">
+	<div class="item-container">
+        <div class="form-group">
+            
+            <label>Select the type to list all price rules :</label>
+            <select class="form-control" id="price-rule-type">
+                <option value="">Select Price Rule Type</option>
+                <option value="group" selected>Group</option>
+                <option value="gender">Gender</option>
+                <option value="discount">Discount</option>
+                <option value="cancellation">Cancellation</option>
+                <option value="event">Event</option>
+            </select>
+            <span class="error msg hide">Please select the type value.</span>
+            <a href="#" class="add-facilitygroup pull-right"><span class="icon-plus"></span></a>
+        </div>
+        <div class="msg error"></div>
+        <div class="pricerule-list-table">
+            <table class="" id="pricerule-table-group">
+                <thead>
+                    <tr>
+                        <th>Price Rule Type</th>
+                        <th>Price</th>
+                        <th>Price Type</th>
+                        <th>Group Limit</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Action</th>
+                    </tr>    
+                </thead>
+            </table>
+        </div>
+        <div class="pricerule-list-table">
+            <table id="pricerule-table-gender">
+                <thead>
+                    <tr>
+                        <th>Price Rule Type</th>
+                        <th>Price</th>
+                        <th>Price Type</th>
+                        <th>Gender type</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="pricerule-list-table">
+            <table id="pricerule-table-discount">
+                <thead>
+                    <tr>
+                        <th>Price Rule Type</th>
+                        <th>Price</th>
+                        <th>Price Type</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="pricerule-list-table">
+            <table id="pricerule-table-event">
+                <thead>
+                    <tr>
+                        <th>Price Rule Type</th>
+                        <th>Event Type</th>
+                        <th>Price</th>
+                        <th>Price Type</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        
+		<div class="pricerule-list-table">
+            <table id="pricerule-table-cancel">
+                <thead>
+                    <tr>
+                        <th>Price Rule Type</th>
+                        <th>Cancellation Type</th>
+                        <th>Price</th>
+                        <th>Price Type</th>
+                        <th>Duration Type</th>
+                        <th>Duration</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+		
+	</div>    
+</div>
+<div class="add-form-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="item-container">
+                <div class="data-form">
+                    <div class="form-heading">
+                        <h2>Add Price Rule</h2>
+                    </div>									
+
+                    
+                        <div class="form-group hidden">
+                            <label for="">&nbsp;</label>
+                            <p class="form-controll msg error"></p>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Price Rule type:</label>
+                            <select class="form-control form-selection price-rule-type">
+                                <option value="">Select Price Rule Type</option>
+                                <option value="group">Group</option>
+                                <option value="gender">Gender</option>
+                                <option value="discount">Discount</option>
+                                <option value="cancellation">Cancellation</option>
+                                <option value="event">Event</option>
+                            </select>
+                        </div>
+                        <div class="form-section" id="gender">
+                            <form role="form" id="gender-form">
+                                <input type="hidden" value="gender" name="priceRuleType"/>
+                                <div class="form-group">
+                                    <label for="">Gender:</label>
+                                    <select class="form-control" name="gender">
+                                        <option value="child">Child</option>
+                                        <option value="seniorcitizen">Senior Citizen</option>
+                                        <option value="adult">Adult</option>
+                                    </select>                                
+                                </div>
+								<div class="form-group">
+                                    <label for="">Age Criteria:</label>
+                                    <select class="form-control" name="ageCriteria" id="ageCriteria">
+										<option value="">Select Age Criteria</option>
+                                        <option value="$gt" data-field="<input type='text' id='numberField' class='form-control required number' name='age' placeholder='Age'>">&gt;</option>
+                                        <option value="$gte" data-field="<input type='text' class='form-control required' name='age' placeholder='Age'>">&gt;=</option>
+                                        <option value="$lt" data-field="<input type='text' class='form-control required' name='age' placeholder='Age'>">&lt;</option>
+                                        <option value="$lte" data-field="<input type='text' class='form-control required' name='age' placeholder='Age'>">&lt;=</option>
+                                        <option value="$btween" data-field="<input type='text' class='form-control required' name='fAge' placeholder='From Age'> <input class='form-control' placeholder='To Age' type='text' name='tAge'>">Between</option>
+                                    </select>                                
+                                </div>
+								
+								<div class="form-group hide" id="ageCriteriaField">
+                                    <label for="">Age:</label>
+                                    <span class="ageCriteriaFieldContainer"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Price Type:</label>
+                                    <select name="priceType" class="required form-control price-type">
+                                        <option value="">Select</option>
+                                        <option selected="selected" value="percentage">Percentage</option>
+                                        <option value="INR">INR</option>
+                                    </select>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Gender Discount</label>
+                                    <input type="text" class="price-field form-control" name="genderPrice" placeholder="Price"/>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default add-price-rule">Submit</button>
+                                    <button type="button" class="cancel-pricerule-addition btn btn-default">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="form-section" id="event">
+                            <form role="form" id="event-form">
+                                <input type="hidden" value="event" name="priceRuleType"/>
+                                <div class="form-group">
+                                    <label for="">Event Type:</label>
+                                    <select class="form-control" name="eventType">
+                                        <option value="birthday">Birth Day</option>
+                                        <option value="aniversary">Aniversary</option>
+                                    </select>                                
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Price Type:</label>
+                                    <select name="priceType" class="required form-control price-type">
+                                        <option value="">Select</option>
+                                        <option selected="selected" value="percentage">Percentage</option>
+                                        <option value="INR">INR</option>
+                                    </select>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Event Discount</label>
+                                    <input type="text" class="price-field form-control" name="eventPrice" placeholder="Price"/>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default add-price-rule">Submit</button>
+                                    <button type="button" class="cancel-pricerule-addition btn btn-default">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="form-section" id="discount">
+                            <form role="form" id="discount-form">
+                                <input type="hidden" value="discount" name="priceRuleType"/>
+                                
+                                <div class="form-group">
+                                    <label for="">Discount Price Type:</label>
+                                    <select name="priceType" class="required form-control price-type">
+                                        <option value="">Select</option>
+                                        <option selected="selected" value="percentage">Percentage</option>
+                                        <option value="INR">INR</option>
+                                    </select>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Discount Price</label>
+                                    <input type="text" class="price-field form-control" name="discountPrice" placeholder="Price"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Discount Start Date</label>
+                                    <input type="text" class="form-control" name="startDate" id="start-date-discount" placeholder="dd/mm/yyyy"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Discount End Date</label>
+                                    <input type="text" class="form-control" name="endDate" id="end-date-discount" placeholder="dd/mm/yyyy"/>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default add-price-rule">Submit</button>
+                                    <button type="button" class="cancel-pricerule-addition btn btn-default">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    
+                        <div class="form-section" id="cancellation">
+                            <form role="form" id="discount-form">
+                                <input type="hidden" value="cancellation" name="priceRuleType"/>
+                                <div class="form-group">
+                                    <label for="">Cancellation Type:</label>
+                                    <select name="cancelType" class="required form-control cancel-type">
+                                        <option value="">Select</option>
+                                        <option selected="selected" value="nonRefundable">Non Refundable</option>
+                                        <option value="refundable">Refundable</option>
+                                    </select>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="cancel-details">
+                                    <div class="form-group">
+                                        <label for="">Cancellation Price Type:</label>
+                                        <select name="priceType" class="required form-control price-type">
+                                            <option value="">Select</option>
+                                            <option selected="selected" value="percentage">Percentage</option>
+                                            <option value="INR">INR</option>
+                                        </select>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Cancellation Charge</label>
+                                        <input type="text" class="price-field form-control" name="cancelPrice" placeholder="Price"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Duration Type:</label>
+                                        <select class="form-control" name="durationType">
+                                            <option value="days">Days</option>
+                                            <option value="hours">Hours</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Duration:</label>
+                                        <input type="text" placeholder="Duration in Days or Hours" class="form-control required" name="duration"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Start Date</label>
+                                        <input type="text" class="form-control" name="startDate" id="start-date-cancellation" placeholder="dd/mm/yyyy"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">End Date</label>
+                                        <input type="text" class="form-control"  name="endDate" id="end-date-cancellation" placeholder="dd/mm/yyyy"/>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default add-price-rule">Submit</button>
+                                    <button type="button" class="cancel-pricerule-addition btn btn-default">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="form-section" id="group">
+                            <form role="form" id="group-form">
+                                <input type="hidden" value="group" name="priceRuleType"/>
+                                
+                                <div class="group-details">
+                                    <div class="form-group">
+                                        <label for="">Group Price Type:</label>
+                                        <select name="priceType" class="required form-control price-type">
+                                            <option value="">Select</option>
+                                            <option selected="selected" value="percentage">Percentage</option>
+                                            <option value="INR">INR</option>
+                                        </select>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Group Discount</label>
+                                        <input type="text" class="price-field form-control required" name="groupPrice" placeholder="Price"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>No.of Persons:</label>
+                                        <input type="text" name="groupLimit" placeholder="No.of persons" class="form-control required"/>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="">Start Date</label>
+                                        <input type="text" class="form-control required" name="startDate" id="start-date-group" placeholder="dd/mm/yyyy"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">End Date</label>
+                                        <input type="text" class="form-control required"  name="endDate" id="end-date-group" placeholder="dd/mm/yyyy"/>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default add-price-rule">Submit</button>
+                                    <button type="button" class="cancel-pricerule-addition btn btn-default">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!--<div class="form-group">
+                            <label for="">Cost:</label>
+                            <input type="textbox" name="cost" class="form-control required" placeholder="Price Rule Cost"/>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Cost Type:</label>
+                            <select name="costType" class="required form-control">
+                                <option selected="selected" value="percentage">Percentage</option>
+                                <option value="INR">INR</option>
+                            </select>
+                            <div class="clearfix"></div>
+                        </div>-->
+                    <div class="image-preview">
+                        Priview
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,923 @@
+/* line 1, ../sass/style.scss */
+body {
+  background-color: #f6f6f6;
+}
+
+/* line 4, ../sass/style.scss */
+.container-fluid {
+  padding: 0;
+}
+/* line 6, ../sass/style.scss */
+.container-fluid .row {
+  margin-right: 0;
+}
+
+/* line 10, ../sass/style.scss */
+.header {
+  display: block;
+}
+
+/* line 14, ../sass/style.scss */
+.header-admin .navbar-header .navbar-brand {
+  width: 220px;
+  height: 80px;
+  line-height: 80px;
+  background-color: #7992BF;
+  padding: 0;
+  text-align: center;
+  color: #fff;
+}
+/* line 23, ../sass/style.scss */
+.header-admin .navbar > .container .navbar-brand,
+.header-admin .navbar > .container-fluid .navbar-brand {
+  margin-left: 0;
+}
+/* line 27, ../sass/style.scss */
+.header-admin .navbar-default {
+  background-color: #fff;
+  border: 0 none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+/* line 33, ../sass/style.scss */
+.header-admin .navbar-default .navbar-nav > li > a {
+  color: #777;
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 80px;
+  line-height: 80px;
+  background-color: #fff;
+}
+/* line 40, ../sass/style.scss */
+.header-admin .navbar-default .navbar-nav > li > a:hover {
+  color: #ccc;
+  background-color: #fff;
+}
+
+/* line 48, ../sass/style.scss */
+#sidebar {
+  top: 80px;
+  background-color: #1F2837;
+  color: #fff;
+  width: 220px;
+  padding: 0;
+  height: 100%;
+}
+/* line 56, ../sass/style.scss */
+#sidebar li a {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: bold;
+  font-size: 12px;
+}
+/* line 60, ../sass/style.scss */
+#sidebar li a:hover, #sidebar li a:active, #sidebar li a:focus {
+  background-color: #1F2837;
+  color: #ccc;
+}
+/* line 65, ../sass/style.scss */
+#sidebar li a span {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+/*Result container*/
+/* line 75, ../sass/style.scss */
+* {
+  -webkit-transition: width .5s, padding .5s, margin .5s, right .1s ease-in-out;
+  /* Safari */
+  transition: width .5s, padding 0.5s, margin .5s, right .1s ease-in-out;
+}
+
+/* line 79, ../sass/style.scss */
+.admin-result-container {
+  position: relative;
+  top: 80px;
+  overflow: hidden;
+}
+/* line 83, ../sass/style.scss */
+.admin-result-container .dashboad-list {
+  width: 40%;
+  padding: 60px 40px;
+  border: 8px solid #fff;
+  margin: 0 auto;
+  margin-top: 100px;
+  border-radius: 10px;
+}
+/* line 90, ../sass/style.scss */
+.admin-result-container .dashboad-list .legend {
+  background: #f6f6f6;
+  padding: 0 10px;
+  position: absolute;
+  top: 95px;
+  font-size: 15px;
+  color: #a0a0a0;
+  font-weight: bold;
+  font-family: Arial;
+}
+/* line 101, ../sass/style.scss */
+.admin-result-container .dashboad-list {
+  width: 50%;
+}
+/* line 104, ../sass/style.scss */
+.admin-result-container .category-list, .admin-result-container .dashboad-list {
+  margin: 0 auto;
+  margin-top: 100px;
+}
+/* line 107, ../sass/style.scss */
+.admin-result-container .category-list.min-list, .admin-result-container .dashboad-list.min-list {
+  margin-top: 0;
+  display: none;
+}
+/* line 110, ../sass/style.scss */
+.admin-result-container .category-list.min-list .list-item, .admin-result-container .dashboad-list.min-list .list-item {
+  margin: 10px 15px;
+  opacity: 0.4;
+}
+/* line 113, ../sass/style.scss */
+.admin-result-container .category-list.min-list .list-item.active, .admin-result-container .category-list.min-list .list-item:hover, .admin-result-container .dashboad-list.min-list .list-item.active, .admin-result-container .dashboad-list.min-list .list-item:hover {
+  opacity: 1;
+  background: #f00;
+}
+/* line 117, ../sass/style.scss */
+.admin-result-container .category-list.min-list .list-item .icon, .admin-result-container .dashboad-list.min-list .list-item .icon {
+  bottom: 12px;
+  right: 12px;
+}
+/* line 121, ../sass/style.scss */
+.admin-result-container .category-list.min-list .list-item a, .admin-result-container .dashboad-list.min-list .list-item a {
+  padding: 35px;
+}
+/* line 123, ../sass/style.scss */
+.admin-result-container .category-list.min-list .list-item a .icon, .admin-result-container .dashboad-list.min-list .list-item a .icon {
+  font-size: 15px;
+}
+/* line 126, ../sass/style.scss */
+.admin-result-container .category-list.min-list .list-item a .ico-label, .admin-result-container .dashboad-list.min-list .list-item a .ico-label {
+  font-size: 10px;
+}
+/* line 132, ../sass/style.scss */
+.admin-result-container .category-list.min-list .manage-categories, .admin-result-container .dashboad-list.min-list .manage-categories {
+  display: none;
+}
+/* line 136, ../sass/style.scss */
+.admin-result-container .category-list .manage-categories, .admin-result-container .dashboad-list .manage-categories {
+  text-align: center;
+}
+/* line 138, ../sass/style.scss */
+.admin-result-container .category-list .manage-categories a, .admin-result-container .dashboad-list .manage-categories a {
+  display: inline-block;
+  margin-top: 20px;
+}
+/* line 141, ../sass/style.scss */
+.admin-result-container .category-list .manage-categories a i, .admin-result-container .dashboad-list .manage-categories a i {
+  padding-right: 10px;
+  vertical-align: text-bottom;
+}
+/* line 147, ../sass/style.scss */
+.admin-result-container .category-list .list-item, .admin-result-container .dashboad-list .list-item {
+  float: left;
+  margin: 10px 20px;
+}
+/* line 152, ../sass/style.scss */
+.admin-result-container .category-list .list-item a, .admin-result-container .dashboad-list .list-item a {
+  padding: 50px;
+  display: inline-block;
+  color: #fff;
+  position: relative;
+  text-transform: uppercase;
+  font-family: Arial;
+  font-size: 11px;
+  text-decoration: none;
+}
+/* line 161, ../sass/style.scss */
+.admin-result-container .category-list .list-item a .icon, .admin-result-container .dashboad-list .list-item a .icon {
+  color: #333;
+}
+/* line 165, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-default, .admin-result-container .dashboad-list .list-item a.item-default {
+  background: #7992BF;
+  border: 1px solid #6884b7;
+}
+/* line 169, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-default .icon:before, .admin-result-container .dashboad-list .list-item a.item-default .icon:before {
+  content: "";
+}
+/* line 174, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-tax, .admin-result-container .dashboad-list .list-item a.item-tax {
+  background: #7992BF;
+  border: 1px solid #6884b7;
+}
+/* line 178, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-tax .icon:before, .admin-result-container .dashboad-list .list-item a.item-tax .icon:before {
+  content: "\e93b";
+}
+/* line 183, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-price-rules, .admin-result-container .dashboad-list .list-item a.item-price-rules {
+  background: #ECD48B;
+  border: 1px solid #e8cc75;
+}
+/* line 187, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-price-rules .icon:before, .admin-result-container .dashboad-list .list-item a.item-price-rules .icon:before {
+  content: "\e936";
+}
+/* line 192, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-stats, .admin-result-container .dashboad-list .list-item a.item-stats {
+  background: #7992A0;
+  border: 1px solid #6884b7;
+}
+/* line 196, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-stats .icon:before, .admin-result-container .dashboad-list .list-item a.item-stats .icon:before {
+  content: "\e99b";
+}
+/* line 201, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-users, .admin-result-container .dashboad-list .list-item a.item-users {
+  background: #6BD5C3;
+  border: 1px solid #57cfbb;
+}
+/* line 205, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-users .icon:before, .admin-result-container .dashboad-list .list-item a.item-users .icon:before {
+  content: "\e972";
+}
+/* line 210, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-categories, .admin-result-container .dashboad-list .list-item a.item-categories {
+  background: #ED848F;
+  border: 1px solid #ea6e7b;
+}
+/* line 214, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-categories .icon:before, .admin-result-container .dashboad-list .list-item a.item-categories .icon:before {
+  content: "\e621";
+}
+/* line 219, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-orders, .admin-result-container .dashboad-list .list-item a.item-orders {
+  background: #A9DC8E;
+  border: 1px solid #9ad67b;
+}
+/* line 223, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-orders .icon:before, .admin-result-container .dashboad-list .list-item a.item-orders .icon:before {
+  content: "\e61c";
+}
+/* line 228, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-customer, .admin-result-container .dashboad-list .list-item a.item-customer {
+  background: #5d9efd;
+  border: 1px solid #7d9efd;
+}
+/* line 232, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-customer .icon:before, .admin-result-container .dashboad-list .list-item a.item-customer .icon:before {
+  content: "\e923";
+}
+/* line 237, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-classification, .admin-result-container .dashboad-list .list-item a.item-classification {
+  background: #6BD5C3;
+  border: 1px solid #57cfbb;
+}
+/* line 241, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-classification .icon:before, .admin-result-container .dashboad-list .list-item a.item-classification .icon:before {
+  content: "\e60c";
+}
+/* line 246, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-resorts, .admin-result-container .dashboad-list .list-item a.item-resorts {
+  background: #7992BF;
+  border: 1px solid #6884b7;
+}
+/* line 250, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-resorts .icon:before, .admin-result-container .dashboad-list .list-item a.item-resorts .icon:before {
+  content: "\e921";
+}
+/* line 255, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-hotels, .admin-result-container .dashboad-list .list-item a.item-hotels {
+  background: #A9DC8E;
+  border: 1px solid #9ad67b;
+}
+/* line 259, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-hotels .icon:before, .admin-result-container .dashboad-list .list-item a.item-hotels .icon:before {
+  content: "\e903";
+}
+/* line 264, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-spa, .admin-result-container .dashboad-list .list-item a.item-spa {
+  background: #6BD5C3;
+  border: 1px solid #57cfbb;
+}
+/* line 268, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-spa .icon:before, .admin-result-container .dashboad-list .list-item a.item-spa .icon:before {
+  content: "\e9a4";
+}
+/* line 273, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-car, .admin-result-container .dashboad-list .list-item a.item-car {
+  background: #ECD48B;
+  border: 1px solid #e8cc75;
+}
+/* line 277, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-car .icon:before, .admin-result-container .dashboad-list .list-item a.item-car .icon:before {
+  content: "\e9b0";
+}
+/* line 282, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-flight, .admin-result-container .dashboad-list .list-item a.item-flight {
+  background: #5d9efd;
+  border: 1px solid #7d9efd;
+}
+/* line 286, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-flight .icon:before, .admin-result-container .dashboad-list .list-item a.item-flight .icon:before {
+  content: "\e9af";
+}
+/* line 291, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-movies, .admin-result-container .dashboad-list .list-item a.item-movies {
+  background: #ED848F;
+  border: 1px solid #ea6e7b;
+}
+/* line 295, ../sass/style.scss */
+.admin-result-container .category-list .list-item a.item-movies .icon:before, .admin-result-container .dashboad-list .list-item a.item-movies .icon:before {
+  content: "\e913";
+}
+/* line 301, ../sass/style.scss */
+.admin-result-container .category-list .list-item .icon, .admin-result-container .dashboad-list .list-item .icon {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  font-size: 40px;
+  font-family: "icomoon";
+}
+/* line 308, ../sass/style.scss */
+.admin-result-container .category-list .list-item .ico-label, .admin-result-container .dashboad-list .list-item .ico-label {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+/* line 316, ../sass/style.scss */
+.item-container {
+  background: #fff;
+  border: 1px solid #eee;
+  margin: 0 40px;
+  padding: 30px;
+  position: relative;
+}
+
+/* line 323, ../sass/style.scss */
+.search-form {
+  display: none;
+}
+
+/* line 326, ../sass/style.scss */
+.search-result-table {
+  transition: width .5s, padding 0.5s, margin 2s, right 2s;
+  display: none;
+  position: relative;
+  right: 0;
+}
+/* line 331, ../sass/style.scss */
+.search-result-table.hide-table {
+  right: 100%;
+}
+
+/* line 335, ../sass/style.scss */
+.form-item {
+  display: inline;
+  margin: 0 10px;
+}
+/* line 338, ../sass/style.scss */
+.form-item select, .form-item input[type="text"] {
+  padding: 10px;
+  border: 1px solid #eee;
+  color: #a3a3a3;
+}
+/* line 343, ../sass/style.scss */
+.form-item label {
+  color: #918884;
+  font-weight: normal;
+  font-size: 13px;
+  font-family: Arial;
+  padding-right: 10px;
+}
+/* line 350, ../sass/style.scss */
+.form-item input[type="submit"], .form-item input[type="button"] {
+  background-color: #7992BF;
+  border: 1px solid #6884b7;
+  width: 95px;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* line 358, ../sass/style.scss */
+.delete-edit-container {
+  margin: 10px 0;
+}
+/* line 360, ../sass/style.scss */
+.delete-edit-container a {
+  font-family: "icomoon";
+  font-size: 0;
+  color: #333;
+}
+/* line 364, ../sass/style.scss */
+.delete-edit-container a:before {
+  font-size: 15px;
+  padding: 0 10px;
+}
+/* line 368, ../sass/style.scss */
+.delete-edit-container a:hover, .delete-edit-container a:focus, .delete-edit-container a:active {
+  color: #337ab7;
+  text-decoration: none;
+}
+/* line 374, ../sass/style.scss */
+.delete-edit-container .edit:before {
+  content: "\e905";
+  font-size: 15px;
+}
+/* line 378, ../sass/style.scss */
+.delete-edit-container .edit.desabled {
+  cursor: default;
+}
+/* line 380, ../sass/style.scss */
+.delete-edit-container .edit.desabled:before {
+  color: #ccc;
+}
+/* line 386, ../sass/style.scss */
+.delete-edit-container .delete:before {
+  content: "\e9ad";
+  font-size: 15px;
+}
+/* line 392, ../sass/style.scss */
+.delete-edit-container .view:before {
+  content: "\e9ce";
+  font-size: 15px;
+}
+/* line 398, ../sass/style.scss */
+.delete-edit-container .add-row:before {
+  content: "\ea0a";
+  font-size: 15px;
+}
+/* line 404, ../sass/style.scss */
+.delete-edit-container.disabled .edit, .delete-edit-container.disabled .delete {
+  cursor: default;
+}
+/* line 406, ../sass/style.scss */
+.delete-edit-container.disabled .edit:before, .delete-edit-container.disabled .delete:before {
+  color: #ccc;
+}
+
+/* line 412, ../sass/style.scss */
+.add-form-container {
+  display: none;
+}
+
+/* line 415, ../sass/style.scss */
+.form-heading {
+  padding-bottom: 15px;
+}
+/* line 417, ../sass/style.scss */
+.form-heading h2 {
+  font-size: 24px;
+  color: #7992bf;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin-top: 0;
+}
+
+/* line 425, ../sass/style.scss */
+.data-form {
+  width: 70%;
+  margin: 0 auto;
+}
+/* line 428, ../sass/style.scss */
+.data-form .form-group {
+  width: 78%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  clear: both;
+}
+/* line 433, ../sass/style.scss */
+.data-form .form-group label, .data-form .form-group input, .data-form .form-group textarea {
+  float: left;
+  font-size: 13px;
+}
+/* line 437, ../sass/style.scss */
+.data-form .form-group span {
+  font-weight: bold;
+  margin-top: 10px;
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 12px;
+}
+/* line 444, ../sass/style.scss */
+.data-form .form-group label {
+  width: 150px;
+  font-weight: normal;
+  color: #918882;
+  font-size: 13px;
+}
+/* line 450, ../sass/style.scss */
+.data-form .form-group textarea {
+  width: 340px;
+}
+/* line 453, ../sass/style.scss */
+.data-form .form-group .checkbox {
+  width: 135px;
+  float: left;
+  margin: 0;
+}
+/* line 457, ../sass/style.scss */
+.data-form .form-group .checkbox input[type="radio"] {
+  width: 20px;
+}
+
+/* line 463, ../sass/style.scss */
+.form-control {
+  width: 63%;
+}
+
+/* line 468, ../sass/style.scss */
+.cat-list table, .class-list table {
+  width: 100% !important;
+}
+/* line 471, ../sass/style.scss */
+.cat-list table tr th, .class-list table tr th {
+  padding: 10px;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+}
+/* line 476, ../sass/style.scss */
+.cat-list table tr td, .class-list table tr td {
+  padding: 10px;
+}
+/* line 478, ../sass/style.scss */
+.cat-list table tr td .icon, .class-list table tr td .icon {
+  font-family: "icomoon";
+}
+/* line 482, ../sass/style.scss */
+.cat-list table tr td .cat-desc, .class-list table tr td .cat-desc {
+  font-size: 12px;
+}
+/* line 488, ../sass/style.scss */
+.cat-list .delete-edit-container, .class-list .delete-edit-container {
+  margin: 0;
+}
+/* line 491, ../sass/style.scss */
+.cat-list .list-action, .class-list .list-action {
+  width: 160px;
+  padding-left: 20px;
+}
+
+/*Products styles Start */
+/* line 497, ../sass/style.scss */
+ul {
+  padding: 0;
+  margin: 0;
+}
+/* line 500, ../sass/style.scss */
+ul li {
+  list-style-type: none;
+}
+
+/* line 504, ../sass/style.scss */
+.heading1 {
+  color: #333;
+  font-size: 18px;
+  font-family: Arial;
+  border-bottom: 2px solid #1F2837;
+  padding-bottom: 10px;
+}
+/* line 510, ../sass/style.scss */
+.heading1 a {
+  font-size: 11px;
+  padding-left: 15px;
+}
+
+/* line 517, ../sass/style.scss */
+.product-view ul li {
+  line-height: 24px;
+}
+/* line 519, ../sass/style.scss */
+.product-view ul li label {
+  padding-right: 10px;
+}
+/* line 524, ../sass/style.scss */
+.product-view label {
+  padding-right: 10px;
+}
+/* line 527, ../sass/style.scss */
+.product-view .address-container {
+  background: #f0f0f0;
+  padding: 20px 30px;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  position: relative;
+}
+/* line 534, ../sass/style.scss */
+.product-view .address-container p {
+  margin: 0;
+  padding: 0;
+  line-height: 21px;
+  font-size: 12px;
+}
+/* line 541, ../sass/style.scss */
+.product-view .tariffs-container, .product-view .amenities-container, .product-view .tnc-container, .product-view .phone-container {
+  background: #f0f0f0;
+  padding: 20px 30px;
+  margin-bottom: 10px;
+  position: relative;
+}
+/* line 546, ../sass/style.scss */
+.product-view .tariffs-container p, .product-view .amenities-container p, .product-view .tnc-container p, .product-view .phone-container p {
+  padding: 0;
+  margin: 0;
+}
+/* line 551, ../sass/style.scss */
+.product-view .close-btn {
+  color: #000;
+  font-weight: bold;
+  float: right;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 11px;
+}
+
+/*Products styles End */
+/* line 564, ../sass/style.scss */
+.confirm-alert-container {
+  display: none;
+}
+/* line 566, ../sass/style.scss */
+.confirm-alert-container .cofirmation-alert {
+  width: 350px;
+  height: 170px;
+  background: #fff;
+  position: fixed;
+  top: 50%;
+  left: 20%;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+  padding: 50px;
+  border: 1px solid #f0f0f0;
+  text-align: center;
+}
+/* line 579, ../sass/style.scss */
+.confirm-alert-container .cofirmation-alert .btn {
+  width: 100px;
+}
+/* line 583, ../sass/style.scss */
+.confirm-alert-container .overlay {
+  position: fixed;
+  background: #000;
+  min-width: 100%;
+  min-height: 100%;
+  top: 0;
+  opacity: 0.6;
+}
+
+/* line 593, ../sass/style.scss */
+.vacay-table, .vacaytable, .facility-table, .genaral-table {
+  width: 95%;
+  margin: 20px auto;
+}
+/* line 596, ../sass/style.scss */
+.vacay-table th, .vacaytable th, .facility-table th, .genaral-table th {
+  border-bottom: 1px solid #333;
+  padding-bottom: 5px;
+}
+/* line 600, ../sass/style.scss */
+.vacay-table td, .vacaytable td, .facility-table td, .genaral-table td {
+  font-size: 12px;
+}
+
+/* line 604, ../sass/style.scss */
+.vacay-action {
+  width: 100px;
+  padding-left: 12px;
+}
+
+/* line 608, ../sass/style.scss */
+.data-form .form-group label.error {
+  width: 100%;
+  text-align: right;
+  padding-right: 15px;
+  color: #f00;
+  font-family: arial;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+/* line 617, ../sass/style.scss */
+.image-preview {
+  width: 200px;
+  position: absolute;
+  top: 150px;
+  height: 150px;
+  background: #000;
+  right: 95px;
+  overflow: hidden;
+  border: 10px solid #ccc;
+  text-align: center;
+  line-height: 140px;
+  display: none;
+}
+/* line 629, ../sass/style.scss */
+.image-preview img {
+  width: 200px;
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+/* line 635, ../sass/style.scss */
+.image-preview.product {
+  top: 65px;
+}
+
+/* line 642, ../sass/style.scss */
+.product-image-details .vacay-table td {
+  height: 75px;
+}
+/* line 644, ../sass/style.scss */
+.product-image-details .vacay-table td img {
+  text-align: center;
+  background: #ccc;
+  padding: 2px;
+}
+
+/* line 653, ../sass/style.scss */
+.error.msg {
+  color: #f00;
+  font-size: 11px;
+}
+
+/* line 659, ../sass/style.scss */
+.vacay-section .form-cont {
+  padding-top: 30px;
+  padding-bottom: 45px;
+  background: #f0f0f0;
+  position: relative;
+  display: none;
+}
+/* line 665, ../sass/style.scss */
+.vacay-section .form-cont span {
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 11px;
+}
+/* line 670, ../sass/style.scss */
+.vacay-section .form-cont input[type="text"] {
+  width: 130px;
+}
+/* line 673, ../sass/style.scss */
+.vacay-section .form-cont select[name="state"] {
+  padding: 3px 0;
+  font-size: 12px;
+}
+/* line 677, ../sass/style.scss */
+.vacay-section .form-cont input[type="submit"], .vacay-section .form-cont input[type="button"] {
+  width: auto;
+  margin-left: 10px;
+}
+/* line 681, ../sass/style.scss */
+.vacay-section .form-cont .close-btn {
+  position: absolute;
+  right: 0px;
+  top: 5px;
+  font-size: 8px;
+  color: #fff;
+  background: #000;
+  padding: 2px 5px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+/* line 696, ../sass/style.scss */
+.vacay-section .vacay-table.tariff-tax-details .update-form .form-cont input[type="text"] {
+  width: 90px;
+}
+/* line 699, ../sass/style.scss */
+.vacay-section .vacay-table.tariff-tax-details .update-form .form-cont span.input-field {
+  position: relative;
+}
+/* line 702, ../sass/style.scss */
+.vacay-section .vacay-table.tariff-tax-details .update-form .form-cont label.error {
+  position: absolute;
+  white-space: nowrap;
+  left: 0;
+  top: 20px;
+  font-size: 10px;
+  color: #f00;
+}
+/* line 713, ../sass/style.scss */
+.vacay-section.product-view-sub-section {
+  padding: 0 20px;
+}
+/* line 715, ../sass/style.scss */
+.vacay-section.product-view-sub-section .heading1 {
+  font-size: 14px;
+  font-weight: bold;
+  border-bottom: 1px dashed #333;
+}
+
+/* line 723, ../sass/style.scss */
+.product-facility-details .facilityMsg, .product-facility-details .taxMsg, .product-tax-details .facilityMsg, .product-tax-details .taxMsg {
+  font-size: 16px;
+  display: none;
+}
+/* line 726, ../sass/style.scss */
+.product-facility-details .facilityMsg span, .product-facility-details .taxMsg span, .product-tax-details .facilityMsg span, .product-tax-details .taxMsg span {
+  color: #7992BF;
+  font-weight: bold;
+}
+/* line 731, ../sass/style.scss */
+.product-facility-details .facilities-list, .product-facility-details .tax-list, .product-tax-details .facilities-list, .product-tax-details .tax-list {
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+/* line 735, ../sass/style.scss */
+.product-facility-details .facilities-list ul li, .product-facility-details .tax-list ul li, .product-tax-details .facilities-list ul li, .product-tax-details .tax-list ul li {
+  float: left;
+  width: 150px;
+  margin: 10px 0;
+}
+/* line 739, ../sass/style.scss */
+.product-facility-details .facilities-list ul li input[type="checkbox"], .product-facility-details .tax-list ul li input[type="checkbox"], .product-tax-details .facilities-list ul li input[type="checkbox"], .product-tax-details .tax-list ul li input[type="checkbox"] {
+  width: auto;
+}
+
+/* line 748, ../sass/style.scss */
+.packageMsg {
+  font-size: 16px;
+  display: none;
+}
+/* line 751, ../sass/style.scss */
+.packageMsg span {
+  color: #7992BF;
+  font-weight: bold;
+}
+
+/* line 756, ../sass/style.scss */
+.form-section {
+  display: none;
+}
+
+/* line 759, ../sass/style.scss */
+.cancel-details, .pricerule-list-table {
+  display: none;
+}
+
+/* line 762, ../sass/style.scss */
+.packageUpdateForm {
+  display: none;
+  background: #f9f9f9;
+  padding: 20px;
+  margin-top: 30px;
+}
+/* line 767, ../sass/style.scss */
+.packageUpdateForm .data-form .form-group {
+  width: 85%;
+}
+/* line 770, ../sass/style.scss */
+.packageUpdateForm input[type="button"] {
+  margin-right: 5px;
+}
+
+/* line 775, ../sass/style.scss */
+.ui-widget-header {
+  border: 1px solid #D8D8D8;
+  background: #D8D8D8;
+  color: #000;
+}
+
+/* line 781, ../sass/style.scss */
+.product-view .tab-content {
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-top: 0 none;
+  margin-bottom: 30px;
+}
+
+/* line 790, ../sass/style.scss */
+#tax-form label.error, #update-tax-form label.error {
+  width: 55% !important;
+}
+/* line 793, ../sass/style.scss */
+#tax-form label, #update-tax-form label {
+  padding-left: 10px;
+}
+
+/* line 799, ../sass/style.scss */
+#update-tax-form label.error {
+  padding-right: 0px;
+}
+
+/* line 805, ../sass/style.scss */
+ul#tax-item-list li {
+  float: left;
+  clear: both;
+  width: 100%;
+  margin: 5px;
+}
+
+/* line 812, ../sass/style.scss */
+.data-form .form-group span.ageCriteriaFieldContainer {
+  margin-left: 0;
+  width: 63%;
+}
+/* line 815, ../sass/style.scss */
+.data-form .form-group span.ageCriteriaFieldContainer input.form-control {
+  width: 327px;
+  margin-right: 10px;
+}

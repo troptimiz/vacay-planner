@@ -1,0 +1,21 @@
+<tbody>
+								<tr id="adultPrice">
+									<td width="50%">Adult - {{=it.adultRate}} x {{=it.numAdult}}</td>
+									<td width="13%">=</td>
+									<td width="37%">{{=it.adultTotal}}</td>
+								</tr>
+								<tr id="childPrice">
+									<td>Child - {{=it.childRate}} x {{=it.numChild}}</td>
+									<td>=</td>
+									<td>{{=it.childTotal}}</td>
+								</tr>
+								{{~it.taxes :value:index}}
+									{{? value.amount > 0}}
+									<tr>
+										<td>{{=value.text}} - {{=value.amount}} x {{=value.count}}</td>
+										<td>=</td>
+										<td>{{=value.total}}</td>
+									</tr>
+									{{?}}
+								{{~}}
+							</tbody>
